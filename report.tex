@@ -1,0 +1,108 @@
+\documentclass[11pt,a4paper,titlepage,oneside]{report}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc} % input encoding is UTF-8
+
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\usepackage{color}
+\usepackage[unicode,pdftex]{hyperref}
+
+\begin{document}
+
+% Title page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/logo_NTNU.png}\\
+\vfill
+{\LARGE \textbf{TDT4290 - Customer Driven Project}}
+\vfill
+{\Huge \textbf{Ocean forecast}}
+
+\vspace{12pt}
+{\LARGE \textbf{SINTEF}}
+
+\vspace{30pt}
+{\LARGE \textbf{Final report}}
+\vfill
+{\LARGE \textbf{Autumn 2014}}
+\end{center}
+\vfill
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l l}
+\textbf{Group 6} & \textbf{Advisor} \\
+Arve Nygård & Gleb Sizov \\
+Anders Smedegaard Pedersen & \\
+Emil Jakobus Schroeder & \\
+Hans Kristian Henriksen & \\
+Marco Radavelli & \\
+Ondřej Hujňák & \\
+Ruben Håskjold Fagerli & \\
+\end{tabular*}
+
+\end{titlepage}
+
+% Empty page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+% Abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+Abstract
+\end{abstract}
+
+% Signatures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\begin{center}
+{\large \textbf{Trondheim, \today}}\\
+\vspace{2.5cm}
+\begin{tabularx}{\textwidth}{@{\extracolsep{1cm}} X X }
+\dotfill & \dotfill \\
+~Arve Nygård & ~Anders Smedegaard Pedersen \\[1cm]
+\dotfill & \dotfill \\
+~Emil Jakobus Schroeder & ~Hans Kristian Henriksen \\[1cm]
+\dotfill & \dotfill \\
+~Marco Radavelli & ~Ondřej Hujňák \\[1cm]
+\dotfill & \\
+~Ruben Håskjold Fagerli & \\[1cm]
+\end{tabularx}
+\end{center}
+
+% Table of contents %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+% List of figures %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listoffigures
+\addtocontents{lof}{\protect\thispagestyle{empty}}
+
+% List of tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listoftables
+\addtocontents{lot}{\protect\thispagestyle{empty}}
+
+\pagenumbering{arabic}
+\setcounter{page}{0}
+
+% Main body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{1}
+
+
+% Sources cited in the document
+% uncomment when there are some citations, uncomment bibtex in Makefile
+\chapter{Bibliography}
+\bibliographystyle{plain}
+\begin{flushleft}
+    \nocite{leafletjs.com}
+    \nocite{openlayers.org}
+	\bibliography{source_library}
+\end{flushleft}
+
+% Appendixes
+\appendix
+
+\end{document}

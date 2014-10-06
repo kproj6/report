@@ -5,6 +5,7 @@
 
 \usepackage{graphicx}
 \usepackage{tabularx}
+\usepackage{subcaption}
 
 \usepackage{color}
 \usepackage[unicode,pdftex]{hyperref}
@@ -14,9 +15,19 @@
 % Title page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{titlepage}
 
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{img/logo_NTNU.png}\\
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{img/logo_SINTEF.jpg}
+\end{subfigure}
+\end{figure}
+
 \begin{center}
-\includegraphics[width=0.5\textwidth]{img/logo_NTNU.png}\\
-\vfill
 {\LARGE \textbf{TDT4290 - Customer Driven Project}}
 \vfill
 {\Huge \textbf{Ocean forecast}}
@@ -89,7 +100,49 @@ Abstract
 % Main body %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{1}
+\chapter{Introduction}
+\section{TDT 4290 - Customer driven project}
+The task is set forth in the subject TDT 4290 - Customer driven project at the Norwegian university of science and technology. The goal of the course is 
+\begin{quote}
+(...)to give the students a practical experience of carrying out all the phases of a typical customer guided IS/IT-project. \cite{TDT4290:Intro}
+\end{quote}
+The subject divides the students into random groups, and assigns each group an assignment. The assignments are real problems that businesses needs solved. 
+
+Although the assignment is to follow the entire process of an IT-project, the focus is on the earlier phases of a project. Thus, an important part of the assignment is the work leading up to the implementation phase. There is obviously also an important focus on the implementation itself. Maintenance is however left out of the scope of the projects.
+
+\section{SINTEF}
+About SINTEF
+
+\section{Ocean currents}
+About currents, why they are important, who is interested etc.
+
+\section{Assignment and scope}
+
+\chapter{Planning}
+
+\chapter{Tools and technology}
+\section{\LaTeX}
+\section{Trello}
+\section{Slack}
+\section{Git}
+\section{Google Docs}
+
+\chapter{Pre study}
+In this chapter, we present the findings of the pre study. The pre study document was made as a separate document that was meant to be delivered to the customer independently of this report. Therefore, there are overlapping sections with the full report. These sections will not be given in this chapter, but are instead presented in their respective chapters of the full report. 
+
+\chapter{Requirements}
+
+\chapter {Pre-sprint work}
+
+\chapter{Sprint 1}
+
+\chapter{Sprint 2}
+
+\chapter{Sprint 3}
+
+\chapter{Final solution}
+
+\chapter{Evaluation}
 
 
 % Sources cited in the document

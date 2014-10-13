@@ -111,107 +111,148 @@ The subject divides the students into random groups, and assigns each group an a
 
 Although the assignment is to follow the entire process of an IT-project, the focus is on the earlier phases of a project. Thus, an important part of the assignment is the work leading up to the implementation phase. There is obviously also an important focus on the implementation itself. Maintenance is however left out of the scope of the projects.
 
-\section{SINTEF}
-About SINTEF
+\section{Customer}
+The customer is SINTEF Fisheries and Aquaculture (SINTEF Fiskeri og havbruk AS). 
+SINTEF was founded in 1950 and it is nowadays organized into 8 divisions. The division of Fisheries and Aquaculture was founded in 1999 and represents technological expertise and industry knowledge in the utilization of renewable marine resources. Under the vision \"Technology for a better society\" it works for a knowledge-based bio marine industry. Its goal is to meet market demands for technological research and development on renewable marine resources.
 
 \section{Ocean currents}
 About currents, why they are important, who is interested etc.
 
 \section{Assignment and scope}
+The client, SINTEF Fisheries and Aquaculture, has given us the project labeled ”Ocean Forecast”. The task is to improve the actual system of storing and retrieving data for the monitored and predicted parameters of ocean.
 
 \chapter{Planning}
 This section will give an overview of our plans for the project. It will include time estimation, group organization, risk management and quality assurance.
-\section{Project name}
-The client, SINTEF Fisheries and Aquaculture, has given us the project labeled ”Ocean Forecast”. The task is to improve the actual system of storing and retrieving data for the monitored and predicted parameters of ocean.
-\section{Project sponsor (customer)}
-The customer is SINTEF Fisheries and Aquaculture (SINTEF Fiskeri og havbruk AS). 
-SINTEF was founded in 1950 and it is nowadays organized into 8 divisions. The division of Fisheries and Aquaculture was founded in 1999 and represents technological expertise and industry knowledge in the utilization of renewable marine resources. Under the vision "Technology for a better society" it works for a knowledge-based bio marine industry. Its goal is to meet market demands for technological research and development on renewable marine resources.
-\section{Partners including responsible third party providers}
-SINTEF Fisheries and Aquaculture, NTNU
+
+The name of the project and the scope of the assignment has already been introduced in the previous section.
+\section{Project stakeholders}
+The stakeholders of this project are the following:
+\begin{description}
+\item[Project owner (customer)] SINTEF Fisheries and Aquaculture
+\item[Supervisor (from NTNU)] Gleb Sizov
+\item[Examiner] External examiner, nominated by the direction of the course TDT4290 - Customer Driven Project
+\item[Team members (students)] 
+\end{description}
+
 \section{Background for the project: software system development}
 The customer owns a working solution, running on its own servers, for the delivery and analysis of marine tracked and predicted data, in form of maps with overlays and charts.
 The background for this project is to optimize the actual, slow and memory-consuming solution, with a new one, and/or creating new front-end application using those data, to cover more use-cases.
+
 \section{Measurement of project effects}
-For our project to be considered a success, some predefined criterias must be met. Our product must be working according to the requirements and pass all tests in order to be a success. All requirements prioritized high and medium must be fulfilled. Requirements that have low priority are optional, but should be implemented if there is sufficient time.
+Some predefined criterias must be met in order to consider out project a successful one. Our product must be working according to the requirements and pass all tests in order to be a success. All requirements prioritized high and medium must be fulfilled. Requirements that have low priority are optional, but should be implemented if there is sufficient time.
 In our case, quite open goals were requested by the customer, and no precisely quantifiable measurements were defined.
 If working on improving the actual solution the measurements should be:
-- The time it takes to visualize data for the end user should be “reasonably low” even with slow internet connection (like from Chile) or from a mobile device.
-- The same displayed features as the actual working system are still available
+\begin{itemize}
+\item The time it takes to visualize data for the end user should be “reasonably low” even with slow internet connection (like from Chile) or from a mobile device
+\item The same displayed features as the actual working system are still available
+\end{itemize}
 If working on new use cases, the measurements should be:
-- The same displayed features as the actual working system are still available
-- New features, to cover more use-cases are added (mobile app, or new charts).
-In both cases, an open source based solution is better than a commercial one.
+\begin{itemize}
+\item The same displayed features as the actual working system are still available
+\item New features (such as mobile app and new charts) are added in order to cover more use-cases 
+\end{itemize}
+In both cases, an open source based solution is considered to be better than a commercial one.
+
 \section{General terms}
 The choice implementation language, platform and tools to use are up to us. The requirement is that the solution should run on a server.
 There are non-functional requirements, in terms of improving performance and storage consumption, that should be accomplished.
+
 \section{Planned workload}
-Group members will aim to work 24-25h on average per week. We have no fixed schedules; group members are free distribute the workload between days and weeks as they see fit.
+Group members will aim to work 24-25h on average per week, for a total amount of 12 weeks. Group members can distribute the workload among days according to their lecture timetibles, as long as deadlines (including sprints deadlines) are met.
+Our group consists of 7 people, so that the weekly average amount of workload is globally around 168-175h, for a total of 2016-2100 h.
+
 \section{Schedule of results}
-We are using the Scrum project management framework and it’s therefore natural to have deliverables at the end of each sprint. Each sprint will result in a working prototype. Requirements are prioritized with numbers 1-5. The final prototype shall meet all requirements of priority 4 or higher.
+We are using a Scrum-like project management framework, and working prototypes are expected to be produced at the end of each speint. Requirements have been prioritized by the customer with numbers from 1 to 100. The requirements for our project are inevitably overlapping, and almost all the requirements must be accomplished in order to produced a working solution, to satisfy the basic project goal requested by the customer.
+
 \section{Concrete project work plan}
-This section describes the specific layout of the project. This project follows the SCRUM methodology, as discussed in the next chapter. The first two weeks were spent planning, preliminary studies and writing the requirement specification. As a common practice, the project was divided into sprints, each lasting two weeks. The first sprint started after first customer meeting. At the end of the last sprint all the project goals should be accomplished.
-  \subsection{Phases}
-  Project Set-up
+This section describes the specific layout of the project. This project follows the Scrum methodology with some variants introduced, as discussed in the appendix. The first five weeks were spent planning, pre-studies (which included a preliminary implementation of the critical part of the system), and writing the requirement specification. As a common practice, the project was divided into sprints. We decided to make each sprint lasting one week. At the end of the last sprint all the requirements should be accomplished.
+\subsection{Phases}
+We decide to the Scrum methodology, so that Scrum sprints characterize the phases of the project.
+The following are the phases that can be distinguished in the project:
+\begin{itemize}
+\item Initiation phase (pre-planning)
+\item Project Planning
+\item Project Prestudy Sprint (Sprint 0)
 
-Project Planning
+\item Sprint 1
+\item Pre-delivery of report (17th October)
 
-Project Prestudy Sprint
+\item Sprint 2
+\item Sprint 3
+\item Sprint 4
 
-Sprint 1
-Sprint 2
-
-Pre-delivery of report (17th October)
-
-Sprint 3
-Sprint 4
-
-Demo Planning
-Project Demonstration
-Project Delivery
+\item Demo Planning
+\item Project Delivery and Demonstration
+\end{itemize}
 
 \subsection{Activities}
-Pre-planning: The pre-planning phase represents the team members getting to know each other and understanding the task. Also the first meeting with both advisor and costumer.
-      
-Planning: The planning phase is the stage where the actual work on the project begins. We determine which technologies will be used and how it all will be realized.
-          
-Documentation: The documentation phase represents time spent documenting the work effort, including implementation, research etc., and administrative tasks like meetings.
-          
-Implementation: The implementation phase represents time spent on the implementation the system. This includes the programming of the back-end and the scripting of the user interface.
-          
-Testing: The testing phase represents time spent testing the system. This includes integration testing, unit testing, functional testing etc.
-          
-Presentation: The presentation phase is the final presentation of the system and the delivery of the report.
+\begin{description}
+\item[Pre-planning] During the pre-planning activity, the group members know each other and understand the task. There are also the first meetings with the customer and with the avisor.
+\item[Pre-study and planning] The pre-study and planning activity is the stage where the actual work on the project begins. We explpore solutions and we determine which technologies will be used and how the product will be realized.
+\item[Documentation] The documentation activity represents time spent documenting the work effort, including implementation, research etc., and administrative tasks like status reports and documents for the meetings.
+\item[Coordination] The coordination activity is accomplished throughout the project, and consists of activities to coordinate the work, such as meetings, internal emails, calls and messages.
+\item[Implementation] The implementation activity consists of the implementation of the system. This includes the programming of both the back end and the front end part.
+\item[Testing] The testing activity represents time spent testing the system. This includes integration testing, unit testing, functional testing and scenario-driven testing.
+\item[Presentation] The presentation activity is the final presentation of the system and the delivery of the report.
+\end{description}
 
 \subsection{Milestones}
-The workload in this project is divided into multiple tasks with their own milestones. These milestones indicate when these task should be completed, in order to avoid delays which can affect the progress of the rest of the project.
+We defined some milestones in order not to create delays in the progress of the project.
+There are some milestones defined by the course structure, and we decided to add some more "internal" project milestones in order to avoid delays.
+The following are the defined milestones:
+\begin{description}
+\item[October 6th] Pre-study phase to be completed
+\item[October 17th] Pre-delivery of report (defined by the course coordinators)
+\item[November 17th] Project report to be completed
+\item[November 20th] Final presentation day (defined by the course coordinators)
+\end{description}
 
 \subsection{Person-hours per activity and phase + lectures + project management}
-TO BE ADDED
+In this projects there have been a number of guest lectures, and we have made sure that every lecture were attended by at least one member in the team.
 
 \section{Project Organization}
 \subsection{Organizational diagram of how the group is organized}
 
-\subsection{Roles}
-Scrum master: Ondrej Huinak
-Customer communication: Marco Radavelli
-QA and testing responsible: Emil 
-Documentation responsible: Hans Kristian
-Advisor communication: Hans 
-Front-end leader: Anders
-Back-end leader: Arve
-System architect: Ruben
+\begin{figure}[h]
+\begin{center}
+\includegraphics[height=260px,width=328px]{img/tdt4290_group_6_organizational_structure.png}
+\caption{Organizational diagram. The arrows indicate the bi-directional communication. The dotted arrows denotes the preferred way of communication between components. Note that the layout is not hierarchical and it is arranged this way only to better fit on the printed page.}
+\label{fig:organizational-structure}
+\end{center}
+\end{figure}
 
-\subsection{Responsibilities of the different roles}
-Scrum master: make sure that we meet our goals. Talk to the customer and with the advisor. Make sure that the groups meetings have a structure, that finish on time.
-Customer communication: send email, messages to customer
-QA and testing: 
+\subsection{Roles and corresponding responsibilities}
+We defined and diveded roles and responsibilities among group members. We agreed the distribution of the responsibilities by the voluntary choice of the role for each component of the group, and internal unanimous agreement.
+We conveyed the following roles:
+\begin{description}
+\item[Scrum master] His task is to make sure that we meet our goals, he is the first person who talks to the customer and to the advisor in the meetings, make sure that the groups meetings have a structure and that they finish on time. According to the scrum methodology, the scrum master also has to supervide the scrum pocess (control that is respected), remove eventual impediments to the team's work, protect team from distracting influences, and make sure that the team is on-task.
+\emph{Role assigned to: \textbf{Ondřej Hujňák}}
+\item[Customer contact] His task is to arrange customer meeting, forward customer emails to the group if needed, and ensure that all the needed communication with the customer is done.
+\emph{Role assigned to: \textbf{Marco Radavelli}}
+\item[QA and testing responsible] Ensure that the implementation fulfills the requirements, design test plan, define and ensure that the Quality Assurance standard is followed during the project.
+\emph{Role assigned to: \textbf{Emil Jakobus Schroeder}}
+\item[Documentation responsible] Supervise the structure and the content of all the documents (report, status reports, agenda and minutes of meetings, pre-study report). Main responsible to take notes during meetings. 
+\emph{Role assigned to: \textbf{Hans Kristian Henriksen}}
+\item[Advisor contact] Arrange advisor meetings, send documents (status report, agenda and minutes of last meeting) to the advisor before each meeting.
+\emph{Role assigned to: \textbf{Hans Kristian Henriksen}}
+\item[Front-end leader] Supervise the front-end architecture and implementation, and coordinate the front-end developer team
+\emph{Role assigned to: \textbf{Anders Smedegaard Pedersen}}
+\item[Back-end leader] Supervises the back-end architecture and implementation, and coordinate the back-end developer team
+\emph{Role assigned to: \textbf{Arve Nygård}}
+\item[System architect] Make sure that there is consistency between requirements, design and implementation, and that the design is feasible and reasonable.
+\emph{Role assigned to: \textbf{Ruben Håskjold Fagerli}}
+\end{description}
 
 \subsection{Weekly schedule}
-Mondays 2-3 pm - Advisor meeting
-Mondays 3-4pm - Team meeting
-Thursdays 12-2pm - Team meeting
-
+We decided to adopt a scrum-like model of software development, with internal group meetings twice a week, weekly meetings with the advisor and meeting with the customer when needed (typically every other week). The schedule is defined as follows:
+\begin{itemize}
+\item Mondays 2-3 pm - Advisor meeting
+\item Mondays 3-4pm - Team meeting
+\item Thursdays 12-2pm - Team meeting
+\end{itemize}
 For weeks 37 and 38 the advisor meeting will be Thursday 4pm.
+
+We decided to use the academic quarter for internal meetings, but to start the meeting at the time conveyed sharp for advisor meetings.
 
 \chapter{Tools and technology}
 \section{Documents}
@@ -264,6 +305,8 @@ In this chapter, we present the findings of the pre study. The pre study documen
 \chapter{Sprint 2}
 
 \chapter{Sprint 3}
+
+\chapter{Sprint 4}
 
 \chapter{Final solution}
 

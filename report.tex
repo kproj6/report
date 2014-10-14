@@ -6,7 +6,8 @@
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{subcaption}
-%\usepackage{natbib}
+\usepackage{apacite}
+\usepackage{natbib}
 
 \usepackage{color}
 \usepackage[unicode,pdftex]{hyperref}
@@ -105,7 +106,7 @@ Abstract
 \section{TDT 4290 - Customer driven project}
 The task is set forth in the subject TDT 4290 - Customer driven project at the Norwegian university of science and technology. The goal of the course is 
 \begin{quote}
-(...)to give the students a practical experience of carrying out all the phases of a typical customer guided IS/IT-project. \cite{TDT4290:Intro}
+(...)to give the students a practical experience of carrying out all the phases of a typical customer guided IS/IT-project. \citep{TDT4290:Intro}
 \end{quote}
 The subject divides the students into random groups, and assigns each group an assignment. The assignments are real problems that businesses needs solved. 
 
@@ -271,7 +272,7 @@ We decided to use the academic quarter for internal meetings, but to start the m
   \subsection{Trello}
 Trello is a web-based collaborative project management tool originally made by Fog Creek Software (New York, USA) \footnote{\url{http://www.fogcreek.com/}}. 
 It's based on the Kanban method which has first implemented by Toyotain 1953 to be used in car production. It has since been modified to be used in several different industries. 
-David J. Anderson formulated a model based on Kanban for knowlegde based work, specifically software development, where the team work incrementally pulling work from a queue \cite{da2004}. 
+David J. Anderson formulated a model based on Kanban for knowlegde based work, specifically software development, where the team work incrementally pulling work from a queue \citep{da2004}. 
 This work queue in represented by a card for each task wich is located in a "to-do" area on a board. Task may then be moved to a bin called for example "in progress" to indicate that the task is beeing work on. Finally, when the task is complete, the cars can be moved to a "done" bin. In Trello this is implemented by elements you can drag and drop between bins. As an administrator you have the possibility to define both bins and boards which makes Trello a very versatile tool.  
 Trello is a freemium webservice which means that it is free to use but additional support and features can be accessed if you pay a fee. As we only needed the standard functions and thus used the free version.
   \subsection{Slack}
@@ -279,7 +280,7 @@ Slack is a webbased team communication tool founded by Stewart Butterfield. It o
 
 \section{Version control}
   \subsection{Git}
-  Git is a distributed version control system developed in 2005 by Linus Torvalds and Linux development community \cite{ProGit}. Git was made to be small, fast and easy to use especially for code management as it's main purpose was versioning of Linux kernel source code. Nowdays is Git one of the most used versioning controls systems in software development thanks to it's open linence and powerfull features.
+  Git is a distributed version control system developed in 2005 by Linus Torvalds and Linux development community \citep{ProGit}. Git was made to be small, fast and easy to use especially for code management as it's main purpose was versioning of Linux kernel source code. Nowdays is Git one of the most used versioning controls systems in software development thanks to it's open linence and powerfull features.
 
   We have chosen Git because some members already know it and are able to work efficiently with it. Another advantage is easy branching and distributed architecture that allows you to work offline. 
   
@@ -287,9 +288,9 @@ Slack is a webbased team communication tool founded by Stewart Butterfield. It o
 
 \section{Programming languages}
   \subsection{Java}
-  Java is a popular programming language developed by a team led by James Gosling at Sun Microsystems in 1991. It's full-featured , general purpose language capable of developing robust mission-critical applications \cite{liang}. This and the fact that everybody in the group had at least basic knowlegde of Java led to the dessicion that we would use Java for our back-end application.  
+  Java is a popular programming language developed by a team led by James Gosling at Sun Microsystems in 1991. It's full-featured , general purpose language capable of developing robust mission-critical applications \citep{liang}. This and the fact that everybody in the group had at least basic knowlegde of Java led to the dessicion that we would use Java for our back-end application.  
   \subsection{JavaScript}
-  As stated by Davis Flanagan i JavaScript: the definitive guide "Javascript is part of the triad of technologies that all Web developers must learn". He continues to note that JavaScript specifies the behaviour of the web page \cite{fd11}. Along with specification of HTML5 and ECMAscript 6 (the standard name of JavaScript) the posibilities of what you can achieve with JavaScript has greatly improved. Since our assignment was to create a web based solution it seamed natural to use JavaScript as part of the solution. This was further supported by the excistence of open source libraries designed to make interactive maps which was relevant for our assginment.
+  As stated by Davis Flanagan i JavaScript: the definitive guide "Javascript is part of the triad of technologies that all Web developers must learn". He continues to note that JavaScript specifies the behaviour of the web page \citep{fd11}. Along with specification of HTML5 and ECMAscript 6 (the standard name of JavaScript) the posibilities of what you can achieve with JavaScript has greatly improved. Since our assignment was to create a web based solution it seamed natural to use JavaScript as part of the solution. This was further supported by the excistence of open source libraries designed to make interactive maps which was relevant for our assginment.
 
 \section{IDEs}
 
@@ -315,7 +316,8 @@ In this chapter, we present the findings of the pre study. The pre study documen
 
 % Sources cited in the document
 % uncomment when there are some citations, uncomment bibtex in Makefile
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
+\bibliographystyle{apacite}
 \chapter{Bibliography}
 \begin{flushleft}
 	\bibliography{report}

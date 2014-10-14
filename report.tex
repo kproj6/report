@@ -659,6 +659,50 @@ As SINTEF is given a choice for how to proceed, the group sees two paths forward
 
 
 \chapter{Requirements}
+This chapter presents the functional and non-functional requirements for the project, as well as system backlog priorities and estimates.
+
+\section{Use Cases}
+The desired behaviour of the system can be described through use case diagrams. Here we will display the users and how they want to interact with the system. Use cases model the system requirements and is a easy way to understand which features are needed and how these features should work. This section will just outline the general use cases. For more closely specifications we refer to the Functional Requirements section. %cite?
+
+  \subsection{Planning}
+  In our project, we have a relatively simple set of users and controll of parametres. The main focus of our task is to deliver a full system with working front-end and back-end modules. In this case the user should be able to use the front-end without further knowledge about the back-end. The user will interact with a GUI (Graphical User Interface) through key-input and mouse-input. Mainly this will be map-interaction like scrolling or dragging the map, but parametres will also be controlled through buttons and other input fields.
+
+  There is also a second type of users that is not as important in our scope, but will have to be considered. In this case the user is a 3rd-party site or company that wants to access the data directly from our back-end for use with their own front-end solution. These users will send requests over REST with commands from an API for allowed requests.
+
+  \subsection{Users}
+  Out product will have two types of users.
+  \\ \\
+  The end-user(other name???) is a user that uses our front-end solution, which again depends on our back-end solution. Among such users there currently not a goal to differentiate users, but at a later point registration and authentication might be required. These users need a easially usable GUI which feels responsive to the users.
+  \\ \\
+  The 3rd-party user (/site/software?) is a user that only uses the back-end solution of our project. These services will again be used by end-users. All these 3rd-party (sth?) might (/will?) have to be authenticated to use the back-end directly. This is for security-reasons meaning that no requests will be processed if it is not authenticated and within the API of allowed requests.
+  \\ \\
+  Together these to types of users requires us to have a clear and usable interface both from the back-end and the front-end. While the end-users are the main focus, adapting for the 3rd-party users should be easy as we will consider the usability of the interface between the front-end and back-end for our own communication between the two.
+
+  \subsection{Use Case Diagram}
+  Might add one? ish (bad acsii graphics)
+
+  End-user -(interactions)-> Front-end -(getIMG + getData)--> Back-end
+  3rd-party user --------------(getData (+getIMG) )------/
+
+\section{Requirements Specification (or Func Reqs..)}
+We have decided to have detailed documentation on our functional requirements, as we choose to base our product backlog from them.
+
+  \subsection{Prioritization}
+  All functional requirements have been prioritized on a scale of 1 to 100 in order of importance, where 1 is the lowest priority and 100 is the highest. These priorities where set by the customer based on our input and priorities in the categories High, Medium and Low.
+
+  \subsection{Functional Requirements (and Product Backlog?)}
+  The functionality of the system is described through its functional requirements. Based on the conversations with the customer, use cases and existing solutions for these use cases it is possible to formulate the functional requirements. Below is a table listing all the functional requirements devided by (logical/physical? depends on if we split up further) 
+  units. The requirements are listed with deeper explanation, priority, time estimate.
+
+  \begin{table}
+  sth sth
+  \end{table}
+
+  \subsection{Non-Functional Requirements}
+  Just add short about the NF-Reqs
+
+  \subsection{Test Plan}
+  ???? Needed now? Or for later?
 
 \chapter {Pre-sprint work}
 

@@ -1167,7 +1167,74 @@ We have decided to have detailed documentation on our functional requirements, a
 
   \end{longtable}
 
-\chapter {Pre-sprint work}
+
+\chapter{Pre-sprint work}
+This chapter will explain how the group worked and what we did in the weeks leading up to Sprint 1.
+
+\section{Understanding the customers problem and needs}
+
+\paragraph{Learning about their current solution}
+At our first two meetings with SINTEF we were introduced to how they currently presents data to its users and some of the problems with this solution. They also gave some examples of who their users were and why they might access the data. We were offered access to the front end of their current solution to explore on our own.
+
+\paragraph{Agreeing on the scope of our work}
+After some discussion in the group and clarifications from SINTEF, we wrote a suggestion for the scope of our task: 
+\begin{quote} Make a pre-study that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualisations on a web page. Follow the study with an implementation of a proof of concept system that is able to read a netCDF-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEFs systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
+\end{quote}
+Our contact at SINTEF accepted this with one change, that the system should be able to read from a collection of netCDF files. The group agreed to this change.
+
+\paragraph{Requirements / backlog}
+From our formalized scope and the choice the customer made based on our pre study, we created a list of requirements. The list of functional requirements also serves as our project backlog. In discussion with the group, the customer gave each requirement a priority to serve as a guideline when creating the sprint backlogs.
+
+\section{Group organization}
+\paragraph{Work-flow}
+After some discussion and investigation the group decided to use scrum for the main part of the project. Before starting the scrum sprints proper we assigned tasks less formally. At each meeting we decided on what tasks should be done by next meeting, and divided them among us.
+
+\paragraph{Roles and teams}
+Each group member was assigned one or more areas of responsibility. The group was split into two teams to research for the pre study, one for front end and one for back end. This split will remain as the customer wants us to create both a custom front and back end.
+
+\paragraph{Setting up tools}
+The group agreed on and set up several tools to facilitate communication and work:
+\begin{itemize}
+	\item Slack channels for instant messaging and file sharing
+	\item Google Groups for group-wide emails
+	\item Git for the reports and code
+	\item Google Drive for smaller documents and time tracking
+	\item Trello for issue tracking
+\end{itemize}
+
+\paragraph{Project plan}
+We created a project plan to outline the phases of the project. It also includes a schedule for the sprints and milestones.
+	
+\paragraph{QA rules}
+The group agreed with the customer on time limits for scheduling meetings and email responses.
+
+\paragraph{Risk assessment}
+In order to be better prepared, we listed and assessed possible problems. We also outlined ways of minimizing the chance of the risk occurring, as well as how they might be handled if they should occur.
+
+\section{Work on the pre study}
+The main goal of the first project period was to produce a preliminary study. This presented the customer with possibilities on how the work should proceed. Based on a recommendation by the group and after some discussion, the customer made a decision. The pre study took several weeks to produce, and work focused on these tasks:
+
+\paragraph{Documenting the current solution}
+To gain a better perspective on what the customer wanted, we documented what SINTEFs current system looked like, what data it presented and how. This project aims to solve some of the challenges and limitations of the current system.
+
+\paragraph{Researching production solutions}
+In order to better understand what a modern system similar to what SINTEF wants might look like we investigated online solutions in production around the world. This also gave some insight into what technologies are most commonly used. Prompting us to look into whether these technologies could be used in our project as well.
+
+\paragraph{Back end technologies}
+The back end part of the group looked into and tested several technologies that might be useful. One of the largest problems was finding some technology to handle the aggregation of the different gridsizes in SINTEFs datasets. Our investigations revealed that no existing technology would cover our needs, at least without extensive modification. Other problems included limited support for netCDF and difficulty configuring the programs. We created some prototypes to learn more about how difficult a custom solution from scratch might be, and its performance.
+
+\paragraph{Front end technologies}
+Several technologies were available for presenting map data to the user. We looked into rendering the data client-side. This proved inefficient, and together with observations of other production solutions using png-tiles we decided to look more into that instead. Some testing revealed OpenLayers to be the best candidate for handling the dynamic map presentation of data.
+
+\paragraph{Recommendation and decision}
+In internal discussions the group found it best to present SINTEF not with one recommendation, but a choice between two paths. For the front end, we concluded that a custom solution would be the best, because what little existed would need a lot of modification. The back-end would either be a THREDDS server configured by SINTEF or a custom solution. The path involving a custom back end came with the caveat that the final product might not be as feature complete, as the group would need to divide its attention.
+\par Our contacts at SINTEF were presented with the findings and our recommendation. After some discussions with the group they chose the custom back end path.
+
+\section{Other}
+
+\paragraph{Proof of concept back end}
+Early on we knew we there was a possibility of having to create or modify code accessing and serving the data from netCDF files. In order to learn about the performance and effort involved we created some prototypes in Java. We were quickly able to extract data from the netCDF files, serving them as JSON via REST or creating images.
+
 
 \chapter{Sprint 1}
 \section{Sprint planing}

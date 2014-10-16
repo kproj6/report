@@ -11,6 +11,7 @@
 \usepackage{color}
 \usepackage[unicode,pdftex]{hyperref}
 \usepackage{xcolor}
+\usepackage{longtable}
 
 \hypersetup{
   colorlinks,
@@ -683,12 +684,11 @@ As SINTEF is given a choice for how to proceed, the group sees two paths forward
 \item Custom back-end: Given that SINTEF chooses a custom back-end, the team will split into two groups, and attempt to make a prototype back-end, as well as a prototype front-end. In this scenario, both the front- and back-end will have limited capabilities, but will demonstrate what is possible with a fully custom solution.
 \end{enumerate}
 
-
 \chapter{Requirements}
 This chapter presents the functional and non-functional requirements for the project, as well as system backlog priorities and estimates.
 
 \section{Use Cases}
-The desired behaviour of the system can be described through use case diagrams. Here we will display the users and how they want to interact with the system. Use cases model the system requirements and is a easy way to understand which features are needed and how these features should work. This section will just outline the general use cases. For more closely specifications we refer to the Functional Requirements section. %cite?
+The desired behaviour of the system can be described through use case diagrams. Here we will display the users and how they want to interact with the system. Use cases model the system requirements and is a easy way to understand which features are needed and how these features should work. This section will just outline the general use cases. For more closely specifications we refer to the Requirements Specification section. %cite it?
 
   \subsection{Planning}
   In our project, we have a relatively simple set of users and controll of parametres. The main focus of our task is to deliver a full system with working front-end and back-end modules. In this case the user should be able to use the front-end without further knowledge about the back-end. The user will interact with a GUI (Graphical User Interface) through key-input and mouse-input. Mainly this will be map-interaction like scrolling or dragging the map, but parametres will also be controlled through buttons and other input fields.
@@ -698,9 +698,9 @@ The desired behaviour of the system can be described through use case diagrams. 
   \subsection{Users}
   Out product will have two types of users.
   \\ \\
-  The end-user(other name???) is a user that uses our front-end solution, which again depends on our back-end solution. Among such users there currently not a goal to differentiate users, but at a later point registration and authentication might be required. These users need a easially usable GUI which feels responsive to the users.
+  The end-user is a user that uses our front-end solution, which again depends on our back-end solution. Among such users there currently not a goal to differentiate users, but at a later point registration and authentication might be required. These users need a easially usable GUI which feels responsive to the users.
   \\ \\
-  The 3rd-party user (/site/software?) is a user that only uses the back-end solution of our project. These services will again be used by end-users. All these 3rd-party (sth?) might (/will?) have to be authenticated to use the back-end directly. This is for security-reasons meaning that no requests will be processed if it is not authenticated and within the API of allowed requests.
+  The 3rd-party user is a user that only uses the back-end solution of our project. These services will again be used by end-users. All these 3rd-party users might have to be authenticated to use the back-end directly. This is for security-reasons meaning that no requests will be processed if it is not authenticated and within the API of allowed requests.
   \\ \\
   Together these to types of users requires us to have a clear and usable interface both from the back-end and the front-end. While the end-users are the main focus, adapting for the 3rd-party users should be easy as we will consider the usability of the interface between the front-end and back-end for our own communication between the two.
 
@@ -710,25 +710,372 @@ The desired behaviour of the system can be described through use case diagrams. 
   End-user -(interactions)-> Front-end -(getIMG + getData)--> Back-end
   3rd-party user --------------(getData (+getIMG) )------/
 
-\section{Requirements Specification (or Func Reqs..)}
+\section{Requirements Specification}
 We have decided to have detailed documentation on our functional requirements, as we choose to base our product backlog from them.
 
   \subsection{Prioritization}
   All functional requirements have been prioritized on a scale of 1 to 100 in order of importance, where 1 is the lowest priority and 100 is the highest. These priorities where set by the customer based on our input and priorities in the categories High, Medium and Low.
 
-  \subsection{Functional Requirements (and Product Backlog?)}
-  The functionality of the system is described through its functional requirements. Based on the conversations with the customer, use cases and existing solutions for these use cases it is possible to formulate the functional requirements. Below is a table listing all the functional requirements devided by (logical/physical? depends on if we split up further) 
-  units. The requirements are listed with deeper explanation, priority, time estimate.
+  \subsection{Functional Requirements}
+  The functionality of the system is described through its functional requirements. Based on the conversations with the customer, use cases and existing solutions for these use cases it is possible to formulate the functional requirements. Below is a table listing all the functional requirements devided into tables for front-end and back-end. The requirements are listed with deeper explanation, priority, time estimate.
+  \\
+  \begin{longtable}{p{1.4cm} p{7.8cm} p{1cm} p{1cm} }
+  \caption[Functional Requirements Back-End]{Functional Requirements Back-End} \label{funcReqsBack} \\
+  \hline
+  \multicolumn{1}{p{1.4cm}}{ID} &
+  \multicolumn{1}{p{7.8cm}}{Requirement Description} &
+  \multicolumn{1}{p{1cm}}{Prio.} &
+  \multicolumn{1}{p{1cm}}{Est.}
+  \endhead
+  
+  \hline
+  \multicolumn{4}{r}{{Continued on next page}} \\
+  \endfoot
 
-  \begin{table}
-  sth sth
-  \end{table}
+  \hline \hline
+  \endlastfoot
+
+  \hline \multicolumn{4}{c}{\textbf{Back-End}} \\
+  \hline  
+  FR 1.1 & The back-end must be able to find the correct files for a given area
+  
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given one or more NetCDF files in the storage \\ 
+        When a request for an area arrives \\ 
+        Then the back-end will return the correct files}
+  \end{itemize}
+   & 99 & 10h \\ \hline
+  
+  FR 1.2 & The back-end must be able to find the correct files for a given time 
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given one or more NetCDF files in the storage \\ 
+        When a request for a time is given \\ 
+        Then the back-end will return the correct files}
+  \end{itemize}
+  & 98 & 6h \\ \hline
+
+  FR 1.3 & The back-end must be able to find the correct data from a given file 
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a NetCDF file \\ 
+        When a request of specific parameters arrives \\ 
+        Then the back-end will return the relevant dataset from the NetCDF file}
+  \end{itemize}
+  & 97 & 8h \\ \hline
+
+  FR 1.4 & The back-end must be able to downsample data to a given resolution 
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a dataset \\ 
+        When it is necessary \\ 
+        Then the back-end should downsample the data to a reasonable size}
+  \end{itemize}
+  & 50 & 15h \\ \hline
+
+  FR 1.5 & The back-end must be able to handle overlapping areas and give back correct data
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a set of NetCDF files in store \\
+        When a request for an area that is covered by multiple files arrives \\
+        Then the back-end should return a single data set with the correct data from all relevant files}
+  \end{itemize}
+  & 49 & 30h \\ \hline
+
+  FR 1.6 & The back-end must be able to find the most up to date data
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given multiple NetCDF files overlapping in time \\
+        When a time in this overlap is requested \\
+        Then the data from the most up to date NetCDF file should be used}
+  \end{itemize}
+  & 48 & 6h \\ \hline
+
+  FR 1.7 & The back-end must be consistent and return the same output for the same input as long as no relevant files have been changed
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a repeated request \\
+        When no new relevant files are added \\
+        Then the back-end must return the same dataset}
+  \item \parbox[t]{6.8cm}{
+        Given a repeated request \\
+        When new relevant files are added \\
+        Then the back-end must return the most up-to-date dataset}
+  \end{itemize}
+  & 47 & 10h \\ \hline
+
+  FR 1.8 & The back-end must return the most relevant data after new files are added to the system
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a back-end with cached results \\
+        When a more up to date NetCDF file is added to the system and request arrives \\
+        Then the back-end must calculate new results instead of using the now out of date cached results}
+  \end{itemize}
+  & 46 & 12h \\ \hline
+
+  FR 1.9 & The back-end should be able to handle new files on a daily basis
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a schedule of adding new files daily \\
+        When the new files are added to the system \\
+        Then the back-end should process these efficiently without major disturbance to the system}
+  \end{itemize}
+  & 45 & 8h \\ \hline
+
+  FR 1.10 & The back-end should be able to handle new files on a daily basis
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a system with an existing set of files \\
+        When an administrator wants to add new NetCDF files \\
+        Then the back-end should be able to add these to the set of existing files without recompiling}
+  \end{itemize}
+  & 44 & 6h \\ \hline
+
+  FR 1.11 & Files added to the system should be ready for use without any more manual actions
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a system with an existing set of files \\
+        When an administrator has added new NetCDF files \\
+        Then the back-end should be able to process these files and make them usable together with the existing set of files without further action from the administrator}
+  \end{itemize}
+  & 43 & 10h \\ \hline
+
+  FR 1.12 & The back-end should be able to provide correct projections of point data
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a system of NetCDF files \\
+        When a point is specified in world coordinates \\
+        Then the back-end should be able to correctly project this onto coordinates of the NetCDF files}
+  \end{itemize}
+  & 42 & 20h \\ \hline
+
+  FR 1.13 & The back-end should be able to provide the current direction data, given a area, time and depth
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a system of files containing current direction data \\
+        When a current direction request for a given area, time and depth arrives \\
+        Then the back-end should serve the current direction data for this area}
+  \end{itemize}
+  & 41 & 20h \\ \hline
+
+  FR 1.14 & The back-end should be able to provide the temperature data, given a area, time and depth
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a system of files containing temperature data \\
+        When a temperature request for a given area, time and depth arrives \\
+        Then the back-end should serve the temperature data for this area}
+  \end{itemize}
+  & 90 & 15h \\ \hline
+
+  FR 1.15 & The back-end should be able to provide the salinity data, given a area, time and depth
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a system of files containing temperature data \\
+        When a temperature request for a given area, time and depth arrives \\
+        Then the back-end should serve the temperature data for this area}
+  \end{itemize}
+  & 89 & 8h \\ \hline
+
+  FR 1.16 & The back-end should be able to provide the current data, given a area, time and depth
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a system of files containing current data \\
+        When a current request for a given area, time and depth arrives \\
+        Then the back-end should serve the current data for this area}
+  \end{itemize}
+  & 50 & 8h \\ \hline
+
+  FR 1.17 & The back-end should be able to provide a PNG image for the given temperature data
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a temperature dataset \\
+        When requested to return the dataset in PNG image format \\
+        Then the back-end should make a PNG image to represent the dataset with value-color mapping relevant to temperature}
+  \end{itemize}
+  & 90 & 30h \\ \hline
+
+  FR 1.18 & The back-end should be able to provide a PNG image for the given salinity data
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a salinity dataset \\
+        When requested to return the dataset in PNG image format \\
+        Then the back-end should make a PNG image to represent the dataset with value-color mapping relevant to salinity}
+  \end{itemize}
+  & 89 & 10h given FR 1.17 \\ \hline
+
+  FR 1.19 & The back-end should be able to provide a PNG image for the given current data
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a current dataset \\
+        When requested to return the dataset in PNG image format \\
+        Then the back-end should make a PNG image to represent the dataset with value-color mapping relevant to current}
+  \end{itemize}
+  & 50 & 10h given FR 1.17  \\ \hline
+
+  FR 1.20 & The back-end should be able to provide current direction data in an easily usable format
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a current direction dataset \\
+        When it is not specifically requested to return unprocessed data \\
+        Then the back-end should convert the current direction data into an easily usable format like GeoJSON}
+  \end{itemize}
+  & 50 & 20h \\ \hline
+
+  FR 1.21 & The back-end should provide the raw data in JSON format
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given some data \\
+        When requested to return the raw data \\
+        Then the back-end should return it in JSON format}
+  \end{itemize}
+  & - & 8h \\ \hline
+
+  FR 1.22 & The back-end should implement the WMTS-protocol & 95 & 30h \\ \hline
+
+  FR 1.23 & The back-end should implement a relevant subset of REST & - & 12h \\ \hline
+  \end{longtable}
+  
+  \vspace{2cm}
+
+  \begin{longtable}{p{1.4cm} p{7.8cm} p{1cm} p{1cm} }
+  \caption[Functional Requirements Front-End]{Functional Requirements Front-End} \label{funcReqsFront} \\
+  \hline \hline
+  \multicolumn{1}{p{1.4cm}}{ID} &
+  \multicolumn{1}{p{7.8cm}}{Requirement Description} &
+  \multicolumn{1}{p{1cm}}{Prio.} &
+  \multicolumn{1}{p{1cm}}{Est.}
+  \endhead
+
+  \hline
+  \multicolumn{4}{r}{{Continued on next page}} \\
+  \endfoot
+
+  \hline \hline
+  \endlastfoot
+  
+  \hline \multicolumn{4}{c}{\textbf{Front-End}} \\
+  \hline
+  FR 2.1 & The front-end must be able to provide a map with overlaying image
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a front-end GUI \\
+        When a user loads the page \\
+        Then the front-end should provide a map and display an overlaying image on top of it}
+  \end{itemize}
+  & 100 & 20h \\ \hline
+
+  FR 2.2 & ???????????? Some kind of mix between the old 2.1 and 2.2 or two separate points?
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given }
+  \end{itemize}
+  & 90 & 24h \\ \hline
+
+  FR 2.3 & The user must be able to display data from a chosen depth
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a front-end GUI \\
+        When the user wants to specify a depth \\
+        Then he should be able to intuitively specify the depth in the GUI}
+  \item \parbox[t]{6.8cm}{
+        Given a front-end GUI \\
+        When user specifies a depth \\
+        Then the GUI should display the data for the given depth}
+  \end{itemize}
+  & 80 & 15h \\ \hline
+
+  FR 2.4 & The user must be able to choose data type to be displayed (temperature, salinity or current)
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a front-end GUI \\
+        When the user wants to select data type \\
+        Then he should be able to intuitively choose the data type in the GUI}
+  \item \parbox[t]{6.8cm}{
+        Given a front-end GUI \\
+        When the user selects a data type \\
+        Then the GUI should display the data for this selected type of data in the map}
+  \item \parbox[t]{6.8cm}{
+        Given a front-end GUI \\
+        When the user requests data on temperature, salinity or current \\
+        Then it is received and displayed in PNG image format}
+  \end{itemize}
+  & 70 & 10h \\ \hline
+
+  FR 2.5 & The user must be able to zoom and pan in the displayed map
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a map in the front-end GUI
+        When the user wants to zoom or pan
+        THen he should be able to do so with intuitive mouse or button actions}
+  \end{itemize}
+  & 30 & 5h \\ \hline
+
+  FR 2.6 & The existing data must move and scale when zooming and panning
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a map in the front-end GUI with existing data loaded
+        When the user performs a zoom or pan action
+        Then the existing data should scale and move correctly}
+  \end{itemize}
+  & 20 & 5h \\ \hline
+
+  FR 2.7 & New data must dynamically load when view-area is changed sufficiently
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a map in the front-end GUI \\
+        When the user zoom closer in the map to where a more detailed dataset would be needed \\
+        Then the front-end should dynamically load a more detailed dataset}
+  \item \parbox[t]{6.8cm}{
+        Given a map in the front-end GUI \\
+        When the user zoom further away in the map to where not all of the view is covered by the previous dataset \\
+        Then the front-end should dynamically load new datasets on the same level of detail, or if a certain threshold is passed it should load datasets on a less detailed level}
+  \item \parbox[t]{6.8cm}{
+        Given a map in the front-end GUI \\
+        When the user pan the map so that we do not have all of the view covered by the previous dataset \\
+        Then the front-end should dynamically load the datasets to cover the new view}
+  \end{itemize}
+  & 10 & 30h \\ \hline
+
+  FR 2.8 & The front-end should be able to display current directions
+  \begin{itemize}
+  \item \parbox[t]{6.8cm}{
+        Given a front-end GUI \\
+        When the user requests a dataset and the option for current direction is marked \\
+        Then the front-end should request the current direction dataset and display it as an overlay over the map and/or other datasets}
+  \end{itemize}
+  & 40 & 30h \\ \hline
+
+  \end{longtable}
 
   \subsection{Non-Functional Requirements}
-  Just add short about the NF-Reqs
+  Just add short about the NF-Reqs TODO
 
-  \subsection{Test Plan}
-  ???? Needed now? Or for later?
+  \begin{longtable}{p{1.4cm} p{9.8cm} }
+  \caption[Non-Functional Requirements]{Non-Functional Requirements} \label{nonFuncReqs} \\
+  \hline
+  \multicolumn{1}{p{1.4cm}}{\textbf{ID}} &
+  \multicolumn{1}{p{9.8cm}}{\textbf{Requirement Description}}
+  \endhead
+
+  \multicolumn{2}{r}{{Continued on next page}} \\
+  \endfoot
+
+  \hline \hline
+  \endlastfoot
+
+  \hline
+  QA 1.1 & The system should be easily modifiable to add new functionality\\ \hline
+
+  QA 1.2 & The requests must be fast enough to feel responsive for the user \\ \hline
+
+  QA 1.3 & The modules should be well documented and easily understandable for those who will work on it later \\ \hline
+
+  QA 1.4 & The API between front-end and back-end should be well documented to be usable together with other front-end or back-end solutions \\ \hline
+
+  QA 1.5 & The front-end and back-end parts of the system should be segregated for ease of use separately \\ \hline
+
+  \end{longtable}
 
 \chapter {Pre-sprint work}
 

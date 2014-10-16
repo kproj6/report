@@ -340,19 +340,6 @@ planned solutions (...).
 \cite{TDT4290:Intro}
 \end{quote}
 
-\section{Use cases}
-SINTEF has put forth a series of situations were their system is used by the fishery industry. 
-\begin{itemize}
-\item \textbf{Planning of new fish farm sites} \\
-When choosing a new site for a fish farm, it is important to be aware of historical information on currents, temperature and salinity. Placing a new site in an area that has high currents might make construction and other operations difficult.
-\item \textbf{Planning the removal of lice in a fish farm} \\
-In the event that lice has to be removed from the fish in the farm, there are two procedures that are used. In the first scenario, a tanker vessel will pump the fish from the farm into a holding room. Here, the fish is treated with chemicals before being pumped back to the farm. The second method brings in crane boats, that hoist the farm, thus shrinking the volume the fish has available. A canvas is then used to surround the fish, and the chemicals are added directly. 
-
-Both these operations require calm currents, as to ensure that any support vessels are able to stay in position during the operation. Having access to the latest current predictions is vital in the planning of this type of operation.
-\item \textbf{Planning feeding of fish in fish farms} \\
-The fish in a farm is kept in close confinement. When the fish is fed, their activity rises significantly, consuming larger amounts of oxygen than usual. Given the right combination of temperature and currents, this could lead to oxygen levels dropping to dangerously low levels. Being able to plan feeding in accordance with forecasts for temperature and currents minimizes the risk of harm to the fish.
-\end{itemize}
-
 \section{Current situation at SINTEF}
 In this chapter we will explore the solution SINTEF is currently using, and the challenges and limitations it poses. After looking into this, we will describe the evaluation criteria that will be used to assess the alternative solutions the group has found. 
 \subsection{Current system}
@@ -684,6 +671,7 @@ As SINTEF is given a choice for how to proceed, the group sees two paths forward
 \item Custom back-end: Given that SINTEF chooses a custom back-end, the team will split into two groups, and attempt to make a prototype back-end, as well as a prototype front-end. In this scenario, both the front- and back-end will have limited capabilities, but will demonstrate what is possible with a fully custom solution.
 \end{enumerate}
 
+
 \chapter{Requirements}
 This chapter presents the functional and non-functional requirements for the project, as well as system backlog priorities and estimates.
 
@@ -704,11 +692,42 @@ The desired behaviour of the system can be described through use case diagrams. 
   \\ \\
   Together these to types of users requires us to have a clear and usable interface both from the back-end and the front-end. While the end-users are the main focus, adapting for the 3rd-party users should be easy as we will consider the usability of the interface between the front-end and back-end for our own communication between the two.
 
-  \subsection{Use Case Diagram}
-  Might add one? ish (bad acsii graphics)
+  \subsection{Use Case Diagrams}
+  Our two users have a limited set of operations that they can perform, but with a wide range of parameters that can be adjusted. For the end-user these are shown in Figure[link??] and for the 3rd-party services these are shown in Figure[link??]
+  \begin{figure}[h]
+	\begin{center}
+	\includegraphics[height=125px,width=186px]{img/useCase_EndUser.png}
+	\caption{End-user Use Case Diagram}
+	\label{fig:endUserUseDiagram}
+	%\medskip
+	\small
+	\end{center}
+  \end{figure}
 
-  End-user -(interactions)-> Front-end -(getIMG + getData)--> Back-end
-  3rd-party user --------------(getData (+getIMG) )------/
+  \begin{figure}[h]
+	\begin{center}
+	\includegraphics[height=125px,width=186px]{img/useCase_3rdParty.png}
+	\caption{3rd-party Use Case Diagram}
+	\label{fig:3rdPartyUseDiagram}
+	%\medskip
+	\small
+	\end{center}
+  \end{figure}
+
+    The end-user is doing actions on the front-end part of the system, while the 3rd-party service performs its actions on the back-end part of the system. The end-user would then again use the 3rd-party service. In the future more operations might be allowed as the system expands from its core functionality, but these have been left outside of our scope for this project.
+
+  \subsection{Use cases}
+	For our prestudy SINTEF put forth a series of situations were their system is used by the fishery industry. 
+	\begin{itemize}
+		\item \textbf{Planning of new fish farm sites} \\
+		When choosing a new site for a fish farm, it is important to be aware of historical information on currents, temperature and salinity. Placing a new site in an area that has high currents might make construction and other operations difficult.
+		\item \textbf{Planning the removal of lice in a fish farm} \\
+		In the event that lice has to be removed from the fish in the farm, there are two procedures that are used. In the first scenario, a tanker vessel will pump the fish from the farm into a holding room. Here, the fish is treated with chemicals before being pumped back to the farm. The second method brings in crane boats, that hoist the farm, thus shrinking the volume the fish has available. A canvas is then used to surround the fish, and the chemicals are added directly. 
+
+		Both these operations require calm currents, as to ensure that any support vessels are able to stay in position during the operation. Having access to the latest current predictions is vital in the planning of this type of operation.
+		\item \textbf{Planning feeding of fish in fish farms} \\
+		The fish in a farm is kept in close confinement. When the fish is fed, their activity rises significantly, consuming larger amounts of oxygen than usual. Given the right combination of temperature and currents, this could lead to oxygen levels dropping to dangerously low levels. Being able to plan feeding in accordance with forecasts for temperature and currents minimizes the risk of harm to the fish.
+	\end{itemize}
 
 \section{Requirements Specification}
 We have decided to have detailed documentation on our functional requirements, as we choose to base our product backlog from them.
@@ -721,12 +740,20 @@ We have decided to have detailed documentation on our functional requirements, a
   \\
   \begin{longtable}{p{1.4cm} p{7.8cm} p{1cm} p{1cm} }
   \caption[Functional Requirements Back-End]{Functional Requirements Back-End} \label{funcReqsBack} \\
-  \hline
+  %\hline
   \multicolumn{1}{p{1.4cm}}{ID} &
   \multicolumn{1}{p{7.8cm}}{Requirement Description} &
   \multicolumn{1}{p{1cm}}{Prio.} &
   \multicolumn{1}{p{1cm}}{Est.}
   \endhead
+
+  \hline \multicolumn{4}{c}{\textbf{Back-End}} \\
+  \hline
+  \multicolumn{1}{p{1.4cm}}{ID} &
+  \multicolumn{1}{p{7.8cm}}{Requirement Description} &
+  \multicolumn{1}{p{1cm}}{Prio.} &
+  \multicolumn{1}{p{1cm}}{Est.}
+  \endfirsthead
   
   \hline
   \multicolumn{4}{r}{{Continued on next page}} \\
@@ -735,7 +762,7 @@ We have decided to have detailed documentation on our functional requirements, a
   \hline \hline
   \endlastfoot
 
-  \hline \multicolumn{4}{c}{\textbf{Back-End}} \\
+  %\hline \multicolumn{4}{c}{\textbf{Back-End}} \\
   \hline  
   FR 1.1 & The back-end must be able to find the correct files for a given area
   
@@ -947,6 +974,14 @@ We have decided to have detailed documentation on our functional requirements, a
   \multicolumn{1}{p{1cm}}{Est.}
   \endhead
 
+  \hline \multicolumn{4}{c}{\textbf{Back-End}} \\
+  %\hline
+  \multicolumn{1}{p{1.4cm}}{ID} &
+  \multicolumn{1}{p{7.8cm}}{Requirement Description} &
+  \multicolumn{1}{p{1cm}}{Prio.} &
+  \multicolumn{1}{p{1cm}}{Est.}
+  \endfirsthead
+
   \hline
   \multicolumn{4}{r}{{Continued on next page}} \\
   \endfoot
@@ -954,7 +989,7 @@ We have decided to have detailed documentation on our functional requirements, a
   \hline \hline
   \endlastfoot
   
-  \hline \multicolumn{4}{c}{\textbf{Front-End}} \\
+  %\hline \multicolumn{4}{c}{\textbf{Front-End}} \\
   \hline
   FR 2.1 & The front-end must be able to provide a map with overlaying image
   \begin{itemize}
@@ -1049,7 +1084,7 @@ We have decided to have detailed documentation on our functional requirements, a
   \end{longtable}
 
   \subsection{Non-Functional Requirements}
-  Just add short about the NF-Reqs TODO
+  We have also made a list of essential non-functional requirements. All of them are essential and will have a high priority in our project.
 
   \begin{longtable}{p{1.4cm} p{9.8cm} }
   \caption[Non-Functional Requirements]{Non-Functional Requirements} \label{nonFuncReqs} \\
@@ -1073,7 +1108,7 @@ We have decided to have detailed documentation on our functional requirements, a
 
   QA 1.4 & The API between front-end and back-end should be well documented to be usable together with other front-end or back-end solutions \\ \hline
 
-  QA 1.5 & The front-end and back-end parts of the system should be segregated for ease of use separately \\ \hline
+  QA 1.5 & The front-end and back-end parts of the system should be segregated for security and ease of use separately \\ \hline
 
   \end{longtable}
 

@@ -721,7 +721,7 @@ As SINTEF is given a choice for how to proceed, the group sees two paths forward
 This chapter presents the functional and non-functional requirements for the project, as well as system backlog priorities and estimates.
 
 \section{Use Cases}
-The desired behaviour of the system can be described through use case diagrams. Here we will display the users and how they want to interact with the system. Use cases model the system requirements and is a easy way to understand which features are needed and how these features should work. This section will just outline the general use cases. For more closely specifications we refer to the Requirements Specification section. %cite it?
+The desired behaviour of the system can be described through use case diagrams. Here we will display the users and how they want to interact with the system. Use cases model the system requirements and is a easy way to understand which features are needed and how these features should work. This section will just outline the general use cases. For more closely specifications we refer to the Requirements Specification section. %refer to it?
 
   \subsection{Planning}
   In our project, we have a relatively simple set of users and controll of parametres. The main focus of our task is to deliver a full system with working front-end and back-end modules. In this case the user should be able to use the front-end without further knowledge about the back-end. The user will interact with a GUI (Graphical User Interface) through key-input and mouse-input. Mainly this will be map-interaction like scrolling or dragging the map, but parametres will also be controlled through buttons and other input fields.
@@ -785,7 +785,6 @@ We have decided to have detailed documentation on our functional requirements, a
   \\
   \begin{longtable}{p{1.4cm} p{7.8cm} p{1cm} p{1cm} }
   \caption[]{Functional Requirements Back-End}\\
-  %\hline
   \multicolumn{1}{p{1.4cm}}{ID} &
   \multicolumn{1}{p{7.8cm}}{Requirement Description} &
   \multicolumn{1}{p{1cm}}{Prio.} &
@@ -808,7 +807,6 @@ We have decided to have detailed documentation on our functional requirements, a
   \hline \hline
   \endlastfoot
 
-  %\hline \multicolumn{4}{c}{\textbf{Back-End}} \\
   \hline  
   FR 1.1 & The back-end must be able to find the correct files for a given area
   
@@ -827,7 +825,7 @@ We have decided to have detailed documentation on our functional requirements, a
         When a request for a time is given \\ 
         Then the back-end will return the correct files}
   \end{itemize}
-  & 98 & 6h \\ \hline
+  & 98 & 6h \\ \hline %estimage given FR 1.1?
 
   FR 1.3 & The back-end must be able to find the correct data from a given file 
   \begin{itemize}
@@ -896,7 +894,7 @@ We have decided to have detailed documentation on our functional requirements, a
   \end{itemize}
   & 45 & 8h \\ \hline
 
-  FR 1.10 & The back-end should be able to handle new files on a daily basis
+  FR 1.10 & Administrators must be able to add files to the system
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a system with an existing set of files \\
@@ -948,7 +946,7 @@ We have decided to have detailed documentation on our functional requirements, a
         When a temperature request for a given area, time and depth arrives \\
         Then the back-end should serve the temperature data for this area}
   \end{itemize}
-  & 89 & 8h \\ \hline
+  & 89 & 8h given FR 1.14 \\ \hline
 
   FR 1.16 & The back-end should be able to provide the current data, given a area, time and depth
   \begin{itemize}
@@ -957,7 +955,7 @@ We have decided to have detailed documentation on our functional requirements, a
         When a current request for a given area, time and depth arrives \\
         Then the back-end should serve the current data for this area}
   \end{itemize}
-  & 50 & 8h \\ \hline
+  & 50 & 8h given FR 1.14 \\ \hline
 
   FR 1.17 & The back-end should be able to provide a PNG image for the given temperature data
   \begin{itemize}
@@ -1002,11 +1000,11 @@ We have decided to have detailed documentation on our functional requirements, a
         When requested to return the raw data \\
         Then the back-end should return it in JSON format}
   \end{itemize}
-  & - & 8h \\ \hline
+  & 10 & 8h \\ \hline
 
   FR 1.22 & The back-end should implement the WMTS-protocol & 95 & 30h \\ \hline
 
-  FR 1.23 & The back-end should implement a relevant subset of REST & - & 12h \\ \hline
+  FR 1.23 & The back-end should implement a relevant subset of REST & 10 & 12h \\ \hline
   \end{longtable}
   
   \vspace{2cm}
@@ -1022,7 +1020,6 @@ We have decided to have detailed documentation on our functional requirements, a
 
   \caption[Functional Requirements Front-End]{} \label{funcReqsFront} \\
   \hline \multicolumn{4}{c}{\textbf{Back-End}} \\
-  %\hline
   \multicolumn{1}{p{1.4cm}}{ID} &
   \multicolumn{1}{p{7.8cm}}{Requirement Description} &
   \multicolumn{1}{p{1cm}}{Prio.} &
@@ -1036,7 +1033,6 @@ We have decided to have detailed documentation on our functional requirements, a
   \hline \hline
   \endlastfoot
   
-  %\hline \multicolumn{4}{c}{\textbf{Front-End}} \\
   \hline
   FR 2.1 & The front-end must be able to provide a map with overlaying image
   \begin{itemize}
@@ -1047,10 +1043,16 @@ We have decided to have detailed documentation on our functional requirements, a
   \end{itemize}
   & 100 & 20h \\ \hline
 
-  FR 2.2 & ???????????? Some kind of mix between the old 2.1 and 2.2 or two separate points?
+  FR 2.2 & The user must be able to specify area and time for the map to display
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given }
+        Given a front-end GUI \\
+        When the user want to specify area and time
+        Then the user should be able to intuitively do so in the GUI}
+  \item \parbox[t]{6.8cm}{
+        Given a front-end GUI \\
+        When the user has specified area and time
+        Then the front-end should provide the data for the given area and time}
   \end{itemize}
   & 90 & 24h \\ \hline
 

@@ -11,13 +11,6 @@
 \usepackage{xcolor}
 \usepackage{longtable}
 
-\hypersetup{
-  colorlinks,
-  linkcolor={red!50!black},
-  citecolor={blue!50!black},
-  urlcolor={blue!80!black}
-}
-
 \begin{document}
 
 % Title page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -358,9 +351,10 @@ We decided to use the academic quarter for internal meetings, but to start the m
 \section{Project management}
   \subsection{Trello}
 Trello is a web-based collaborative project management tool originally made by Fog Creek Software (New York, USA) \footnote{\url{http://www.fogcreek.com/}}. 
-It's based on the Kanban method which has first implemented by Toyotain 1953 to be used in car production. It has since been modified to be used in several different industries. 
+It's based on the Kanban method which has first implemented by Toyota in 1953 to be used in car production. It has since been modified to be used in several different industries. 
 David J. Anderson formulated a model based on Kanban for knowlegde based work, specifically software development, where the team work incrementally pulling work from a queue \cite{da2004}. 
-This work queue in represented by a card for each task wich is located in a "to-do" area on a board. Task may then be moved to a bin called for example "in progress" to indicate that the task is beeing work on. Finally, when the task is complete, the cars can be moved to a "done" bin. In Trello this is implemented by elements you can drag and drop between bins. As an administrator you have the possibility to define both bins and boards which makes Trello a very versatile tool.  
+We use Trello for organizing our tasks into four states: "To do", "Doing", "blocked" and "Done". The default state is "to do" and by changing the state of a task everybody in the group knows what needs to be done, what is being worked on, what tasks are dependent on other tasks or factors and what tasks are done.
+This is a simple yet effecient way of manageing tasks. We chose Trello for the ease of use and the fact that it takes very little time to learn to use. In comparison a system like Jira \footnote{\url{http://https://www.atlassian.com/software/jira}} has more features that might have been useful but it takes more time and effort to learn, thus we opted for Trello.
 Trello is a freemium webservice which means that it is free to use but additional support and features can be accessed if you pay a fee. As we only needed the standard functions and thus used the free version.
   \subsection{Slack}
 Slack is a webbased team communication tool founded by Stewart Butterfield. It offers text chat in different channels and integration with a number of different popular services used by development teams \footnote{\url{https://slack.com/integrations}}. This was useful to us since we needed to share information that might be more relevant to specific team members and also to have a single means of communication. Using Slack's integration with Trello and Github we would get notified when there where changes on these platforms aswell. Slack's posibillity to share files, or link to files on Google Documents also came in handy.
@@ -378,8 +372,6 @@ Slack is a webbased team communication tool founded by Stewart Butterfield. It o
   Java is a popular programming language developed by a team led by James Gosling at Sun Microsystems in 1991. It's full-featured , general purpose language capable of developing robust mission-critical applications \cite{liang}. This and the fact that everybody in the group had at least basic knowlegde of Java led to the dessicion that we would use Java for our back-end application.  
   \subsection{JavaScript}
   As stated by Davis Flanagan i JavaScript: the definitive guide "Javascript is part of the triad of technologies that all Web developers must learn". He continues to note that JavaScript specifies the behaviour of the web page \cite{fd11}. Along with specification of HTML5 and ECMAscript 6 (the standard name of JavaScript) the posibilities of what you can achieve with JavaScript has greatly improved. Since our assignment was to create a web based solution it seamed natural to use JavaScript as part of the solution. This was further supported by the excistence of open source libraries designed to make interactive maps which was relevant for our assginment.
-
-\section{IDEs}
 
 \chapter{Pre study}
 In this chapter, we present the findings of the pre study. The pre study document was made as a separate document that was meant to be delivered to the customer independently of this report. Therefore, there are overlapping sections with the full report. These sections will not be given in this chapter, but are instead presented in their respective chapters of the full report. 

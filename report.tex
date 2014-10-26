@@ -10,6 +10,7 @@
 \usepackage[unicode,pdftex]{hyperref}
 \usepackage{xcolor}
 \usepackage{longtable}
+\usepackage{amsmath}
 
 \begin{document}
 
@@ -122,7 +123,7 @@ Although the assignment is to follow the entire process of an IT-project, the fo
 
 \section{Customer}
 The customer is SINTEF Fisheries and Aquaculture (SINTEF Fiskeri og havbruk AS). 
-SINTEF was founded in 1950 and it is nowadays organized into 8 divisions. The division of Fisheries and Aquaculture was founded in 1999 and represents technological expertise and industry knowledge in the utilization of renewable marine resources. Under the vision \"Technology for a better society\" it works for a knowledge-based bio marine industry. Its goal is to meet market demands for technological research and development on renewable marine resources.
+SINTEF was founded in 1950 and it is nowadays organized into 8 divisions. The division of Fisheries and Aquaculture was founded in 1999 and represents technological expertise and industry knowledge in the utilization of renewable marine resources. Under the vision "Technology for a better society" it works for a knowledge-based bio marine industry. Its goal is to meet market demands for technological research and development on renewable marine resources.
 
 \section{Ocean currents}
 The study of ocean currents allows for predicting what conditions can be expected in an area, both in short and long term. Historical data can be used to asses how an area will be exposed to temperature and salinity changes. Up to date projections are crucial for day to day operations like feeding and lice removal. It can also be used to predict the spreading of lice from one farm to another.
@@ -139,55 +140,61 @@ Make a pre-study that examines what technology can be used to replace the curren
 \end{quote}
 
 \section{Group resources}
-The group consists of seven people with diverse skills. In the starting phase of the project, the group the different skills, and used this to distribute tasks, and areas of responsibilities. 
+The group consists of seven people with diverse skills. In the starting phase of the project, the group assessed the different skills, and used this to distribute tasks, and areas of responsibilities. 
 
 The project is set to run from August 28th until November 20th, for a total of 85 days, or 12 weeks and 1 day. As with all subjects given at NTNU, a student is expected to work 12 hours for every 7,5 study points. For this course, this amounts to 24 hours of work every week. Due to the fact that the presentation is given the week before the end of the semester, the course compendium sets the required work load to 25 hours a week. 
 
-For our group, this amounts to about 2100 work hours in total. Every week, the group has 6 hours of meeting time, and is required to hand in documents for the advisor meeting. An estimate of 4 hours is given for the production of these documents. Given this, approximately 1260 hours can be dedicated to solving the customers problem.
+For our group, this amounts to about 2100 work hours in total. Every week, the group has 6 hours of meeting time, and is required to hand in documents for the advisor meeting. An estimate of 4 hours is given for the production of these documents. Given this, approximately 1550 hours can be dedicated to solving the customers problem.
 
 \begin{equation}
-Total\:work\:hours = 25\:\frac{hours}{week} * 12\:weeks * 7\:people \nonumber
+Total\:work\:hours = 25\:\frac{hours}{week} * 12\:weeks * 7\:people = \underline{\underline{2100\:hours}} \nonumber
 \end{equation}
 
-\chapter{Planning}
-This section will give an overview of our plans for the project. It will include time estimation, group organization, risk management and quality assurance.
+\begin{equation}
+\begin{split}
+Meetings\:and\:documents = (6\:hours\:of\:meetings * 12\:weeks * 7\:people) + \\ 
+(4\:hours\:for\:documents * 12\:weeks) = \underline{\underline{552\:hours}} \nonumber
+\end{split}
+\end{equation}
 
-The name of the project and the scope of the assignment has already been introduced in the previous section.
+\begin{equation}
+Time\:for\:product = 2100\:hours - 552\:hours = \underline{\underline{1548\:hours}} \nonumber
+\end{equation}
+
+Group members are free to distribute the workload as they see fit, and according to their lecture schedule. The only requirement is that deadlines are met, and that the group members participate in all meetings. 
+
+\chapter{Planning}
+Before starting a project of this scale, a lot of planning has to be done. How will development be done, who will be responsible for what, which risks should be planed for, and so on. This chapter will give an overview of the planning done before the project was started. 
+
 \section{Project stakeholders}
 The stakeholders of this project are the following:
 \begin{description}
-\item[Project owner (customer)] SINTEF Fisheries and Aquaculture
-\item[Supervisor (from NTNU)] Gleb Sizov
-\item[Examiner] External examiner, nominated by the direction of the course TDT4290 - Customer Driven Project
-\item[Team members (students)] 
+\item[Project owner] SINTEF Fisheries and Aquaculture
+\item[Supervisor] Gleb Sizov
+\item[Examiner] 
+\item[Team members] 
 \end{description}
 
 \section{Background for the project: software system development}
-The customer owns a working solution, running on its own servers, for the delivery and analysis of marine tracked and predicted data, in form of maps with overlays and charts.
-The background for this project is to optimize the actual, slow and memory-consuming solution, with a new one, and/or creating new front-end application using those data, to cover more use-cases.
+The customer owns a working solution, running on its own servers, for the delivery and analysis of  tracked and predicted marine data. The data is stored in a special format, NetCDF, designed to be self-describing, scalable and appendable \cite{netCDF:factsheet}.
+The background for this project is to optimize the current, slow and memory-consuming solution. In the project description, the customer asks the group to either develop a new back end system, or produce a new front end for the current system. 
 
 \section{Measurement of project effects}
-Some predefined criterias must be met in order to consider out project a successful one. Our product must be working according to the requirements and pass all tests in order to be a success. All requirements prioritized high and medium must be fulfilled. Requirements that have low priority are optional, but should be implemented if there is sufficient time.
-In our case, quite open goals were requested by the customer, and no precisely quantifiable measurements were defined.
+Some predefined criteria must be met in order to consider the project to have been successful. The product must be working according to the requirements, and pass all tests. All requirements prioritized high and medium must be fulfilled. Requirements that have low priority are viewed as nice to have, but should be implemented if there is sufficient time.
+In this project, quite open goals were set by the customer, and no precisely quantifiable measurements were defined. This makes the approval of the project subjective, and the group will have to keep the customer closely involved, to ensure continuous feedback.
+
 If working on improving the actual solution the measurements should be:
 \begin{itemize}
-\item The time it takes to visualize data for the end user should be “reasonably low” even with slow internet connection (like from Chile) or from a mobile device
+\item The time it takes to visualize data for the end user should be "reasonably low" even with slow internet connection (like from Chile) or from a mobile device
 \item The same displayed features as the actual working system are still available
 \end{itemize}
+
 If working on new use cases, the measurements should be:
 \begin{itemize}
 \item The same displayed features as the actual working system are still available
 \item New features (such as mobile app and new charts) are added in order to cover more use-cases 
 \end{itemize}
 In both cases, an open source based solution is considered to be better than a commercial one.
-
-\section{General terms}
-The choice implementation language, platform and tools to use are up to us. The requirement is that the solution should run on a server.
-There are non-functional requirements, in terms of improving performance and storage consumption, that should be accomplished.
-
-\section{Planned workload}
-Group members will aim to work 24-25h on average per week, for a total amount of 12 weeks. Group members can distribute the workload among days according to their lecture timetibles, as long as deadlines (including sprints deadlines) are met.
-Our group consists of 7 people, so that the weekly average amount of workload is globally around 168-175h, for a total of 2016-2100 h.
 
 \section{Life cycle model}
 The group has chosen to use the Scrum methodology for the project. This is an agile method that focuses on incremental development. The customer is heavily involved in the development process, and is given frequent updates and demos of the progress of the team. 
@@ -214,6 +221,7 @@ In the sprint cycle, which typically lasts for around 3 weeks, the team has dail
 When the sprint is completed, the customer is given a demo of what the team has completed. This should be all that was agreed on in the sprint planing meeting. The customer is now free to give new priorities to items in the product backlog before the team picks new tasks for the next sprint. 
 
 \subsection{Scrum adaptions}
+\label{subsec:scrumadaptations}
 As our development project is part of a university course that runs in parallel with other subjects, it is impossible to follow the standard scrum process. Given this, the group made some choices that diverges from the standard scrum methodology.
 
 \begin{itemize}
@@ -224,14 +232,14 @@ As our development project is part of a university course that runs in parallel 
 
 These changes make the Scrum method well suited for use in the project. Although it is important to try to follow well tested methodologies to the letter, one can not allow them to block progress, or disturb the workflow of the team. When in a special work situation, as the group is in, this type of adaptions are necessary for the efficient use of any development methodology. 
 
-\section{Schedule of results}
-We are using a Scrum-like project management framework, and working prototypes are expected to be produced at the end of each sprint. Requirements have been prioritized by the customer with numbers from 1 to 100. The requirements for our project are inevitably overlapping, and almost all the requirements must be accomplished in order to produced a working solution, to satisfy the basic project goal requested by the customer.
+\section{Requirements}
+We are using a Scrum-like project management framework, and working prototypes are expected to be produced at the end of every other sprint. Requirements have been prioritized by the customer on a scale from 1 to 100. Some of the requirements for our project are inevitably overlapping, and a significant part of the requirements must be accomplished in order to produce a working solution. This is reflected in the prioritization made by the customer.
 
-\section{Concrete project work plan}
-This section describes the specific layout of the project. This project follows the Scrum methodology with some variants introduced, as discussed above in the document. The first five weeks were spent planning, pre-studying (which included a preliminary implementation of the critical part of the system), and writing the requirement specification. As a common practice, the project was divided into sprints. We decided to make each sprint lasting one week. At the end of the last sprint all the requirements should be accomplished.
+\section{Project plan}
+This section describes the specific layout of the project. This project follows the Scrum methodology with some variants introduced, as discussed in section \ref{subsec:scrumadaptations}. The first five weeks were spent planning, pre-studying (which included a preliminary implementation of the critical part of the system), and writing the requirement specification. After this, the project was divided into sprints. We decided to make each sprint one week. At the end of the last sprint all the requirements should be accomplished.
+
 \subsection{Phases}
-We decide to the Scrum methodology, so that Scrum sprints characterize the phases of the project.
-The following are the phases that can be distinguished in the project:
+After the initial phase of the project, and the production of the pre study, a total of 6 scrum sprints are planned:
 \begin{itemize}
 \item Initiation phase (pre-planning)
 \item Project Planning
@@ -264,8 +272,8 @@ In figure \ref{fig:gantt} the Gantt diagram for our project is presented:
 
 \subsection{Activities}
 \begin{description}
-\item[Pre-planning] During the pre-planning activity, the group members know each other and understand the task. There are also the first meetings with the customer and with the avisor.
-\item[Pre-study and planning] The pre-study and planning activity is the stage where the actual work on the project begins. We explpore solutions and we determine which technologies will be used and how the product will be realized.
+\item[Pre-planning] During the pre-planning activity, the group members get to know each other and understand the task. There are also the first meetings with the customer and with the advisor.
+\item[Pre-study and planning] The pre-study and planning activity is the stage where the actual work on the project begins. The group explores solutions, determine which technologies will be used, and how the product will be realized.
 \item[Documentation] The documentation activity represents time spent documenting the work effort, including implementation, research etc., and administrative tasks like status reports and documents for the meetings.
 \item[Coordination] The coordination activity is accomplished throughout the project, and consists of activities to coordinate the work, such as meetings, internal emails, calls and messages.
 \item[Implementation] The implementation activity consists of the implementation of the system. This includes the programming of both the back end and the front end part.
@@ -274,9 +282,9 @@ In figure \ref{fig:gantt} the Gantt diagram for our project is presented:
 \end{description}
 
 \subsection{Milestones}
-We defined some milestones in order not to create delays in the progress of the project.
-There are some milestones defined by the course structure, and we decided to add some more "internal" project milestones in order to avoid delays.
-The following are the defined milestones:
+To mark progress in the project, as well as making sure the team is clear on important deadlines, a set of milestones was set. Some of these are predefined in the course, and some are set by the group. 
+
+The following milestones have been defined:
 \begin{description}
 \item[October 6th] Pre-study phase to be completed
 \item[October 17th] Pre-delivery of report (defined by the course coordinators)
@@ -285,9 +293,9 @@ The following are the defined milestones:
 \end{description}
 
 \subsection{Lectures}
-In this projects there have been a number of guest lectures, and we have made sure that every lecture were attended by at least one member in the team.
-The "Group Dynamics" lecture was mandatory and everyone in the group attended it.
-The other lectures, specifically, have been:
+In this projects there have been a number of guest lectures, and we have made sure that every lecture was attended by at least one member in the team.
+The "Group Dynamics" lecture was mandatory, and everyone in the group attended it.
+The other lectures that have been attended are:
 \begin{itemize}
 \item "How to sell in large application projects", Thomas B. Pettersen - Computas (01.09.2014)
 \item "Scrum, agile development method", Torgeir Dingsoyr - SINTEF (02.09.2014)
@@ -308,7 +316,7 @@ In figure \ref{fig:organizational-structure}, the structure of the group is show
 \label{fig:organizational-structure}
 \medskip
 \small
-The arrows indicate the bi-directional communication. The dotted arrows denotes the preferred way of communication between components. Note that the layout is not hierarchical and it is arranged this way only to better fit on the printed page.
+The arrows indicate bi-directional communication. The dotted arrows denotes the preferred way of communication between components. Note that the layout is not hierarchical and it is arranged this way only to better fit on the printed page.
 \end{center}
 \end{figure}
 
@@ -430,6 +438,7 @@ Slack is a webbased team communication tool founded by Stewart Butterfield. It o
   We have created an organization on GitHub\footnote{\url{https://github.com}} with multiple repositories for different separate parts of our work - reports, server sources, client sources. We have chosen GitHub because it is well known git hosting server that offers advanced features and stability. Moreover some members already had accounts on GitHub and were familiar with interface, which shortened time needed to setup a working environment.
 
 \section{Programming languages}
+The choice of implementation language, platform and tools to use is left up to the group. The customers only requirement is that the solution should be able to run in their environment.
   \subsection{Java}
   Java is a popular programming language developed by a team led by James Gosling at Sun Microsystems in 1991. It's full-featured , general purpose language capable of developing robust mission-critical applications \cite{liang}. This and the fact that everybody in the group had at least basic knowlegde of Java led to the dessicion that we would use Java for our back-end application.  
   \subsection{JavaScript}

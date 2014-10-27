@@ -419,38 +419,42 @@ R14 & Malfunction of personal computer equipment & L & M & Probability cannot be
   \subsection{\LaTeX}
   \LaTeX~is a typesetting system and document markup language that became standard for scientific documents. It is easily expandable by thousands of different packages and can handle all aspects of scientific papers.
 
-  We have chosen to use \LaTeX~for our report for two main reasons - \LaTeX~sources are easily readible and, because they are simple text files, they can be easily versioned by various version control systems. Second reason was focus on content, not on form. In \LaTeX~sources there is only very little information about exact view of the page. \LaTeX~itself during compile time chooses the best position of elements so it complies with all typographic norms.
+  We have chosen to use \LaTeX~for our report for two main reasons - \LaTeX~sources are easily readible and, because they are simple text files, they can be easily versioned by various version control systems. The second reason is focus on content, not on form. In \LaTeX~sources there is very little information about the exact view of the page. \LaTeX~itself during compile time chooses the best position of elements so it complies with all typographic norms.
 
-  We have created a template in our shared space together with a bibliography file. Everyone could then write his sections in an environment that suited him the best while the current state of the report was always available to all members.
+  We have created a template in our shared space together with a bibliography file. All team members are then able to write his sections in an environment that suits him the best, while the current state of the report is always available to all members.
 
   \subsection{Google Docs}
-  Google Docs \footnote{\url{https://docs.google.com}} is a web based office suite including a text editor, a spreadsheet program and a presentation program. All files created in these programs can easily be shared with colaborators. By sharing files the colaborators get access to view and edit the files. Editing and commenting on other's work. We decided to use Google Docs for all documents that did not require the advanced typesetting of \LaTeX~so we had a common platform for such documents.
+  Google Docs \footnote{\url{https://docs.google.com}} is a web based office suite including a text editor, a spreadsheet program and a presentation program. All files created in these programs can easily be shared with colaborators. By sharing files, the colaborators get access to view and edit the files. It is also possible to edit and comment on other's work. We decided to use Google Docs for all documents that did not require the advanced typesetting of \LaTeX~so we had a common platform for such documents. This saves time, while still keeping documents backed up and accessible. 
 
 \section{Project management}
   \subsection{Trello}
   Trello \footnote{\url{http://www.trello.com}}is a web-based collaborative project management tool originally made by Fog Creek Software (New York, USA) \footnote{\url{http://www.fogcreek.com/}}. 
 It's based on the Kanban method which has first implemented by Toyota in 1953 to be used in car production. It has since been modified to be used in several different industries. 
-David J. Anderson formulated a model based on Kanban for knowledge based work, specifically software development, where the team work incrementally pulling work from a queue \cite{da2004}. 
-We use Trello for organizing our tasks into four states: "To do", "Doing", "Blocked" and "Done". The default state is "To do" and by changing the state of a task everybody in the group knows what needs to be done, what is being worked on, what tasks are dependent on other tasks or factors and what tasks are done.
-This is a simple yet efficient way of managing tasks. We chose Trello for the ease of use and thus takes very little time to learn to use. In comparison a system like Jira \footnote{\url{http://https://www.atlassian.com/software/jira}} has more features that might have been useful but it takes more time and effort to learn. Therefor we we opted for Trello.
-Trello is a freemium webservice which means that it is free to use but additional support and features can be accessed if you pay a fee. As we only needed the standard functions we used the free version.
+David J. Anderson formulated a model based on Kanban for knowledge based work, specifically software development, where the team incrementally pulls work from a queue \cite{da2004}. 
+We use Trello for organizing our tasks into four states: "To do", "Doing", "Blocked" and "Done". The default state is "To do", and by changing the state of a task everybody in the group knows what needs to be done, what is being worked on, what tasks are dependent on other tasks or factors, and what tasks are done.
+This is a simple yet efficient way of managing tasks. We chose Trello for the ease of use and the fact that it takes very little time to learn to use. In comparison, a system like Jira \footnote{\url{http://https://www.atlassian.com/software/jira}} has more features that might have been useful, but it takes more time and effort to learn. Therefor we have opted for Trello.
+Trello is a freemium web service which means that it is free to use but additional support and features can be accessed if you pay a fee. As we only needed the standard functions we used the free version.
   \subsection{Slack}
-Slack is a webbased team communication tool founded by Stewart Butterfield. It offers text chat in different channels and integration with a number of different popular services used by development teams \footnote{\url{https://slack.com/integrations}}. This was useful to us since we needed to share information that might be more relevant to specific team members and also to have a single means of communication. Using Slack's integration with Trello and Github we would get notified when there where changes on these platforms aswell. Slack's posibillity to share files, or link to files on Google Documents also came in handy.
+Slack is a web based team communication tool founded by Stewart Butterfield. It offers text chat in different channels and integration with a number of different popular services used by development teams \footnote{\url{https://slack.com/integrations}}. This has been useful to us since we needed to share information that might be more relevant to specific team members and also to have a single means of communication. Using Slack's integration with Trello and Github the team has been notified when there where changes on these platforms as well. Slack's capability to share files, or link to files on Google Documents, also came in handy.
 
 \section{Version control}
   \subsection{Git}
-  Git is a distributed version control system developed in 2005 by Linus Torvalds and Linux development community \cite{ProGit}. Git was made to be small, fast and easy to use especially for code management as it's main purpose was versioning of Linux kernel source code. Nowdays is Git one of the most used versioning controls systems in software development thanks to it's open linence and powerfull features.
+  Git is a distributed version control system developed in 2005 by Linus Torvalds and Linux development community \cite{ProGit}. Git was made to be small, fast and easy to use especially for code management, as it's main purpose was versioning of Linux kernel source code. Nowadays, Git is one of the most used versioning controls systems in software development, thanks to it's open license and powerful features.
 
   We have chosen Git because some members already know it and are able to work efficiently with it. Another advantage is easy branching and distributed architecture that allows you to work offline. 
   
-  We have created an organization on GitHub\footnote{\url{https://github.com}} with multiple repositories for different separate parts of our work - reports, server sources, client sources. We have chosen GitHub because it is well known git hosting server that offers advanced features and stability. Moreover some members already had accounts on GitHub and were familiar with interface, which shortened time needed to setup a working environment.
+  We have created an organization on GitHub\footnote{\url{https://github.com}} with multiple repositories for different separate parts of our work - reports, server sources, client sources. We have chosen GitHub because it is well known, and because of the git hosting server that offers advanced features and stability. Moreover, some members already had accounts on GitHub and were familiar with the interface, which shortened time needed to setup a working environment.
 
 \section{Programming languages}
 The choice of implementation language, platform and tools to use is left up to the group. The customers only requirement is that the solution should be able to run in their environment.
   \subsection{Java}
-  Java is a popular programming language developed by a team led by James Gosling at Sun Microsystems in 1991. It's full-featured , general purpose language capable of developing robust mission-critical applications \cite{liang}. This and the fact that everybody in the group had at least basic knowlegde of Java led to the dessicion that we would use Java for our back-end application.  
+  Java is a popular programming language developed by a team led by James Gosling at Sun Microsystems in 1991. It's full-featured, general purpose, language capable of developing robust mission-critical applications \cite{liang}. This and the fact that everybody in the group had at least basic knowledge of Java led to the decision that we would use Java for our back-end application.  
   \subsection{JavaScript}
-  As stated by Davis Flanagan i JavaScript: the definitive guide "Javascript is part of the triad of technologies that all Web developers must learn". He continues to note that JavaScript specifies the behaviour of the web page \cite{fd11}. Along with specification of HTML5 and ECMAscript 6 (the standard name of JavaScript) the posibilities of what you can achieve with JavaScript has greatly improved. Since our assignment was to create a web based solution it seamed natural to use JavaScript as part of the solution. This was further supported by the excistence of open source libraries designed to make interactive maps which was relevant for our assginment.
+  As stated by Davis Flanagan in "JavaScript: the definitive guide": 
+  \begin{quote}
+  "Javascript is part of the triad of technologies that all Web developers must learn".
+  \end{quote} 
+  He continues to note that JavaScript specifies the behavior of the web page \cite{fd11}. Along with specification of HTML5 and ECMAscript 6 (the standard name of JavaScript) the possibilities of what you can achieve with JavaScript has greatly improved. Since our assignment is to create a web based solution, it seams natural to use JavaScript as part of the solution. This is further supported by the existence of open source libraries designed to make interactive maps, which is relevant for our assignment.
 
 \chapter{Pre study}
 In this chapter, we present the findings of the pre study. The pre study document was made as a separate document that was meant to be delivered to the customer independently of this report. Therefore, there are overlapping sections with the full report. These sections will not be given in this chapter, but are instead presented in their respective chapters of the full report. 
@@ -800,21 +804,20 @@ As SINTEF is given a choice for how to proceed, the group sees two paths forward
 This chapter presents the functional and non-functional requirements for the project, as well as system backlog priorities and estimates.
 
 \section{Use Cases}
-The desired behaviour of the system can be described through use case diagrams. Here we will display the users and how they want to interact with the system. Use cases model the system requirements and is a easy way to understand which features are needed and how these features should work. This section will just outline the general use cases. For more closely specifications we refer to the Requirements Specification section. %refer to it?
+The desired behavior of the system can be described through use case diagrams. Here we will display the users and how they want to interact with the system. Use cases model the system requirements and is an easy way to understand which features are needed and how these features should work. This section will outline the general use cases. For more defined specifications we refer to the requirements specification in section \ref{reqspec}.
 
   \subsection{Planning}
-  In our project, we have a relatively simple set of users and controll of parametres. The main focus of our task is to deliver a full system with working front-end and back-end modules. In this case the user should be able to use the front-end without further knowledge about the back-end. The user will interact with a GUI (Graphical User Interface) through key-input and mouse-input. Mainly this will be map-interaction like scrolling or dragging the map, but parametres will also be controlled through buttons and other input fields.
+  In our project, we have a relatively simple set of users and control of parameters. The main focus of our task is to deliver a full system with working front-end and back-end modules. In this case the user should be able to use the front-end without further knowledge about the back-end. The user will interact with a GUI (Graphical User Interface) through key-input and mouse-input. This will mainly be map-interaction like scrolling or dragging the map, but parameters will also be controlled through buttons and other input fields.
 
-  There is also a second type of users that is not as important in our scope, but will have to be considered. In this case the user is a 3rd-party site or company that wants to access the data directly from our back-end for use with their own front-end solution. These users will send requests over REST with commands from an API for allowed requests.
+  There is also a second type of users that is not as important in our scope, but will have to be considered. This is 3rd-party users or companies that request access the data directly from our back-end for use with their own front-end solution. These users will send requests over REST with commands from an API for allowed requests.
 
   \subsection{Users}
-  Out product will have two types of users.
-  \\ \\
-  The end-user is a user that uses our front-end solution, which again depends on our back-end solution. Among such users there currently not a goal to differentiate users, but at a later point registration and authentication might be required. These users need a easially usable GUI which feels responsive to the users.
-  \\ \\
-  The 3rd-party user is a user that only uses the back-end solution of our project. These services will again be used by end-users. All these 3rd-party users might have to be authenticated to use the back-end directly. This is for security-reasons meaning that no requests will be processed if it is not authenticated and within the API of allowed requests.
-  \\ \\
-  Together these to types of users requires us to have a clear and usable interface both from the back-end and the front-end. While the end-users are the main focus, adapting for the 3rd-party users should be easy as we will consider the usability of the interface between the front-end and back-end for our own communication between the two.
+  Our product will have two types of users:
+  
+  The \textbf{end-user} is a user that uses our front-end solution, which again depends on our back-end solution. Among such users there is currently not a goal to differentiate users, but at a later point registration and authentication might be required. For these users, a simple and efficient GUI is required.  
+  The \textbf{3rd-party user} is a user that only uses the back-end solution of our project. These services will again be used by end-users. All these 3rd-party users might have to be authenticated to use the back-end directly. This to ensure that no requests will be processed if it is not authenticated and within the API of allowed requests.
+  
+  Together these to types of users requires us to have a clear and usable interface both from the back-end and the front-end. While the end-users are the main focus, adapting for the 3rd-party users should be easy, as we will focus on the usability of the interface between the front-end and back-end for our own use.
 
   \subsection{Use Case Diagrams}
   Our two users have a limited set of operations that they can perform, but with a wide range of parameters that can be adjusted. For the end-user these are shown in Figure[\ref{funcReqsBack}] and for the 3rd-party services these are shown in Figure[\ref{funcReqsFront}]
@@ -854,6 +857,7 @@ The desired behaviour of the system can be described through use case diagrams. 
 	\end{itemize}
 
 \section{Requirements Specification}
+\label{reqspec}
 We have decided to have detailed documentation on our functional requirements, as we choose to base our product backlog from them.
 
   \subsection{Prioritization}

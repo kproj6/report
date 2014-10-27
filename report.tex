@@ -321,24 +321,34 @@ The arrows indicate bi-directional communication. The dotted arrows denotes the 
 \end{figure}
 
 \subsection{Roles and corresponding responsibilities}
-We defined and diveded roles and responsibilities among group members. We agreed the distribution of the responsibilities by the voluntary choice of the role for each component of the group, and internal unanimous agreement.
-We conveyed the following roles:
+To have a clear division of responsibilities, the group chose to assign central roles early in the project. This was agreed upon through a combination of the wishes of each group member, and their technical insights and personal qualities. 
+
+The group decided on the following roles,and their definitions:
 \begin{description}
-\item[Scrum master] His task is to make sure that we meet our goals, he is the first person who talks to the customer and to the advisor in the meetings, make sure that the groups meetings have a structure and that they finish on time. According to the scrum methodology, the scrum master also has to supervide the scrum pocess (control that is respected), remove eventual impediments to the team's work, protect team from distracting influences, and make sure that the team is on-task.
+\item[Scrum master] The scrum masters task is to make sure that the group meets it's goals, he\footnote{"He" should be read as "he or she" throughout this report} is the leader of meetings, makes sure that the groups meetings have a structure, and that they finish on time. It is also the scrum masters task to make sure that the team meets deadlines, and finishes tasks. 
+
+The scrum master is in standard scrum methodology tasked with being a barrier between the team and the surrounding environment. He should make sure that any distractions and uncertainties are taken care of, and let the rest of the development team focus purely on their tasks. In our project, this part of the scrum masters role has been difficult to implement, as the course requires all students to take part in activities that usually would be the scrum masters responsibility. 
 \emph{Role assigned to: \textbf{Ondřej Hujňák}}
-\item[Customer contact] His task is to arrange customer meeting, forward customer emails to the group if needed, and ensure that all the needed communication with the customer is done.
+
+\item[Customer contact] The customer contacts responsibility is to arrange customer meeting, forward customer emails to the group if needed, and ensure that all the needed communication with the customer is done. As far as possible, no other members of the team should contact the customer directly. This will ensure that there is no double communication, as well as giving the customer a single contact in the team.
 \emph{Role assigned to: \textbf{Marco Radavelli}}
-\item[QA and testing responsible] Ensure that the implementation fulfills the requirements, design test plan, define and ensure that the Quality Assurance standard is followed during the project.
+
+\item[QA and testing responsible] Ensures that the implementation fulfills the requirements, designs the test plan, defines and ensures that the Quality Assurance standard is followed during the project. Is responsible for making sure that sufficient testing is conducted.
 \emph{Role assigned to: \textbf{Emil Jakobus Schroeder}}
-\item[Documentation responsible] Supervise the structure and the content of all the documents (report, status reports, agenda and minutes of meetings, pre-study report). Main responsible to take notes during meetings. 
+
+\item[Documentation responsible] Supervises the structure and the content of all the documents the group produces during the project. This includes the pre-study, pre-delivery and final report. Is also the person responsible for taking minutes during meetings, and making sure that they reflect accurately what was said during the meetings.
 \emph{Role assigned to: \textbf{Hans Kristian Henriksen}}
-\item[Advisor contact] Arrange advisor meetings, send documents (status report, agenda and minutes of last meeting) to the advisor before each meeting.
+
+\item[Advisor contact] Arranges the advisor meetings, makes sure that all required documents are sent to the advisor before each meeting. Will, as far as possible, be the only person from the group communicating directly with the advisor on group specific matters.
 \emph{Role assigned to: \textbf{Hans Kristian Henriksen}}
-\item[Front-end leader] Supervise the front-end architecture and implementation, and coordinate the front-end developer team
+
+\item[Front-end leader] The front-end leader supervises the front-end architecture and implementation, and coordinates the front-end developer team. He is expected to have an overview of the process and plan ahead in the case of problems or blocked tasks.
 \emph{Role assigned to: \textbf{Anders Smedegaard Pedersen}}
-\item[Back-end leader] Supervises the back-end architecture and implementation, and coordinate the back-end developer team
+
+\item[Back-end leader] Has the same role as the front-end leader, but focuses on the back end team.
 \emph{Role assigned to: \textbf{Arve Nygård}}
-\item[System architect] Make sure that there is consistency between requirements, design and implementation, and that the design is feasible and reasonable.
+
+\item[System architect] The system architect makes sure that there is consistency between requirements, design and implementation, and that the design is feasible and reasonable.
 \emph{Role assigned to: \textbf{Ruben Håskjold Fagerli}}
 \end{description}
 
@@ -351,11 +361,9 @@ We decided to adopt a scrum-like model of software development, with internal gr
 \end{itemize}
 For weeks 37 and 38 the advisor meeting will be Thursday 4pm.
 
-We decided to use the academic quarter for internal meetings, but to start the meeting at the time conveyed sharp for advisor meetings.
-
 \section{Risk assessment}
-A set of possible risks factors that may cause trouble for the team in completing the project has been identified. Each risk has an associated probability and consequence if that specific event occurs. The probability means how likely is that the risk will take effect, and the consequence means how severe the effects would be if the risk occurs. Both probability and consequence are assigned within the categories low (L), medium (M) and high (H), creating a so called “risk matrix”.
-For each risk we have defined a strategy for how it should be reduced (by reducing the probability, the consequence, or both) or completely avoided. 
+For a project this size and duration, there are a multitude of risks that needs to be taken into consideration. The team has identified the risks they feel are most relevant for the project, and attempted to classify them. The risks have two classes, probability and consequence. \textit{Probability} is the likelihood of the risk taking effect, while \textit{consequence} is the severity of the risk if it takes effect. We have assigned each risk class one of three ratings, low (L), medium (M) and high (H). For each risk, a strategy has been developed to lower both the probability and consequence. 
+
 An overview of risks and strategies is given in the following table:
 
   \begin{longtable}{p{0.7cm} p{2.5cm} p{0.7cm} p{0.7cm} p{6.5cm} }
@@ -388,20 +396,20 @@ An overview of risks and strategies is given in the following table:
 
   \hline
 %\begin{tabularx}{\linewidth}{lXllX}
-R1 & Personal Conflict & M & M & Might affect the quality of the work, motivation and time required. Probability can be reduced by ensuring communication within the group, and democratic and motivated decisions. \\ \\ \hline
-R2 & Other courses’ assignments problems & H & M & Time for some students could be less than planned during a few weeks, due to intensive-demanding assignments of other courses. Mitigated by planning, frequent workload balancing and contributing with extra work in weeks without as intensive demands. \\ \\ \hline
-R3 & Conflicting schedules & H & M & Reduced by planning meeting-times and communication channels for times between group meeting. Also, accepting that we can't meet every day and that all group members do not always need to be present if tasks of the person allows. \\ \\ \hline
-R4 & Solution is overcomplicated & M & M & Probability reduced by talking within the group and customer in order to find possible ideas for a simpler solution. \\ \\ \hline
+R1 & Personal Conflicts & M & M & Might affect the quality of the work, motivation and time required. Probability can be reduced by ensuring communication within the group, and democratic and motivated decisions. \\ \\ \hline
+R2 & Assignments given in other courses & H & M & Time for some students could be less than planned during a few weeks, due to intensive-demanding assignments of other courses. Mitigated by planning, frequent workload balancing and contributing with extra work in weeks without as intensive demands. \\ \\ \hline
+R3 & Conflicting schedules & H & M & Reduced by planning meeting-times and communication channels for times between group meeting. Also, accepting that we can't meet every day and that all group members do not always need to be present. \\ \\ \hline
+R4 & Solution is overcomplicated & M & M & Probability reduced by good communication both with the customer and internally in the group. \\ \\ \hline
 R5 & Technical problems and difficulties & M & H & To reduce the probability: make a detailed study (and prototypes where possible) during the pre-study phase. To reduce the consequence: find the person/people within the group which are more comfortable with those new technologies and assign them that task if it is a particular task. Knowledge transfer within the team is also a way to reduce the consequences of this risk. Keep the customer informed. \\ \\ \hline
-R6 & Room reservation & H & L & Will delay work. Avoid by making sure we have a regular room (talk to advisor \\ \\ \hline
-R7 & Data loss & L & H & It can be limited by introducing a backup strategy. \\ \\ \hline
-R8 & People don’t complete an assigned task & H & M & Consequence reduced by additional work for other group members in order to try to complete the task within the deadline. Talk within the group to find a compromise. Tampered by assuring daily communication among team members. \\ \\ \hline
-R9 & Illness & H & M & Probability cannot be reduced, but consequence can be tampered by temporary increases the work for other members of the group. \\ \\ \hline
-R10 & People come late, or not come, to the meetings & H & M & Probability reduced by defining clear rules and schedules for the meetings. Be 5 minutes early for the meetings with the customer. \\ \\ \hline
-R11 & People cannot find the room for the meeting or come in the wrong date & H & M & Probability reduced by creating a calendar shared by the group members and constantly updated. Ensure communication within the team. Reserve the same room and keep the same schedule for meetings. \\ \\ \hline
-R12 & Cannot complete the product backlog or sprint backlog & M & H & Reduced by making sure to follow the priority of the tasks. Talk with the customer. \\ \\ \hline
-R13 & Mistakes in the documentation or in the final product & M & M & Probability reduced by ensuring that every deliverable is reviewed and checked by at least a different person than who has written it. Make sure to dedicate resources for software testing and review of documents. Use the commenting and collaboration tools (or features inside tools) to help reviewing. \\ \\ \hline
-R14 & Someone’s computer get out of order & L & M & Probability cannot be reduced. Consequence can be reduced by increase work for other team members, and leave to that person documentation work, that doesn’t need a specific tool to be installed, so that he can do it on the computers at university for instance. \\ \\ \hline
+R6 & Missing room reservations & H & L & Will delay work. Avoid by making sure we have a regular room (talk to advisor) \\ \\ \hline
+R7 & Data loss & L & H & Limited by introducing a backup strategy, and making sure that all team members follow this strategy. \\ \\ \hline
+R8 & Assigned tasks are not completed & H & M & Consequence reduced by additional work for other group members in order to try to complete the task within the deadline. Talk within the group to find a compromise. Continuous communication between team members will help identify this risk early.  \\ \\ \hline
+R9 & Illness & H & M & Probability cannot be reduced, but consequence can be reduced by temporary increase the work for other members of the group. One person should not be assigned tasks in a way that makes other team members unable to cover for them. \\ \\ \hline
+R10 & Team members are late, or do not show, to meetings & H & M & Probability reduced by defining clear rules and schedules for the meetings. \\ \\ \hline
+R11 & Team members cannot find meeting room for the meeting or misstake date and time & H & M & Probability reduced by creating a calendar shared by the group members and constantly updated. Ensure communication within the team. Reserve the same room and keep the same schedule for meetings. \\ \\ \hline
+R12 & Cannot complete the product backlog or sprint backlog & M & H & Reduced by making sure to follow the priority of the tasks. The scrum master has a special responsibility to identify this situation early. \\ \\ \hline
+R13 & Mistakes in the documentation or in the final product & M & M & Probability reduced by ensuring that every deliverable is reviewed and checked by at least one different person than the one who wrote it. Make sure to dedicate resources for software testing and review of documents. \\ \\ \hline
+R14 & Malfunction of personal computer equipment & L & M & Probability cannot be reduced. Consequence can be reduced by increase work for other team members, and assign team members with malfunctioning equipment tasks that do not require a specific tool to be installed, so that university computers can be used for the work. \\ \\ \hline
 %\end{tabularx}
 \end{longtable}
 
@@ -467,7 +475,7 @@ In this chapter we will explore the solution SINTEF is currently using, and the 
 \end{center}
 \end{figure}
 
-The current system deployed at SINTEF serves their clients by providing access to a collection of more than 100 000 pre generated PDF files. These files contain information on currents, salinity, and temperature. The user may choose what information he\footnote{"He" should be read as "he or she" throughout this report} wants by selecting parameters in the drop down menus, see figure \ref{fig:sinmod-region-main-interface}.
+The current system deployed at SINTEF serves their clients by providing access to a collection of more than 100 000 pre generated PDF files. These files contain information on currents, salinity, and temperature. The user may choose what information he wants by selecting parameters in the drop down menus, see figure \ref{fig:sinmod-region-main-interface}.
 
 \begin{figure}[h]
 \begin{center}

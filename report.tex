@@ -50,7 +50,7 @@ Anders Smedegaard Pedersen & \\
 Emil Jakobus Schroeder & \\
 Hans Kristian Henriksen & \\
 Marco Radavelli & \\
-Ondřej Hujňák & \\
+Ondrej Hujnak & \\
 Ruben Håskjold Fagerli & \\
 \end{tabular*}
 
@@ -87,7 +87,7 @@ Although the solution is a prototype, and not ready for full scale deployment, i
 \dotfill & \dotfill \\
 ~Emil Jakobus Schroeder & ~Hans Kristian Henriksen \\[1cm]
 \dotfill & \dotfill \\
-~Marco Radavelli & ~Ondřej Hujňák \\[1cm]
+~Marco Radavelli & ~Ondrej Hujnak \\[1cm]
 \dotfill & \\
 ~Ruben Håskjold Fagerli & \\[1cm]
 \end{tabularx}
@@ -131,7 +131,7 @@ The study of ocean currents allows for predicting what conditions can be expecte
 This makes the most relevant users of the system fish farmers, either in the planning or operation phase of the farm. The system is also relevant to anyone conducting ocean research in the given areas, and other stakeholders that can use information on the condition of the sea in their work.
 
 \section{Assignment and scope}
-The client, SINTEF Fisheries and Aquaculture, has given us the project labeled ”Ocean Forecast”. The task is to improve SINTEFs existing system of storing and retrieving data, as well as the way the data is presented to the end user. 
+The client, SINTEF Fisheries and Aquaculture, has given us the project labeled "Ocean Forecast". The task is to improve SINTEFs existing system of storing and retrieving data, as well as the way the data is presented to the end user. 
 
 In agreement with the customer, the group has defined the following scope of the assignment:
 
@@ -328,7 +328,7 @@ The group decided on the following roles,and their definitions:
 \item[Scrum master] The scrum masters task is to make sure that the group meets it's goals, he\footnote{"He" should be read as "he or she" throughout this report} is the leader of meetings, makes sure that the groups meetings have a structure, and that they finish on time. It is also the scrum masters task to make sure that the team meets deadlines, and finishes tasks. 
 
 The scrum master is in standard scrum methodology tasked with being a barrier between the team and the surrounding environment. He should make sure that any distractions and uncertainties are taken care of, and let the rest of the development team focus purely on their tasks. In our project, this part of the scrum masters role has been difficult to implement, as the course requires all students to take part in activities that usually would be the scrum masters responsibility. 
-\emph{Role assigned to: \textbf{Ondřej Hujňák}}
+\emph{Role assigned to: \textbf{Ondrej Hujnak}}
 
 \item[Customer contact] The customer contacts responsibility is to arrange customer meeting, forward customer emails to the group if needed, and ensure that all the needed communication with the customer is done. As far as possible, no other members of the team should contact the customer directly. This will ensure that there is no double communication, as well as giving the customer a single contact in the team.
 \emph{Role assigned to: \textbf{Marco Radavelli}}
@@ -562,7 +562,7 @@ The group has used the first part of the project investigating what solutions wo
   
   \subsection{yr.no Map Service}
   \emph{Link: \url{http://yr.no/kart}} \\%make sure to use //
-This solution presents the user with a conventional map interface. On the sides and top there are menus for selecting which variable and timestep should be displayed. The user is only allowed to select a timestep about 8 days from the current time. Interesting variables include sea temperature, salinity and sea currents, each has it’s own . There is no way to select depth, and all data seems to be for the surface values. The chosen variable is added as an overlay of PNG tiles using OpenLayers. The tiles are fetched using WMS from a norwegian meteorological service server. On the map there are several measurement stations displayed, that give information when clicked. In addition, clicking anywhere on the map displays several plots predicting the next two days of weather for that spot.
+This solution presents the user with a conventional map interface. On the sides and top there are menus for selecting which variable and timestep should be displayed. The user is only allowed to select a timestep about 8 days from the current time. Interesting variables include sea temperature, salinity and sea currents, each has it's own . There is no way to select depth, and all data seems to be for the surface values. The chosen variable is added as an overlay of PNG tiles using OpenLayers. The tiles are fetched using WMS from a norwegian meteorological service server. On the map there are several measurement stations displayed, that give information when clicked. In addition, clicking anywhere on the map displays several plots predicting the next two days of weather for that spot.
   \\ \emph{Overall rating: \textbf{Ok}}
 
 \section{Back-end}
@@ -615,12 +615,12 @@ The THREDDS\footnote{\textbf{Th}ematic \textbf{R}ealtime \textbf{E}nvironmental 
     \paragraph{Perfomance}
     Testing both local and publicly available ncWMS servers the performance seems good. When using the godiva2 browser based client or sending individual requests the server mostly responds quickly, with some idiopathic exceptions. Transmitting the map data to the client as png images should be a bandwidth-efficient way to do it, as well as moving the computation load away from the client. When starting the server application or adding a dataset, the server needs some time to load some information from the datasets. This only takes a few seconds, even for a few hundred GB of local netCDF files.
     \paragraph{Summary}
-    ncWMS does a lot of what we need the back-end of our solution to do. It handles the extraction, downsampling and projection of the data, creating an image ready to be used in a map widget or on it’s own. It can only handle requests for a few kinds of plots. It is open source, and is free to use under a modified BSD license. To serve all the plots and data required it would need modification.
+    ncWMS does a lot of what we need the back-end of our solution to do. It handles the extraction, downsampling and projection of the data, creating an image ready to be used in a map widget or on it's own. It can only handle requests for a few kinds of plots. It is open source, and is free to use under a modified BSD license. To serve all the plots and data required it would need modification.
   \\ \emph{Overall rating: \textbf{Good}}
 
 %%%
 \section{Transmission Protocols}
-  There are several standardized protocols to present map data from the server to the client in order to dinamically display layers on a map.
+  There are several standardized protocols to present map data from the server to the client in order to dynamically display layers on a map.
   In particular, two main kind of representations can be distinguished, and sometimes they're both supported by a single standard:
   \begin{description}
     \item[Vector based layers] Data is sent from the server to the client in a textual format, such as GeoJson
@@ -694,7 +694,7 @@ The THREDDS\footnote{\textbf{Th}ematic \textbf{R}ealtime \textbf{E}nvironmental 
     \end{itemize}
 
     For our purposes the ability to get map tiles from different sources may be very interesting. This gives us the ability to for example show both nautical maps and regular land maps at the convenience of the user. At zoom levels covering large geographical areas it will probably be most ideal to show the relevant simulated data as overlayed PNGs. This is easily achieved with image overlays in Leaflet. If we want to show very detailed data when zoomed further in, we might be able to use vector layers to visualize the data. It is also possible to use a GeoJSON layer to convert data formatted as GeoJSON to vectors.
-    It is also possible to use Web Map Service (WMS) to overlay, for example, metrological data on a map. Eventhough this is a format that is used by large organizations like the National Oceanic and Atsmopheric Administration (\url{noaa.gov}) we have been advised against using this format due to it's negative effect on the speed and responsiveness experienced by the end-user. \footnote{Iván Sánchez Ortega, How to Build Slow Maps - Trondheim, September 24, 2014}
+    It is also possible to use Web Map Service (WMS) to overlay, for example, metrological data on a map. Eventhough this is a format that is used by large organizations like the National Oceanic and Atsmopheric Administration (\url{noaa.gov}) we have been advised against using this format due to it's negative effect on the speed and responsiveness experienced by the end-user. \footnote{IvÃ¡n SÃ¡nchez Ortega, How to Build Slow Maps - Trondheim, September 24, 2014}
     Furthermore Leaflet can be extended with plugins. These can relatively easily be written in Javascript or an existing plugin can be downloaded and used. A relevant plugin to our needs could for example be heatmap.js (\url{http://www.patrick-wied.at/static/heatmapjs/}).
 
     \paragraph{Summary}
@@ -1259,9 +1259,6 @@ After some discussion in the group and clarifications from SINTEF, we wrote a su
 \end{quote}
 Our contact at SINTEF accepted this with one change, that the system should be able to read from a collection of netCDF files. The group agreed to this change.
 
-\paragraph{Requirements / backlog}
-From our formalized scope and the choice the customer made based on our pre study, we created a list of requirements. The list of functional requirements also serves as our project backlog. In discussion with the group, the customer gave each requirement a priority to serve as a guideline when creating the sprint backlogs.
-
 \section{Group organization}
 \paragraph{Work-flow}
 After some discussion and investigation the group decided to use scrum for the main part of the project. Before starting the scrum sprints proper we assigned tasks less formally. At each meeting we decided on what tasks should be done by next meeting, and divided them among us.
@@ -1314,15 +1311,79 @@ Early on we knew we there was a possibility of having to create or modify code a
 
 
 \chapter{Sprint 1}
+This sprint marks the formal start of the implementation work. Up to this point, the group has focused mainly on the pre study, which has done an extensive study into the possible choices for the customer. In this process, prototypes were implemented, but this was only meant for the group to get an idea of the work involved. Thus, the real work of implementation starts at this point, though the prototyping obviously will be a great help in the work ahead. 
+
+At the same time as sprint 1 started, the final work on the pre delivery for NTNU also had to be done. This was a lot of work, and the group decided at the start of sprint 1 to use this sprint almost exclusively for working on the pre delivery, as it is needed to be allowed to continue the course, as well as an important milestone in the project plan. 
+
 \section{Sprint planning}
+From our formalized scope and the choice the customer made based on our pre study, we created a list of requirements. The list of functional requirements will serve as our project backlog. In discussion with the group, the customer gave each requirement a priority to serve as a guideline when creating the sprint backlogs.
+
+\section{Goal for next demo}
+For our first demo, the customer wants us to, in his words, "get something up and running". More specifically, the customer wants a map showing, with an overlay of some sort. This can then be used by the customer to make decisions on how to move forward, and what to prioritize later in the project. As we only demo for the customer every other week, this goal can be fulfilled in two weeks.
+
 \section{Sprint backlog}
+The backlog for the first sprint consisted mainly of tasks that are connected to the pre delivery. This because of the strict deadline this delivery has, as well as the need for everyone to work on the pre delivery to ensure that it would be done on time.
+
+The following tasks where committed to in sprint 1:
+
+\begin{description}
+	\item[Reporting] \hfill \\ 
+	Write requirements for pre-delivery \hfill \\
+	Write project plan for pre-delivery \hfill \\
+	Write introduction and abstract for pre-delivery \hfill \\
+	Write technology chapter for pre-delivery \hfill \\
+	Write project planning section for pre-delivery \hfill \\
+	Write risk assessment for pre-delivery
+\end{description}
+
+For this sprint, the group chose not to estimate the tasks. This decision was done in part because it is inherently difficult to estimate time for writing, but also because the team knew that these tasks had to be done by the end of the sprint. This meant that whether or not the estimates would exceed the limit on work hours, the work had to be done.
+
 \section{Sprint overview}
+The sprint was focused on the pre-delivery for NTNU. While this does not add value to the customer, the team has to ensure that all required documents are handed in on time. Failing to meet this deadline would lead to the team failing the course, and the customer obviously has an interest in the team being allowed to continue their work. 
+
+During this sprint, the pre-delivery was almost finished. All team members where able to finish their parts, and only small corrections, as well as making the document consistent remains. 
+
 \section{Evaluation}
+The group was able to finish most of the pre-delivery tasks for the first sprint. This was vital in being able to advance the project. After the sprint finished, there was work left in the following tasks:
+
+\begin{description}
+	\item[Reporting] \hfill \\ 
+	Write requirements for pre-delivery \hfill \\
+	Write introduction and abstract for pre-delivery \hfill \\
+\end{description}
+
+The remaining work on the requirements is mainly \LaTeX-formating. The introduction is still lacking in some areas. This is because some sections has to be written last, and due to some lack of time. The group does not think it will be a problem to finish this in the next sprint. 
 
 \chapter{Sprint 2}
+Sprint 2 will be the first sprint the group can focus on implementation work. As the next customer demo is the Wednesday after the sprint ends, the goal for the demo has to be achieved in this sprint. The customer has stated that their goal is for us to "get something up and running". In choosing tasks for this sprint, the group has kept this goal in mind. 
+
 \section{Sprint planning}
+We have had a meeting discussing the use of time for the project, and it seems as if not all group members are using their full 25 hours a week. Because of this, the discussion was made to be stricter in both estimation and assignment of tasks for this sprint. It will be better to assign to many tasks, and then have work left, than to assign to few, and thus have unused resources. 
+
 \section{Sprint backlog}
+The sprint backlog was in this sprint split into three sections. This represents the different work that has to be done, and also the way the group has decided to split the work. The pre-delivery is due on the friday of this sprint. The group has assigned two people to work on the remaining tasks for this, and the rest of the group will start on the implementation work.
+
+\begin{description}
+	\item[Front end] \hfill \\
+	Get a map up and running
+	\item[Back end] \hfill \\
+	Handle projections \hfill \\
+	Image output module \hfill \\
+	Parse parameters to select region \hfill \\
+	Implement feature endpoints \hfill \\
+	Implement vector feature endpoints \hfill \\
+	Set up server
+	\item[Reporting] \hfill \\ 
+	Write requirements for pre-delivery \hfill \\
+	Write introduction and abstract for pre-delivery \hfill \\
+	Proof-read pre-delivery 
+	\end{description}
+	
+We have chosen to use the quite vague goal of the customer as the only task for the front end. This has the consequence of setting a task that is a lot larger than one work day. Despite of this, since the task is vague, we found it difficult to split it further. For the back end side of the project, the tasks are much more specific. 
+
 \section{Sprint overview}
+The sprints focus was split in two, with most of the group working on the implementation, as to be able to demo for the customer next week. 
+
 \section{Evaluation}
 
 \chapter{Sprint 3}

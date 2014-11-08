@@ -1395,7 +1395,7 @@ We have chosen to use the quite vague goal of the customer as the only task for 
 The sprints focus was split in two, with most of the group working on the implementation, as to be able to demo for the customer next week. The other part of the group focused on the pre-delivery. This separation of responsibility was done with the goal of being able to work in parallel with two important tasks that both had to finished this sprint. By dividing the group into smaller sub-groups, the tasks are perceived to be the responsibility of fewer people, and the team members are more likely to step up and go the extra mile when needed. 
 
 \section{Evaluation}
-The most important part of this sprint was to be able to hand of the pre-delivery on time. This was done, and the group is happy with the result. All required parts of the pre-delivery was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the WMTS protocol. The back end is able to read a single NetCDF file, and output an image that is transferred to the front end, and displayed on the map. This is shown in figure
+The most important part of this sprint was to be able to hand of the pre-delivery on time. This was done, and the group is happy with the result. All required parts of the pre-delivery was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the WMTS protocol. The back end is able to read a single NetCDF file, and output an image that is transferred to the front end, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
 
 \begin{figure}[h]
 \begin{center}
@@ -1502,7 +1502,7 @@ This sprint will focus on getting the map projections working. This is critical 
 \section{Sprint planning}
 With the problems relating to projections, the team will use a lot of resources trying to solve this in the current sprint. We will also try to arrange a customer meeting this week, if the customer is back on his feet at some point during the week. The reporting work will be handled mostly by one person, as we need as much resources as possible to solve the projection challenges. 
 \section{Sprint backlog}
-Based on what was left from the last sprint, the following sprint backlog was set:
+Based on what was left from the last sprint, and the priorities of this sprint, the following sprint backlog was set:
 
 \begin{description}
 	\item[Front end] \hfill \\
@@ -1524,9 +1524,47 @@ Based on what was left from the last sprint, the following sprint backlog was se
 	Write weekly documents for advisor meeting
 \end{description}
 
+The backlog reflects that a lot of tasks had to pushed in the last sprint, as well as the addition of new tasks to find a solution to the projection challenges. 
+
 \section{Sprint overview}
+This sprint is focused towards solving the projection challenge. The team can not complete their solution unless this problem is solved. As there are multiple ideas to solving this, the group is optimistic that one of these will be successful. The biggest unknown in this sprint is the amount of time needed for the investigation of solutions. If one of the suggested solutions quickly proves to be efficient, other investigation work can be aborted, and work on the remaining tasks can resume. If not, the group faces using large parts of this sprint investigating different solutions.
+
 \section{Evaluation}
+\paragraph{Customer meeting}
+The group was able to set up a meeting with SINTEF representatives at the end of the sprint. Our main contact was unable to meet us, but as both the representatives have been present in most of the meetings, this did not pose any problems. 
+
+In the meeting, the customer gave useful feedback on the design decisions made for the front end. Although it is not very user friendly to enter the coordinates by hand, some users might want to, so this functionality is kept. The customer also gave some general input on the organization of the user interface. The group will use this feedback to improve the user interface in the next sprint. 
+
+The customer was informed that the group has hit a problem with the different projections. The customer gave some additional insight into the projections used by SINTEF. This is quite a rare projection, as it is not a standard polar stereographic projection, and the customer does not think that finding a corresponding map will be likely. The customer gave three suggestions on how to handle this:
+\begin{itemize}
+\item \textbf{Pixel by pixel sampling} This solution would require the extraction of a single point at the time from the NetCDF file. This way, retrieving the data for an area might result in thousands of operations. This might be a quite slow solution, but it will probably be quite easy to implement.
+\item \textbf{Convert NetCDF file to new projection} Using a library by the Norwegian Meteorological Institute called FiMex, it might be possible to convert the entire NetCDF file to the correct projection. 
+\item \textbf{Area conversion with Proj.4} Using a library called Proj.4, the customer thinks it might be possible to convert a specific area to the correct projection. This will have to be investigated by the group.
+\end{itemize}
+
+Doing the conversion on the clients machine was discussed, but this is not optimal, as we do not want the client to have to do much work. This is especially important when keeping in mind that a mobile version of the product is a natural next step for the customer after the group has finished their work.
+
+\paragraph{Projections}
+The group has not been able to solve the projection problem in this sprint. After the customer meeting, the search for a map in the correct projection was aborted, as the customer does not think it will be possible to find. In addition, polar stereographic maps only cover half the globe, which makes them unattractive for map applications. 
+
+The research into Porj.4 has been more promising. Converting 1 million points is done in about 1 second. This allows for a 1000 by 1000 pixel area to be converted in one second, which would be within the customers demand for a responsive application. Unfortunately, the data still has to be interpolated, and this might be more work than the group has time to do.
+
+FiMex also looks promising, but the group has yet to get it up and running. If it is able to convert the files, the group feels that this should be chosen as the solution to the projection problem. This way, efforts can be directed at finishing as much functionality as possible. 
+
+\paragraph{User interface}
+The user interface has been improved in accordance with the input given by the customer. Since the group was prepared for the customer to have input on the look of the user interface, the code was written to be easily changeable. This paid of in implementing these changes. The user interface as it is at the end of sprint 4 is shown in figure \ref{fig:UIAfterSprint4}.
+
+\begin{figure}[t]
+\begin{center}
+\fbox{\includegraphics[height=300px,width=400px]{img/MapUI_V2.png}}
+\caption{The user interface, after the completion of sprint 4. The overlay is not placed correctly due to projection challenges.}
+\label{fig:UIAfterSprint4}
+\end{center}
+\end{figure}
+
+
 \paragraph{Remaining backlog items}
+The items remaining in the backlog after the completion of sprint 4 are:
 
 \begin{description}
 	\item[Front end] \hfill \\
@@ -1538,6 +1576,8 @@ Based on what was left from the last sprint, the following sprint backlog was se
 	Choose correct file based on selected region and time \hfill \\
 	Handle overlapping areas (Blocked) \hfill \\
 \end{description}
+
+This sprint has, as sprint 4, been focused on fixing the projection challenge. The team has made more progress in this sprint than in sprint 3, but there is still a long way to go. Unfortunately, there is not much time left in the project, and finding a solution in the next sprint is critical. Without the projections, the team will not be able to present a working prototype. On the other hand, given that the problem is solved, the team will quite quickly have a prototype that is able to read from the NetCDF files. 
 
 \chapter{Sprint 5}
 \paragraph{Sprint duration: 3/11-2014 until 10/11-2014} \hfill \\
@@ -1566,9 +1606,11 @@ Based on what was left from the last sprint, the following sprint backlog was se
 \section{Product evaluation}
 \section{Work evaluation}
 \subsection{Teamwork}
-\subsection{Scrum adaptions}
 \subsection{Tools evaluation}
 \subsection{Time used}
+\paragraph{Work load}
+\paragraph{Documentation vs implementation}
+\subsection{Scrum adaptions}
 \subsection{Customer relations}
 \section{Subject evaluation}
 \subsection{Subject organization}

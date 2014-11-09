@@ -1672,6 +1672,17 @@ Our WMTS implementation reuses a lot of the capabilities and infrastructure buil
 For the capabilities document, we query the same Index used by NetCdfManager to get info about the extent (bounding box) of the dataset.
 To get a specific tile, we compute the coordinates of the corners of the tile, and call the resource described above to retrieve an image.
 We then put this image in a cache so that subsequent queries for this tile takes less time.
+\subsubsection{Rendering the data}
+The ImageRenderer class is responsible for turning the raw data into PNG images. An empty image is created and filled pixel by pixel from sampling the data. It can be used to create tiles for WMTS or images that can be used outside a map service.
+\paragraph{Inputs and Outputs}
+The data it takes as input is in a 2 dimensional array of numeric values. In addition to the data, it takes parameters to tell it if the resulting image should be square, even if the input data is not. The last parameter contains what feature (e.g. salinity) is to be rendered. The finished image in the form of a BufferedImage Java object, ready to be transmitted as a response to an end users request.
+\paragraph{Sampling}
+The raw data is sampled simply using nearest interpolation. This is done in order to not misrepresent the accuracy of the underlying data. Bilinear interpolation may look smoother, but users would no longer see the grid that reveals the resolution of the underlying data.
+\paragraph{Color}
+Each feature has a hard coded scale, defined by a minimum and maximum value, and a color for each of these extremes. If the sampled value for a pixel lies between the minimum and maximum of that features scale, the color is assigned by linear interpolation between the minimum and maximum colors. If the value is outside the minimum to maximum range, that pixels color is set to the minimum or maximum color.
+\paragraph{Size of the resulting image}
+The image will be set to be 256 pixels along the shortest dimension of the raw data input, maintaining the aspect ratio as well as can be done. If the function is told to make a square image, by the forceSquare parameter, the result will be a 256 by 256 pixel image.
+
 \section{Goal completion}
 \section{Further work}
 

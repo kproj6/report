@@ -218,9 +218,25 @@ After the product backlog is written, the first sprint is planned. In this plann
 
 When the team has chosen the tasks to be completed, the sprint is locked, and new tasks may not be added by the customer. This gives the development team a noise free environment, and allows them to focus on the task ahead. 
 
-In the sprint cycle, which typically lasts for around 3 weeks, the team has daily meetings to update on progress and challenges. This meeting is lead by the scrum master. The daily meeting is known as a standup, as the participants are expected to stand during the meeting. Every person is given about two minutes to give an update of their work.
+In the sprint cycle, which typically lasts for around 3 weeks, the team has daily meetings to update on progress and challenges. This meeting is lead by the scrum master. The daily meeting is known as a standup, as the participants are expected to stand during the meeting. Every person is given about two minutes to give an update of their work. This update should answer three questions:
+
+\begin{itemize}
+\item What did I do yesterday?
+\item What am i going to do today?
+\item Are there any problems that can obstruct my progress?
+\end {itemize} 
 
 When the sprint is completed, the customer is given a demo of what the team has completed. This should be all that was agreed on in the sprint planing meeting. The customer is now free to give new priorities to items in the product backlog before the team picks new tasks for the next sprint. 
+
+After the sprint, the team should conduct a retrospective. In the retrospective, the team members are to discuss the sprint that is just concluded, and list experiences into one of three categories:
+
+\begin{itemize}
+\item Things we should continue doing
+\item Things we should stop doing
+\item Things we should start doing
+\end {itemize} 
+
+This is a process that is usually conducted together with the customer, as the customer can add valuable insight into the teams work from a business perspective. The goal of the retrospective is for the team to identify what helps them in their work, and what is hindering them. This way, it is possible to make changes that positively effects the team.
 
 \subsection{Scrum adaptions}
 \label{subsec:scrumadaptations}
@@ -230,12 +246,37 @@ As our development project is part of a university course that runs in parallel 
 \item Meetings are not conducted every day, but rather twice a week. This fits better with the schedule of the group members, and takes into consideration that there is no demand for work to be done every day. 
 \item Sprint length has been chosen as one week. This is short compared to the Scrum standard, but it provides the group with a motivational pressure, as well as making the sprints easier to estimate. 
 \item Product demos are set to every other week. This means that there will be sprints that are not presented to the customer. In choosing this, the group is able to have sprints that focus on the internal demands set forth by NTNU, as well as making more progress between customer meetings.
+\item Retrospectives at the end of each sprint would mean setting aside around 50-70 hours of work time for retrospectives. As the group is only in a position to change their own work habits, and can not make changes to the course, nor to the general work process of the customer, it was decided that retrospectives will be dropped. In addition, the customer will probably not be able to be present at retrospectives, lowering their value. Instead, team meetings, and advisor meetings will take the place of retrospectives. 
+\item The scrum master is usually responsible for shielding the development team from the outside world. In this subject, it will not be possible to do this, as group members are required to attend advisor meetings and customer meetings. Thus, the scrum master will be more of a project manager, responsible for the teams progress and efforts. 
 \end {itemize}
 
 These changes make the Scrum method well suited for use in the project. Although it is important to try to follow well tested methodologies to the letter, one can not allow them to block progress, or disturb the workflow of the team. When in a special work situation, as the group is in, this type of adaptions are necessary for the efficient use of any development methodology. 
 
+\subsection{Other alternatives}
+While it was early clear that the team wanted to work in a scrum-like manner, other methodologies of development could also have been used, and was discussed. In particular, Kanban and waterfall with feedback.
+
+\paragraph{Kanban}
+While Scrum is driven by estimations, and motivates by limiting the amount of time for each sprint, Kanban attempts to motivate by limiting the amount of concurrent tasks the team is allowed to have. For example, the team can set a limit of 4 tasks in development, 3 in QA and 2 in test. This way, the team is motivated to finish tasks, as it will free up space for new tasks. 
+
+As none in the team is particularly proficient in Kanban, and most of the team has some knowledge of Scrum, Kanban did not seem like a wise choice. The biggest factor in not choosing Kanban was the fear of having to use a lot of time learning the methodology, and thus have less time left for the actual development. 
+
+\paragraph{Waterfall with feedback}
+The waterfall methodology is one of the oldest development methodologies, and is usually viewed as a rigid, one way process. Every step must be completed before moving to the next. This means that the customer must clearly specify what they want before any development can start. This made the team reject the traditional waterfall model, as the customer is not clear on what they want.
+
+An adaptation to the waterfall model is the waterfall model with feedback. This model follows the traditional waterfall methodology, but allows the team to move back to a previous phase when needed. It is further illustrated in figure \ref{fig:WaterfallFeedback}.
+
+\begin{figure}[h]
+\begin{center}
+\fbox{\includegraphics[height=150px,width=300px]{img/Waterfall_with_feedback.png}}
+\caption{Waterfall with feedback}
+\label{fig:WaterfallFeedback}
+\end{center}
+\end{figure}
+
+Even with the addition of feedbacks, the team felt that the waterfall model did not fit the rapid development, and possible changes in scope and requirements, of the project. 
+
 \section{Requirements}
-We are using a Scrum-like project management framework, and working prototypes are expected to be produced at the end of every other sprint. Requirements have been prioritized by the customer on a scale from 1 to 100. Some of the requirements for our project are inevitably overlapping, and a significant part of the requirements must be accomplished in order to produce a working solution. This is reflected in the prioritization made by the customer.
+We are using a Scrum-like project management framework, and working prototypes are expected to be produced at the end of every other sprint. Requirements have been prioritized by the customer on a scale from 1 to 100. Some of the requirements for our project are inevitably overlapping, and a significant part of the requirements must be accomplished in order to produce a working solution. This is reflected in the prioritization made by the customer. The requirements of the project are discussed in detail in chapter \ref{chap:Requirements}.
 
 \section{Project plan}
 This section describes the specific layout of the project. This project follows the Scrum methodology with some variants introduced, as discussed in section \ref{subsec:scrumadaptations}. The first five weeks were spent planning, pre-studying (which included a preliminary implementation of the critical part of the system), and writing the requirement specification. After this, the project was divided into sprints. We decided to make each sprint one week. At the end of the last sprint all the requirements should be accomplished.
@@ -805,6 +846,7 @@ As SINTEF is given a choice for how to proceed, the group sees two paths forward
 
 
 \chapter{Requirements}
+\label{chap:Requirements}
 This chapter presents the functional and non-functional requirements for the project, as well as system backlog priorities and estimates.
 
 \section{Use Cases}

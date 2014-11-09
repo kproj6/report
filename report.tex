@@ -1633,6 +1633,44 @@ Sprint 5 focuses on finding a solution to the projection problem, using the prop
 
 \chapter{Final product}
 \section{Description}
+\section{High level Architecture}
+\subsection{Back end}
+The back-end is built as a single binary to ease deployment.
+We use an embeddable webserver library called Jetty in combination with a REST library called Jersey to handle requests.
+
+\begin{figure}[H]
+\begin{center}
+\fbox{\includegraphics[width=400px]{img/back_end_arch.png}}
+\caption{Back-end Architecture overview}
+\label{fig:BackEndArchitecture}
+\end{center}
+\end{figure}
+
+\subsubsection{REST API}
+When a request comes in, it's automatically routed to the correct Resource class. 
+We have a custom manager for the data files, called NetCdfManager. The Resource class talks to this manager to obtain the data requested by the user.
+The manager in turn, can talk to our Indexer to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
+The data array is then passed back to the Resource class, which formats it according to what the user wanted (typically as an image), and returns that as a response.
+\subsubsection{WMTS}
+The WMTS protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
+
+\begin{figure}[H]
+\begin{center}
+\fbox{\includegraphics[width=400px]{img/tile_matrix.png}}
+\fbox{\includegraphics[width=400px]{img/tile_matrix_set.png}}
+\caption{Tile Matrices}
+\label{fig:TileMatrix}
+\end{center}
+\end{figure}
+
+A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
+
+A client can then request a specific tile at position (x,y) from a given tile matrix, and then by the definition given in the capabilities document it can place the image at the correct position on its map.  
+
+Our WMTS implementation reuses a lot of the capabilities and infrastructure built for the REST API:  
+For the capabilities document, we query the same Index used by NetCdfManager to get info about the extent (bounding box) of the dataset.
+To get a specific tile, we compute the coordinates of the corners of the tile, and call the resource described above to retrieve an image.
+We then put this image in a cache so that subsequent queries for this tile takes less time.
 \section{Goal completion}
 \section{Further work}
 

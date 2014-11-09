@@ -111,3 +111,6 @@ sympy-plots-for-*.tex/
 # Vim
 *.swo
 *.swp
+
+#Other
+*.DS_Store

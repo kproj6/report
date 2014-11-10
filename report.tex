@@ -1624,7 +1624,7 @@ The items remaining in the backlog after the completion of sprint 4 are:
 	Handle overlapping areas (Blocked)
 \end{description}
 
-This sprint has, as sprint 4, been focused on fixing the projection challenge. The team has made more progress in this sprint than in sprint 3, but there is still a long way to go. Unfortunately, there is not much time left in the project, and finding a solution in the next sprint is critical. Without the projections, the team will not be able to present a working prototype. On the other hand, given that the problem is solved, the team will quite quickly have a prototype that is able to read from the NetCDF files. 
+his sprint has, as sprint 4, been focused on fixing the projection challenge. The team has made more progress in this sprint than in sprint 3, but there is still a long way to go. Unfortunately, there is not much time left in the project, and finding a solution in the next sprint is critical. Without the projections, the team will not be able to present a working prototype. On the other hand, given that the problem is solved, the team will quite quickly have a prototype that is able to read from the NetCDF files. 
 
 \chapter{Sprint 5}
 \paragraph{Sprint duration: 3/11-2014 until 10/11-2014} \hfill \\
@@ -1678,7 +1678,7 @@ Sprint 5 focuses on finding a solution to the projection problem, using the prop
 \chapter{Final product}
 \section{Description}
 \section{High level Architecture}
-\subsection{Back end}
+\subsection{Back-end}
 The back-end is built as a single binary to ease deployment.
 We use an embeddable webserver library called Jetty in combination with a REST library called Jersey to handle requests.
 
@@ -1696,7 +1696,7 @@ We have a custom manager for the data files, called NetCdfManager. The Resource 
 The manager in turn, can talk to our Indexer to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
 The data array is then passed back to the Resource class, which formats it according to what the user wanted (typically as an image), and returns that as a response.
 \subsubsection{WMTS}
-The WMTS protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
+The Web Map Tile Service (WMTS) protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
 
 \begin{figure}[H]
 \begin{center}
@@ -1726,8 +1726,27 @@ Each feature has a hard coded scale, defined by a minimum and maximum value, and
 \paragraph{Size of the resulting image}
 The image will be set to be 256 pixels along the shortest dimension of the raw data input, maintaining the aspect ratio as well as can be done. If the function is told to make a square image, by the forceSquare parameter, the result will be a 256 by 256 pixel image.
 
+\subsection{Front-end}
+The front-end consists of a single HTML file, the OpenLayers javascript library, custom javascript and CSS. These components combined make up the graphical user interface (GUI). It's role in the product is to help the user querying the back-end and then displaying the received data in a meaningful way. 
+
+\paragraph{GUI}
+The main part of the graphical user interface (GUI) is the map. The map is provided by the OpenLayers javascript library which gives the possibility to display maps and data from different source. Since we want to display data that is closely related to geographical position, displaying it on a map is the most intuitive solution. In order to make it as easy as possible to query the back-end for data we have added a input box. The user can toggle this input box to be hidden or not.
+
+\begin{figure}[H]
+\begin{center}
+\fbox{\includegraphics[width=400px]{img/gui.png}}
+\caption{The graphical user interface}
+\label{fig:gui}
+\end{center}
+\end{figure}
+
+\paragraph{Querying}
+Querying the back-end is done by means of it's REST API. This is done by taking the validated user input and building a query URL from it. When the back-end receives the input it'f procceses it and responds with the relavant data, usually an image. The data respons is then displayed in the GUI, usually on the map at the user-defined coordinates. 
+
 \section{Goal completion}
 \section{Further work}
+\subsection{Front-end}
+\paragraph{GUI}
 
 \chapter{Evaluation}
 In this chapter, the group will give a thorough evaluation of the project, in respect to the groups own work and teamwork, the decisions made early in the project, time used, the subject and its organization, relations with the customer, and reflect on the team. 
@@ -1934,6 +1953,10 @@ Developing a solution to the customers problem has only been part of the overall
 \begin{flushleft}
 	\bibliography{report}
 \end{flushleft}
+
+\chapter{Licences}
+\paragraph{Octicons}
+The icon font (Octicons) used in the GUI are created by Github. The font itself is licensed under the SIL OFL license, and all other code is licensed under the MIT license. \footnote{url{https://github.com/github/octicons/blob/master/LICENSE.txt}}
 
 % Appendixes
 \appendix

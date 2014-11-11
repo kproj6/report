@@ -1693,7 +1693,7 @@ Because we had to display data from a source using PSP on a map using Web Mercat
 \chapter{Final product}
 \section{Description}
 \section{Back-end}
-\section{High level Architecture}
+\subsection{High level Architecture}
 The back-end is built as a single binary to ease deployment.
 We use an embeddable webserver library called Jetty in combination with a REST library called Jersey to handle requests.
 
@@ -1705,12 +1705,12 @@ We use an embeddable webserver library called Jetty in combination with a REST l
 \end{center}
 \end{figure}
 
-\subsubsection{REST API}
+\paragraph{REST API}
 When a request comes in, it's automatically routed to the correct Resource class. 
 We have a custom manager for the data files, called NetCdfManager. The Resource class talks to this manager to obtain the data requested by the user.
 The manager in turn, can talk to our Indexer to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
 The data array is then passed back to the Resource class, which formats it according to what the user wanted (typically as an image), and returns that as a response.
-\subsubsection{WMTS}
+\paragraph{WMTS}
 The Web Map Tile Service (WMTS) protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
 
 \begin{figure}[H]
@@ -1730,7 +1730,8 @@ Our WMTS implementation reuses a lot of the capabilities and infrastructure buil
 For the capabilities document, we query the same Index used by NetCdfManager to get info about the extent (bounding box) of the dataset.
 To get a specific tile, we compute the coordinates of the corners of the tile, and call the resource described above to retrieve an image.
 We then put this image in a cache so that subsequent queries for this tile takes less time.
-\subsubsection{Rendering the data}
+
+\subsection{Rendering data}
 The ImageRenderer class is responsible for turning the raw data into PNG images. An empty image is created and filled pixel by pixel from sampling the data. It can be used to create tiles for WMTS or images that can be used outside a map service.
 \paragraph{Inputs and Outputs}
 The data it takes as input is in a 2 dimensional array of numeric values. In addition to the data, it takes parameters to tell it if the resulting image should be square, even if the input data is not. The last parameter contains what feature (e.g. salinity) is to be rendered. The finished image in the form of a BufferedImage Java object, ready to be transmitted as a response to an end users request.

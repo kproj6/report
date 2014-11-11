@@ -1577,6 +1577,7 @@ The backlog reflects that a lot of tasks had to pushed in the last sprint, as we
 This sprint is focused towards solving the projection challenge. The team can not complete their solution unless this problem is solved. As there are multiple ideas to solving this, the group is optimistic that one of these will be successful. The biggest unknown in this sprint is the amount of time needed for the investigation of solutions. If one of the suggested solutions quickly proves to be efficient, other investigation work can be aborted, and work on the remaining tasks can resume. If not, the group faces using large parts of this sprint investigating different solutions.
 
 \section{Evaluation}
+\label{sec:Sprint4Evaluation}
 \paragraph{Customer meeting}
 The group was able to set up a meeting with SINTEF representatives at the end of the sprint. Our main contact was unable to meet us, but as both the representatives have been present in most of the meetings, this did not pose any problems. 
 
@@ -1623,8 +1624,7 @@ The items remaining in the backlog after the completion of sprint 4 are:
 	Choose correct file based on selected region and time \hfill \\
 	Handle overlapping areas (Blocked)
 \end{description}
-
-his sprint has, as sprint 4, been focused on fixing the projection challenge. The team has made more progress in this sprint than in sprint 3, but there is still a long way to go. Unfortunately, there is not much time left in the project, and finding a solution in the next sprint is critical. Without the projections, the team will not be able to present a working prototype. On the other hand, given that the problem is solved, the team will quite quickly have a prototype that is able to read from the NetCDF files. 
+This sprint has, as sprint 4, been focused on fixing the projection challenge. The team has made more progress in this sprint than in sprint 3, but there is still a long way to go. Unfortunately, there is not much time left in the project, and finding a solution in the next sprint is critical. Without the projections, the team will not be able to present a working prototype. On the other hand, given that the problem is solved, the team will quite quickly have a prototype that is able to read from the NetCDF files. 
 
 \chapter{Sprint 5}
 \paragraph{Sprint duration: 3/11-2014 until 10/11-2014} \hfill \\
@@ -1636,7 +1636,7 @@ This will be the penultimate sprint in the project. The group is currently in a 
 Until this point, one person has typically been assigned each sprint to work on the report. The exception has obviously been when finishing the pre-study, and the pre-delivery. For this sprint, team members are to start documenting those parts of the project they have been involved with. 
 
 \section{Sprint backlog}
-With the tasks carried over from the last sprint, this sprint backlog is a follows:
+With the tasks carried over from the last sprint, this sprint backlog is as follows:
 
 \begin{description}
 	\item[Front end] \hfill \\
@@ -1664,14 +1664,68 @@ The backlog has few added items for the technical side of the project. The group
 Sprint 5 focuses on finding a solution to the projection problem, using the proposed solutions from the last customer meeting. In addition, the group will have to finish outlining most of the report, and preferably finish writing as many sections as possible. The team has agreed to have a meeting with the customer in this sprint to be able to show their work to the main contact at SINTEF. In addition, there is hope that the teams experience with Proj.4 and FiMex can help start some useful discussions with the customer. With the combined knowledge of the team and customer, it might be easier to chose the right way forward. 
 
 \section{Evaluation}
+\label{sec:Sprint5Evaluation}
+\paragraph{Customer meeting}
+In this sprint, the group had their penultimate customer meeting. The teams progress and challenges were discussed. The group gave the customer a status report on the development, and recommended that the scope of development should be limited to the following:
 
+\begin{itemize}
+\item Basic map functionality
+\item Working projections
+\item Handling overlapping areas
+\end{itemize}
+
+The customer agreed that this would be a good limitation of the scope. For the functionality that can not be completed, the customer feels that there will be a lot of value in a description of this in the final report. Even though a full implementation would have been nice, the customer can benefit a lot from the groups research, and asks that as much information as possible is added to the final report. 
+
+The team and the customer had a discussion on different ways of solving the projection issue. At the moment, the group is testing two different solutions. One will mathematically convert the coordinates of the netCDF files to the correct projection as they are retrieved. The other will make a new netCDF file in the same projection as the map. Then, the system can use standard methods to get the information from the netCDF files. 
+
+The customer does not have any preferences on how this is solved. While doing a full conversion of the netCDF files might take some time, it will be an operation that has to be conducted only once. The customer will not have problems storing the converted files alongside the original files. 
+
+\paragraph{Converting netCDF files}
+The team has investigated the possibility of converting the entire netCDF file, instead of converting only the coordinates of the data being retrieved, as discussed in the last customer meeting (see section \ref{sec:Sprint4Evaluation}). This solution looks promising, and the team has now been able to use the library to convert a file. At the moment, it seems to convert the data correctly, but the new netCDF file is missing some headers. This could be the fault of the configuration file. If this is the case, and this can be easily fixed, then the system should be able to read correct data from a netCDF file very soon.
+
+\paragraph{Time logging}
+To be able to keep track of the time used, the team agreed early that every team member would log their own time usage throughout the project. In this sprint, that material has been collected, so it can be collated and used for the report. 
+
+It turns out that most team members have not done this logging on a regular basis, and have failed to register a lot of work effort. In addition to this, most team members have not logged time in relation to specific tasks, but rather whether the work was conducted in relation to meetings or implementation. This will make it difficult to give a correct picture of how much time has been used for different activities. Nonetheless, the group will attempt to find out how much time was used, and for what. For a more detailed discussion on time usage, see section \ref{subsec:TimeUsed}.
+
+\paragraph{Report writing}
+The final report is a large part of the basis on which the group will be evaluated. Due to the difficulties in implementing the projections correctly, there has been little time to focus on the report. This should now become a priority. The customer has made it clear that a well written report can be just as useful as a fully working product, and the group advisor has asked the group to focus on writing about features that can not be implemented on time. 
+
+\paragraph{Remaining backlog items}
+As this sprint has been mostly focused towards fixing the projection issues, not a lot of backlog items have been completed. Most of the work has been done investigating FiMex and Proj.4. A lot of reporting has been done, though most of the technical information is still lacking from the report. 
+
+After this sprint, the following items remain in the backlog:
+
+\begin{description}
+	\item[Front end] \hfill \\
+	Add color legend to user interface \hfill \\
+	Enable user to display data from chosen time (Blocked)
+	\item[Back end] \hfill \\
+	Investigate FiMex and Porj.4 \hfill \\
+	Handle projections \hfill \\
+	Scanning and indexing files \hfill \\
+	Implement WMTS protocol \hfill \\
+	Choose correct file based on selected region and time \hfill \\
+	Handle overlapping areas (Blocked)
+	\item[Reporting] \hfill \\
+	Add time usage to report
+\end{description}
 
 \chapter{Sprint 6}
 \paragraph{Sprint duration: 10/11-2014 until 17/11-2014} \hfill \\
 \\
 \noindent
+Sprint 6 will be the final sprint of the project. After almost three months, the project is coming to an end. In this sprint, the main focus will be finishing the report, as well as attempting to implement some last features to the solution. Hopefully, one of the investigated projection solutions can be implemented, so that the system is at least reading and displaying the data correctly.
 \section{Sprint planning}
+For the last sprint, the team will work mainly on the report. Every team member will be writing technical documentation on the implementations they have worked on. In addition to this, the time usage and final evaluations will be added to the report. At the end of this sprint, the report should be finished. This will give the team a day to proof read it before printing. 
+
+In addition to writing, some team members have gotten some time to try to implement the FiMex solution discussed in section \ref{sec:Sprint5Evaluation}. This will be the last attempt at getting the projections working. 
+
 \section{Sprint backlog}
+The sprint backlog for this sprint contains all remaining items from the last sprint. Most of this is implementation tasks, and they will only be done if the report is finished. A lot of backlog items have been added for reporting. 
+
+
+
 \section{Sprint overview}
 \section{Evaluation}
 

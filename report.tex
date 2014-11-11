@@ -1551,29 +1551,41 @@ This sprint will focus on getting the map projections working. This is critical 
 \section{Sprint planning}
 With the problems relating to projections, the team will use a lot of resources trying to solve this in the current sprint. We will also try to arrange a customer meeting this week, if the customer is back on his feet at some point during the week. The reporting work will be handled mostly by one person, as we need as much resources as possible to solve the projection challenges. 
 \section{Sprint backlog}
-Based on what was left from the last sprint, and the priorities of this sprint, the following sprint backlog was set:
+Based on what was left from the last sprint, and the priorities of this sprint, the sprint backlog for sprint 4 is reflected in table \ref{tab:Sprint4Backlog}.
 
-\begin{description}
-	\item[Front end] \hfill \\
-	Enable user to display data from chosen time (Blocked)
-	\item[Back end] \hfill \\
-	Handle projections \hfill \\
-	Find background map in polar stereographic projection \hfill \\ 
-	Investigate conversion from polar stereographic projection \hfill \\
-	Code refactor \hfill \\
-	Scanning and indexing files \hfill \\
-	Implement vector feature endpoints \hfill \\
-	Implement WMTS protocol \hfill \\
-	Choose correct file based on selected region and time \hfill \\
-	Handle overlapping areas (Blocked) \hfill \\
-	\item[Reporting] \hfill \\
-	Write sprint 1 \hfill \\
-	Write sprint 2 \hfill \\
-	Write sprint 3 \hfill \\
-	Write weekly documents for advisor meeting
-\end{description}
+\begin{table}[h]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llll}
+\hline
+Task                                                                                                 & \begin{tabular}[c]{@{}l@{}}Estimated\\ remaining hours\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual\\ hours\end{tabular} & Assigned to         \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front end}}                                                                                                                                                                                            \\
+Enable user to display data from chosen time                                                         & -                                                                   & 3                                                      & Anders              \\
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back end}}                                                                                                                                                                                             \\
+\begin{tabular}[c]{@{}l@{}}Find background map in \\ polar stereographic projection\end{tabular}     & -                                                                   & -                                                      & Anders              \\
+\begin{tabular}[c]{@{}l@{}}Investigate conversion from\\ polar stereographic projection\end{tabular} & -                                                                   & -                                                      & Emil                \\
+Code refactor                                                                                        & 4                                                                   & -                                                      & Arve                \\
+Scanning and indexing files                                                                          & 25                                                                  & 6,5                                                    & Emil                \\
+Implement vector feature endpoint                                                                    & 5                                                                   & -                                                      & Ondrej              \\
+Implement WMTS protocol                                                                              & 35                                                                  & 18                                                     & Arve                \\
+\begin{tabular}[c]{@{}l@{}}Choose correct fiels based on \\ selected region and time\end{tabular}    & 20                                                                  & 5                                                      & Emil                \\
+Handle overlapping areas (Blocked)                                                                   & 30                                                                  & 2                                                      & Arve, Ondrej        \\
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}{\color[HTML]{333333} \textbf{Reporting}}}                                                                                                                                                                     \\
+Write sprint 1                                                                                       & 3                                                                   & 4                                                      & Hans Kristian       \\
+Wirte sprint 2                                                                                       & 3                                                                   & 4                                                      & Hans Kristian       \\
+Write sprint 3                                                                                       & 3                                                                   & 4                                                      & Hans Kristian       \\
+Write weekly documents for advisor meeting                                                           & 3                                                                   & 2                                                      & Hans Kristian, Emil \\
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Total}                                                                                       & 131                                                                 & 48,5                                                   &                    
+\end{tabular}
+}
+\caption{Sprint 4 backlog}
+\label{tab:Sprint4Backlog}
+\end{table}
 
-The backlog reflects that a lot of tasks had to pushed in the last sprint, as well as the addition of new tasks to find a solution to the projection challenges. 
+The backlog reflects that a lot of tasks had to pushed in the last sprint, as well as the addition of new tasks to find a solution to the projection challenges. The estimates and actual hours are not complete in the backlog table. For a discussion on this, see section \ref{sec:Sprint4Evaluation}.
 
 \section{Sprint overview}
 This sprint is focused towards solving the projection challenge. The team can not complete their solution unless this problem is solved. As there are multiple ideas to solving this, the group is optimistic that one of these will be successful. The biggest unknown in this sprint is the amount of time needed for the investigation of solutions. If one of the suggested solutions quickly proves to be efficient, other investigation work can be aborted, and work on the remaining tasks can resume. If not, the group faces using large parts of this sprint investigating different solutions.
@@ -1612,6 +1624,8 @@ The user interface has been improved in accordance with the input given by the c
 \end{center}
 \end{figure}
 
+\paragraph{Estimations and time usage}
+The team had until this point not focused enough on time estimations and time logging. This is reflected in table \ref{tab:Sprint4Backlog} which is not complete. This is due to the fact that not all sprint items where estimated, and that not all team members did detailed time logging. Thus, the given hours spent does not reflect actual time usage. For a further discussion on the time usage in the project, see section \ref{subsec:TimeUsed}.
 
 \paragraph{Remaining backlog items}
 The items remaining in the backlog after the completion of sprint 4 are:
@@ -1638,27 +1652,39 @@ This will be the penultimate sprint in the project. The group is currently in a 
 Until this point, one person has typically been assigned each sprint to work on the report. The exception has obviously been when finishing the pre-study, and the pre-delivery. For this sprint, team members are to start documenting those parts of the project they have been involved with. 
 
 \section{Sprint backlog}
-With the tasks carried over from the last sprint, this sprint backlog is as follows:
+With the tasks carried over from the last sprint, this sprint backlog is as shown in table \ref{tab:Sprint5Backlog}.
 
-\begin{description}
-	\item[Front end] \hfill \\
-	Add color legend to user interface \hfill \\
-	Enable user to display data from chosen time (Blocked)
-	\item[Back end] \hfill \\
-	Investigate FiMex and Porj.4 \hfill \\
-	Handle projections \hfill \\
-	Scanning and indexing files \hfill \\
-	Implement WMTS protocol \hfill \\
-	Choose correct file based on selected region and time \hfill \\
-	Handle overlapping areas (Blocked)
-	\item[Reporting] \hfill \\
-	Write sprint 4 \hfill \\
-	Write sprint 5 \hfill \\
-	Add time usage to report \hfill \\
-	Start final evaluation chapter \hfill \\
-	Outline technical documentation \hfill \\
-	Write weekly documents for advisor meeting
-\end{description}
+\begin{table}[h]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llll}
+\hline
+Task                                                  & \begin{tabular}[c]{@{}l@{}}Estimated\\ remaining hours\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual\\ hours\end{tabular} & Assigned to   \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front end}}                                                                                                                                       \\
+Add color legend to user interface                    & 5                                                                   &                                                        & Anders        \\
+Enable user to display data from chosen time          & 10                                                                  & 7                                                      & Anders, Marco \\
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back end}}                                                                                                                                        \\
+Investigate FiMex and Porj.4                          & 14                                                                  & 27,5                                                   & Marco, Ruben  \\
+Scanning and indexing files                           & 20                                                                  & 1                                                      & Emil          \\
+Implement WMTS protocol                               & 15                                                                  & 21                                                     & Arve          \\
+Choose correct file based on selected region and time & 10                                                                  & 1                                                      & Emil          \\
+Handle overlapping areas                              & 10                                                                  & 1,5                                                    & Arve, Ondrej  \\
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Reporting}}                                                                                                                                       \\
+Add time usage to report                              & 10                                                                  & 1                                                      & Hans Kristian \\
+Wirte sprint 5                                        & 3                                                                   & 4                                                      & Hans Kristian \\
+Write sprint 6                                        & 3                                                                   & 2,5                                                    & Hans Kristian \\
+Start final evaluation chapter                        & 10                                                                  & 10,5                                                   & Hans Kristian \\
+Outline technical documentation                       & 15                                                                  & 5                                                      & Everyone      \\
+Write weekly documents for advisor meeting            & 3                                                                   & 1,5                                                    & Hans Kristian \\
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Total}                                        & 128                                                                 & 83,5                                                   &              
+\end{tabular}
+}
+\caption{Sprint 5 backlog}
+\label{tab:Sprint5Backlog}
+\end{table}
 
 The backlog has few added items for the technical side of the project. The group sees no reason to add more than necessary at this point of the project. If the projection issues are solved, there is still plenty work remaining in the sprint to keep group members busy. The reporting part of the backlog is increasing in size as the project nears the end. This is to be expected, as more and more work is now finishing, and there is thus more to write about. 
 

@@ -1819,13 +1819,32 @@ Total                                                  & 174                    
 \section{WMTS}
 \section{Indexing}
 \section{Projections}
-To create a flat map of the Earth puts you in a position where you have to streatch the surface of the Earth to make it fit on a flat surface. 
-Whether you treat the earth as a sphere or as a spheroid, you must transform its three-dimensional surface to create a flat map sheet. This mathematical transformation is commonly referred to as a map projection. A map projection uses mathematical formulas to relate spherical coordinates on the globe to flat, planar coordinates. Different projections cause different types of distortions. Some projections are designed to minimize the distortion of one or two of the data’s characteristics. A projection could maintain the area of a feature but alter its shape \cite{mapProjections}.
+There is a fundamental problem with representing a curved surface such as the surface of the Earth, on a flat cartesian grid.
+Since the Earth is a sphere, any map application will have to take this into consideration.  
+
+In order to transform a curved surface into a flat surfhace, you need to do a mathematical projection of the curved surface onto a cartesian grid.
+This process unavoidably results in a distorted result. Several different projections exsist, and some are more common or popular than others.
+Some projections preserve the relative area of landmasses, while distorting shapes. Other projections preserves shapes, but distorts the relative size of areas. The distortion is more prominent at the extremes of the projected map.
+
+\cite{mapProjections}.
 
 \subsection{Different projections}
-OpenLayers include two projection definitions, World Geodetic System (EPSG:4326) and Web Mercator (EPSG:3857). World Geodetic System is a standard used for cartography and navigation and Web Mercator has been popularized by web apps such as Google Maps. The problem with these projections is that landmasses near the poles appear much bigger than they in fact are.
+OpenLayers include two projection definitions, \textit{World Geodetic System} (EPSG:4326) and \textit{Web Mercator} (EPSG:3857). World Geodetic System is a standard used for cartography and navigation and Web Mercator has been popularized by web apps such as Google Maps. The problem with these projections is that landmasses near the poles appear much bigger than they in fact are.
 This is the reason Sintef chose to use the Ploar Stereographic projection (PSP) which preserves angles, resulting in more scurate sizes of the landmasses and thus is more suited for navigation.
-Because we had to display data from a source using PSP on a map using Web Mercator we had to convert the data in order to make i fit on the map. This proved to be a non-trivial task.
+Because we had to display data from a source using PSP on top of a background map using Web Mercator we had to reproject the data in order to make it fit on the map. This proved to be a non-trivial task.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{img/polar_stereographic_projection.jpg}
+	\caption{Polar stereographic projection, centered on the North pole.}
+    \label{fig:PSP}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \includegraphics[width=\textwidth]{img/mercator_projection.jpg}
+    \caption{Mercator Projection}
+    \label{fig:mercator}
+  \end{subfigure}
+\end{figure}
 
 \subsection{Attempted solutions}
 \subsection{Chosen solution}

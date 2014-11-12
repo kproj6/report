@@ -13,9 +13,15 @@
 \usepackage{longtable}
 \usepackage{amsmath}
 \usepackage{pdfpages}
+\usepackage[acronym,numberedsection=autolabel]{glossaries}
+\makeglossaries
 
+\newacronym{netcdf}{netCDF}{NETwork Common Data Form}
+\newglossaryentry{pre-study}{name=pre-study, description={is a document produced before the implementation phase, which informs the customer of possible solutions to their problem}}
 
 \begin{document}
+
+
 
 % Title page %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{titlepage}
@@ -139,7 +145,7 @@ The client, SINTEF Fisheries and Aquaculture, has given us the project labeled "
 In agreement with the customer, the group has defined the following scope of the assignment:
 
 \begin{quote}
-Make a pre-study that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualizations on a web page. Follow the study with an implementation of a proof of concept system that is able to read from a collection of NetCDF-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEFs systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
+Make a \gls{pre-study} that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualizations on a web page. Follow the study with an implementation of a proof of concept system that is able to read from a collection of \gls{netcdf}-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEFs systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
 \end{quote}
 
 \section{Group resources}
@@ -180,7 +186,7 @@ The stakeholders of this project are the following:
 \end{description}
 
 \section{Background for the project: software system development}
-The customer owns a working solution, running on its own servers, for the delivery and analysis of  tracked and predicted marine data. The data is stored in a special format, NetCDF, designed to be self-describing, scalable and appendable \cite{netCDF:factsheet}.
+The customer owns a working solution, running on its own servers, for the delivery and analysis of  tracked and predicted marine data. The data is stored in a special format, \gls{netcdf}, designed to be self-describing, scalable and appendable \cite{netCDF:factsheet}.
 The background for this project is to optimize the current, slow and memory-consuming solution. In the project description, the customer asks the group to either develop a new back end system, or produce a new front end for the current system. 
 
 \section{Measurement of project effects}
@@ -568,7 +574,7 @@ SINTEFs main goal with this project is to be able to rid themselves of the PDF s
 SINTEF has presented the group with several goals they wish the new system to fulfill:
 
 \begin{itemize}
-\item The system should generate the graphs and maps directly from the NetCDF files on user request.
+\item The system should generate the graphs and maps directly from the \gls{netcdf} files on user request.
 \item The user should be able to select several variables for one plot.
 \item The system should be usable on low bandwidth connections.
 \item The system should be usable on mobile devices.
@@ -616,14 +622,14 @@ This solution presents the user with a conventional map interface. On the sides 
 \section{Back-end}
 
 \subsection{GeoServer}
-Does not support NetCDF natively. There exist a community plugin that enables you to read from NetCDF files, but the support seems very shifty. GeoServer does not seem to have support for more than one file and metadata appears difficult to extract. Due to this factors, the system was deemed to not to meet the needed criteria.
+Does not support \gls{netcdf} natively. There exist a community plugin that enables you to read from \gls{netcdf} files, but the support seems very shifty. GeoServer does not seem to have support for more than one file and metadata appears difficult to extract. Due to this factors, the system was deemed to not to meet the needed criteria.
 
 \subsection{THREDDS}
 \begin{quote}
 The THREDDS\footnote{\textbf{Th}ematic \textbf{R}ealtime \textbf{E}nvironmental \textbf{D}istributed \textbf{D}ata \textbf{S}ervices} Data Server (TDS) is a web server that provides metadata and data access for scientific datasets, using OPeNDAP, OGC WMS and WCS, HTTP, and other remote data access protocols. \cite{TDS:Web}
 \end{quote}
 
-  Except supporting multiple data access protocols, TDS is able to virtually aggregate multiple NetCDF files to one dataset that can be used for queries, such as selecting a region and sending it's data in specified format. Dataset configurations are done via NcML\footnote{\textbf{N}et\textbf{C}DF \textbf{M}arkup \textbf{L}anguage}, which is a dialect of XML.
+  Except supporting multiple data access protocols, TDS is able to virtually aggregate multiple \gls{netcdf} files to one dataset that can be used for queries, such as selecting a region and sending it's data in specified format. Dataset configurations are done via NcML\footnote{\textbf{N}et\textbf{C}DF \textbf{M}arkup \textbf{L}anguage}, which is a dialect of XML.
 
   Although TDS seems to support everything that is needed for this project, it's installation, and especially configuration for agreggation and special needs, is not trivial. Moreover there are doubts about speed and dealing with serving a range containing large quantified points. One advantage is that SINTEF currently have a TDS running and configured, so we won't need to configure it from scratch, and SINTEF employees probably have experience and knowledge about setting it up, something which the group lacks.
 
@@ -655,13 +661,13 @@ The THREDDS\footnote{\textbf{Th}ematic \textbf{R}ealtime \textbf{E}nvironmental 
   
     \subsection{ncWMS}
   \emph{Link: \url{http://www.resc.rdg.ac.uk/trac/ncWMS/}} \\%make sure to use //
-    ncWMS is an open source, free to use, java server application. It was created to support interactive browsing of gridded four-dimensional netCDF data over the web. Clients will send request containing the wanted coordinates (latitudes, longitudes, depth and time), what variable is to be displayed, projection, format and size the response should be. ncWMS, which has been configured to read from datasets (for example sets of netCDF files or a THREDDS server), responds to a request with an image of the desired type. ncWMS adheres to the WMS specification (WMS 1.3.0 and 1.1.1 are supported).
+    ncWMS is an open source, free to use, java server application. It was created to support interactive browsing of gridded four-dimensional \gls{netcdf} data over the web. Clients will send request containing the wanted coordinates (latitudes, longitudes, depth and time), what variable is to be displayed, projection, format and size the response should be. ncWMS, which has been configured to read from datasets (for example sets of \gls{netcdf} files or a THREDDS server), responds to a request with an image of the desired type. ncWMS adheres to the WMS specification (WMS 1.3.0 and 1.1.1 are supported).
     \paragraph{Configuration}
-    ncWMS is mainly configured through a web interface, where you can add datasets and change server settings. A dataset can be: a single netCDF file, an OPeNDAP endpoint (a service provided by THREDDS), a NcML file or a glob aggregation (using wildcard characters like ). It is possible to configure which variables of a dataset to expose and how. Each dataset can also be set to automatically refresh at certain intervals. The server can be set to cache data, to reduce cpu load at the expense of memory and disk space.
+    ncWMS is mainly configured through a web interface, where you can add datasets and change server settings. A dataset can be: a single \gls{netcdf} file, an OPeNDAP endpoint (a service provided by THREDDS), a NcML file or a glob aggregation (using wildcard characters like ). It is possible to configure which variables of a dataset to expose and how. Each dataset can also be set to automatically refresh at certain intervals. The server can be set to cache data, to reduce cpu load at the expense of memory and disk space.
     \paragraph{Aggregation}
     The glob aggregation or NcML work well with files that cover the same area, but contain different timesteps. To handle different areas and different resolutions it may be possible to use THREDDS/OPenDAP or NcML.
     \paragraph{Perfomance}
-    Testing both local and publicly available ncWMS servers the performance seems good. When using the godiva2 browser based client or sending individual requests the server mostly responds quickly, with some idiopathic exceptions. Transmitting the map data to the client as png images should be a bandwidth-efficient way to do it, as well as moving the computation load away from the client. When starting the server application or adding a dataset, the server needs some time to load some information from the datasets. This only takes a few seconds, even for a few hundred GB of local netCDF files.
+    Testing both local and publicly available ncWMS servers the performance seems good. When using the godiva2 browser based client or sending individual requests the server mostly responds quickly, with some idiopathic exceptions. Transmitting the map data to the client as png images should be a bandwidth-efficient way to do it, as well as moving the computation load away from the client. When starting the server application or adding a dataset, the server needs some time to load some information from the datasets. This only takes a few seconds, even for a few hundred GB of local \gls{netcdf} files.
     \paragraph{Summary}
     ncWMS does a lot of what we need the back-end of our solution to do. It handles the extraction, downsampling and projection of the data, creating an image ready to be used in a map widget or on it's own. It can only handle requests for a few kinds of plots. It is open source, and is free to use under a modified BSD license. To serve all the plots and data required it would need modification.
   \\ \emph{Overall rating: \textbf{Good}}
@@ -834,7 +840,7 @@ As the group has looked into the situation at SINTEF, as well as other solutions
 With this in mind, the group feels that the only realistic solution for the front-end is to develop a custom system from scratch.
 
 \subsection{Back-end}
-For the back-end, the group is divided in its recommendation. From our investigation into different technologies, it seems like THREDDS is a solution that is generally implemented for working with NetCDF files. Advantages of using this is that there exists documentation, maintenance, and updates. The group has had trouble configuring THREDDS, and has also gotten the impression that SINTEF is not perfectly satisfied with its performance. 
+For the back-end, the group is divided in its recommendation. From our investigation into different technologies, it seems like THREDDS is a solution that is generally implemented for working with \gls{netcdf} files. Advantages of using this is that there exists documentation, maintenance, and updates. The group has had trouble configuring THREDDS, and has also gotten the impression that SINTEF is not perfectly satisfied with its performance. 
 
 The group feels confident that a custom back-end prototype can be made, and that it will be able to meet the requirements. This will give the customer more flexibility in functionality and expandability, but will obviously not be as complete or well supported as THREDDS.
 
@@ -944,7 +950,7 @@ We have decided to have detailed documentation on our functional requirements, a
   
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given one or more NetCDF files in the storage \\ 
+        Given one or more \gls{netcdf} files in the storage \\ 
         When a request for an area arrives \\ 
         Then the back-end will return the correct files}
   \end{itemize}
@@ -953,7 +959,7 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 1.2 & The back-end must be able to find the correct files for a given time 
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given one or more NetCDF files in the storage \\ 
+        Given one or more \gls{netcdf} files in the storage \\ 
         When a request for a time is given \\ 
         Then the back-end will return the correct files}
   \end{itemize}
@@ -962,9 +968,9 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 1.3 & The back-end must be able to find the correct data from a given file 
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a NetCDF file \\ 
+        Given a \gls{netcdf} file \\ 
         When a request of specific parameters arrives \\ 
-        Then the back-end will return the relevant dataset from the NetCDF file}
+        Then the back-end will return the relevant dataset from the \gls{netcdf} file}
   \end{itemize}
   & 97 & 8h \\ \hline
 
@@ -980,7 +986,7 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 1.5 & The back-end must be able to handle overlapping areas and give back correct data
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a set of NetCDF files in store \\
+        Given a set of \gls{netcdf} files in store \\
         When a request for an area that is covered by multiple files arrives \\
         Then the back-end should return a single data set with the correct data from all relevant files}
   \end{itemize}
@@ -989,9 +995,9 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 1.6 & The back-end must be able to find the most up to date data
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given multiple NetCDF files overlapping in time \\
+        Given multiple \gls{netcdf} files overlapping in time \\
         When a time in this overlap is requested \\
-        Then the data from the most up to date NetCDF file should be used}
+        Then the data from the most up to date \gls{netcdf} file should be used}
   \end{itemize}
   & 48 & 6h \\ \hline
 
@@ -1012,7 +1018,7 @@ We have decided to have detailed documentation on our functional requirements, a
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a back-end with cached results \\
-        When a more up to date NetCDF file is added to the system and request arrives \\
+        When a more up to date \gls{netcdf} file is added to the system and request arrives \\
         Then the back-end must calculate new results instead of using the now out of date cached results}
   \end{itemize}
   & 46 & 12h \\ \hline
@@ -1030,7 +1036,7 @@ We have decided to have detailed documentation on our functional requirements, a
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a system with an existing set of files \\
-        When an administrator wants to add new NetCDF files \\
+        When an administrator wants to add new \gls{netcdf} files \\
         Then the back-end should be able to add these to the set of existing files without recompiling}
   \end{itemize}
   & 44 & 6h \\ \hline
@@ -1039,7 +1045,7 @@ We have decided to have detailed documentation on our functional requirements, a
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a system with an existing set of files \\
-        When an administrator has added new NetCDF files \\
+        When an administrator has added new \gls{netcdf} files \\
         Then the back-end should be able to process these files and make them usable together with the existing set of files without further action from the administrator}
   \end{itemize}
   & 43 & 10h \\ \hline
@@ -1047,9 +1053,9 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 1.12 & The back-end should be able to provide correct projections of point data
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a system of NetCDF files \\
+        Given a system of \gls{netcdf} files \\
         When a point is specified in world coordinates \\
-        Then the back-end should be able to correctly project this onto coordinates of the NetCDF files}
+        Then the back-end should be able to correctly project this onto coordinates of the \gls{netcdf} files}
   \end{itemize}
   & 42 & 20h \\ \hline
 
@@ -1304,9 +1310,9 @@ At our first two meetings with SINTEF we were introduced to how they currently p
 
 \paragraph{Agreeing on the scope of our work}
 After some discussion in the group and clarifications from SINTEF, we wrote a suggestion for the scope of our task: 
-\begin{quote} Make a pre-study that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualisations on a web page. Follow the study with an implementation of a proof of concept system that is able to read a netCDF-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEFs systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
+\begin{quote} Make a pre-study that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualisations on a web page. Follow the study with an implementation of a proof of concept system that is able to read a \gls{netcdf}-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEFs systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
 \end{quote}
-Our contact at SINTEF accepted this with one change, that the system should be able to read from a collection of netCDF files. The group agreed to this change.
+Our contact at SINTEF accepted this with one change, that the system should be able to read from a collection of \gls{netcdf} files. The group agreed to this change.
 
 \section{Group organization}
 \paragraph{Workflow}
@@ -1344,7 +1350,7 @@ To gain a better perspective on what the customer wanted, we documented what SIN
 In order to better understand what a modern system similar to what SINTEF wants might look like we investigated online solutions in production around the world. This also gave some insight into what technologies are most commonly used. Prompting us to look into whether these technologies could be used in our project as well.
 
 \paragraph{Back end technologies}
-The back end part of the group looked into and tested several technologies that might be useful. One of the largest problems was finding some technology to handle the aggregation of the different gridsizes in SINTEFs datasets. Our investigations revealed that no existing technology would cover our needs, at least without extensive modification. Other problems included limited support for netCDF and difficulty configuring the programs. We created some prototypes to learn more about how difficult a custom solution from scratch might be, and its performance.
+The back end part of the group looked into and tested several technologies that might be useful. One of the largest problems was finding some technology to handle the aggregation of the different gridsizes in SINTEFs datasets. Our investigations revealed that no existing technology would cover our needs, at least without extensive modification. Other problems included limited support for \gls{netcdf} and difficulty configuring the programs. We created some prototypes to learn more about how difficult a custom solution from scratch might be, and its performance.
 
 \paragraph{Front end technologies}
 Several technologies were available for presenting map data to the user. We looked into rendering the data client-side. This proved inefficient, and together with observations of other production solutions using png-tiles we decided to look more into that instead. Some testing revealed OpenLayers to be the best candidate for handling the dynamic map presentation of data.
@@ -1356,7 +1362,7 @@ In internal discussions the group found it best to present SINTEF not with one r
 \section{Other}
 
 \paragraph{Proof of concept back end}
-Early on we knew we there was a possibility of having to create or modify code accessing and serving the data from netCDF files. In order to learn about the performance and effort involved we created some prototypes in Java. We were quickly able to extract data from the netCDF files, serving them as JSON via REST or creating images.
+Early on we knew we there was a possibility of having to create or modify code accessing and serving the data from \gls{netcdf} files. In order to learn about the performance and effort involved we created some prototypes in Java. We were quickly able to extract data from the \gls{netcdf} files, serving them as JSON via REST or creating images.
 
 
 \chapter{Sprint 1}
@@ -1444,7 +1450,7 @@ We have chosen to use the quite vague goal of the customer as the only task for 
 The sprints focus was split in two, with most of the group working on the implementation, as to be able to demo for the customer next week. The other part of the group focused on the pre-delivery. This separation of responsibility was done with the goal of being able to work in parallel with two important tasks that both had to finished this sprint. By dividing the group into smaller sub-groups, the tasks are perceived to be the responsibility of fewer people, and the team members are more likely to step up and go the extra mile when needed. 
 
 \section{Evaluation}
-The most important part of this sprint was to be able to hand of the pre-delivery on time. This was done, and the group is happy with the result. All required parts of the pre-delivery was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the WMTS protocol. The back end is able to read a single NetCDF file, and output an image that is transferred to the front end, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
+The most important part of this sprint was to be able to hand of the pre-delivery on time. This was done, and the group is happy with the result. All required parts of the pre-delivery was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the WMTS protocol. The back end is able to read a single \gls{netcdf} file, and output an image that is transferred to the front end, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
 
 \begin{figure}[h]
 \begin{center}
@@ -1514,11 +1520,11 @@ During this sprint, the group was supposed to have their first demo for the cust
 Another consequence of the customer being ill and unable to meet the group, is that the backlog can not be reprioritized by the customer. It is normal for the customer to be able to make changes in the priorities in the backlog after each sprint. As the group has chosen to demo for the customer only after every other sprint, the goal was for the customer to do reprioritization after each demo. The group had to make assumptions on the customers wishes and needs to continue their work. This is not ideal, as the group may not have enough information to make these decisions, but it is better than stalling work completely. 
 
 \paragraph{Projections}
-During the work on the back end, the group has encountered quite a major problem. The problem pertains to map projections, and making the data in the NetCDF files compatible with the map we are using on the web page. Currently, the data in the NetCDF files are in the polar stereographic projection, while the map used on the page can not be set to this projection. The team is currently looking into several ways of fixing this:
+During the work on the back end, the group has encountered quite a major problem. The problem pertains to map projections, and making the data in the \gls{netcdf} files compatible with the map we are using on the web page. Currently, the data in the \gls{netcdf} files are in the polar stereographic projection, while the map used on the page can not be set to this projection. The team is currently looking into several ways of fixing this:
 
 \begin{description}
 \item[Conversion of coordinates] It is possible to convert coordinates between different projections. This will require both a conversion factor, as well as interpolation of data. It is no trivial task, but there are well known methods for this. The main drawback for this solution is that it will be time consuming. 
-\item[Conversion of NetCDF] If the entire NetCDF file is converted into the projection of the map, the problem will be solved. This will require either a program that is capable of doing the conversion, or writing such a tool from scratch. The latter seems unrealistic at this stage in the project.
+\item[Conversion of \gls{netcdf}] If the entire \gls{netcdf} file is converted into the projection of the map, the problem will be solved. This will require either a program that is capable of doing the conversion, or writing such a tool from scratch. The latter seems unrealistic at this stage in the project.
 \item[Replace map] The easiest solution to the problem is probably to replace the map used on the web page with a map in the correct projection. The group has already made attempts at finding a map with the correct projection, but so far this has not been successful.
 \end{description}
 
@@ -1598,8 +1604,8 @@ In the meeting, the customer gave useful feedback on the design decisions made f
 
 The customer was informed that the group has hit a problem with the different projections. The customer gave some additional insight into the projections used by SINTEF. This is quite a rare projection, as it is not a standard polar stereographic projection, and the customer does not think that finding a corresponding map will be likely. The customer gave three suggestions on how to handle this:
 \begin{itemize}
-\item \textbf{Pixel by pixel sampling} This solution would require the extraction of a single point at the time from the NetCDF file. This way, retrieving the data for an area might result in thousands of operations. This might be a quite slow solution, but it will probably be quite easy to implement.
-\item \textbf{Convert NetCDF file to new projection} Using a library by the Norwegian Meteorological Institute called FiMex, it might be possible to convert the entire NetCDF file to the correct projection. 
+\item \textbf{Pixel by pixel sampling} This solution would require the extraction of a single point at the time from the \gls{netcdf} file. This way, retrieving the data for an area might result in thousands of operations. This might be a quite slow solution, but it will probably be quite easy to implement.
+\item \textbf{Convert \gls{netcdf} file to new projection} Using a library by the Norwegian Meteorological Institute called FiMex, it might be possible to convert the entire \gls{netcdf} file to the correct projection. 
 \item \textbf{Area conversion with Proj.4} Using a library called Proj.4, the customer thinks it might be possible to convert a specific area to the correct projection. This will have to be investigated by the group.
 \end{itemize}
 
@@ -1639,7 +1645,7 @@ The items remaining in the backlog after the completion of sprint 4 are:
 	Choose correct file based on selected region and time \hfill \\
 	Handle overlapping areas (Blocked)
 \end{description}
-This sprint has, as sprint 4, been focused on fixing the projection challenge. The team has made more progress in this sprint than in sprint 3, but there is still a long way to go. Unfortunately, there is not much time left in the project, and finding a solution in the next sprint is critical. Without the projections, the team will not be able to present a working prototype. On the other hand, given that the problem is solved, the team will quite quickly have a prototype that is able to read from the NetCDF files. 
+This sprint has, as sprint 4, been focused on fixing the projection challenge. The team has made more progress in this sprint than in sprint 3, but there is still a long way to go. Unfortunately, there is not much time left in the project, and finding a solution in the next sprint is critical. Without the projections, the team will not be able to present a working prototype. On the other hand, given that the problem is solved, the team will quite quickly have a prototype that is able to read from the \gls{netcdf} files. 
 
 \chapter{Sprint 5}
 \paragraph{Sprint duration: 3/11-2014 until 10/11-2014} \hfill \\
@@ -1704,12 +1710,12 @@ In this sprint, the group had their penultimate customer meeting. The teams prog
 
 The customer agreed that this would be a good limitation of the scope. For the functionality that can not be completed, the customer feels that there will be a lot of value in a description of this in the final report. Even though a full implementation would have been nice, the customer can benefit a lot from the groups research, and asks that as much information as possible is added to the final report. 
 
-The team and the customer had a discussion on different ways of solving the projection issue. At the moment, the group is testing two different solutions. One will mathematically convert the coordinates of the netCDF files to the correct projection as they are retrieved. The other will make a new netCDF file in the same projection as the map. Then, the system can use standard methods to get the information from the netCDF files. 
+The team and the customer had a discussion on different ways of solving the projection issue. At the moment, the group is testing two different solutions. One will mathematically convert the coordinates of the \gls{netcdf} files to the correct projection as they are retrieved. The other will make a new \gls{netcdf} file in the same projection as the map. Then, the system can use standard methods to get the information from the \gls{netcdf} files. 
 
-The customer does not have any preferences on how this is solved. While doing a full conversion of the netCDF files might take some time, it will be an operation that has to be conducted only once. The customer will not have problems storing the converted files alongside the original files. 
+The customer does not have any preferences on how this is solved. While doing a full conversion of the \gls{netcdf} files might take some time, it will be an operation that has to be conducted only once. The customer will not have problems storing the converted files alongside the original files. 
 
 \paragraph{Converting netCDF files}
-The team has investigated the possibility of converting the entire netCDF file, instead of converting only the coordinates of the data being retrieved, as discussed in the last customer meeting (see section \ref{sec:Sprint4Evaluation}). This solution looks promising, and the team has now been able to use the library to convert a file. At the moment, it seems to convert the data correctly, but the new netCDF file is missing some headers. This could be the fault of the configuration file. If this is the case, and this can be easily fixed, then the system should be able to read correct data from a netCDF file very soon.
+The team has investigated the possibility of converting the entire \gls{netcdf} file, instead of converting only the coordinates of the data being retrieved, as discussed in the last customer meeting (see section \ref{sec:Sprint4Evaluation}). This solution looks promising, and the team has now been able to use the library to convert a file. At the moment, it seems to convert the data correctly, but the new \gls{netcdf} file is missing some headers. This could be the fault of the configuration file. If this is the case, and this can be easily fixed, then the system should be able to read correct data from a \gls{netcdf} file very soon.
 
 \paragraph{Time logging}
 To be able to keep track of the time used, the team agreed early that every team member would log their own time usage throughout the project. In this sprint, that material has been collected, so it can be collated and used for the report. 
@@ -1782,7 +1788,7 @@ Write about base system                                & 2                      
 Write deploy guide (Appendix)                          & 3                                                                   &                                                         & Arve, Marco, Emil          \\
 Write API-documentation - WMTS (Appendix)              & 2                                                                   &                                                         & Arve                       \\
 Write API-documentation - Other (Appendix)             & 2                                                                   &                                                         & Ondrej                     \\
-Write about netCDF manager                             & 3                                                                   &                                                         & Ondrej                     \\
+Write about \gls{netcdf} manager                             & 3                                                                   &                                                         & Ondrej                     \\
 Write about indexing (Challenges)                      & 3                                                                   &                                                         & Emil                       \\
 Wirte about indexing (Final product)                   & 8                                                                   &                                                         & Emil                       \\
 Write gloassary appendix                               & 2                                                                   &                                                         & Hans Kristian              \\
@@ -1841,7 +1847,7 @@ We use an embeddable webserver library called Jetty in combination with a REST l
 
 \paragraph{REST API}
 When a request comes in, it's automatically routed to the correct Resource class. 
-We have a custom manager for the data files, called NetCdfManager. The Resource class talks to this manager to obtain the data requested by the user.
+We have a custom manager for the data files, called \gls{netcdf}-Manager. The Resource class talks to this manager to obtain the data requested by the user.
 The manager in turn, can talk to our Indexer to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
 The data array is then passed back to the Resource class, which formats it according to what the user wanted (typically as an image), and returns that as a response.
 \paragraph{WMTS}
@@ -1861,7 +1867,7 @@ A tile matrix is a flat grid of tiles (square images) with a given top-left coor
 A client can then request a specific tile at position (x,y) from a given tile matrix, and then by the definition given in the capabilities document it can place the image at the correct position on its map.  
 
 Our WMTS implementation reuses a lot of the capabilities and infrastructure built for the REST API:  
-For the capabilities document, we query the same Index used by NetCdfManager to get info about the extent (bounding box) of the dataset.
+For the capabilities document, we query the same Index used by \gls{netcdf}-Manager to get info about the extent (bounding box) of the dataset.
 To get a specific tile, we compute the coordinates of the corners of the tile, and call the resource described above to retrieve an image.
 We then put this image in a cache so that subsequent queries for this tile takes less time.
 
@@ -2130,11 +2136,8 @@ The icon font (Octicons) used in the GUI are created by Github. The font itself 
 
 % Appendixes
 \appendix
-
-\chapter{Abbreviations}
-
-\chapter{Glossary}
-
+\printglossary[type=\acronymtype]
+\printglossary
 \chapter{API Documentation}
 
 \chapter{Deploy guide}

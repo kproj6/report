@@ -1818,7 +1818,9 @@ Total                                                  & 174                    
 \chapter{Challenges}
 \section{WMTS}
 The Web Map Tile Service (WMTS) protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
-
+A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
+A client can then request a specific tile at position (x,y) from a given tile matrix, and then by the definition given in the capabilities document it can place the image at the correct position on its map.  
+The major challenge we had when implementing WMTS was calculating the coordinates of each tile. Although all the information is present in the system, it was tricky to get all coordinates right. 
 
 \begin{figure}
 \framebox[\textwidth]{
@@ -1834,14 +1836,6 @@ The Web Map Tile Service (WMTS) protocol defines two major parts: A Capabilities
   \end{subfigure}
   }
 \end{figure}
-
-
-
-A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
-
-A client can then request a specific tile at position (x,y) from a given tile matrix, and then by the definition given in the capabilities document it can place the image at the correct position on its map.  
-
-The major challenge we had when implementing WMTS was calculating the coordinates of each tile. Although all the information is present in the system, it was tricky to get all coordinates right. 
 
 \section{Indexing}
 \section{Projections}

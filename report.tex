@@ -1819,14 +1819,23 @@ Total                                                  & 174                    
 \section{WMTS}
 The Web Map Tile Service (WMTS) protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
 
-\begin{figure}[H]
-\begin{center}
-\fbox{\includegraphics[width=400px]{img/tile_matrix.png}}
-\fbox{\includegraphics[width=400px]{img/tile_matrix_set.png}}
-\caption{Tile Matrices}
-\label{fig:TileMatrix}
-\end{center}
+
+\begin{figure}
+\framebox[\textwidth]{
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{img/tile_matrix.png}
+	\caption{Tile Matrix}
+    \label{fig:tileMatrix}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{img/tile_matrix_set.png}
+    \caption{Tile Matrix Set}
+    \label{fig:tileMatrixSet}
+  \end{subfigure}
+  }
 \end{figure}
+
+
 
 A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
 
@@ -1851,16 +1860,18 @@ This is the reason Sintef chose to use the Ploar Stereographic projection (PSP) 
 Because we had to display data from a source using PSP on top of a background map using Web Mercator we had to reproject the data in order to make it fit on the map. This proved to be a non-trivial task.
 
 \begin{figure}
-  \begin{subfigure}[b]{0.4\textwidth}
+\framebox[\textwidth]{
+  \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\textwidth]{img/polar_stereographic_projection.jpg}
-	\caption{Polar stereographic projection, centered on the North pole.}
+	\caption{Polar stereographic}
     \label{fig:PSP}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.48\textwidth}
     \includegraphics[width=\textwidth]{img/mercator_projection.jpg}
     \caption{Mercator Projection}
     \label{fig:mercator}
   \end{subfigure}
+}
 \end{figure}
 
 \subsection{Attempted solutions}

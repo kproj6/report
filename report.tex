@@ -64,6 +64,21 @@
 \newacronym{XML}{XML}{Extensible Markup Language}
 \newacronym{TDS}{TDS}{\gls{THREDDS} Data Server}
 \newacronym{SSD}{SSD}{Solid State Drive}
+\newacronym{NCWMS}{ncWMS}{NNN}
+\newacronym{BSD}{BSD}{Berkeley Software Distribution}
+\newacronym{JPEG}{JPEG}{Joint Photographic Experts Group}
+\newacronym{GIF}{GIF}{Graphics Interchange Format}
+\newacronym{CPU}{CPU}{Central Processing Unit}
+\newacronym{TMS}{TMS}{Tile Map Service}
+\newacronym{URL}{URL}{Uniform Resource Locator}
+\newacronym{WMTS}{WMTS}{Web Map Tile Service}
+\newacronym{WMSC}{WMSC}{Web Map Server Tile Cache}
+\newacronym{GUI}{GUI}{Graphical User Interface}
+\newacronym{API}{API}{Application Programming Interface}
+\newacronym{JSON}{JSON}{JavaScript Object Notation}
+\newacronym{Fimex}{Fimex}{File Interpolation, Manipulation and EXtraction}
+\newacronym{PSP}{PSP}{Polar Stereographic Projection}
+
 
 \newglossaryentry{pre-study}{name=pre-study, description={is a document produced before the implementation phase, which informs the customer of possible solutions to their problem}}
 
@@ -711,13 +726,13 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
   \emph{Link: \url{http://www.resc.rdg.ac.uk/trac/ncWMS/}} \\%make sure to use //
     ncWMS is an open source, free to use, java server application. It was created to support interactive browsing of gridded four-dimensional \gls{netcdf} data over the web. Clients will send request containing the wanted coordinates (latitudes, longitudes, depth and time), what variable is to be displayed, projection, format and size the response should be. ncWMS, which has been configured to read from datasets (for example sets of \gls{netcdf} files or a \gls{THREDDS} server), responds to a request with an image of the desired type. ncWMS adheres to the \gls{WMS} specification (\gls{WMS} 1.3.0 and 1.1.1 are supported).
     \paragraph{Configuration}
-    ncWMS is mainly configured through a web interface, where you can add datasets and change server settings. A dataset can be: a single \gls{netcdf} file, an \gls{OPENDAP} endpoint (a service provided by \gls{THREDDS}), a NcML file or a glob aggregation (using wildcard characters like ). It is possible to configure which variables of a dataset to expose and how. Each dataset can also be set to automatically refresh at certain intervals. The server can be set to cache data, to reduce cpu load at the expense of memory and disk space.
+    ncWMS is mainly configured through a web interface, where you can add datasets and change server settings. A dataset can be: a single \gls{netcdf} file, an \gls{OPENDAP} endpoint (a service provided by \gls{THREDDS}), a NcML file or a glob aggregation (using wildcard characters like ). It is possible to configure which variables of a dataset to expose and how. Each dataset can also be set to automatically refresh at certain intervals. The server can be set to cache data, to reduce \gls{CPU} load at the expense of memory and disk space.
     \paragraph{Aggregation}
     The glob aggregation or NcML work well with files that cover the same area, but contain different timesteps. To handle different areas and different resolutions it may be possible to use \gls{THREDDS}/\gls{OPENDAP} or NcML.
     \paragraph{Perfomance}
     Testing both local and publicly available ncWMS servers the performance seems good. When using the godiva2 browser based client or sending individual requests the server mostly responds quickly, with some idiopathic exceptions. Transmitting the map data to the client as \gls{PNG} images should be a bandwidth-efficient way to do it, as well as moving the computation load away from the client. When starting the server application or adding a dataset, the server needs some time to load some information from the datasets. This only takes a few seconds, even for a few hundred GB of local \gls{netcdf} files.
     \paragraph{Summary}
-    ncWMS does a lot of what we need the back-end of our solution to do. It handles the extraction, downsampling and projection of the data, creating an image ready to be used in a map widget or on it's own. It can only handle requests for a few kinds of plots. It is open source, and is free to use under a modified BSD license. To serve all the plots and data required it would need modification.
+    ncWMS does a lot of what we need the back-end of our solution to do. It handles the extraction, downsampling and projection of the data, creating an image ready to be used in a map widget or on it's own. It can only handle requests for a few kinds of plots. It is open source, and is free to use under a modified \gls{BSD} license. To serve all the plots and data required it would need modification.
   \\ \emph{Overall rating: \textbf{Good}}
 
 %%%
@@ -726,10 +741,10 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
   In particular, two main kind of representations can be distinguished, and sometimes they're both supported by a single standard:
   \begin{description}
     \item[Vector based layers] Data is sent from the server to the client in a textual format, such as GeoJson
-    \item[Image based layers] Data is sent from the server to the client as images, such as Jpeg, \gls{PNG} and gif
+    \item[Image based layers] Data is sent from the server to the client as images, such as \gls{JPEG}, \gls{PNG} and \gls{GIF}
   \end{description}
 
-  The \acrfull{OGC} became involved in developing standards for web mapping after a paper was published in 1997 by Allan Doyle, outlining a \"WWW Mapping Framework\". The oldest and most popular standard for web mapping is \gls{WMS}. However, the properties of this standard proved to be difficult to implement for situations where short response times were important. For most \gls{WMS} services it is not uncommon to require 1 or more CPU seconds to produce a response. For massive parallel use cases, such a CPU-intensive service is not practical. To overcome the CPU intensive on-the-fly rendering problem, application developers started using pre-rendered map tiles. Several open and proprietary schemes were invented to organize and address these map tiles. 
+  The \acrfull{OGC} became involved in developing standards for web mapping after a paper was published in 1997 by Allan Doyle, outlining a "WWW Mapping Framework". The oldest and most popular standard for web mapping is \gls{WMS}. However, the properties of this standard proved to be difficult to implement for situations where short response times were important. For most \gls{WMS} services it is not uncommon to require 1 or more \gls{CPU} seconds to produce a response. For massive parallel use cases, such a \gls{CPU}-intensive service is not practical. To overcome the \gls{CPU} intensive on-the-fly rendering problem, application developers started using pre-rendered map tiles. Several open and proprietary schemes were invented to organize and address these map tiles. 
   In order to reduce the performace problems of \gls{WMS}, new standards have been defined:
   \begin{itemize}
     \item TMS
@@ -739,27 +754,27 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
   
   \subsection{WMS}
     \acrfull{WMS} is a standard protocol for serving georeferenced map images over the Internet that are generated by a map server using data from a GIS database. The specification was developed and first published by the Open Geospatial Consortium in 1999.
-    A \gls{WMS} server usually serves the map in a bitmap format, e.g. \gls{PNG}, GIF or JPEG. In addition, vector graphics can be included: such as points, lines, curves and text, expressed in SVG or WebCGM format.
+    A \gls{WMS} server usually serves the map in a bitmap format, e.g. \gls{PNG}, \gls{GIF} or \gls{JPEG}. In addition, vector graphics can be included: such as points, lines, curves and text, expressed in SVG or WebCGM format.
     The \gls{WMS} standard allows flexibility in the client request enabling clients to obtain exactly the final image they want. A \gls{WMS} client can request that the server creates a map by overlaying an arbitrary number of the map layers offered by the server, over an arbitrary geographic bound, with an arbitrary background color at an arbitrary scale, in any supported coordinate reference system.
 
   \subsection{TMS}
-    Tile Map Service or TMS, is a specification for storing and retrieving cartographic data, developed by the Open Source Geospatial Foundation. The TMS protocol fills a gap between the very simple standard used by OpenStreetMap and the complexity of the \gls{WMS} standard, providing simple urls to tiles while also supporting alternate spatial referencing system.
-    TMS is most widely supported by web mapping clients and servers, and it is served as the basis for WMTS (the OpenGIS Web Map Tile Service \gls{OGC} standard).
+\gls{TMS} is a specification for storing and retrieving cartographic data, developed by the Open Source Geospatial Foundation. The \gls{TMS} protocol fills a gap between the very simple standard used by OpenStreetMap and the complexity of the \gls{WMS} standard, providing simple \gls{URL} to tiles while also supporting alternate spatial referencing system.
+    \gls{TMS} is most widely supported by web mapping clients and servers, and it is served as the basis for \gls{WMTS} (the OpenGIS Web Map Tile Service \gls{OGC} standard).
 
   \subsection{WMS-c}
     The WMS Tiling Client Recommendation, or WMS-C for short, is a recommendation set forth by OSGeo for making tiled requests using \gls{WMS}. It is just a recommendation on using \gls{WMS} properly in order to improve performance by caching data.
     This recommendation relies on two basic concepts to support this purpose: First, cachability of map imagery can be improved by using image tiles of fixed width and height, referenced to some fixed geographic grid at fixed scales. A valid tile request is one that conforms to the specification of fixed image parameters and geographic grid(s) for a given layer. By analogy, an invalid tile request is one that does not.
-    Second, caching of \gls{HTTP} GET requests is further made possible by constraining the URL parameters used in the request. This recommendation identifies the \gls{WMS} GetMap parameters minimally needed for a client to request a valid tile.
+    Second, caching of \gls{HTTP} GET requests is further made possible by constraining the \gls{URL} parameters used in the request. This recommendation identifies the \gls{WMS} GetMap parameters minimally needed for a client to request a valid tile.
 
   \subsection{WMTS}
-    Web Map Tile Service (WMTS) is a standard protocol for serving pre-rendered georeferenced map tiles over the Internet. The specification was developed and first published by the Open Geospatial Consortium in 2010
-    WMTS builds on efforts to develop scalable, high performance services for web based distribution of cartographic maps. To define this standard, similar initiatives were also considered, such as Google maps and NASA OnEarth. WMTS includes both resource (RESTful approach) and procedure oriented architectural styles (KVP and SOAP encoding) in an effort to harmonize this interface standard with the OSGeo specification.
-    WMTS complements earlier efforts to develop services for the web based distribution of cartographic maps. The \gls{OGC} WMTS provides a complementary approach to the \gls{OGC} \gls{WMS} for tiling maps. \gls{WMS} focuses on rendering custom maps and is an ideal solution for dynamic data or custom styled maps. WMTS trades the flexibility of custom map rendering for the scalability possible by serving of static data (base maps) where the bounding box and scales have been constrained to discrete tiles. The fixed set of tiles allows for the implementation of a WMTS service using a web server that simply returns existing files. The fixed set of tiles also enables the use of standard network mechanisms for scalability such as distributed cache systems.
+\gls{WMTS} is a standard protocol for serving pre-rendered georeferenced map tiles over the Internet. The specification was developed and first published by the Open Geospatial Consortium in 2010
+    \gls{WMTS} builds on efforts to develop scalable, high performance services for web based distribution of cartographic maps. To define this standard, similar initiatives were also considered, such as Google maps and NASA OnEarth. \gls{WMTS} includes both resource (RESTful approach) and procedure oriented architectural styles (KVP and SOAP encoding) in an effort to harmonize this interface standard with the OSGeo specification.
+    \gls{WMTS} complements earlier efforts to develop services for the web based distribution of cartographic maps. The \gls{OGC} \gls{WMTS} provides a complementary approach to the \gls{OGC} \gls{WMS} for tiling maps. \gls{WMS} focuses on rendering custom maps and is an ideal solution for dynamic data or custom styled maps. \gls{WMTS} trades the flexibility of custom map rendering for the scalability possible by serving of static data (base maps) where the bounding box and scales have been constrained to discrete tiles. The fixed set of tiles allows for the implementation of a \gls{WMTS} service using a web server that simply returns existing files. The fixed set of tiles also enables the use of standard network mechanisms for scalability such as distributed cache systems.
 
   \subsection{Summary}
     WMS-C is the best supported and most mature protocol, but it's a bit of a kludge overlayed on top of \gls{WMS} to support tiles and it incurs some extra overhead from having to use world coordinate bounding boxes rather than tile coordinates.
-    TMS is fairly mature, and is specifically designed for tiles, but is not an official \gls{OGC} spec.
-    WMTS is an \gls{OGC} spec that is meant to replace TMS and WMS-C. It works purely in tile coordinates like TMS (although it computes them differently) but has some additional capabilities that weren't in TMS, like GetFeatureInfo. It's comparatively recent, but it is becoming more and more used, even if its implementations are less mature. It is also supported by OpenLayers.
+    \gls{TMS} is fairly mature, and is specifically designed for tiles, but is not an official \gls{OGC} spec.
+    \gls{WMTS} is an \gls{OGC} spec that is meant to replace \gls{TMS} and WMS-C. It works purely in tile coordinates like \gls{TMS} (although it computes them differently) but has some additional capabilities that weren't in \gls{TMS}, like GetFeatureInfo. It's comparatively recent, but it is becoming more and more used, even if its implementations are less mature. It is also supported by OpenLayers.
 
 %%%
 \section{Frontend solutions}
@@ -776,7 +791,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
     \end{tabular}
     
     \paragraph{Introduction} \indent
-    LeafletJS ("Leaflet" for the rest of the section) is an open source javascript library for creating mobile-friendly interactive maps. It's licensed under the \href{'https://github.com/Leaflet/Leaflet/blob/master/LICENSE'}{2-clause BSD License}, which makes it free to use in commercial applications as long as a credit is added somewhere in the user interface.
+    LeafletJS ("Leaflet" for the rest of the section) is an open source javascript library for creating mobile-friendly interactive maps. It's licensed under the \href{'https://github.com/Leaflet/Leaflet/blob/master/LICENSE'}{2-clause \gls{BSD} License}, which makes it free to use in commercial applications as long as a credit is added somewhere in the user interface.
     Even though Leaflet is free to use it is dependent on a third party to provide the map tiles. These may not be free to use.
 
     \paragraph{Features}
@@ -790,7 +805,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
       \item Pop-ups
       \item Vector layers
       \item GeoJSON layers
-      \item image overlays
+      \item Image overlays
       \item \gls{WMS} layers
       \item Layer groups
     \end{itemize}
@@ -811,7 +826,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
      \hline
    \end{tabular}
    \paragraph{Introduction} \indent
-   OpenLayers is an open source (provided under the \href{'https://tldrlegal.com/license/bsd-2-clause-license-(freebsd)'}{2-clause BSD License}) JavaScript library for displaying map data in web browsers. It provides an API for building rich web-based geographic applications similar to Google Maps and Bing Maps. The library was originally based on the Prototype JavaScript Framework. Since November 2007 OpenLayers is an Open Source Geospatial Foundation project.
+   OpenLayers is an open source (provided under the \href{'https://tldrlegal.com/license/bsd-2-clause-license-(freebsd)'}{2-clause \gls{BSD} License}) JavaScript library for displaying map data in web browsers. It provides an \gls{API} for building rich web-based geographic applications similar to Google Maps and Bing Maps. The library was originally based on the Prototype JavaScript Framework. Since November 2007 OpenLayers is an Open Source Geospatial Foundation project.
    The current stable version, OpenLayers 3.0, has been released August 29, 2014.
    \paragraph{Features}
    OpenLayers provides support to the following functionalities:
@@ -831,7 +846,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
    The detail of the image is defined by \gls{PNG} provided by the \gls{WMS} server. Vector layers are also well drawn. Tile layers are updated on zooming.
    \\ \emph{Score: \textbf{High}}
    \paragraph{Ease of use}
-   It is quite easy to implement. The code needed is low, and it is easily convertable into Leaflet format. There are a lot of provided working examples, but it is not well documented yet for the version 3.0 (that has been released very recently: at the end of August 2014). Anyway, the detailed API documentation is provided.
+   It is quite easy to implement. The code needed is low, and it is easily convertable into Leaflet format. There are a lot of provided working examples, but it is not well documented yet for the version 3.0 (that has been released very recently: at the end of August 2014). Anyway, the detailed \gls{API} documentation is provided.
    \\ \emph{Score: \textbf{Med}}
    \paragraph{Summary}
    It is a library used in a lot of applications, dynamic, with a lot of features. On the contrary, it is less lightweight than LeafletJS, not so well documented and not always so fast as experienced by the user, especially in zooming.
@@ -843,7 +858,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
   \\ \emph{Overall rating: \textbf{Good}}
 
   \subsubsection{Comparison of Leaflet and OpenLayers}
-    For the purpose of creating an interactive map we've boiled it down to either using LeafletJS or OpenLayers. As the description of each of the individual libraries above shows, the two are have many of the same capabilities. Both gives us the posibility to overlay visulizations of data in different ways. An reason for choosing Leaflet is the extensive documentation of the current version, a point where OpenLayers are lacking at the moment. Despite this OpenLayers support of WMTS and WMSC is such a strong argument in it's favor that we jugde it as the best fit for our purposes.
+    For the purpose of creating an interactive map we've boiled it down to either using LeafletJS or OpenLayers. As the description of each of the individual libraries above shows, the two are have many of the same capabilities. Both gives us the posibility to overlay visulizations of data in different ways. An reason for choosing Leaflet is the extensive documentation of the current version, a point where OpenLayers are lacking at the moment. Despite this OpenLayers support of \gls{WMTS} and \gls{WMSC} is such a strong argument in it's favor that we jugde it as the best fit for our purposes.
     
   \subsection{Godiva2}
      \begin{tabular}{|p{4cm}|p{8cm}|}
@@ -910,15 +925,15 @@ This chapter presents the functional and non-functional requirements for the pro
 The desired behavior of the system can be described through use case diagrams. Here we will display the users and how they want to interact with the system. Use cases model the system requirements and is an easy way to understand which features are needed and how these features should work. This section will outline the general use cases. For more defined specifications we refer to the requirements specification in section \ref{reqspec}.
 
   \subsection{Planning}
-  In our project, we have a relatively simple set of users and control of parameters. The main focus of our task is to deliver a full system with working front-end and back-end modules. In this case the user should be able to use the front-end without further knowledge about the back-end. The user will interact with a GUI (Graphical User Interface) through key-input and mouse-input. This will mainly be map-interaction like scrolling or dragging the map, but parameters will also be controlled through buttons and other input fields.
+  In our project, we have a relatively simple set of users and control of parameters. The main focus of our task is to deliver a full system with working front-end and back-end modules. In this case the user should be able to use the front-end without further knowledge about the back-end. The user will interact with a \gls{GUI} through key-input and mouse-input. This will mainly be map-interaction like scrolling or dragging the map, but parameters will also be controlled through buttons and other input fields.
 
-  There is also a second type of users that is not as important in our scope, but will have to be considered. This is 3rd-party users or companies that request access the data directly from our back-end for use with their own front-end solution. These users will send requests over REST with commands from an API for allowed requests.
+  There is also a second type of users that is not as important in our scope, but will have to be considered. This is 3rd-party users or companies that request access the data directly from our back-end for use with their own front-end solution. These users will send requests over REST with commands from an \gls{API} for allowed requests.
 
   \subsection{Users}
   Our product will have two types of users:
   
-  The \textbf{end-user} is a user that uses our front-end solution, which again depends on our back-end solution. Among such users there is currently not a goal to differentiate users, but at a later point registration and authentication might be required. For these users, a simple and efficient GUI is required.  
-  The \textbf{3rd-party user} is a user that only uses the back-end solution of our project. These services will again be used by end-users. All these 3rd-party users might have to be authenticated to use the back-end directly. This to ensure that no requests will be processed if it is not authenticated and within the API of allowed requests.
+  The \textbf{end-user} is a user that uses our front-end solution, which again depends on our back-end solution. Among such users there is currently not a goal to differentiate users, but at a later point registration and authentication might be required. For these users, a simple and efficient \gls{GUI} is required.  
+  The \textbf{3rd-party user} is a user that only uses the back-end solution of our project. These services will again be used by end-users. All these 3rd-party users might have to be authenticated to use the back-end directly. This to ensure that no requests will be processed if it is not authenticated and within the \gls{API} of allowed requests.
   
   Together these to types of users requires us to have a clear and usable interface both from the back-end and the front-end. While the end-users are the main focus, adapting for the 3rd-party users should be easy, as we will focus on the usability of the interface between the front-end and back-end for our own use.
 
@@ -1179,16 +1194,16 @@ We have decided to have detailed documentation on our functional requirements, a
   \end{itemize}
   & 50 & 20h \\ \hline
 
-  FR 1.21 & The back-end should provide the raw data in JSON format
+  FR 1.21 & The back-end should provide the raw data in \gls{JSON} format
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given some data \\
         When requested to return the raw data \\
-        Then the back-end should return it in JSON format}
+        Then the back-end should return it in \gls{JSON} format}
   \end{itemize}
   & 10 & 8h \\ \hline
 
-  FR 1.22 & The back-end should implement the WMTS-protocol & 95 & 30h \\ \hline
+  FR 1.22 & The back-end should implement the \gls{WMTS}-protocol & 95 & 30h \\ \hline
 
   FR 1.23 & The back-end should implement a relevant subset of REST & 10 & 12h \\ \hline
   \end{longtable}
@@ -1223,7 +1238,7 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.1 & The front-end must be able to provide a map with overlaying image
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a front-end GUI \\
+        Given a front-end \gls{GUI} \\
         When a user loads the page \\
         Then the front-end should provide a map and display an overlaying image on top of it}
   \end{itemize}
@@ -1232,11 +1247,11 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.2 & The user must be able to specify area and time for the map to display
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a front-end GUI \\
+        Given a front-end \gls{GUI} \\
         When the user want to specify area and time
-        Then the user should be able to intuitively do so in the GUI}
+        Then the user should be able to intuitively do so in the \gls{GUI}}
   \item \parbox[t]{6.8cm}{
-        Given a front-end GUI \\
+        Given a front-end \gls{GUI} \\
         When the user has specified area and time
         Then the front-end should provide the data for the given area and time}
   \end{itemize}
@@ -1245,28 +1260,28 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.3 & The user must be able to display data from a chosen depth
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a front-end GUI \\
+        Given a front-end \gls{GUI} \\
         When the user wants to specify a depth \\
-        Then he should be able to intuitively specify the depth in the GUI}
+        Then he should be able to intuitively specify the depth in the \gls{GUI}}
   \item \parbox[t]{6.8cm}{
-        Given a front-end GUI \\
+        Given a front-end \gls{GUI} \\
         When user specifies a depth \\
-        Then the GUI should display the data for the given depth}
+        Then the \gls{GUI} should display the data for the given depth}
   \end{itemize}
   & 80 & 15h \\ \hline
 
   FR 2.4 & The user must be able to choose data type to be displayed (temperature, salinity or current)
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a front-end GUI \\
+        Given a front-end \gls{GUI} \\
         When the user wants to select data type \\
-        Then he should be able to intuitively choose the data type in the GUI}
+        Then he should be able to intuitively choose the data type in the \gls{GUI}}
   \item \parbox[t]{6.8cm}{
-        Given a front-end GUI \\
+        Given a front-end \gls{GUI} \\
         When the user selects a data type \\
-        Then the GUI should display the data for this selected type of data in the map}
+        Then the \gls{GUI} should display the data for this selected type of data in the map}
   \item \parbox[t]{6.8cm}{
-        Given a front-end GUI \\
+        Given a front-end \gls{GUI} \\
         When the user requests data on temperature, salinity or current \\
         Then it is received and displayed in \gls{PNG} image format}
   \end{itemize}
@@ -1275,7 +1290,7 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.5 & The user must be able to zoom and pan in the displayed map
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a map in the front-end GUI
+        Given a map in the front-end \gls{GUI}
         When the user wants to zoom or pan
         THen he should be able to do so with intuitive mouse or button actions}
   \end{itemize}
@@ -1284,7 +1299,7 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.6 & The existing data must move and scale when zooming and panning
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a map in the front-end GUI with existing data loaded
+        Given a map in the front-end \gls{GUI} with existing data loaded
         When the user performs a zoom or pan action
         Then the existing data should scale and move correctly}
   \end{itemize}
@@ -1293,15 +1308,15 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.7 & New data must dynamically load when view-area is changed sufficiently
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a map in the front-end GUI \\
+        Given a map in the front-end \gls{GUI} \\
         When the user zoom closer in the map to where a more detailed dataset would be needed \\
         Then the front-end should dynamically load a more detailed dataset}
   \item \parbox[t]{6.8cm}{
-        Given a map in the front-end GUI \\
+        Given a map in the front-end \gls{GUI} \\
         When the user zoom further away in the map to where not all of the view is covered by the previous dataset \\
         Then the front-end should dynamically load new datasets on the same level of detail, or if a certain threshold is passed it should load datasets on a less detailed level}
   \item \parbox[t]{6.8cm}{
-        Given a map in the front-end GUI \\
+        Given a map in the front-end \gls{GUI} \\
         When the user pan the map so that we do not have all of the view covered by the previous dataset \\
         Then the front-end should dynamically load the datasets to cover the new view}
   \end{itemize}
@@ -1310,7 +1325,7 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.8 & The front-end should be able to display current directions
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a front-end GUI \\
+        Given a front-end \gls{GUI} \\
         When the user requests a dataset and the option for current direction is marked \\
         Then the front-end should request the current direction dataset and display it as an overlay over the map and/or other datasets}
   \end{itemize}
@@ -1341,7 +1356,7 @@ We have decided to have detailed documentation on our functional requirements, a
 
   \gls{QA} 1.3 & The modules should be well documented and easily understandable for those who will work on it later \\ \hline
 
-  \gls{QA} 1.4 & The API between front-end and back-end should be well documented to be usable together with other front-end or back-end solutions \\ \hline
+  \gls{QA} 1.4 & The \gls{API} between front-end and back-end should be well documented to be usable together with other front-end or back-end solutions \\ \hline
 
   \gls{QA} 1.5 & The front-end and back-end parts of the system should be segregated for security and ease of use separately \\ \hline
 
@@ -1410,7 +1425,7 @@ In internal discussions the group found it best to present SINTEF not with one r
 \section{Other}
 
 \paragraph{Proof of concept back end}
-Early on we knew we there was a possibility of having to create or modify code accessing and serving the data from \gls{netcdf} files. In order to learn about the performance and effort involved we created some prototypes in Java. We were quickly able to extract data from the \gls{netcdf} files, serving them as JSON via REST or creating images.
+Early on we knew we there was a possibility of having to create or modify code accessing and serving the data from \gls{netcdf} files. In order to learn about the performance and effort involved we created some prototypes in Java. We were quickly able to extract data from the \gls{netcdf} files, serving them as \gls{JSON} via REST or creating images.
 
 
 \chapter{Sprint 1}
@@ -1498,7 +1513,7 @@ We have chosen to use the quite vague goal of the customer as the only task for 
 The sprints focus was split in two, with most of the group working on the implementation, as to be able to demo for the customer next week. The other part of the group focused on the pre-delivery. This separation of responsibility was done with the goal of being able to work in parallel with two important tasks that both had to finished this sprint. By dividing the group into smaller sub-groups, the tasks are perceived to be the responsibility of fewer people, and the team members are more likely to step up and go the extra mile when needed. 
 
 \section{Evaluation}
-The most important part of this sprint was to be able to hand of the pre-delivery on time. This was done, and the group is happy with the result. All required parts of the pre-delivery was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the WMTS protocol. The back end is able to read a single \gls{netcdf} file, and output an image that is transferred to the front end, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
+The most important part of this sprint was to be able to hand of the pre-delivery on time. This was done, and the group is happy with the result. All required parts of the pre-delivery was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the \gls{WMTS} protocol. The back end is able to read a single \gls{netcdf} file, and output an image that is transferred to the front end, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
 
 \begin{figure}[h]
 \begin{center}
@@ -1545,10 +1560,10 @@ This sprint is focused mostly on the back end work. As we will have feedback fro
 	Handle projections \hfill \\
 	Implement feature endpoints \hfill \\
 	Implement vector feature endpoints \hfill \\
-	Implement WMTS \hfill \\
+	Implement \gls{WMTS} \hfill \\
 	Choose correct file based on selected region and time \hfill \\
 	Handle overlapping areas \hfill \\
-	Design WMTS architecture \hfill \\
+	Design \gls{WMTS} architecture \hfill \\
 	Deploy script for server
 	\item[Reporting] \hfill \\
 	Tidy up pre-delivery parts of report \hfill \\
@@ -1583,7 +1598,7 @@ After the conclusion of the sprint, the following items remains in the backlog:
 	Enable user to display data from chosen time
 	\item[Back end] \hfill \\
 	Implement vector feature endpoints \hfill \\
-	Implement WMTS protocol \hfill \\
+	Implement \gls{WMTS} protocol \hfill \\
 	Choose correct file based on selected region and time \hfill \\
 	Handle overlapping areas 
 	\item[Reporting] \hfill \\
@@ -1621,7 +1636,7 @@ Enable user to display data from chosen time                                    
 Code refactor                                                                                        & 4                                                                   & -                                                      & Arve                \\
 Scanning and indexing files                                                                          & 25                                                                  & 6,5                                                    & Emil                \\
 Implement vector feature endpoint                                                                    & 5                                                                   & -                                                      & Ondrej              \\
-Implement WMTS protocol                                                                              & 35                                                                  & 18                                                     & Arve                \\
+Implement \gls{WMTS} protocol                                                                              & 35                                                                  & 18                                                     & Arve                \\
 \begin{tabular}[c]{@{}l@{}}Choose correct fiels based on \\ selected region and time\end{tabular}    & 20                                                                  & 5                                                      & Emil                \\
 Handle overlapping areas (Blocked)                                                                   & 30                                                                  & 2                                                      & Arve, Ondrej        \\
 \rowcolor[HTML]{C0C0C0} 
@@ -1653,7 +1668,7 @@ In the meeting, the customer gave useful feedback on the design decisions made f
 The customer was informed that the group has hit a problem with the different projections. The customer gave some additional insight into the projections used by SINTEF. This is quite a rare projection, as it is not a standard polar stereographic projection, and the customer does not think that finding a corresponding map will be likely. The customer gave three suggestions on how to handle this:
 \begin{itemize}
 \item \textbf{Pixel by pixel sampling} This solution would require the extraction of a single point at the time from the \gls{netcdf} file. This way, retrieving the data for an area might result in thousands of operations. This might be a quite slow solution, but it will probably be quite easy to implement.
-\item \textbf{Convert \gls{netcdf} file to new projection} Using a library by the Norwegian Meteorological Institute called FiMex, it might be possible to convert the entire \gls{netcdf} file to the correct projection. 
+\item \textbf{Convert \gls{netcdf} file to new projection} Using a library by the Norwegian Meteorological Institute called \gls{Fimex}, it might be possible to convert the entire \gls{netcdf} file to the correct projection. 
 \item \textbf{Area conversion with Proj.4} Using a library called Proj.4, the customer thinks it might be possible to convert a specific area to the correct projection. This will have to be investigated by the group.
 \end{itemize}
 
@@ -1664,7 +1679,7 @@ The group has not been able to solve the projection problem in this sprint. Afte
 
 The research into Porj.4 has been more promising. Converting 1 million points is done in about 1 second. This allows for a 1000 by 1000 pixel area to be converted in one second, which would be within the customers demand for a responsive application. Unfortunately, the data still has to be interpolated, and this might be more work than the group has time to do.
 
-FiMex also looks promising, but the group has yet to get it up and running. If it is able to convert the files, the group feels that this should be chosen as the solution to the projection problem. This way, efforts can be directed at finishing as much functionality as possible. 
+\gls{Fimex} also looks promising, but the group has yet to get it up and running. If it is able to convert the files, the group feels that this should be chosen as the solution to the projection problem. This way, efforts can be directed at finishing as much functionality as possible. 
 
 \paragraph{User interface}
 The user interface has been improved in accordance with the input given by the customer. Since the group was prepared for the customer to have input on the look of the user interface, the code was written to be easily changeable. This paid of in implementing these changes. The user interface as it is at the end of sprint 4 is shown in figure \ref{fig:UIAfterSprint4}.
@@ -1689,7 +1704,7 @@ The items remaining in the backlog after the completion of sprint 4 are:
 	\item[Back end] \hfill \\
 	Handle projections \hfill \\
 	Scanning and indexing files \hfill \\
-	Implement WMTS protocol \hfill \\
+	Implement \gls{WMTS} protocol \hfill \\
 	Choose correct file based on selected region and time \hfill \\
 	Handle overlapping areas (Blocked)
 \end{description}
@@ -1719,9 +1734,9 @@ Add color legend to user interface                    & 5                       
 Enable user to display data from chosen time          & 10                                                                  & 7                                                      & Anders, Marco \\
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back end}}                                                                                                                                        \\
-Investigate FiMex and Porj.4                          & 14                                                                  & 27,5                                                   & Marco, Ruben  \\
+Investigate \gls{Fimex} and Porj.4                          & 14                                                                  & 27,5                                                   & Marco, Ruben  \\
 Scanning and indexing files                           & 20                                                                  & 1                                                      & Emil          \\
-Implement WMTS protocol                               & 15                                                                  & 21                                                     & Arve          \\
+Implement \gls{WMTS} protocol                               & 15                                                                  & 21                                                     & Arve          \\
 Choose correct file based on selected region and time & 10                                                                  & 1                                                      & Emil          \\
 Handle overlapping areas                              & 10                                                                  & 1,5                                                    & Arve, Ondrej  \\
 \rowcolor[HTML]{C0C0C0} 
@@ -1743,7 +1758,7 @@ Write weekly documents for advisor meeting            & 3                       
 The backlog has few added items for the technical side of the project. The group sees no reason to add more than necessary at this point of the project. If the projection issues are solved, there is still plenty work remaining in the sprint to keep group members busy. The reporting part of the backlog is increasing in size as the project nears the end. This is to be expected, as more and more work is now finishing, and there is thus more to write about. 
 
 \section{Sprint overview}
-Sprint 5 focuses on finding a solution to the projection problem, using the proposed solutions from the last customer meeting. In addition, the group will have to finish outlining most of the report, and preferably finish writing as many sections as possible. The team has agreed to have a meeting with the customer in this sprint to be able to show their work to the main contact at SINTEF. In addition, there is hope that the teams experience with Proj.4 and FiMex can help start some useful discussions with the customer. With the combined knowledge of the team and customer, it might be easier to chose the right way forward. 
+Sprint 5 focuses on finding a solution to the projection problem, using the proposed solutions from the last customer meeting. In addition, the group will have to finish outlining most of the report, and preferably finish writing as many sections as possible. The team has agreed to have a meeting with the customer in this sprint to be able to show their work to the main contact at SINTEF. In addition, there is hope that the teams experience with Proj.4 and \gls{Fimex} can help start some useful discussions with the customer. With the combined knowledge of the team and customer, it might be easier to chose the right way forward. 
 
 \section{Evaluation}
 \label{sec:Sprint5Evaluation}
@@ -1774,7 +1789,7 @@ It turns out that most team members have not done this logging on a regular basi
 The final report is a large part of the basis on which the group will be evaluated. Due to the difficulties in implementing the projections correctly, there has been little time to focus on the report. This should now become a priority. The customer has made it clear that a well written report can be just as useful as a fully working product, and the group advisor has asked the group to focus on writing about features that can not be implemented on time. 
 
 \paragraph{Remaining backlog items}
-As this sprint has been mostly focused towards fixing the projection issues, not a lot of backlog items have been completed. Most of the work has been done investigating FiMex and Proj.4. A lot of reporting has been done, though most of the technical information is still lacking from the report. 
+As this sprint has been mostly focused towards fixing the projection issues, not a lot of backlog items have been completed. Most of the work has been done investigating \gls{Fimex} and Proj.4. A lot of reporting has been done, though most of the technical information is still lacking from the report. 
 
 After this sprint, the following items remain in the backlog:
 
@@ -1783,10 +1798,10 @@ After this sprint, the following items remain in the backlog:
 	Add color legend to user interface \hfill \\
 	Enable user to display data from chosen time (Blocked)
 	\item[Back end] \hfill \\
-	Investigate FiMex and Porj.4 \hfill \\
+	Investigate \gls{Fimex} and Porj.4 \hfill \\
 	Handle projections \hfill \\
 	Scanning and indexing files \hfill \\
-	Implement WMTS protocol \hfill \\
+	Implement \gls{WMTS} protocol \hfill \\
 	Choose correct file based on selected region and time \hfill \\
 	Handle overlapping areas (Blocked)
 	\item[Reporting] \hfill \\
@@ -1801,7 +1816,7 @@ Sprint 6 will be the final sprint of the project. After almost three months, the
 \section{Sprint planning}
 For the last sprint, the team will work mainly on the report. Every team member will be writing technical documentation on the implementations they have worked on. In addition to this, the time usage and final evaluations will be added to the report. At the end of this sprint, the report should be finished. This will give the team a day to proof read it before printing. 
 
-In addition to writing, some team members have gotten some time to try to implement the FiMex solution discussed in section \ref{sec:Sprint5Evaluation}. This will be the last attempt at getting the projections working. 
+In addition to writing, some team members have gotten some time to try to implement the \gls{Fimex} solution discussed in section \ref{sec:Sprint5Evaluation}. This will be the last attempt at getting the projections working. 
 
 \section{Sprint backlog}
 \label{sec:Sprint6Backlog}
@@ -1819,11 +1834,11 @@ Add color legend to user interface                     & 5                      
 Enable user to display data from chosen time (Blocked) & 10                                                                  &                                                         & Anders                     \\
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back end}}                                                                                                                                                       \\
-Investigate FiMex and Porj.4                           & 4                                                                   &                                                         & Marco                      \\
-Investigate FiMex headers not working                  & 3                                                                   &                                                         & Marco                      \\
+Investigate \gls{Fimex} and Porj.4                           & 4                                                                   &                                                         & Marco                      \\
+Investigate \gls{Fimex} headers not working                  & 3                                                                   &                                                         & Marco                      \\
 Make file stitching work                               & 20                                                                  &                                                         & Ondrej                     \\
 Scanning and indexing files                            & 15                                                                  &                                                         & Emil                       \\
-Implement WMTS protocol                                & 8                                                                   &                                                         & Arve                       \\
+Implement \gls{WMTS} protocol                                & 8                                                                   &                                                         & Arve                       \\
 Choose correct file based on selected region and time  & 5                                                                   &                                                         & Emil                       \\
 Handle overlapping areas (Blocked)                     & 10                                                                  &                                                         & Arve, Ondrej               \\
 \rowcolor[HTML]{C0C0C0} 
@@ -1831,11 +1846,11 @@ Handle overlapping areas (Blocked)                     & 10                     
 Add time usage to report                               & 8                                                                   &                                                         & Hans Kristian              \\
 Write about resources                                  & 2                                                                   &                                                         & Ondrej                     \\
 Write high level architecture - Back end               & 3                                                                   &                                                         & Arve                       \\
-Write about WMTS (Challenges)                          & 3                                                                   &                                                         & Arve                       \\
+Write about \gls{WMTS} (Challenges)                          & 3                                                                   &                                                         & Arve                       \\
 Write about base system                                & 2                                                                   &                                                         & Arve                       \\
 Write deploy guide (Appendix)                          & 3                                                                   &                                                         & Arve, Marco, Emil          \\
-Write API-documentation - WMTS (Appendix)              & 2                                                                   &                                                         & Arve                       \\
-Write API-documentation - Other (Appendix)             & 2                                                                   &                                                         & Ondrej                     \\
+Write \gls{API}-documentation - \gls{WMTS} (Appendix)              & 2                                                                   &                                                         & Arve                       \\
+Write \gls{API}-documentation - Other (Appendix)             & 2                                                                   &                                                         & Ondrej                     \\
 Write about \gls{netcdf} manager                             & 3                                                                   &                                                         & Ondrej                     \\
 Write about indexing (Challenges)                      & 3                                                                   &                                                         & Emil                       \\
 Wirte about indexing (Final product)                   & 8                                                                   &                                                         & Emil                       \\
@@ -1865,10 +1880,10 @@ Total                                                  & 174                    
 
 \chapter{Challenges}
 \section{WMTS}
-The Web Map Tile Service (WMTS) protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
+\gls{WMTS} protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
 A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
 A client can then request a specific tile at position (x,y) from a given tile matrix, and then by the definition given in the capabilities document it can place the image at the correct position on its map.  
-The major challenge we had when implementing WMTS was calculating the coordinates of each tile. Although all the information is present in the system, it was tricky to get all coordinates right. 
+The major challenge we had when implementing \gls{WMTS} was calculating the coordinates of each tile. Although all the information is present in the system, it was tricky to get all coordinates right. 
 
 \begin{figure}
 \framebox[\textwidth]{
@@ -1898,8 +1913,8 @@ Some projections preserve the relative area of landmasses, while distorting shap
 
 \subsection{Different projections}
 OpenLayers include two projection definitions, \textit{World Geodetic System} (EPSG:4326) and \textit{Web Mercator} (EPSG:3857). World Geodetic System is a standard used for cartography and navigation and Web Mercator has been popularized by web apps such as Google Maps. The problem with these projections is that landmasses near the poles appear much bigger than they in fact are.
-This is the reason Sintef chose to use the Ploar Stereographic projection (PSP) which preserves angles, resulting in more scurate sizes of the landmasses and thus is more suited for navigation.
-Because we had to display data from a source using PSP on top of a background map using Web Mercator we had to reproject the data in order to make it fit on the map. This proved to be a non-trivial task.
+This is the reason Sintef chose to use the \gls{PSP} which preserves angles, resulting in more scurate sizes of the landmasses and thus is more suited for navigation.
+Because we had to display data from a source using \gls{PSP} on top of a background map using Web Mercator we had to reproject the data in order to make it fit on the map. This proved to be a non-trivial task.
 
 \begin{figure}[h]
 \framebox[\textwidth]{
@@ -1943,27 +1958,27 @@ The back-end is built as a single binary to ease deployment. The program consist
 \begin{itemize}
 	\item Web server
 	\item Rest endpoints
-	\item NetCdf reader
+	\item \gls{netcdf} reader
 	\item Indexer
 	\item Image renderer
-	\item WMTS module
+	\item \gls{WMTS} module
 \end{itemize}  
 
-Using these modules, we have built two services: A \textit{REST API} to query for arbitrary data, and a \textit{WMTS service} to allow for easy creation of mapping applications.
+Using these modules, we have built two services: A \textit{REST \gls{API}} to query for arbitrary data, and a \textit{\gls{WMTS} service} to allow for easy creation of mapping applications.
 
 
 \paragraph{REST API:}
-The REST API consists of a series of URL's that can be queried to obtain slices of the dataset. The API takes a set of data space constraints and returns an image representing the requested area at a given time and depth.
+The REST \gls{API} consists of a series of \gls{URL}s that can be queried to obtain slices of the dataset. The \gls{API} takes a set of data space constraints and returns an image representing the requested area at a given time and depth.
 
-The control flow of the REST API is as flollows:  
+The control flow of the REST \gls{API} is as flollows:  
 When a request comes in, it's automatically routed by the webserver module to the correct Resource class. The Resource class parses the parameters supplied by the user, and talks to the \textit{\gls{netcdf} reader} module in order to obtain the relevant data.
 The reader module, in turn, can talk to the \textit{Indexer} to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
 The data array is then passed back to the Resource class, which formats it according using the \textit{Image module}, and returns that as a response.
 
 \paragraph{WMTS service:}
-The WMTS service follows the WMTS protocol\cite{WMTS:spec}.
+The \gls{WMTS} service follows the \gls{WMTS} protocol\cite{WMTS:spec}.
 This allows mapping application libraries to automatically lay out the data correctly on its map grid.  
-Our WMTS implementation reuses a lot of the capabilities and infrastructure built for the REST API:  
+Our \gls{WMTS} implementation reuses a lot of the capabilities and infrastructure built for the REST \gls{API}:  
 For the capabilities document, we query the same Index used by \gls{netcdf}-Manager to get info about the extent (bounding box) of the dataset.
 To get a specific tile, we compute the coordinates of the corners of the tile, and call the resource described above to retrieve an image.
 We then put this image in a cache so that subsequent queries for this tile takes less time.
@@ -1980,30 +1995,30 @@ Jersey is a REST framework for java. It adds a series of annotations and classes
 We have a module responsible for reading and parsing the data contained the dataset. When the other modules need to fetch any data from the dataset, they can call this module. This keeps \gls{netcdf} specific code in a single place and provides a single interface to query data.
 This module uses a third-party library called NetCDF-Java\footnote{http://www.unidata.ucar.edu/software/thredds/current/netcdf-java/}
 \subsection{Indexer}
-The indexer scans the data folder for new \gls{netcdf} files, and keeps track of what kind of data is contained in each file. The \textit{NetCDF reader} module relies on this to select the correct file to open when asked to provide data.
+The indexer scans the data folder for new \gls{netcdf} files, and keeps track of what kind of data is contained in each file. The \textit{\gls{netcdf} reader} module relies on this to select the correct file to open when asked to provide data.
 \subsection{Image renderer}
 The data is originally stored as an array of scalar values. The program has to render this array as an image in order to be useful to the user. This consists of taking a two-dimensional array, and turning it into an image.
 The different resources rely on this module when the requested output representation is an image.
 
 \subsection{Rest endpoints}
-The rest endpoints is what the user sees. It is a collection of URL's that the user can point their \gls{HTTP} client (browser) to, to get a representation of the resource that endpoint represent. The user can specify additional constraints on what she wants in the form of query parameters. 
+The rest endpoints is what the user sees. It is a collection of \gls{URL}s that the user can point their \gls{HTTP} client (browser) to, to get a representation of the resource that endpoint represent. The user can specify additional constraints on what she wants in the form of query parameters. 
 
 We have a separate endpoint for each type of feature in the simulated dataset, such as salinity, temperature, depth, current, et cetera.  
 
-Query parameters are used to tell the endpoint whhich section of the data space the user is interested in, such as area, depth and time.
+Query parameters are used to tell the endpoint which section of the data space the user is interested in, such as area, depth and time.
 
 Due to time constraints, we have restricted the output to require a 2d slice of area at a single time and a single depth. However, it should ideally be possible to query for any subspace of the dataset.
 
-The rest endpoints parse the query parameters to figure out which dataset the user is interested in, and rely on the \textit{NetCDF reader} module to fetch data, and the \textit{Image renderer} to turn the data into an image.
+The rest endpoints parse the query parameters to figure out which dataset the user is interested in, and rely on the \textit{\gls{netcdf} reader} module to fetch data, and the \textit{Image renderer} to turn the data into an image.
 
 \subsection{WMTS}
 
-The \textit{WMTS} module is tasked with generating a \textit{capbabilities document}, and serving \textit{tiles}. When generating the capabilities document, the WMTS module calls the indexer in order to obtain the bounds of the entire dataset.
+The \textit{\gls{WMTS}} module is tasked with generating a \textit{capbabilities document}, and serving \textit{tiles}. When generating the capabilities document, the \gls{WMTS} module calls the indexer in order to obtain the bounds of the entire dataset.
 
-The WMTS module also has to be able to take the tile index requested by the user and computing the coordinates of the corners of the given tile. If the image for this tile is already in cache, it can just return that to the user.
+The \gls{WMTS} module also has to be able to take the tile index requested by the user and computing the coordinates of the corners of the given tile. If the image for this tile is already in cache, it can just return that to the user.
 Otherwise, it then calls on the relevant resource with the computed coordinates to obtain the image for that tile. Finally, it calls the cache to store the image for later use.
 
-Thus, the WMTS module relies on the indexer, cache, and resource module. By proxy, it also relies on the data reader and image renderer as well.
+Thus, the \gls{WMTS} module relies on the indexer, cache, and resource module. By proxy, it also relies on the data reader and image renderer as well.
 
 \begin{figure}[h]
 \begin{center}
@@ -2015,7 +2030,7 @@ Thus, the WMTS module relies on the indexer, cache, and resource module. By prox
 
 
 \subsection{Rendering data}
-The ImageRenderer class is responsible for turning the raw data into \gls{PNG} images. An empty image is created and filled pixel by pixel from sampling the data. It can be used to create tiles for WMTS or images that can be used outside a map service.
+The ImageRenderer class is responsible for turning the raw data into \gls{PNG} images. An empty image is created and filled pixel by pixel from sampling the data. It can be used to create tiles for \gls{WMTS} or images that can be used outside a map service.
 \paragraph{Inputs and Outputs}
 The data it takes as input is in a 2 dimensional array of numeric values. In addition to the data, it takes parameters to tell it if the resulting image should be square, even if the input data is not. The last parameter contains what feature (e.g. salinity) is to be rendered. The finished image in the form of a BufferedImage Java object, ready to be transmitted as a response to an end users request.
 \paragraph{Sampling}
@@ -2026,13 +2041,13 @@ Each feature has a hard coded scale, defined by a minimum and maximum value, and
 The image will be set to be 256 pixels along the shortest dimension of the raw data input, maintaining the aspect ratio as well as can be done. If the function is told to make a square image, by the forceSquare parameter, the result will be a 256 by 256 pixel image.
 
 \section{Front-end}
-The front-end consists of a single \gls{HTML} file, the OpenLayers javascript library, custom javascript and \gls{CSS}. These components combined make up the graphical user interface (GUI). Its role in the product is to help the user querying the back-end and then displaying the received data in a meaningful way. 
+The front-end consists of a single \gls{HTML} file, the OpenLayers javascript library, custom javascript and \gls{CSS}. These components combined make up the \gls{GUI}. Its role in the product is to help the user querying the back-end and then displaying the received data in a meaningful way. 
 
 \subsection{High-level architecture}
 
 \subsection{Detailed view}
-\paragraph{GUI}
-The main part of the graphical user interface (GUI) is the map. The map is provided by the OpenLayers javascript library which gives the possibility to display maps and data from different source. Since we want to display data that is closely related to geographical position, displaying it on a map is the most intuitive solution. In order to make it as easy as possible to query the back-end for data we have added a input box. The user can toggle this input box to be hidden or not.
+\paragraph{Graphical User Interface}
+The main part of the \gls{GUI} is the map. The map is provided by the OpenLayers javascript library which gives the possibility to display maps and data from different source. Since we want to display data that is closely related to geographical position, displaying it on a map is the most intuitive solution. In order to make it as easy as possible to query the back-end for data we have added a input box. The user can toggle this input box to be hidden or not.
 
 \begin{figure}[H]
 \begin{center}
@@ -2043,7 +2058,7 @@ The main part of the graphical user interface (GUI) is the map. The map is provi
 \end{figure}
 
 \paragraph{Querying}
-Querying the back-end is done by means of it's REST API. This is done by taking the validated user input and building a query URL from it. When the back-end receives the input it'f procceses it and responds with the relavant data, usually an image. The data respons is then displayed in the GUI, usually on the map at the user-defined coordinates. 
+Querying the back-end is done by means of it's REST \gls{API}. This is done by taking the validated user input and building a query \gls{URL} from it. When the back-end receives the input it'f procceses it and responds with the relavant data, usually an image. The data respons is then displayed in the \gls{GUI}, usually on the map at the user-defined coordinates. 
 
 \section{Goal completion}
 \section{Further work}
@@ -2266,7 +2281,7 @@ Developing a solution to the customers problem has only been part of the overall
 
 \chapter{Licences} %% don't know if this is needed - Anders
 \paragraph{Octicons}
-The icon font (Octicons) used in the GUI are created by Github. The font itself is licensed under the SIL OFL license, and all other code is licensed under the MIT license. \footnote{https://github.com/github/octicons/blob/master/LICENSE.txt}
+The icon font (Octicons) used in the \gls{GUI} are created by Github. The font itself is licensed under the SIL OFL license, and all other code is licensed under the MIT license. \footnote{https://github.com/github/octicons/blob/master/LICENSE.txt}
 
 % Sources cited in the document
 % uncomment when there are some citations, uncomment bibtex in Makefile
@@ -2310,11 +2325,11 @@ Feature service contains sub-services for all implemented features. Currently su
 
 \subsection{Area}
 
-All features support \texttt{area} subservice, which provides information about given feature in given area, currently in a form of \gls{PNG} image of size 256x256 px. In case of error, \gls{HTTP} status is set accordingly and JSON specifying the error is returned. Returned JSON then can contain those fields:
+All features support \texttt{area} subservice, which provides information about given feature in given area, currently in a form of \gls{PNG} image of size 256x256 px. In case of error, \gls{HTTP} status is set accordingly and \gls{JSON} specifying the error is returned. Returned \gls{JSON} then can contain those fields:
 \begin{description}
 	\item[errorMessage] This field is always present and contains short summary of an error.
 	\item[cause] If this is a simple error, or error happened in some lower level and we get only textual information, this field contains string with explanation.
-	\item[error] If this is a more complex error from our application, this field contains JSON object describing details of the error.
+	\item[error] If this is a more complex error from our application, this field contains \gls{JSON} object describing details of the error.
 \end{description}
 
 To specify data you are interested subservices take this parameters:
@@ -2338,7 +2353,7 @@ The figure \ref{fig:rest_api_boundary} visualises start and end points specifyin
 
 \section{Overview}
 
-In the figure \ref{fig:rest_api_tree} you can see a tree describing REST API. The root of the tree represents root of the application and URL's are represented by paths from root to leaf nodes.
+In the figure \ref{fig:rest_api_tree} you can see a tree describing REST \gls{API}. The root of the tree represents root of the application and \gls{URL}s are represented by paths from root to leaf nodes.
 
 \begin{figure}[h]
 	\centering
@@ -2372,7 +2387,7 @@ In this example we will try to retrieve depth information, but won't specify any
 	\item[Response] ~\\
 		\begin{description}
 			\item[\gls{HTTP} status] \texttt{400 Bad Request}
-			\item[JSON body] \texttt{\{"errorMessage":} \texttt{"Missing~query~parameters~in~url.",} \texttt{"error":} \texttt{\{"missingFields":} \texttt{["startLat","startLon","endLat","endLon"]\}\}}
+			\item[\gls{JSON} body] \texttt{\{"errorMessage":} \texttt{"Missing~query~parameters~in~url.",} \texttt{"error":} \texttt{\{"missingFields":} \texttt{["startLat","startLon","endLat","endLon"]\}\}}
 		\end{description}
 \end{description}
 
@@ -2384,7 +2399,7 @@ In this example we will request temperature data from missing file. We will use 
 	\item[Response] ~\\
 		\begin{description}
 			\item[\gls{HTTP} status] \texttt{500 Server Error}
-			\item[JSON body] \texttt{\{"errorMessage":} \texttt{"Could not read data file.",} \texttt{"cause":} \texttt{"/home/ondra/School/NTNU/TDT4290/netcdf/samples\_2013.08.05.nc (No such file or directory)"\}}
+			\item[\gls{JSON} body] \texttt{\{"errorMessage":} \texttt{"Could not read data file.",} \texttt{"cause":} \texttt{"/home/ondra/School/NTNU/TDT4290/netcdf/samples\_2013.08.05.nc (No such file or directory)"\}}
 		\end{description}
 \end{description}
 

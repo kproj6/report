@@ -11,9 +11,35 @@
 \usepackage[unicode,pdftex]{hyperref}
 \usepackage{xcolor}
 \usepackage{longtable}
+\usepackage{listings}
 \usepackage{amsmath}
 \usepackage{pdfpages}
 \usepackage[acronym,numberedsection=autolabel]{glossaries}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Bash,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
 \makeglossaries
 
 \newacronym{netcdf}{netCDF}{NETwork Common Data Form}
@@ -2220,7 +2246,53 @@ The icon font (Octicons) used in the GUI are created by Github. The font itself 
 \printglossary
 \chapter{API Documentation}
 
-\chapter{Deploy guide}
+\chapter{Building and Deploying}
+\section{Building the project}
+The project has a number of dependencies that need to be present on the target system in order to build:
+Java SE Developer kit 8 \footnote{http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html} (or later)
+Maven 3.2.2 \footnote{http://maven.apache.org/download.cgi} (or later)
+Git \footnote{http://git-scm.com/} (or later).
+
+With these dependencies installed on the target system, your are ready to build the project.
+This guide assumes you are on a *NIX system. For a windows-based system, the steps are similar but not necessarily the same. It should however be obvious to an experienced Windows user how the steps should be executed on her system.
+
+To clonse and build the program:
+\begin{lstlisting}
+$ git clone git@github.com:kproj6/featureserver.git && cd featureserver
+$ mvn clean package
+\end{lstlisting}
+
+To run the program locally:
+\begin{lstlisting}
+$ java -jar target/featureserver-0.1-SNAPSHOT-jar-with-dependencies.jar --netcdf-file={full/path/to/data/NetCdfFile.nc} --webserver-port=10100
+\end{lstlisting}
+
+This starts up the program on port 10100. The port flag defaults to 10100, so can be omitted unless you want to run on a different port.
+
+\section{Deployment}
+To deploy the program to a server, you need to first clone the repository to the server, as described above.
+This guide assumes the project is cloned to the user's home directory on the server.
+
+We have created a deploy-script which is in the root folder of the code repository:
+\begin{lstlisting}
+	#!/bin/sh
+	# This script will ssh into the server, fetch the latest commits from github, build the program, stop the old process and start a new one.
+	USER=featureserver
+	SERVER_IP=178.62.233.73
+	ssh $USER@$SERVER_IP '
+	    cd ~/featureserver
+	    git fetch
+	    git reset --hard origin/master
+	    mvn clean package
+	    ./svc.sh stop
+	    ./svc.sh start
+	'
+\end{lstlisting}
+
+Change the USERNAME and SERVER\_IP variables according to your server setup, then run the script to automatically redeploy the server with the newest changes.
+
+This script calls another script which lies on the server, the service wrapper script (svc.sh).
+The service wrapper script simply makes sure that the program keeps running after the user has logged off the server. It can be used to start and stop the server manually if required.
 
 \chapter{Templates}
 In the course compendium, the team is asked to create templates for internal documents. The team identified 3 types of documents they would need templates for:

@@ -2260,6 +2260,111 @@ The icon font (Octicons) used in the GUI are created by Github. The font itself 
 \printglossary[type=\acronymtype]
 \printglossary
 \chapter{API Documentation}
+This project uses Representational state transfer (REST) \cite{REST:elkstein}, which is an architecture style for designing network applications that uses almost exclusively HTTP protocol. As so this application has client-server architecture with stateless cacheable requests.
+
+Despite REST supports all CRUD (\textbf{C}reate, \textbf{R}ead, \textbf{U}pdate, \textbf{D}elete) operations, this project makes use only of read operation, because the type of application does not support any modification of remote data. REST request consists of a simple HTTP GET request, where URI specifies the service and GET parameters are passed to the specific service handler. \\
+
+\section{Root}
+
+Application currently supports two root services:
+\begin{description}
+	\item[health] provides information about system status
+	\item[feature] contains all server features that can be retreieved by user
+\end{description}
+
+\section{Healthcheck}
+
+Healthcheck (health root service) currently supports only shallow healthcheck under path - \texttt{/health/shallow}. This check returns plain text response with HTTP status 200 and text "Shallow health check ok" if the server is running and able to receieve requests. \\
+
+\section{Feature}
+
+Feature service contains sub-services for all implemented features. Currently supported are:
+\begin{description}
+	\item[current-magnitude] Provides scalar information about water current speeds.
+	\item[depth] Provides information about depths of sea.
+	\item[salinity] Provides information about salinity of sea water.
+	\item[temperature] Provides information about water temperatures.
+\end{description}
+
+\subsection{Area}
+
+All features support \texttt{area} subservice, which provides information about given feature in given area, currently in a form of PNG image of size 256x256 px. In case of error, HTTP status is set accordingly and JSON specifying the error is returned. Returned JSON then can contain those fields:
+\begin{description}
+	\item[errorMessage] This field is always present and contains short summary of an error.
+	\item[cause] If this is a simple error, or error happened in some lower level and we get only textual information, this field contains string with explanation.
+	\item[error] If this is a more complex error from our application, this field contains JSON object describing details of the error.
+\end{description}
+
+To specify data you are interested subservices take this parameters:
+\begin{description}
+	\item[\underline{startLat}] Lattitude of the top left corner of the source data you are interested in. This parameter is compulsory.
+	\item[\underline{startLon}] Longitude of the top left corner of the source data you are interested in. This parameter is compulsory.
+	\item[\underline{endLat}] Lattitude of the bottom right corner of the source data you are interested in. This parameter is compulsory.
+	\item[\underline{endLon}] Longitude of the bottom right corner of the source data you are interested in. This parameter is compulsory.
+	\item[depth] Specifies depth in meters. This parameter is ignored in depth service, otherwise it's compulsory parameter.
+	\item[time] Specifies time in ISO-8601. This parameter is ignored in depth service, otherwise it's compulsory parameter.
+\end{description}
+
+The figure \ref{fig:rest_api_boundary} visualises start and end points specifying the boundary for requests.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=3cm]{img/REST_boundary.png}
+	\caption{Boundary specification}
+	\label{fig:rest_api_boundary}
+\end{figure}
+
+\section{Overview}
+
+In the figure \ref{fig:rest_api_tree} you can see a tree describing REST API. The root of the tree represents root of the application and URL's are represented by paths from root to leaf nodes.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=5cm]{img/REST_API.png}
+	\caption{REST API tree}
+	\label{fig:rest_api_tree}
+\end{figure}
+
+\section{Examples}
+
+\subsection{Retrieving salinity data}
+\label{subsec:rest_example_salinity}
+In this example we will retrieve salinity information from the area between $65.24\,^{\circ}\mathrm{N}$ $7.56\,^{\circ}\mathrm{E}$ and $65.42\,^{\circ}\mathrm{N}$ $9.542\,^{\circ}\mathrm{E}$, from the depth 2 meters and from 5.8.2013.
+
+The final path will be \path{/feature/salinity/area} and parameters \path{startLat=65.24&startLon=7.56&endLat=65.42&endLon=9.542&depth=2&time=2013-08-05}. Resulting URI will have the form - \path{/feature/salinity/area?startLat=65.24&startLon=7.56&endLat=65.42&endLon=9.542&depth=2&time=2013-08-05}.
+
+If everything goes well, we will receieve image describing requested information as shown in figure \ref{fig:rest_example_1}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{img/REST_example_1.png}
+	\caption{Salinity in requested area}
+	\label{fig:rest_example_1}
+\end{figure}
+
+\subsection{Missing compulsory parameters}
+In this example we will try to retrieve depth information, but won't specify any parameters.
+
+\begin{description}
+	\item[Request] \path{/feature/depth/area}
+	\item[Response] ~\\
+		\begin{description}
+			\item[HTTP status] \texttt{400 Bad Request}
+			\item[JSON body] \texttt{\{"errorMessage":} \texttt{"Missing~query~parameters~in~url.",} \texttt{"error":} \texttt{\{"missingFields":} \texttt{["startLat","startLon","endLat","endLon"]\}\}}
+		\end{description}
+\end{description}
+
+\subsection{Missing source file}
+In this example we will request temperature data from missing file. We will use the same parameters as in first example (\ref{subsec:rest_example_salinity}).
+
+\begin{description}
+	\item[Request] \path{/feature/temperature/area?startLat=65.24&startLon=7.56&endLat=65.42&endLon=9.542&depth=2&time=2013-08-05}
+	\item[Response] ~\\
+		\begin{description}
+			\item[HTTP status] \texttt{500 Server Error}
+			\item[JSON body] \texttt{\{"errorMessage":} \texttt{"Could not read data file.",} \texttt{"cause":} \texttt{"/home/ondra/School/NTNU/TDT4290/netcdf/samples\_2013.08.05.nc (No such file or directory)"\}}
+		\end{description}
+\end{description}
 
 \chapter{Building and Deploying}
 \section{Building the project}

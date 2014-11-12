@@ -1817,6 +1817,23 @@ Total                                                  & 174                    
 
 \chapter{Challenges}
 \section{WMTS}
+The Web Map Tile Service (WMTS) protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
+
+\begin{figure}[H]
+\begin{center}
+\fbox{\includegraphics[width=400px]{img/tile_matrix.png}}
+\fbox{\includegraphics[width=400px]{img/tile_matrix_set.png}}
+\caption{Tile Matrices}
+\label{fig:TileMatrix}
+\end{center}
+\end{figure}
+
+A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
+
+A client can then request a specific tile at position (x,y) from a given tile matrix, and then by the definition given in the capabilities document it can place the image at the correct position on its map.  
+
+The major challenge we had when implementing WMTS was calculating the coordinates of each tile. Although all the information is present in the system, it was tricky to get all coordinates right. 
+
 \section{Indexing}
 \section{Projections}
 There is a fundamental problem with representing a curved surface such as the surface of the Earth, on a flat cartesian grid.
@@ -1847,16 +1864,80 @@ Because we had to display data from a source using PSP on top of a background ma
 \end{figure}
 
 \subsection{Attempted solutions}
+
 \subsection{Chosen solution}
 
 \chapter{Final product}
 \section{Description}
 \section{Back-end}
 \subsection{High level Architecture}
-The back-end is built as a single binary to ease deployment.
-We use an embeddable webserver library called Jetty in combination with a REST library called Jersey to handle requests.
+The back-end is built as a single binary to ease deployment. The program consists of 6 major modules, each of which are described in more detail below:
+\begin{itemize}
+	\item Web server
+	\item Rest endpoints
+	\item NetCdf reader
+	\item Indexer
+	\item Image renderer
+	\item WMTS module
+\end{itemize}  
 
-\begin{figure}[H]
+Using these modules, we have built two services: A \textit{REST API} to query for arbitrary data, and a \textit{WMTS service} to allow for easy creation of mapping applications.
+
+
+\paragraph{REST API:}
+The REST API consists of a series of URL's that can be queried to obtain slices of the dataset. The API takes a set of data space constraints and returns an image representing the requested area at a given time and depth.
+
+The control flow of the REST API is as flollows:  
+When a request comes in, it's automatically routed by the webserver module to the correct Resource class. The Resource class parses the parameters supplied by the user, and talks to the \textit{\gls{netcdf} reader} module in order to obtain the relevant data.
+The reader module, in turn, can talk to the \textit{Indexer} to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
+The data array is then passed back to the Resource class, which formats it according using the \textit{Image module}, and returns that as a response.
+
+\paragraph{WMTS service:}
+The WMTS service follows the WMTS protocol\cite{WMTS:spec}.
+This allows mapping application libraries to automatically lay out the data correctly on its map grid.  
+Our WMTS implementation reuses a lot of the capabilities and infrastructure built for the REST API:  
+For the capabilities document, we query the same Index used by \gls{netcdf}-Manager to get info about the extent (bounding box) of the dataset.
+To get a specific tile, we compute the coordinates of the corners of the tile, and call the resource described above to retrieve an image.
+We then put this image in a cache so that subsequent queries for this tile takes less time.
+
+\paragraph{}
+A more in-depth description of each module follows:
+
+\subsection{Web server}
+We use an embeddable web server library called Jetty\footnote{http://www.eclipse.org/jetty/} in combination with a REST library called Jersey\footnote{https://jersey.java.net/} to handle requests.
+Jetty is being used in embedded mode, which means that the program contains a web server, instead of the other way around. This makes the code more portable, as it possible to change the web server implementation used without having to rewrite a lot of webserver-specific code.
+Jersey is a REST framework for java. It adds a series of annotations and classes to simplify writing REST services.
+
+\subsection{NetCDF reader}
+We have a module responsible for reading and parsing the data contained the dataset. When the other modules need to fetch any data from the dataset, they can call this module. This keeps \gls{netcdf} specific code in a single place and provides a single interface to query data.
+This module uses a third-party library called NetCDF-Java\footnote{http://www.unidata.ucar.edu/software/thredds/current/netcdf-java/}
+\subsection{Indexer}
+The indexer scans the data folder for new \gls{netcdf} files, and keeps track of what kind of data is contained in each file. The \textit{NetCDF reader} module relies on this to select the correct file to open when asked to provide data.
+\subsection{Image renderer}
+The data is originally stored as an array of scalar values. The program has to render this array as an image in order to be useful to the user. This consists of taking a two-dimensional array, and turning it into an image.
+The different resources rely on this module when the requested output representation is an image.
+
+\subsection{Rest endpoints}
+The rest endpoints is what the user sees. It is a collection of URL's that the user can point their HTTP client (browser) to, to get a representation of the resource that endpoint represent. The user can specify additional constraints on what she wants in the form of query parameters. 
+
+We have a separate endpoint for each type of feature in the simulated dataset, such as salinity, temperature, depth, current, et cetera.  
+
+Query parameters are used to tell the endpoint whhich section of the data space the user is interested in, such as area, depth and time.
+
+Due to time constraints, we have restricted the output to require a 2d slice of area at a single time and a single depth. However, it should ideally be possible to query for any subspace of the dataset.
+
+The rest endpoints parse the query parameters to figure out which dataset the user is interested in, and rely on the \textit{NetCDF reader} module to fetch data, and the \textit{Image renderer} to turn the data into an image.
+
+\subsection{WMTS}
+
+The \textit{WMTS} module is tasked with generating a \textit{capbabilities document}, and serving \textit{tiles}. When generating the capabilities document, the WMTS module calls the indexer in order to obtain the bounds of the entire dataset.
+
+The WMTS module also has to be able to take the tile index requested by the user and computing the coordinates of the corners of the given tile. If the image for this tile is already in cache, it can just return that to the user.
+Otherwise, it then calls on the relevant resource with the computed coordinates to obtain the image for that tile. Finally, it calls the cache to store the image for later use.
+
+Thus, the WMTS module relies on the indexer, cache, and resource module. By proxy, it also relies on the data reader and image renderer as well.
+
+\begin{figure}[h]
 \begin{center}
 \fbox{\includegraphics[width=400px]{img/back_end_arch.png}}
 \caption{Back-end Architecture overview}
@@ -1864,31 +1945,6 @@ We use an embeddable webserver library called Jetty in combination with a REST l
 \end{center}
 \end{figure}
 
-\paragraph{REST API}
-When a request comes in, it's automatically routed to the correct Resource class. 
-We have a custom manager for the data files, called \gls{netcdf}-Manager. The Resource class talks to this manager to obtain the data requested by the user.
-The manager in turn, can talk to our Indexer to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
-The data array is then passed back to the Resource class, which formats it according to what the user wanted (typically as an image), and returns that as a response.
-\paragraph{WMTS}
-The Web Map Tile Service (WMTS) protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
-
-\begin{figure}[H]
-\begin{center}
-\fbox{\includegraphics[width=400px]{img/tile_matrix.png}}
-\fbox{\includegraphics[width=400px]{img/tile_matrix_set.png}}
-\caption{Tile Matrices}
-\label{fig:TileMatrix}
-\end{center}
-\end{figure}
-
-A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
-
-A client can then request a specific tile at position (x,y) from a given tile matrix, and then by the definition given in the capabilities document it can place the image at the correct position on its map.  
-
-Our WMTS implementation reuses a lot of the capabilities and infrastructure built for the REST API:  
-For the capabilities document, we query the same Index used by \gls{netcdf}-Manager to get info about the extent (bounding box) of the dataset.
-To get a specific tile, we compute the coordinates of the corners of the tile, and call the resource described above to retrieve an image.
-We then put this image in a cache so that subsequent queries for this tile takes less time.
 
 \subsection{Rendering data}
 The ImageRenderer class is responsible for turning the raw data into PNG images. An empty image is created and filled pixel by pixel from sampling the data. It can be used to create tiles for WMTS or images that can be used outside a map service.

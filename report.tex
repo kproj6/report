@@ -81,6 +81,14 @@
 
 
 \newglossaryentry{pre-study}{name=pre-study, description={is a document produced before the implementation phase, which informs the customer of possible solutions to their problem}}
+\newglossaryentry{pre-delivery}{name=pre-delivery, description={is a preliminary delivery of the main report, that is meant to give the external examiner an introduction to the groups work}}
+\newglossaryentry{front-end}{name=front-end, description={is the name given to the part of software that the user interacts with}}
+\newglossaryentry{back-end}{name=back-end, description={is the name given to the part of software the user does not interact with, and that performs a specialized task.}}
+\newglossaryentry{course compendium}{name=course compendium, description={is a document given to the students, which outlines the course, describes the rules and expectations for the groups work, and gives the structure and content of the final report}}
+\newglossaryentry{protocol}{name=protocol, description={is a set of predefined rules of conduct and procedures. In computer science, it often describes the rules for communication between two parts}}
+\newglossaryentry{open source}{name=open source, description={is software where the source code is available to everyone, and anyone can alter and share the code}}
+\newglossaryentry{prototype}{name=prototype, description={is an early version of something, meant to test specific features}}
+\newglossaryentry{proof of concept}{name=proof of concept, description={is a system that proves the feasibility of an idea. It is usually not usable as part of a final system, but rather built as proof of an idea.}}
 
 \begin{document}
 
@@ -140,11 +148,11 @@ In the choice of location, as well as in the daily operations of fish farms, bot
 
 Our group of seven students have used the fall semester at the Norwegian University of Science and Technology to do a full scale software development process in order to solve this task.
 
-The group has written a pre study, were systems that are currently in use have been investigated, and technologies that could be used for custom built solutions have been evaluated. Using the Scrum methodology, the group has worked to develop both a front and back end prototype of such a system.
+The group has written a pre study, were systems that are currently in use have been investigated, and technologies that could be used for custom built solutions have been evaluated. Using the Scrum methodology, the group has worked to develop both a front and back end \gls{prototype} of such a system.
 
-The prototype developed is able to read NetCDF files from SINTEFs simulations, and visualize this dynamically at the users discretion. This includes handling files that overlap both in area and resolution. 
+The \gls{prototype} developed is able to read NetCDF files from SINTEFs simulations, and visualize this dynamically at the users discretion. This includes handling files that overlap both in area and resolution. 
 
-Although the solution is a prototype, and not ready for full scale deployment, it proves that developing a custom system is within reach, and should be considered.
+Although the solution is a \gls{prototype}, and not ready for full scale deployment, it proves that developing a custom system is within reach, and should be considered.
 
 \end{abstract}
 
@@ -208,14 +216,14 @@ The client, SINTEF Fisheries and Aquaculture, has given us the project labeled "
 In agreement with the customer, the group has defined the following scope of the assignment:
 
 \begin{quote}
-Make a \gls{pre-study} that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualizations on a web page. Follow the study with an implementation of a proof of concept system that is able to read from a collection of \gls{netcdf}-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEFs systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
+Make a \gls{pre-study} that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualizations on a web page. Follow the study with an implementation of a \gls{proof of concept} system that is able to read from a collection of \gls{netcdf}-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEFs systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
 \end{quote}
 
 \section{Group resources}
 \label{sec:GroupResources}
 The group consists of seven people with diverse skills. In the starting phase of the project, the group assessed the different skills, and used this to distribute tasks, and areas of responsibilities. 
 
-The project is set to run from August 28th until November 20th, for a total of 85 days, or 12 weeks and 1 day. As with all subjects given at \gls{NTNU}, a student is expected to work 12 hours for every 7,5 study points. For this course, this amounts to 24 hours of work every week. Due to the fact that the presentation is given the week before the end of the semester, the course compendium sets the required work load to 25 hours a week. 
+The project is set to run from August 28th until November 20th, for a total of 85 days, or 12 weeks and 1 day. As with all subjects given at \gls{NTNU}, a student is expected to work 12 hours for every 7,5 study points. For this course, this amounts to 24 hours of work every week. Due to the fact that the presentation is given the week before the end of the semester, the \gls{course compendium} sets the required work load to 25 hours a week. 
 
 For our group, this amounts to about 2100 work hours in total. Every week, the group has 6 hours of meeting time, and is required to hand in documents for the advisor meeting. An estimate of 4 hours is given for the production of these documents. Given this, approximately 1550 hours can be dedicated to solving the customers problem.
 
@@ -318,7 +326,7 @@ As our development project is part of a university course that runs in parallel 
 \item Meetings are not conducted every day, but rather twice a week. This fits better with the schedule of the group members, and takes into consideration that there is no demand for work to be done every day. 
 \item Sprint length has been chosen as one week. This is short compared to the Scrum standard, but it provides the group with a motivational pressure, as well as making the sprints easier to estimate. 
 \item Product demos are set to every other week. This means that there will be sprints that are not presented to the customer. In choosing this, the group is able to have sprints that focus on the internal demands set forth by \gls{NTNU}, as well as making more progress between customer meetings.
-\item Retrospectives at the end of each sprint would mean setting aside around 50-70 hours of work time for retrospectives. As the group is only in a position to change their own work habits, and can not make changes to the course, nor to the general work process of the customer, it was decided that retrospectives will be dropped. In addition, the customer will probably not be able to be present at retrospectives, lowering their value. Instead, team meetings, and advisor meetings will take the place of retrospectives. 
+\item Retrospectives at the end of each sprint would mean setting aside around 50-70 hours of work time for retrospectives. As the group is only in a position to change their own work habits, and can not make changes to the course, nor to the general work process of the customer, it was decided that retrospectives will be dropped. In addition, the customer will probably not be able to be present at retrospectives, lowering their value. Instead, team meetings and advisor meetings will take the place of retrospectives. 
 \item The scrum master is usually responsible for shielding the development team from the outside world. In this subject, it will not be possible to do this, as group members are required to attend advisor meetings and customer meetings. Thus, the scrum master will be more of a project manager, responsible for the teams progress and efforts. 
 \end {itemize}
 
@@ -348,7 +356,7 @@ An adaptation to the waterfall model is the waterfall model with feedback. This 
 Even with the addition of feedbacks, the team felt that the waterfall model did not fit the rapid development, and possible changes in scope and requirements, of the project. 
 
 \section{Requirements}
-We are using a Scrum-like project management framework, and working prototypes are expected to be produced at the end of every other sprint. Requirements have been prioritized by the customer on a scale from 1 to 100. Some of the requirements for our project are inevitably overlapping, and a significant part of the requirements must be accomplished in order to produce a working solution. This is reflected in the prioritization made by the customer. The requirements of the project are discussed in detail in chapter \ref{chap:Requirements}.
+We are using a Scrum-like project management framework, and working \glspl{prototype} are expected to be produced at the end of every other sprint. Requirements have been prioritized by the customer on a scale from 1 to 100. Some of the requirements for our project are inevitably overlapping, and a significant part of the requirements must be accomplished in order to produce a working solution. This is reflected in the prioritization made by the customer. The requirements of the project are discussed in detail in chapter \ref{chap:Requirements}.
 
 \section{Project plan}
 This section describes the specific layout of the project. This project follows the Scrum methodology with some variants introduced, as discussed in section \ref{subsec:scrumadaptations}. The first five weeks were spent planning, pre-studying (which included a preliminary implementation of the critical part of the system), and writing the requirement specification. After this, the project was divided into sprints. We decided to make each sprint one week. At the end of the last sprint all the requirements should be accomplished.
@@ -358,10 +366,10 @@ After the initial phase of the project, and the production of the pre study, a t
 \begin{itemize}
 \item Initiation phase (pre-planning)
 \item Project Planning
-\item Project Prestudy Sprint (Sprint 0)
+\item \Gls{pre-study} Sprint (Sprint 0)
 
 \item Sprint 1
-\item Pre-delivery of report (17th October)
+\item \Gls{pre-delivery} of report (17th October)
 
 \item Sprint 2
 \item Sprint 3
@@ -388,7 +396,7 @@ In figure \ref{fig:gantt} the Gantt diagram for our project is presented:
 \subsection{Activities}
 \begin{description}
 \item[Pre-planning] During the pre-planning activity, the group members get to know each other and understand the task. There are also the first meetings with the customer and with the advisor.
-\item[Pre-study and planning] The pre-study and planning activity is the stage where the actual work on the project begins. The group explores solutions, determine which technologies will be used, and how the product will be realized.
+\item[\Gls{pre-study} and planning] The \gls{pre-study} and planning activity is the stage where the actual work on the project begins. The group explores solutions, determine which technologies will be used, and how the product will be realized.
 \item[Documentation] The documentation activity represents time spent documenting the work effort, including implementation, research etc., and administrative tasks like status reports and documents for the meetings.
 \item[Coordination] The coordination activity is accomplished throughout the project, and consists of activities to coordinate the work, such as meetings, internal emails, calls and messages.
 \item[Implementation] The implementation activity consists of the implementation of the system. This includes the programming of both the back end and the front end part.
@@ -401,8 +409,8 @@ To mark progress in the project, as well as making sure the team is clear on imp
 
 The following milestones have been defined:
 \begin{description}
-\item[October 6th] Pre-study phase to be completed
-\item[October 17th] Pre-delivery of report (defined by the course coordinators)
+\item[October 6th] \Gls{pre-study} phase to be completed
+\item[October 17th] \Gls{pre-delivery} of report (defined by the course coordinators)
 \item[November 17th] Project report to be completed
 \item[November 20th] Final presentation day (defined by the course coordinators)
 \end{description}
@@ -451,16 +459,16 @@ The scrum master is in standard scrum methodology tasked with being a barrier be
 \item[\gls{QA} and testing responsible] Ensures that the implementation fulfills the requirements, designs the test plan, defines and ensures that the Quality Assurance standard is followed during the project. Is responsible for making sure that sufficient testing is conducted.
 \emph{Role assigned to: \textbf{Emil Jakobus Schroeder}}
 
-\item[Documentation responsible] Supervises the structure and the content of all the documents the group produces during the project. This includes the pre-study, pre-delivery and final report. Is also the person responsible for taking minutes during meetings, and making sure that they reflect accurately what was said during the meetings.
+\item[Documentation responsible] Supervises the structure and the content of all the documents the group produces during the project. This includes the \gls{pre-study}, \gls{pre-delivery} and final report. Is also the person responsible for taking minutes during meetings, and making sure that they reflect accurately what was said during the meetings.
 \emph{Role assigned to: \textbf{Hans Kristian Henriksen}}
 
 \item[Advisor contact] Arranges the advisor meetings, makes sure that all required documents are sent to the advisor before each meeting. Will, as far as possible, be the only person from the group communicating directly with the advisor on group specific matters.
 \emph{Role assigned to: \textbf{Hans Kristian Henriksen}}
 
-\item[Front-end leader] The front-end leader supervises the front-end architecture and implementation, and coordinates the front-end developer team. He is expected to have an overview of the process and plan ahead in the case of problems or blocked tasks.
+\item[\Gls{front-end} leader] The \gls{front-end} leader supervises the \gls{front-end} architecture and implementation, and coordinates the \gls{front-end} developer team. He is expected to have an overview of the process and plan ahead in the case of problems or blocked tasks.
 \emph{Role assigned to: \textbf{Anders Smedegaard Pedersen}}
 
-\item[Back-end leader] Has the same role as the front-end leader, but focuses on the back end team.
+\item[\Gls{back-end} leader] Has the same role as the \gls{front-end} leader, but focuses on the back end team.
 \emph{Role assigned to: \textbf{Arve Nygård}}
 
 \item[System architect] The system architect makes sure that there is consistency between requirements, design and implementation, and that the design is feasible and reasonable.
@@ -515,7 +523,7 @@ R1 & Personal Conflicts & \gls{M} & \gls{M} & Might affect the quality of the wo
 R2 & Assignments given in other courses & \gls{H} & \gls{M} & Time for some students could be less than planned during a few weeks, due to intensive-demanding assignments of other courses. Mitigated by planning, frequent workload balancing and contributing with extra work in weeks without as intensive demands. \\ \\ \hline
 R3 & Conflicting schedules & \gls{H} & \gls{M} & Reduced by planning meeting-times and communication channels for times between group meeting. Also, accepting that we can't meet every day and that all group members do not always need to be present. \\ \\ \hline
 R4 & Solution is overcomplicated & \gls{M} & \gls{M} & Probability reduced by good communication both with the customer and internally in the group. \\ \\ \hline
-R5 & Technical problems and difficulties & \gls{M} & \gls{H} & To reduce the probability: make a detailed study (and prototypes where possible) during the pre-study phase. To reduce the consequence: find the person/people within the group which are more comfortable with those new technologies and assign them that task if it is a particular task. Knowledge transfer within the team is also a way to reduce the consequences of this risk. Keep the customer informed. \\ \\ \hline
+R5 & Technical problems and difficulties & \gls{M} & \gls{H} & To reduce the probability: make a detailed study (and \glspl{prototype} where possible) during the \gls{pre-study} phase. To reduce the consequence: find the person/people within the group which are more comfortable with those new technologies and assign them that task if it is a particular task. Knowledge transfer within the team is also a way to reduce the consequences of this risk. Keep the customer informed. \\ \\ \hline
 R6 & Missing room reservations & \gls{H} & \gls{L} & Will delay work. Avoid by making sure we have a regular room (talk to advisor) \\ \\ \hline
 R7 & Data loss & \gls{L} & \gls{H} & Limited by introducing a backup strategy, and making sure that all team members follow this strategy. \\ \\ \hline
 R8 & Assigned tasks are not completed & \gls{H} & \gls{M} & Consequence reduced by additional work for other group members in order to try to complete the task within the deadline. Talk within the group to find a compromise. Continuous communication between team members will help identify this risk early.  \\ \\ \hline
@@ -565,19 +573,19 @@ Slack is a web based team communication tool founded by Stewart Butterfield. It 
 \section{Programming languages}
 The choice of implementation language, platform and tools to use is left up to the group. The customers only requirement is that the solution should be able to run in their environment.
   \subsection{Java}
-  Java is a popular programming language developed by a team led by James Gosling at Sun Microsystems in 1991. It's full-featured, general purpose, language capable of developing robust mission-critical applications \cite{liang}. This and the fact that everybody in the group had at least basic knowledge of Java led to the decision that we would use Java for our back-end application.  
+  Java is a popular programming language developed by a team led by James Gosling at Sun Microsystems in 1991. It's full-featured, general purpose, language capable of developing robust mission-critical applications \cite{liang}. This and the fact that everybody in the group had at least basic knowledge of Java led to the decision that we would use Java for our \gls{back-end} application.  
   \subsection{JavaScript}
   As stated by Davis Flanagan in "JavaScript: the definitive guide": 
   \begin{quote}
   "Javascript is part of the triad of technologies that all Web developers must learn".
   \end{quote} 
-  He continues to note that JavaScript specifies the behavior of the web page \cite{fd11}. Along with specification of \gls{HTML5} and ECMAscript 6 (the standard name of JavaScript) the possibilities of what you can achieve with JavaScript has greatly improved. Since our assignment is to create a web based solution, it seams natural to use JavaScript as part of the solution. This is further supported by the existence of open source libraries designed to make interactive maps, which is relevant for our assignment.
+  He continues to note that JavaScript specifies the behavior of the web page \cite{fd11}. Along with specification of \gls{HTML5} and ECMAscript 6 (the standard name of JavaScript) the possibilities of what you can achieve with JavaScript has greatly improved. Since our assignment is to create a web based solution, it seams natural to use JavaScript as part of the solution. This is further supported by the existence of \gls{open source} libraries designed to make interactive maps, which is relevant for our assignment.
 
 \chapter{Pre study}
 In this chapter, we present the findings of the pre study. The pre study document was made as a separate document that was meant to be delivered to the customer independently of this report. Therefore, there are overlapping sections with the full report. These sections will not be given in this chapter, but are instead presented in their respective chapters of the full report. 
 
 \section{Background}
-To get an understanding of the customers needs, as well as studying different solutions, a pre study is conducted. From the course compendium:
+To get an understanding of the customers needs, as well as studying different solutions, a pre study is conducted. From the \gls{course compendium}:
 \begin{quote}
 The preliminary studies are vital for the group to obtain a good understanding of the total problem.
 Here, you will have to describe the problem at hand. You should describe the current system and the
@@ -689,15 +697,15 @@ Does not support \gls{netcdf} natively. There exist a community plugin that enab
 
 \subsection{THREDDS}
 \begin{quote}
-The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and data access for scientific datasets, using \gls{OPENDAP}, \gls{OGC} \gls{WMS} and \gls{WCS}, \gls{HTTP}, and other remote data access protocols. \cite{TDS:Web}
+The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and data access for scientific datasets, using \gls{OPENDAP}, \gls{OGC} \gls{WMS} and \gls{WCS}, \gls{HTTP}, and other remote data access \glspl{protocol}. \cite{TDS:Web}
 \end{quote}
 
-  Except supporting multiple data access protocols, \gls{TDS} is able to virtually aggregate multiple \gls{netcdf} files to one dataset that can be used for queries, such as selecting a region and sending it's data in specified format. Dataset configurations are done via \gls{NCML}, which is a dialect of \gls{XML}.
+  Except supporting multiple data access \glspl{protocol}, \gls{TDS} is able to virtually aggregate multiple \gls{netcdf} files to one dataset that can be used for queries, such as selecting a region and sending it's data in specified format. Dataset configurations are done via \gls{NCML}, which is a dialect of \gls{XML}.
 
   Although \gls{TDS} seems to support everything that is needed for this project, it's installation, and especially configuration for agreggation and special needs, is not trivial. Moreover there are doubts about speed and dealing with serving a range containing large quantified points. One advantage is that SINTEF currently have a \gls{TDS} running and configured, so we won't need to configure it from scratch, and SINTEF employees probably have experience and knowledge about setting it up, something which the group lacks.
 
   \subsection{Custom solution}
-  An alternative is to write a custom back-end from scratch.
+  An alternative is to write a custom \gls{back-end} from scratch.
   Advantages of this are:
   \begin{itemize}
   \item Easy deployment - written as a single service that you just launch.
@@ -715,16 +723,16 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
   \item Rendering to GeoJSON
   \end{itemize}
 
-  Performance seems to be very good at the current level of implementation. The only major potential bottleneck the group sees is reading files from a hard-drive. (All testing has been done on \gls{SSD}). This bottleneck will however be independent of backend solution.
+  Performance seems to be very good at the current level of implementation. The only major potential bottleneck the group sees is reading files from a hard-drive. (All testing has been done on \gls{SSD}). This bottleneck will however be independent of \gls{back-end} solution.
   
   \subsection{MapTiler}
   \emph{Link: \url{http://www.maptiler.org/}} \\%make sure to use //
-    MapTiler is an application for online map puplishing. It makes it possible to create tiles that can be overlayed over other maps like Google Maps, Open Street Map and others. It's written in C/C++ and claims to be a lot faster than other existing solutions. A draw back seems to be that it's made for overlaying a pre generated directory of images rather than dynamic data like the ocean forecast data.
+    MapTiler is an application for online map publishing. It makes it possible to create tiles that can be overlayed over other maps like Google Maps, Open Street Map and others. It's written in C/C++ and claims to be a lot faster than other existing solutions. A draw back seems to be that it's made for overlaying a pre generated directory of images rather than dynamic data like the ocean forecast data.
   \\ \emph{Overall rating: \textbf{Ok}}
   
     \subsection{ncWMS}
   \emph{Link: \url{http://www.resc.rdg.ac.uk/trac/ncWMS/}} \\%make sure to use //
-    ncWMS is an open source, free to use, java server application. It was created to support interactive browsing of gridded four-dimensional \gls{netcdf} data over the web. Clients will send request containing the wanted coordinates (latitudes, longitudes, depth and time), what variable is to be displayed, projection, format and size the response should be. ncWMS, which has been configured to read from datasets (for example sets of \gls{netcdf} files or a \gls{THREDDS} server), responds to a request with an image of the desired type. ncWMS adheres to the \gls{WMS} specification (\gls{WMS} 1.3.0 and 1.1.1 are supported).
+    ncWMS is an \gls{open source}, free to use, java server application. It was created to support interactive browsing of gridded four-dimensional \gls{netcdf} data over the web. Clients will send request containing the wanted coordinates (latitudes, longitudes, depth and time), what variable is to be displayed, projection, format and size the response should be. ncWMS, which has been configured to read from datasets (for example sets of \gls{netcdf} files or a \gls{THREDDS} server), responds to a request with an image of the desired type. ncWMS adheres to the \gls{WMS} specification (\gls{WMS} 1.3.0 and 1.1.1 are supported).
     \paragraph{Configuration}
     ncWMS is mainly configured through a web interface, where you can add datasets and change server settings. A dataset can be: a single \gls{netcdf} file, an \gls{OPENDAP} endpoint (a service provided by \gls{THREDDS}), a NcML file or a glob aggregation (using wildcard characters like ). It is possible to configure which variables of a dataset to expose and how. Each dataset can also be set to automatically refresh at certain intervals. The server can be set to cache data, to reduce \gls{CPU} load at the expense of memory and disk space.
     \paragraph{Aggregation}
@@ -732,12 +740,12 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
     \paragraph{Perfomance}
     Testing both local and publicly available ncWMS servers the performance seems good. When using the godiva2 browser based client or sending individual requests the server mostly responds quickly, with some idiopathic exceptions. Transmitting the map data to the client as \gls{PNG} images should be a bandwidth-efficient way to do it, as well as moving the computation load away from the client. When starting the server application or adding a dataset, the server needs some time to load some information from the datasets. This only takes a few seconds, even for a few hundred GB of local \gls{netcdf} files.
     \paragraph{Summary}
-    ncWMS does a lot of what we need the back-end of our solution to do. It handles the extraction, downsampling and projection of the data, creating an image ready to be used in a map widget or on it's own. It can only handle requests for a few kinds of plots. It is open source, and is free to use under a modified \gls{BSD} license. To serve all the plots and data required it would need modification.
+    ncWMS does a lot of what we need the \gls{back-end} of our solution to do. It handles the extraction, downsampling and projection of the data, creating an image ready to be used in a map widget or on it's own. It can only handle requests for a few kinds of plots. It is \gls{open source}, and is free to use under a modified \gls{BSD} license. To serve all the plots and data required it would need modification.
   \\ \emph{Overall rating: \textbf{Good}}
 
 %%%
 \section{Transmission Protocols}
-  There are several standardized protocols to present map data from the server to the client in order to dynamically display layers on a map.
+  There are several standardized \glspl{protocol} to present map data from the server to the client in order to dynamically display layers on a map.
   In particular, two main kind of representations can be distinguished, and sometimes they're both supported by a single standard:
   \begin{description}
     \item[Vector based layers] Data is sent from the server to the client in a textual format, such as GeoJson
@@ -753,12 +761,12 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
   \end{itemize}
   
   \subsection{WMS}
-    \acrfull{WMS} is a standard protocol for serving georeferenced map images over the Internet that are generated by a map server using data from a GIS database. The specification was developed and first published by the Open Geospatial Consortium in 1999.
+    \acrfull{WMS} is a standard \gls{protocol} for serving georeferenced map images over the Internet that are generated by a map server using data from a GIS database. The specification was developed and first published by the Open Geospatial Consortium in 1999.
     A \gls{WMS} server usually serves the map in a bitmap format, e.g. \gls{PNG}, \gls{GIF} or \gls{JPEG}. In addition, vector graphics can be included: such as points, lines, curves and text, expressed in SVG or WebCGM format.
     The \gls{WMS} standard allows flexibility in the client request enabling clients to obtain exactly the final image they want. A \gls{WMS} client can request that the server creates a map by overlaying an arbitrary number of the map layers offered by the server, over an arbitrary geographic bound, with an arbitrary background color at an arbitrary scale, in any supported coordinate reference system.
 
   \subsection{TMS}
-\gls{TMS} is a specification for storing and retrieving cartographic data, developed by the Open Source Geospatial Foundation. The \gls{TMS} protocol fills a gap between the very simple standard used by OpenStreetMap and the complexity of the \gls{WMS} standard, providing simple \gls{URL} to tiles while also supporting alternate spatial referencing system.
+\gls{TMS} is a specification for storing and retrieving cartographic data, developed by the Open Source Geospatial Foundation. The \gls{TMS} \gls{protocol} fills a gap between the very simple standard used by OpenStreetMap and the complexity of the \gls{WMS} standard, providing simple \gls{URL} to tiles while also supporting alternate spatial referencing system.
     \gls{TMS} is most widely supported by web mapping clients and servers, and it is served as the basis for \gls{WMTS} (the OpenGIS Web Map Tile Service \gls{OGC} standard).
 
   \subsection{WMS-c}
@@ -767,17 +775,17 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
     Second, caching of \gls{HTTP} GET requests is further made possible by constraining the \gls{URL} parameters used in the request. This recommendation identifies the \gls{WMS} GetMap parameters minimally needed for a client to request a valid tile.
 
   \subsection{WMTS}
-\gls{WMTS} is a standard protocol for serving pre-rendered georeferenced map tiles over the Internet. The specification was developed and first published by the Open Geospatial Consortium in 2010
+\gls{WMTS} is a standard \gls{protocol} for serving pre-rendered georeferenced map tiles over the Internet. The specification was developed and first published by the Open Geospatial Consortium in 2010
     \gls{WMTS} builds on efforts to develop scalable, high performance services for web based distribution of cartographic maps. To define this standard, similar initiatives were also considered, such as Google maps and NASA OnEarth. \gls{WMTS} includes both resource (RESTful approach) and procedure oriented architectural styles (KVP and SOAP encoding) in an effort to harmonize this interface standard with the OSGeo specification.
     \gls{WMTS} complements earlier efforts to develop services for the web based distribution of cartographic maps. The \gls{OGC} \gls{WMTS} provides a complementary approach to the \gls{OGC} \gls{WMS} for tiling maps. \gls{WMS} focuses on rendering custom maps and is an ideal solution for dynamic data or custom styled maps. \gls{WMTS} trades the flexibility of custom map rendering for the scalability possible by serving of static data (base maps) where the bounding box and scales have been constrained to discrete tiles. The fixed set of tiles allows for the implementation of a \gls{WMTS} service using a web server that simply returns existing files. The fixed set of tiles also enables the use of standard network mechanisms for scalability such as distributed cache systems.
 
   \subsection{Summary}
-    WMS-C is the best supported and most mature protocol, but it's a bit of a kludge overlayed on top of \gls{WMS} to support tiles and it incurs some extra overhead from having to use world coordinate bounding boxes rather than tile coordinates.
+    WMS-C is the best supported and most mature \gls{protocol}, but it's a bit of a kludge overlayed on top of \gls{WMS} to support tiles and it incurs some extra overhead from having to use world coordinate bounding boxes rather than tile coordinates.
     \gls{TMS} is fairly mature, and is specifically designed for tiles, but is not an official \gls{OGC} spec.
     \gls{WMTS} is an \gls{OGC} spec that is meant to replace \gls{TMS} and WMS-C. It works purely in tile coordinates like \gls{TMS} (although it computes them differently) but has some additional capabilities that weren't in \gls{TMS}, like GetFeatureInfo. It's comparatively recent, but it is becoming more and more used, even if its implementations are less mature. It is also supported by OpenLayers.
 
 %%%
-\section{Frontend solutions}
+\section{Front-end solutions}
   A central part of the product requirement is to display simulated data in a dynamic manner. There exists solutions to do just that, and javascript libraries than makes it relatively easy to create at front end solution of our own. In this section we will discuss and compare the most relevant of these in the context of our assignment and the product requirements. 
   \subsection{Custom made solution}
     A custom made solution has the general advantage that we can built it to specification and thus make sure it meets the requirements without having to deal with other peoples code base. Trying to customize an existing solution might be as much work as building something from the bottom. In the following paragraphs we will review and rate technologies we found relevant for building a custom front end.
@@ -791,7 +799,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
     \end{tabular}
     
     \paragraph{Introduction} \indent
-    LeafletJS ("Leaflet" for the rest of the section) is an open source javascript library for creating mobile-friendly interactive maps. It's licensed under the \href{'https://github.com/Leaflet/Leaflet/blob/master/LICENSE'}{2-clause \gls{BSD} License}, which makes it free to use in commercial applications as long as a credit is added somewhere in the user interface.
+    LeafletJS ("Leaflet" for the rest of the section) is an \gls{open source} javascript library for creating mobile-friendly interactive maps. It's licensed under the \href{'https://github.com/Leaflet/Leaflet/blob/master/LICENSE'}{2-clause \gls{BSD} License}, which makes it free to use in commercial applications as long as a credit is added somewhere in the user interface.
     Even though Leaflet is free to use it is dependent on a third party to provide the map tiles. These may not be free to use.
 
     \paragraph{Features}
@@ -826,7 +834,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
      \hline
    \end{tabular}
    \paragraph{Introduction} \indent
-   OpenLayers is an open source (provided under the \href{'https://tldrlegal.com/license/bsd-2-clause-license-(freebsd)'}{2-clause \gls{BSD} License}) JavaScript library for displaying map data in web browsers. It provides an \gls{API} for building rich web-based geographic applications similar to Google Maps and Bing Maps. The library was originally based on the Prototype JavaScript Framework. Since November 2007 OpenLayers is an Open Source Geospatial Foundation project.
+   OpenLayers is an \gls{open source} (provided under the \href{'https://tldrlegal.com/license/bsd-2-clause-license-(freebsd)'}{2-clause \gls{BSD} License}) JavaScript library for displaying map data in web browsers. It provides an \gls{API} for building rich web-based geographic applications similar to Google Maps and Bing Maps. The library was originally based on the Prototype JavaScript Framework. Since November 2007 OpenLayers is an Open Source Geospatial Foundation project.
    The current stable version, OpenLayers 3.0, has been released August 29, 2014.
    \paragraph{Features}
    OpenLayers provides support to the following functionalities:
@@ -890,7 +898,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
    \\ \emph{Score: \textbf{High}}
 	
 	\paragraph{Summary}
-	This is a product made to browse 4 dimensional geospatial data like the ones we want to present. The look and feel is slightly outdated, but the functionality it has works well. It is open source. It and the third party libraries are licensed under free software licenses. It (and the ncWMS server) would need to be modified in order to display all the data and charts found in the current solution.
+	This is a product made to browse 4 dimensional geospatial data like the ones we want to present. The look and feel is slightly outdated, but the functionality it has works well. It is \gls{open source}. It and the third party libraries are licensed under free software licenses. It (and the ncWMS server) would need to be modified in order to display all the data and charts found in the current solution.
    \\ \emph{Overall rating: \textbf{Good}}
 	
 
@@ -900,20 +908,20 @@ Based on the study of possible solutions in the previous chapter, the group has 
 \subsection{Front-end}
 As the group has looked into the situation at SINTEF, as well as other solutions in production, the conclusion is rather clear. SINTEF requires a very specific front end, with custom graphs, and the ability to add more functionality at a later stage. As far as existing solutions go, only the Godiva2 system has been close to performing the necessary tasks to serve SINTEFs needs. This system is however not very easy to adapt, and the group is of the opinion that changing this system to fit custom needs may be too much work to justify.
 
-With this in mind, the group feels that the only realistic solution for the front-end is to develop a custom system from scratch.
+With this in mind, the group feels that the only realistic solution for the \gls{front-end} is to develop a custom system from scratch.
 
 \subsection{Back-end}
-For the back-end, the group is divided in its recommendation. From our investigation into different technologies, it seems like \gls{THREDDS} is a solution that is generally implemented for working with \gls{netcdf} files. Advantages of using this is that there exists documentation, maintenance, and updates. The group has had trouble configuring \gls{THREDDS}, and has also gotten the impression that SINTEF is not perfectly satisfied with its performance. 
+For the \gls{back-end}, the group is divided in its recommendation. From our investigation into different technologies, it seems like \gls{THREDDS} is a solution that is generally implemented for working with \gls{netcdf} files. Advantages of using this is that there exists documentation, maintenance, and updates. The group has had trouble configuring \gls{THREDDS}, and has also gotten the impression that SINTEF is not perfectly satisfied with its performance. 
 
-The group feels confident that a custom back-end prototype can be made, and that it will be able to meet the requirements. This will give the customer more flexibility in functionality and expandability, but will obviously not be as complete or well supported as \gls{THREDDS}.
+The group feels confident that a custom \gls{back-end} \gls{prototype} can be made, and that it will be able to meet the requirements. This will give the customer more flexibility in functionality and expandability, but will obviously not be as complete or well supported as \gls{THREDDS}.
 
-The group asks SINTEF to make a decision for a back-end solution based on the information in this report.
+The group asks SINTEF to make a decision for a \gls{back-end} solution based on the information in this report.
 
 \subsection{Different paths}
 As SINTEF is given a choice for how to proceed, the group sees two paths forward in the project:
 \begin{enumerate}
-\item \gls{THREDDS} back-end: Given that SINTEF chooses to use a \gls{THREDDS} back-end, the group asks SINTEF to provide a configured \gls{THREDDS} server. The group will focus their work on the front-end, and attempt to make a prototype that replicates most functionality from todays site.
-\item Custom back-end: Given that SINTEF chooses a custom back-end, the team will split into two groups, and attempt to make a prototype back-end, as well as a prototype front-end. In this scenario, both the front- and back-end will have limited capabilities, but will demonstrate what is possible with a fully custom solution.
+\item \gls{THREDDS} \gls{back-end}: Given that SINTEF chooses to use a \gls{THREDDS} \gls{back-end}, the group asks SINTEF to provide a configured \gls{THREDDS} server. The group will focus their work on the \gls{front-end}, and attempt to make a \gls{prototype} that replicates most functionality from todays site.
+\item Custom \gls{back-end}: Given that SINTEF chooses a custom \gls{back-end}, the team will split into two groups, and attempt to make a \gls{prototype} \gls{back-end}, as well as a \gls{prototype} \gls{front-end}. In this scenario, both the front- and \gls{back-end} will have limited capabilities, but will demonstrate what is possible with a fully custom solution.
 \end{enumerate}
 
 
@@ -925,17 +933,17 @@ This chapter presents the functional and non-functional requirements for the pro
 The desired behavior of the system can be described through use case diagrams. Here we will display the users and how they want to interact with the system. Use cases model the system requirements and is an easy way to understand which features are needed and how these features should work. This section will outline the general use cases. For more defined specifications we refer to the requirements specification in section \ref{reqspec}.
 
   \subsection{Planning}
-  In our project, we have a relatively simple set of users and control of parameters. The main focus of our task is to deliver a full system with working front-end and back-end modules. In this case the user should be able to use the front-end without further knowledge about the back-end. The user will interact with a \gls{GUI} through key-input and mouse-input. This will mainly be map-interaction like scrolling or dragging the map, but parameters will also be controlled through buttons and other input fields.
+  In our project, we have a relatively simple set of users and control of parameters. The main focus of our task is to deliver a full system with working \gls{front-end} and \gls{back-end} modules. In this case the user should be able to use the \gls{front-end} without further knowledge about the \gls{back-end}. The user will interact with a \gls{GUI} through key-input and mouse-input. This will mainly be map-interaction like scrolling or dragging the map, but parameters will also be controlled through buttons and other input fields.
 
-  There is also a second type of users that is not as important in our scope, but will have to be considered. This is 3rd-party users or companies that request access the data directly from our back-end for use with their own front-end solution. These users will send requests over REST with commands from an \gls{API} for allowed requests.
+  There is also a second type of users that is not as important in our scope, but will have to be considered. This is 3rd-party users or companies that request access the data directly from our \gls{back-end} for use with their own \gls{front-end} solution. These users will send requests over REST with commands from an \gls{API} for allowed requests.
 
   \subsection{Users}
   Our product will have two types of users:
   
-  The \textbf{end-user} is a user that uses our front-end solution, which again depends on our back-end solution. Among such users there is currently not a goal to differentiate users, but at a later point registration and authentication might be required. For these users, a simple and efficient \gls{GUI} is required.  
-  The \textbf{3rd-party user} is a user that only uses the back-end solution of our project. These services will again be used by end-users. All these 3rd-party users might have to be authenticated to use the back-end directly. This to ensure that no requests will be processed if it is not authenticated and within the \gls{API} of allowed requests.
+  The \textbf{end-user} is a user that uses our \gls{front-end} solution, which again depends on our \gls{back-end} solution. Among such users there is currently not a goal to differentiate users, but at a later point registration and authentication might be required. For these users, a simple and efficient \gls{GUI} is required.  
+  The \textbf{3rd-party user} is a user that only uses the \gls{back-end} solution of our project. These services will again be used by end-users. All these 3rd-party users might have to be authenticated to use the \gls{back-end} directly. This to ensure that no requests will be processed if it is not authenticated and within the \gls{API} of allowed requests.
   
-  Together these to types of users requires us to have a clear and usable interface both from the back-end and the front-end. While the end-users are the main focus, adapting for the 3rd-party users should be easy, as we will focus on the usability of the interface between the front-end and back-end for our own use.
+  Together these to types of users requires us to have a clear and usable interface both from the \gls{back-end} and the \gls{front-end}. While the end-users are the main focus, adapting for the 3rd-party users should be easy, as we will focus on the usability of the interface between the \gls{front-end} and \gls{back-end} for our own use.
 
   \subsection{Use Case Diagrams}
   Our two users classes have a limited set of operations that they can perform, but with a wide range of parameters that can be adjusted. For the end-user these are shown in Figure \ref{funcReqsBack} and for the 3rd-party services these are shown in Figure \ref{funcReqsFront}.
@@ -959,10 +967,10 @@ The desired behavior of the system can be described through use case diagrams. H
 	\end{center}
   \end{figure}
 
-    The end-user is performing actions on the front-end part of the system, while the 3rd-party service performs its actions on the back-end part of the system. The end-user would then again use the 3rd-party service. In the future more operations might be allowed as the system expands from its core functionality, but these have been left outside the scope for this project.
+    The end-user is performing actions on the \gls{front-end} part of the system, while the 3rd-party service performs its actions on the \gls{back-end} part of the system. The end-user would then again use the 3rd-party service. In the future more operations might be allowed as the system expands from its core functionality, but these have been left outside the scope for this project.
 
   \subsection{Use cases}
-	For our prestudy, SINTEF put forth a series of situations were their system is used by the fishery industry. 
+	For our \gls{pre-study}, SINTEF put forth a series of situations were their system is used by the fishery industry. 
 	\begin{itemize}
 		\item \textbf{Planning of new fish farm sites} \\
 		When choosing a new site for a fish farm, it is important to be aware of historical information on currents, temperature and salinity. Placing a new site in an area that has high currents might make construction and other operations difficult.
@@ -982,17 +990,17 @@ We have decided to have detailed documentation on our functional requirements, a
   All functional requirements have been prioritized on a scale of 1 to 100 in order of importance, where 1 is the lowest priority and 100 is the highest. These priorities where set by the customer based on our input and priorities in the categories High, Medium and Low.
 
   \subsection{Functional Requirements}
-  The functionality of the system is described through its functional requirements. Based on  conversations with the customer, use cases, and existing solutions for these use cases, it is possible to formulate the functional requirements. Below is a table listing all the functional requirements divided into tables for front-end and back-end. The requirements are listed with deeper explanation, priority, and a time estimate.
+  The functionality of the system is described through its functional requirements. Based on  conversations with the customer, use cases, and existing solutions for these use cases, it is possible to formulate the functional requirements. Below is a table listing all the functional requirements divided into tables for \gls{front-end} and \gls{back-end}. The requirements are listed with deeper explanation, priority, and a time estimate.
   \\
   \begin{longtable}{p{1.4cm} p{7.8cm} p{1cm} p{1cm} }
-  \caption[]{Functional Requirements Back-End}\\
+  \caption[]{Functional Requirements \gls{back-end}}\\
   \multicolumn{1}{p{1.4cm}}{ID} &
   \multicolumn{1}{p{7.8cm}}{Requirement Description} &
   \multicolumn{1}{p{1cm}}{Prio.} &
   \multicolumn{1}{p{1cm}}{Est.}
   \endhead
 
-  \caption[Functional Requirements Back-End]{} \label{funcReqsBack} \\
+  \caption[Functional Requirements \gls{back-end}]{} \label{funcReqsBack} \\
   \hline \multicolumn{4}{c}{\textbf{Back-End}} \\
   \hline
   \multicolumn{1}{p{1.4cm}}{ID} &
@@ -1009,53 +1017,53 @@ We have decided to have detailed documentation on our functional requirements, a
   \endlastfoot
 
   \hline  
-  FR 1.1 & The back-end must be able to find the correct files for a given area
+  FR 1.1 & The \gls{back-end} must be able to find the correct files for a given area
   
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given one or more \gls{netcdf} files in the storage \\ 
         When a request for an area arrives \\ 
-        Then the back-end will return the correct files}
+        Then the \gls{back-end} will return the correct files}
   \end{itemize}
    & 99 & 10h \\ \hline
   
-  FR 1.2 & The back-end must be able to find the correct files for a given time 
+  FR 1.2 & The \gls{back-end} must be able to find the correct files for a given time 
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given one or more \gls{netcdf} files in the storage \\ 
         When a request for a time is given \\ 
-        Then the back-end will return the correct files}
+        Then the \gls{back-end} will return the correct files}
   \end{itemize}
   & 98 & 6h \\ \hline %estimage given FR 1.1?
 
-  FR 1.3 & The back-end must be able to find the correct data from a given file 
+  FR 1.3 & The \gls{back-end} must be able to find the correct data from a given file 
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a \gls{netcdf} file \\ 
         When a request of specific parameters arrives \\ 
-        Then the back-end will return the relevant dataset from the \gls{netcdf} file}
+        Then the \gls{back-end} will return the relevant dataset from the \gls{netcdf} file}
   \end{itemize}
   & 97 & 8h \\ \hline
 
-  FR 1.4 & The back-end must be able to downsample data to a given resolution 
+  FR 1.4 & The \gls{back-end} must be able to downsample data to a given resolution 
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a dataset \\ 
         When it is necessary \\ 
-        Then the back-end should downsample the data to a reasonable size}
+        Then the \gls{back-end} should downsample the data to a reasonable size}
   \end{itemize}
   & 50 & 15h \\ \hline
 
-  FR 1.5 & The back-end must be able to handle overlapping areas and give back correct data
+  FR 1.5 & The \gls{back-end} must be able to handle overlapping areas and give back correct data
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a set of \gls{netcdf} files in store \\
         When a request for an area that is covered by multiple files arrives \\
-        Then the back-end should return a single data set with the correct data from all relevant files}
+        Then the \gls{back-end} should return a single data set with the correct data from all relevant files}
   \end{itemize}
   & 49 & 30h \\ \hline
 
-  FR 1.6 & The back-end must be able to find the most up to date data
+  FR 1.6 & The \gls{back-end} must be able to find the most up to date data
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given multiple \gls{netcdf} files overlapping in time \\
@@ -1064,34 +1072,34 @@ We have decided to have detailed documentation on our functional requirements, a
   \end{itemize}
   & 48 & 6h \\ \hline
 
-  FR 1.7 & The back-end must be consistent and return the same output for the same input as long as no relevant files have been changed
+  FR 1.7 & The \gls{back-end} must be consistent and return the same output for the same input as long as no relevant files have been changed
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a repeated request \\
         When no new relevant files are added \\
-        Then the back-end must return the same dataset}
+        Then the \gls{back-end} must return the same dataset}
   \item \parbox[t]{6.8cm}{
         Given a repeated request \\
         When new relevant files are added \\
-        Then the back-end must return the most up-to-date dataset}
+        Then the \gls{back-end} must return the most up-to-date dataset}
   \end{itemize}
   & 47 & 10h \\ \hline
 
-  FR 1.8 & The back-end must return the most relevant data after new files are added to the system
+  FR 1.8 & The \gls{back-end} must return the most relevant data after new files are added to the system
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a back-end with cached results \\
+        Given a \gls{back-end} with cached results \\
         When a more up to date \gls{netcdf} file is added to the system and request arrives \\
-        Then the back-end must calculate new results instead of using the now out of date cached results}
+        Then the \gls{back-end} must calculate new results instead of using the now out of date cached results}
   \end{itemize}
   & 46 & 12h \\ \hline
 
-  FR 1.9 & The back-end should be able to handle new files on a daily basis
+  FR 1.9 & The \gls{back-end} should be able to handle new files on a daily basis
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a schedule of adding new files daily \\
         When the new files are added to the system \\
-        Then the back-end should process these efficiently without major disturbance to the system}
+        Then the \gls{back-end} should process these efficiently without major disturbance to the system}
   \end{itemize}
   & 45 & 8h \\ \hline
 
@@ -1100,7 +1108,7 @@ We have decided to have detailed documentation on our functional requirements, a
   \item \parbox[t]{6.8cm}{
         Given a system with an existing set of files \\
         When an administrator wants to add new \gls{netcdf} files \\
-        Then the back-end should be able to add these to the set of existing files without recompiling}
+        Then the \gls{back-end} should be able to add these to the set of existing files without recompiling}
   \end{itemize}
   & 44 & 6h \\ \hline
 
@@ -1109,109 +1117,109 @@ We have decided to have detailed documentation on our functional requirements, a
   \item \parbox[t]{6.8cm}{
         Given a system with an existing set of files \\
         When an administrator has added new \gls{netcdf} files \\
-        Then the back-end should be able to process these files and make them usable together with the existing set of files without further action from the administrator}
+        Then the \gls{back-end} should be able to process these files and make them usable together with the existing set of files without further action from the administrator}
   \end{itemize}
   & 43 & 10h \\ \hline
 
-  FR 1.12 & The back-end should be able to provide correct projections of point data
+  FR 1.12 & The \gls{back-end} should be able to provide correct projections of point data
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a system of \gls{netcdf} files \\
         When a point is specified in world coordinates \\
-        Then the back-end should be able to correctly project this onto coordinates of the \gls{netcdf} files}
+        Then the \gls{back-end} should be able to correctly project this onto coordinates of the \gls{netcdf} files}
   \end{itemize}
   & 42 & 20h \\ \hline
 
-  FR 1.13 & The back-end should be able to provide the current direction data, given a area, time and depth
+  FR 1.13 & The \gls{back-end} should be able to provide the current direction data, given a area, time and depth
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a system of files containing current direction data \\
         When a current direction request for a given area, time and depth arrives \\
-        Then the back-end should serve the current direction data for this area}
+        Then the \gls{back-end} should serve the current direction data for this area}
   \end{itemize}
   & 41 & 20h \\ \hline
 
-  FR 1.14 & The back-end should be able to provide the temperature data, given a area, time and depth
+  FR 1.14 & The \gls{back-end} should be able to provide the temperature data, given a area, time and depth
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a system of files containing temperature data \\
         When a temperature request for a given area, time and depth arrives \\
-        Then the back-end should serve the temperature data for this area}
+        Then the \gls{back-end} should serve the temperature data for this area}
   \end{itemize}
   & 90 & 15h \\ \hline
 
-  FR 1.15 & The back-end should be able to provide the salinity data, given a area, time and depth
+  FR 1.15 & The \gls{back-end} should be able to provide the salinity data, given a area, time and depth
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a system of files containing temperature data \\
         When a temperature request for a given area, time and depth arrives \\
-        Then the back-end should serve the temperature data for this area}
+        Then the \gls{back-end} should serve the temperature data for this area}
   \end{itemize}
   & 89 & 8h given FR 1.14 \\ \hline
 
-  FR 1.16 & The back-end should be able to provide the current data, given a area, time and depth
+  FR 1.16 & The \gls{back-end} should be able to provide the current data, given a area, time and depth
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a system of files containing current data \\
         When a current request for a given area, time and depth arrives \\
-        Then the back-end should serve the current data for this area}
+        Then the \gls{back-end} should serve the current data for this area}
   \end{itemize}
   & 50 & 8h given FR 1.14 \\ \hline
 
-  FR 1.17 & The back-end should be able to provide a \gls{PNG} image for the given temperature data
+  FR 1.17 & The \gls{back-end} should be able to provide a \gls{PNG} image for the given temperature data
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a temperature dataset \\
         When requested to return the dataset in \gls{PNG} image format \\
-        Then the back-end should make a \gls{PNG} image to represent the dataset with value-color mapping relevant to temperature}
+        Then the \gls{back-end} should make a \gls{PNG} image to represent the dataset with value-color mapping relevant to temperature}
   \end{itemize}
   & 90 & 30h \\ \hline
 
-  FR 1.18 & The back-end should be able to provide a \gls{PNG} image for the given salinity data
+  FR 1.18 & The \gls{back-end} should be able to provide a \gls{PNG} image for the given salinity data
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a salinity dataset \\
         When requested to return the dataset in \gls{PNG} image format \\
-        Then the back-end should make a \gls{PNG} image to represent the dataset with value-color mapping relevant to salinity}
+        Then the \gls{back-end} should make a \gls{PNG} image to represent the dataset with value-color mapping relevant to salinity}
   \end{itemize}
   & 89 & 10h given FR 1.17 \\ \hline
 
-  FR 1.19 & The back-end should be able to provide a \gls{PNG} image for the given current data
+  FR 1.19 & The \gls{back-end} should be able to provide a \gls{PNG} image for the given current data
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a current dataset \\
         When requested to return the dataset in \gls{PNG} image format \\
-        Then the back-end should make a \gls{PNG} image to represent the dataset with value-color mapping relevant to current}
+        Then the \gls{back-end} should make a \gls{PNG} image to represent the dataset with value-color mapping relevant to current}
   \end{itemize}
   & 50 & 10h given FR 1.17  \\ \hline
 
-  FR 1.20 & The back-end should be able to provide current direction data in an easily usable format
+  FR 1.20 & The \gls{back-end} should be able to provide current direction data in an easily usable format
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given a current direction dataset \\
         When it is not specifically requested to return unprocessed data \\
-        Then the back-end should convert the current direction data into an easily usable format like GeoJSON}
+        Then the \gls{back-end} should convert the current direction data into an easily usable format like GeoJSON}
   \end{itemize}
   & 50 & 20h \\ \hline
 
-  FR 1.21 & The back-end should provide the raw data in \gls{JSON} format
+  FR 1.21 & The \gls{back-end} should provide the raw data in \gls{JSON} format
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
         Given some data \\
         When requested to return the raw data \\
-        Then the back-end should return it in \gls{JSON} format}
+        Then the \gls{back-end} should return it in \gls{JSON} format}
   \end{itemize}
   & 10 & 8h \\ \hline
 
-  FR 1.22 & The back-end should implement the \gls{WMTS}-protocol & 95 & 30h \\ \hline
+  FR 1.22 & The \gls{back-end} should implement the \gls{WMTS}-\gls{protocol} & 95 & 30h \\ \hline
 
-  FR 1.23 & The back-end should implement a relevant subset of REST & 10 & 12h \\ \hline
+  FR 1.23 & The \gls{back-end} should implement a relevant subset of REST & 10 & 12h \\ \hline
   \end{longtable}
   
   \vspace{2cm}
 
   \begin{longtable}{p{1.4cm} p{7.8cm} p{1cm} p{1cm} }
-  \caption[]{Functional Requirements Front-End} \\
+  \caption[]{Functional Requirements \gls{front-end}} \\
   \hline \hline
   \multicolumn{1}{p{1.4cm}}{ID} &
   \multicolumn{1}{p{7.8cm}}{Requirement Description} &
@@ -1219,7 +1227,7 @@ We have decided to have detailed documentation on our functional requirements, a
   \multicolumn{1}{p{1cm}}{Est.}
   \endhead
 
-  \caption[Functional Requirements Front-End]{} \label{funcReqsFront} \\
+  \caption[Functional Requirements \gls{front-end}]{} \label{funcReqsFront} \\
   \hline \multicolumn{4}{c}{\textbf{Back-End}} \\
   \multicolumn{1}{p{1.4cm}}{ID} &
   \multicolumn{1}{p{7.8cm}}{Requirement Description} &
@@ -1235,36 +1243,36 @@ We have decided to have detailed documentation on our functional requirements, a
   \endlastfoot
   
   \hline
-  FR 2.1 & The front-end must be able to provide a map with overlaying image
+  FR 2.1 & The \gls{front-end} must be able to provide a map with overlaying image
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a front-end \gls{GUI} \\
+        Given a \gls{front-end} \gls{GUI} \\
         When a user loads the page \\
-        Then the front-end should provide a map and display an overlaying image on top of it}
+        Then the \gls{front-end} should provide a map and display an overlaying image on top of it}
   \end{itemize}
   & 100 & 20h \\ \hline
 
   FR 2.2 & The user must be able to specify area and time for the map to display
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a front-end \gls{GUI} \\
+        Given a \gls{front-end} \gls{GUI} \\
         When the user want to specify area and time
         Then the user should be able to intuitively do so in the \gls{GUI}}
   \item \parbox[t]{6.8cm}{
-        Given a front-end \gls{GUI} \\
+        Given a \gls{front-end} \gls{GUI} \\
         When the user has specified area and time
-        Then the front-end should provide the data for the given area and time}
+        Then the \gls{front-end} should provide the data for the given area and time}
   \end{itemize}
   & 90 & 24h \\ \hline
 
   FR 2.3 & The user must be able to display data from a chosen depth
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a front-end \gls{GUI} \\
+        Given a \gls{front-end} \gls{GUI} \\
         When the user wants to specify a depth \\
         Then he should be able to intuitively specify the depth in the \gls{GUI}}
   \item \parbox[t]{6.8cm}{
-        Given a front-end \gls{GUI} \\
+        Given a \gls{front-end} \gls{GUI} \\
         When user specifies a depth \\
         Then the \gls{GUI} should display the data for the given depth}
   \end{itemize}
@@ -1273,15 +1281,15 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.4 & The user must be able to choose data type to be displayed (temperature, salinity or current)
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a front-end \gls{GUI} \\
+        Given a \gls{front-end} \gls{GUI} \\
         When the user wants to select data type \\
         Then he should be able to intuitively choose the data type in the \gls{GUI}}
   \item \parbox[t]{6.8cm}{
-        Given a front-end \gls{GUI} \\
+        Given a \gls{front-end} \gls{GUI} \\
         When the user selects a data type \\
         Then the \gls{GUI} should display the data for this selected type of data in the map}
   \item \parbox[t]{6.8cm}{
-        Given a front-end \gls{GUI} \\
+        Given a \gls{front-end} \gls{GUI} \\
         When the user requests data on temperature, salinity or current \\
         Then it is received and displayed in \gls{PNG} image format}
   \end{itemize}
@@ -1290,7 +1298,7 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.5 & The user must be able to zoom and pan in the displayed map
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a map in the front-end \gls{GUI}
+        Given a map in the \gls{front-end} \gls{GUI}
         When the user wants to zoom or pan
         THen he should be able to do so with intuitive mouse or button actions}
   \end{itemize}
@@ -1299,7 +1307,7 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.6 & The existing data must move and scale when zooming and panning
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a map in the front-end \gls{GUI} with existing data loaded
+        Given a map in the \gls{front-end} \gls{GUI} with existing data loaded
         When the user performs a zoom or pan action
         Then the existing data should scale and move correctly}
   \end{itemize}
@@ -1308,26 +1316,26 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 2.7 & New data must dynamically load when view-area is changed sufficiently
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a map in the front-end \gls{GUI} \\
+        Given a map in the \gls{front-end} \gls{GUI} \\
         When the user zoom closer in the map to where a more detailed dataset would be needed \\
-        Then the front-end should dynamically load a more detailed dataset}
+        Then the \gls{front-end} should dynamically load a more detailed dataset}
   \item \parbox[t]{6.8cm}{
-        Given a map in the front-end \gls{GUI} \\
+        Given a map in the \gls{front-end} \gls{GUI} \\
         When the user zoom further away in the map to where not all of the view is covered by the previous dataset \\
-        Then the front-end should dynamically load new datasets on the same level of detail, or if a certain threshold is passed it should load datasets on a less detailed level}
+        Then the \gls{front-end} should dynamically load new datasets on the same level of detail, or if a certain threshold is passed it should load datasets on a less detailed level}
   \item \parbox[t]{6.8cm}{
-        Given a map in the front-end \gls{GUI} \\
+        Given a map in the \gls{front-end} \gls{GUI} \\
         When the user pan the map so that we do not have all of the view covered by the previous dataset \\
-        Then the front-end should dynamically load the datasets to cover the new view}
+        Then the \gls{front-end} should dynamically load the datasets to cover the new view}
   \end{itemize}
   & 10 & 30h \\ \hline
 
-  FR 2.8 & The front-end should be able to display current directions
+  FR 2.8 & The \gls{front-end} should be able to display current directions
   \begin{itemize}
   \item \parbox[t]{6.8cm}{
-        Given a front-end \gls{GUI} \\
+        Given a \gls{front-end} \gls{GUI} \\
         When the user requests a dataset and the option for current direction is marked \\
-        Then the front-end should request the current direction dataset and display it as an overlay over the map and/or other datasets}
+        Then the \gls{front-end} should request the current direction dataset and display it as an overlay over the map and/or other datasets}
   \end{itemize}
   & 40 & 30h \\ \hline
 
@@ -1356,9 +1364,9 @@ We have decided to have detailed documentation on our functional requirements, a
 
   \gls{QA} 1.3 & The modules should be well documented and easily understandable for those who will work on it later \\ \hline
 
-  \gls{QA} 1.4 & The \gls{API} between front-end and back-end should be well documented to be usable together with other front-end or back-end solutions \\ \hline
+  \gls{QA} 1.4 & The \gls{API} between \gls{front-end} and \gls{back-end} should be well documented to be usable together with other \gls{front-end} or \gls{back-end} solutions \\ \hline
 
-  \gls{QA} 1.5 & The front-end and back-end parts of the system should be segregated for security and ease of use separately \\ \hline
+  \gls{QA} 1.5 & The \gls{front-end} and \gls{back-end} parts of the system should be segregated for security and ease of use separately \\ \hline
 
   \end{longtable}
 
@@ -1373,7 +1381,7 @@ At our first two meetings with SINTEF we were introduced to how they currently p
 
 \paragraph{Agreeing on the scope of our work}
 After some discussion in the group and clarifications from SINTEF, we wrote a suggestion for the scope of our task: 
-\begin{quote} Make a pre-study that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualisations on a web page. Follow the study with an implementation of a proof of concept system that is able to read a \gls{netcdf}-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEFs systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
+\begin{quote} Make a \gls{pre-study} that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualisations on a web page. Follow the study with an implementation of a \gls{proof of concept} system that is able to read a \gls{netcdf}-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEFs systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
 \end{quote}
 Our contact at SINTEF accepted this with one change, that the system should be able to read from a collection of \gls{netcdf} files. The group agreed to this change.
 
@@ -1413,26 +1421,26 @@ To gain a better perspective on what the customer wanted, we documented what SIN
 In order to better understand what a modern system similar to what SINTEF wants might look like we investigated online solutions in production around the world. This also gave some insight into what technologies are most commonly used. Prompting us to look into whether these technologies could be used in our project as well.
 
 \paragraph{Back end technologies}
-The back end part of the group looked into and tested several technologies that might be useful. One of the largest problems was finding some technology to handle the aggregation of the different gridsizes in SINTEFs datasets. Our investigations revealed that no existing technology would cover our needs, at least without extensive modification. Other problems included limited support for \gls{netcdf} and difficulty configuring the programs. We created some prototypes to learn more about how difficult a custom solution from scratch might be, and its performance.
+The back end part of the group looked into and tested several technologies that might be useful. One of the largest problems was finding some technology to handle the aggregation of the different gridsizes in SINTEFs datasets. Our investigations revealed that no existing technology would cover our needs, at least without extensive modification. Other problems included limited support for \gls{netcdf} and difficulty configuring the programs. We created some \glspl{prototype} to learn more about how difficult a custom solution from scratch might be, and its performance.
 
 \paragraph{Front end technologies}
 Several technologies were available for presenting map data to the user. We looked into rendering the data client-side. This proved inefficient, and together with observations of other production solutions using \gls{PNG}-tiles we decided to look more into that instead. Some testing revealed OpenLayers to be the best candidate for handling the dynamic map presentation of data.
 
 \paragraph{Recommendation and decision}
-In internal discussions the group found it best to present SINTEF not with one recommendation, but a choice between two paths. For the front end, we concluded that a custom solution would be the best, because what little existed would need a lot of modification. The back-end would either be a \gls{THREDDS} server configured by SINTEF or a custom solution. The path involving a custom back end came with the caveat that the final product might not be as feature complete, as the group would need to divide its attention.
+In internal discussions the group found it best to present SINTEF not with one recommendation, but a choice between two paths. For the front end, we concluded that a custom solution would be the best, because what little existed would need a lot of modification. The \gls{back-end} would either be a \gls{THREDDS} server configured by SINTEF or a custom solution. The path involving a custom back end came with the caveat that the final product might not be as feature complete, as the group would need to divide its attention.
 \par Our contacts at SINTEF were presented with the findings and our recommendation. After some discussions with the group they chose the custom back end path.
 
 \section{Other}
 
 \paragraph{Proof of concept back end}
-Early on we knew we there was a possibility of having to create or modify code accessing and serving the data from \gls{netcdf} files. In order to learn about the performance and effort involved we created some prototypes in Java. We were quickly able to extract data from the \gls{netcdf} files, serving them as \gls{JSON} via REST or creating images.
+Early on we knew we there was a possibility of having to create or modify code accessing and serving the data from \gls{netcdf} files. In order to learn about the performance and effort involved we created some \glspl{prototype} in Java. We were quickly able to extract data from the \gls{netcdf} files, serving them as \gls{JSON} via REST or creating images.
 
 
 \chapter{Sprint 1}
 \paragraph{Sprint duration: 6/10-2014 until 13/10-2014} \hfill \\
 \\
 \noindent
-This sprint marks the formal start of the implementation work. Up to this point, the group has focused mainly on the pre study, which has done an extensive study into the possible choices for the customer. In this process, prototypes were implemented, but this was only meant for the group to get an idea of the work involved. Thus, the real work of implementation starts at this point, though the prototyping obviously will be a great help in the work ahead. 
+This sprint marks the formal start of the implementation work. Up to this point, the group has focused mainly on the pre study, which has done an extensive study into the possible choices for the customer. In this process, \glspl{prototype} were implemented, but this was only meant for the group to get an idea of the work involved. Thus, the real work of implementation starts at this point, though the prototyping obviously will be a great help in the work ahead. 
 
 At the same time as sprint 1 started, the final work on the pre delivery for \gls{NTNU} also had to be done. This was a lot of work, and the group decided at the start of sprint 1 to use this sprint almost exclusively for working on the pre delivery, as it is needed to be allowed to continue the course, as well as an important milestone in the project plan. 
 
@@ -1449,31 +1457,31 @@ The following tasks where committed to in sprint 1:
 
 \begin{description}
 	\item[Reporting] \hfill \\ 
-	Write requirements for pre-delivery \hfill \\
-	Write project plan for pre-delivery \hfill \\
-	Write introduction and abstract for pre-delivery \hfill \\
-	Write technology chapter for pre-delivery \hfill \\
-	Write project planning section for pre-delivery \hfill \\
-	Write risk assessment for pre-delivery \hfill \\
+	Write requirements for \gls{pre-delivery} \hfill \\
+	Write project plan for \gls{pre-delivery} \hfill \\
+	Write introduction and abstract for \gls{pre-delivery} \hfill \\
+	Write technology chapter for \gls{pre-delivery} \hfill \\
+	Write project planning section for \gls{pre-delivery} \hfill \\
+	Write risk assessment for \gls{pre-delivery} \hfill \\
 	Write weekly documents for advisor meeting
 \end{description}
 
 For this sprint, the group chose not to estimate the tasks. This decision was done in part because it is inherently difficult to estimate time for writing, but also because the team knew that these tasks had to be done by the end of the sprint. This meant that whether or not the estimates would exceed the limit on work hours, the work had to be done.
 
 \section{Sprint overview}
-The sprint was focused on the pre-delivery for \gls{NTNU}. While this does not directly add value to the customer, the team has to ensure that all required documents are handed in on time. Failing to meet this deadline would lead to the team failing the course, and the customer obviously has an interest in the team being allowed to continue their work. 
+The sprint was focused on the \gls{pre-delivery} for \gls{NTNU}. While this does not directly add value to the customer, the team has to ensure that all required documents are handed in on time. Failing to meet this deadline would lead to the team failing the course, and the customer obviously has an interest in the team being allowed to continue their work. 
 
-During this sprint, the pre-delivery was almost finished. All team members where able to finish their parts, and only small corrections, as well as making the document consistent remains. 
+During this sprint, the \gls{pre-delivery} was almost finished. All team members where able to finish their parts, and only small corrections, as well as making the document consistent remains. 
 
 \section{Evaluation}
-The group was able to finish most of the pre-delivery tasks for the first sprint. This was vital in being able to advance the project. Writing a lot for the report was in some respects challenging. The team had to divide the writing in to a lot of subtasks. Since every team member has their own writing style, all the text has to be looked over by one person afterwards, to correct inconsistencies, and to do a quality assurance of the work. This work is left for the next sprint. For some of the team members, focusing solely on reporting was not very motivating, as the group has been waiting for the opportunity to start coding. Non the less, almost all work in the sprint was completed.
+The group was able to finish most of the \gls{pre-delivery} tasks for the first sprint. This was vital in being able to advance the project. Writing a lot for the report was in some respects challenging. The team had to divide the writing in to a lot of subtasks. Since every team member has their own writing style, all the text has to be looked over by one person afterwards, to correct inconsistencies, and to do a quality assurance of the work. This work is left for the next sprint. For some of the team members, focusing solely on reporting was not very motivating, as the group has been waiting for the opportunity to start coding. Non the less, almost all work in the sprint was completed.
 
 After the sprint finished, there was work left in the following tasks:
 
 \begin{description}
 	\item[Reporting] \hfill \\ 
-	Write requirements for pre-delivery \hfill \\
-	Write introduction and abstract for pre-delivery \hfill \\
+	Write requirements for \gls{pre-delivery} \hfill \\
+	Write introduction and abstract for \gls{pre-delivery} \hfill \\
 \end{description}
 
 The remaining work on the requirements is mainly \LaTeX-formating. The introduction is still lacking in some areas. This is because some sections has to be written last, and due to some lack of time. The group does not think it will be a problem to finish this in the next sprint. 
@@ -1488,7 +1496,7 @@ Sprint 2 will be the first sprint the group can focus on implementation work. As
 We have had a meeting discussing the use of time for the project, and it seems as if not all group members are using their full 25 hours a week. Because of this, the decision was made to be stricter in both estimation and assignment of tasks for this sprint. Based on the experiences from last sprint, it seems as if there is a higher threshold for group members to take on a new task in the middle of a sprint, than to take on more tasks at the start. It will then be better to assign to many tasks, and then have work left, than to assign to few, and thus have unused resources. 
 
 \section{Sprint backlog}
-The sprint backlog was in this sprint split into three sections. This represents the different work that has to be done, and also the way the group has decided to split the work. The pre-delivery is due on the friday of this sprint. The group has assigned two people to work on the remaining tasks for this, and the rest of the group will start on the implementation work. 
+The sprint backlog was in this sprint split into three sections. This represents the different work that has to be done, and also the way the group has decided to split the work. The \gls{pre-delivery} is due on the friday of this sprint. The group has assigned two people to work on the remaining tasks for this, and the rest of the group will start on the implementation work. 
 
 \begin{description}
 	\item[Front end] \hfill \\
@@ -1501,19 +1509,19 @@ The sprint backlog was in this sprint split into three sections. This represents
 	Implement vector feature endpoints \hfill \\
 	Set up server
 	\item[Reporting] \hfill \\ 
-	Write requirements for pre-delivery \hfill \\
-	Write introduction and abstract for pre-delivery \hfill \\
-	Proof-read pre-delivery 
+	Write requirements for \gls{pre-delivery} \hfill \\
+	Write introduction and abstract for \gls{pre-delivery} \hfill \\
+	Proof-read \gls{pre-delivery} 
 	Write weekly documents for advisor meeting
 \end{description}
 	
 We have chosen to use the quite vague goal of the customer as the only task for the front end. This has the consequence of setting a task that is a lot larger than one work day. Despite of this, since the task is vague, we found it difficult to split it further. For the back end side of the project, the tasks are much more specific.
 
 \section{Sprint overview}
-The sprints focus was split in two, with most of the group working on the implementation, as to be able to demo for the customer next week. The other part of the group focused on the pre-delivery. This separation of responsibility was done with the goal of being able to work in parallel with two important tasks that both had to finished this sprint. By dividing the group into smaller sub-groups, the tasks are perceived to be the responsibility of fewer people, and the team members are more likely to step up and go the extra mile when needed. 
+The sprints focus was split in two, with most of the group working on the implementation, as to be able to demo for the customer next week. The other part of the group focused on the \gls{pre-delivery}. This separation of responsibility was done with the goal of being able to work in parallel with two important tasks that both had to finished this sprint. By dividing the group into smaller sub-groups, the tasks are perceived to be the responsibility of fewer people, and the team members are more likely to step up and go the extra mile when needed. 
 
 \section{Evaluation}
-The most important part of this sprint was to be able to hand of the pre-delivery on time. This was done, and the group is happy with the result. All required parts of the pre-delivery was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the \gls{WMTS} protocol. The back end is able to read a single \gls{netcdf} file, and output an image that is transferred to the front end, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
+The most important part of this sprint was to be able to hand of the \gls{pre-delivery} on time. This was done, and the group is happy with the result. All required parts of the \gls{pre-delivery} was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the \gls{WMTS} \gls{protocol}. The back end is able to read a single \gls{netcdf} file, and output an image that is transferred to the front end, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
 
 \begin{figure}[h]
 \begin{center}
@@ -1534,7 +1542,7 @@ As for the sprint backlog, the following items has remaining work after this spr
 	Implement vector feature endpoints
 \end{description}
 
-All in all, the group is satisfied with the work done in the sprint. There is remaining work in the back end, but this should be possible to finish during the next sprint. Assigning one person to read trough the pre-delivery made the language much more concise than it was initially, as well as adding a layer of quality assurance. 
+All in all, the group is satisfied with the work done in the sprint. There is remaining work in the back end, but this should be possible to finish during the next sprint. Assigning one person to read trough the \gls{pre-delivery} made the language much more concise than it was initially, as well as adding a layer of quality assurance. 
 
 
 
@@ -1542,7 +1550,7 @@ All in all, the group is satisfied with the work done in the sprint. There is re
 \paragraph{Sprint duration: 20/10-2014 until 27/10-2014} \hfill \\
 \\
 \noindent
-After handing in the pre-delivery, the group is now free to focus their efforts on the implementation. For this sprint, a demo is planned for the customer. This will hopefully give valuable feedback on both design decisions, as well as what to focus on in the implementation work.
+After handing in the \gls{pre-delivery}, the group is now free to focus their efforts on the implementation. For this sprint, a demo is planned for the customer. This will hopefully give valuable feedback on both design decisions, as well as what to focus on in the implementation work.
 
 \section{Sprint planning}
 As implementation is the main activity of this sprint, the group has assigned all but one group member to work on implementation. The group at large will focus on improving the system, and making sure that the front end is adapted to fit the customers need. The last team member will work on the report, and make sure that the sections on the sprints are done, as well as producing internal documents. As the final report is to be handed in just days after the last sprint, it is important not to forget or neglect these tasks. 
@@ -1566,7 +1574,7 @@ This sprint is focused mostly on the back end work. As we will have feedback fro
 	Design \gls{WMTS} architecture \hfill \\
 	Deploy script for server
 	\item[Reporting] \hfill \\
-	Tidy up pre-delivery parts of report \hfill \\
+	Tidy up \gls{pre-delivery} parts of report \hfill \\
 	Make sprint template \hfill \\
 	Write sprint 1 \hfill \\
 	Write sprint 2 \hfill \\
@@ -1598,7 +1606,7 @@ After the conclusion of the sprint, the following items remains in the backlog:
 	Enable user to display data from chosen time
 	\item[Back end] \hfill \\
 	Implement vector feature endpoints \hfill \\
-	Implement \gls{WMTS} protocol \hfill \\
+	Implement \gls{WMTS} \gls{protocol} \hfill \\
 	Choose correct file based on selected region and time \hfill \\
 	Handle overlapping areas 
 	\item[Reporting] \hfill \\
@@ -1606,7 +1614,7 @@ After the conclusion of the sprint, the following items remains in the backlog:
 	Write sprint 2
 \end{description}
 
-Even though the group has had an increased focus on estimation, this sprint was not completed as planned. This is in large because of the problems faced with projections. Until this is solved, a lot of other tasks also has to be placed on hold. This is true for the front end task remaining, as well as handling overlapping areas and choosing the correct files. For the reporting, tidying up the pre-delivery proved to be a bigger task than first thought. This pushed writing about sprint 1 and sprint 2 to the next sprint.  
+Even though the group has had an increased focus on estimation, this sprint was not completed as planned. This is in large because of the problems faced with projections. Until this is solved, a lot of other tasks also has to be placed on hold. This is true for the front end task remaining, as well as handling overlapping areas and choosing the correct files. For the reporting, tidying up the \gls{pre-delivery} proved to be a bigger task than first thought. This pushed writing about sprint 1 and sprint 2 to the next sprint.  
 
 While the group is not satisfied with the fact that all tasks could not be completed, there is a good explanation for this. The group is hopeful that a solution to the projection problem will be found, thus enabling the group to advance with the project. 
 
@@ -1636,7 +1644,7 @@ Enable user to display data from chosen time                                    
 Code refactor                                                                                        & 4                                                                   & -                                                      & Arve                \\
 Scanning and indexing files                                                                          & 25                                                                  & 6,5                                                    & Emil                \\
 Implement vector feature endpoint                                                                    & 5                                                                   & -                                                      & Ondrej              \\
-Implement \gls{WMTS} protocol                                                                              & 35                                                                  & 18                                                     & Arve                \\
+Implement \gls{WMTS} \gls{protocol}                                                                              & 35                                                                  & 18                                                     & Arve                \\
 \begin{tabular}[c]{@{}l@{}}Choose correct fiels based on \\ selected region and time\end{tabular}    & 20                                                                  & 5                                                      & Emil                \\
 Handle overlapping areas (Blocked)                                                                   & 30                                                                  & 2                                                      & Arve, Ondrej        \\
 \rowcolor[HTML]{C0C0C0} 
@@ -1704,11 +1712,11 @@ The items remaining in the backlog after the completion of sprint 4 are:
 	\item[Back end] \hfill \\
 	Handle projections \hfill \\
 	Scanning and indexing files \hfill \\
-	Implement \gls{WMTS} protocol \hfill \\
+	Implement \gls{WMTS} \gls{protocol} \hfill \\
 	Choose correct file based on selected region and time \hfill \\
 	Handle overlapping areas (Blocked)
 \end{description}
-This sprint has, as sprint 4, been focused on fixing the projection challenge. The team has made more progress in this sprint than in sprint 3, but there is still a long way to go. Unfortunately, there is not much time left in the project, and finding a solution in the next sprint is critical. Without the projections, the team will not be able to present a working prototype. On the other hand, given that the problem is solved, the team will quite quickly have a prototype that is able to read from the \gls{netcdf} files. 
+This sprint has, as sprint 4, been focused on fixing the projection challenge. The team has made more progress in this sprint than in sprint 3, but there is still a long way to go. Unfortunately, there is not much time left in the project, and finding a solution in the next sprint is critical. Without the projections, the team will not be able to present a working \gls{prototype}. On the other hand, given that the problem is solved, the team will quite quickly have a \gls{prototype} that is able to read from the \gls{netcdf} files. 
 
 \chapter{Sprint 5}
 \paragraph{Sprint duration: 3/11-2014 until 10/11-2014} \hfill \\
@@ -1717,7 +1725,7 @@ This sprint has, as sprint 4, been focused on fixing the projection challenge. T
 This will be the penultimate sprint in the project. The group is currently in a situation where a single problem is blocking a lot of the progress. Almost all resources have been redistributed to focus on this problem. In addition to working on this, the group also has to move more resources to the report. 
 
 \section{Sprint planning}
-Until this point, one person has typically been assigned each sprint to work on the report. The exception has obviously been when finishing the pre-study, and the pre-delivery. For this sprint, team members are to start documenting those parts of the project they have been involved with. 
+Until this point, one person has typically been assigned each sprint to work on the report. The exception has obviously been when finishing the \gls{pre-study}, and the \gls{pre-delivery}. For this sprint, team members are to start documenting those parts of the project they have been involved with. 
 
 \section{Sprint backlog}
 \label{sec:Sprint5Backlog}
@@ -1736,7 +1744,7 @@ Enable user to display data from chosen time          & 10                      
 \multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back end}}                                                                                                                                        \\
 Investigate \gls{Fimex} and Porj.4                          & 14                                                                  & 27,5                                                   & Marco, Ruben  \\
 Scanning and indexing files                           & 20                                                                  & 1                                                      & Emil          \\
-Implement \gls{WMTS} protocol                               & 15                                                                  & 21                                                     & Arve          \\
+Implement \gls{WMTS} \gls{protocol}                               & 15                                                                  & 21                                                     & Arve          \\
 Choose correct file based on selected region and time & 10                                                                  & 1                                                      & Emil          \\
 Handle overlapping areas                              & 10                                                                  & 1,5                                                    & Arve, Ondrej  \\
 \rowcolor[HTML]{C0C0C0} 
@@ -1801,7 +1809,7 @@ After this sprint, the following items remain in the backlog:
 	Investigate \gls{Fimex} and Porj.4 \hfill \\
 	Handle projections \hfill \\
 	Scanning and indexing files \hfill \\
-	Implement \gls{WMTS} protocol \hfill \\
+	Implement \gls{WMTS} \gls{protocol} \hfill \\
 	Choose correct file based on selected region and time \hfill \\
 	Handle overlapping areas (Blocked)
 	\item[Reporting] \hfill \\
@@ -1838,7 +1846,7 @@ Investigate \gls{Fimex} and Porj.4                           & 4                
 Investigate \gls{Fimex} headers not working                  & 3                                                                   &                                                         & Marco                      \\
 Make file stitching work                               & 20                                                                  &                                                         & Ondrej                     \\
 Scanning and indexing files                            & 15                                                                  &                                                         & Emil                       \\
-Implement \gls{WMTS} protocol                                & 8                                                                   &                                                         & Arve                       \\
+Implement \gls{WMTS} \gls{protocol}                                & 8                                                                   &                                                         & Arve                       \\
 Choose correct file based on selected region and time  & 5                                                                   &                                                         & Emil                       \\
 Handle overlapping areas (Blocked)                     & 10                                                                  &                                                         & Arve, Ondrej               \\
 \rowcolor[HTML]{C0C0C0} 
@@ -1880,7 +1888,7 @@ Total                                                  & 174                    
 
 \chapter{Challenges}
 \section{WMTS}
-\gls{WMTS} protocol defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
+\gls{WMTS} \gls{protocol} defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
 A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
 A client can then request a specific tile at position (x,y) from a given tile matrix, and then by the definition given in the capabilities document it can place the image at the correct position on its map.  
 The major challenge we had when implementing \gls{WMTS} was calculating the coordinates of each tile. Although all the information is present in the system, it was tricky to get all coordinates right. 
@@ -1955,7 +1963,7 @@ This is both impractical and expensive (slow), so we decided not to go down this
 \section{Description}
 \section{Back-end}
 \subsection{High level Architecture}
-The back-end is built as a single binary to ease deployment. The program consists of 6 major modules, each of which are described in more detail below:
+The \gls{back-end} is built as a single binary to ease deployment. The program consists of 6 major modules, each of which are described in more detail below:
 \begin{itemize}
 	\item Web server
 	\item Rest endpoints
@@ -1977,7 +1985,7 @@ The reader module, in turn, can talk to the \textit{Indexer} to figure out which
 The data array is then passed back to the Resource class, which formats it according using the \textit{Image module}, and returns that as a response.
 
 \paragraph{WMTS service:}
-The \gls{WMTS} service follows the \gls{WMTS} protocol\cite{WMTS:spec}.
+The \gls{WMTS} service follows the \gls{WMTS} \gls{protocol}\cite{WMTS:spec}.
 This allows mapping application libraries to automatically lay out the data correctly on its map grid.  
 Our \gls{WMTS} implementation reuses a lot of the capabilities and infrastructure built for the REST \gls{API}:  
 For the capabilities document, we query the same Index used by \gls{netcdf}-Manager to get info about the extent (bounding box) of the dataset.
@@ -2025,7 +2033,7 @@ Thus, the \gls{WMTS} module relies on the indexer, cache, and resource module. B
 \begin{center}
 \fbox{\includegraphics[width=400px]{img/back_end_arch.png}}
 \caption{Back-end Architecture overview}
-\label{fig:BackEndArchitecture}
+\label{fig:Back-endArchitecture}
 \end{center}
 \end{figure}
 
@@ -2042,13 +2050,13 @@ Each feature has a hard coded scale, defined by a minimum and maximum value, and
 The image will be set to be 256 pixels along the shortest dimension of the raw data input, maintaining the aspect ratio as well as can be done. If the function is told to make a square image, by the forceSquare parameter, the result will be a 256 by 256 pixel image.
 
 \section{Front-end}
-The front-end consists of a single \gls{HTML} file, the OpenLayers javascript library, custom javascript and \gls{CSS}. These components combined make up the \gls{GUI}. Its role in the product is to help the user querying the back-end and then displaying the received data in a meaningful way. 
+The \gls{front-end} consists of a single \gls{HTML} file, the OpenLayers javascript library, custom javascript and \gls{CSS}. These components combined make up the \gls{GUI}. Its role in the product is to help the user querying the \gls{back-end} and then displaying the received data in a meaningful way. 
 
 \subsection{High-level architecture}
 
 \subsection{Detailed view}
 \paragraph{Graphical User Interface}
-The main part of the \gls{GUI} is the map. The map is provided by the OpenLayers javascript library which gives the possibility to display maps and data from different source. Since we want to display data that is closely related to geographical position, displaying it on a map is the most intuitive solution. In order to make it as easy as possible to query the back-end for data we have added a input box. The user can toggle this input box to be hidden or not.
+The main part of the \gls{GUI} is the map. The map is provided by the OpenLayers javascript library which gives the possibility to display maps and data from different source. Since we want to display data that is closely related to geographical position, displaying it on a map is the most intuitive solution. In order to make it as easy as possible to query the \gls{back-end} for data we have added a input box. The user can toggle this input box to be hidden or not.
 
 \begin{figure}[H]
 \begin{center}
@@ -2059,7 +2067,8 @@ The main part of the \gls{GUI} is the map. The map is provided by the OpenLayers
 \end{figure}
 
 \paragraph{Querying}
-Querying the back-end is done by means of it's REST \gls{API}. This is done by taking the validated user input and building a query \gls{URL} from it. When the back-end receives the input it procceses it and responds with the relavant data, usually an image. The data respons is then displayed in the \gls{GUI}, usually on the map at the user-defined coordinates. 
+Querying the \gls{back-end} is done by means of it's REST \gls{API}. This is done by taking the validated user input and building a query \gls{URL} from it. When the \gls{back-end} receives the input it processes it and responds with the relevant data, usually an image. The data response is then displayed in the \gls{GUI}, usually on the map at the user-defined coordinates. 
+
 
 \section{Goal completion}
 \section{Further work}
@@ -2141,7 +2150,7 @@ Javascript has proved to be a good choice of technology. To allow for the select
 
 \subsection{Time used}
 \label{subsec:TimeUsed}
-As detailed in section \ref{sec:GroupResources}, the group is expected to put around 2100 hours into the project in total. To be able to measure this, the course compendium asks all students to log their work effort:
+As detailed in section \ref{sec:GroupResources}, the group is expected to put around 2100 hours into the project in total. To be able to measure this, the \gls{course compendium} asks all students to log their work effort:
 
 \begin{quote}
 It is important that everyone is honest and registers all effort (as person-hours) spent on the project. This means that the project documents must show the real work load. Effort overruns will result in less sparetime for you personally and less time for other courses. Inflated work effort does not affect the grades given in this course! \cite{TDT4290:Intro}
@@ -2208,7 +2217,7 @@ The choice of sprint length was a hot topic of many team meetings before the fir
 The team hoped that having 1 week sprints would contribute to motivation, a positive time pressure, as well as making the sprints easier to estimate. This proved to be partially true. The group did have positive experiences with short deadlines on sprint items. Unfortunately, at the end of the project, when the problem of projections arose, the main tasks became so large that 1 week sprints did not suffice for any real progress. The lack of sprint progress then became a demotivating factor for the group. Having longer sprints might have allowed for more positive news at the end of sprints, but would probably not have contributed to the work being done faster or more efficiently. 
 
 \paragraph{Product demo and customer involvement}
-In the scrum methodology, a demo for the customer is called for at the end of each sprint. At this point, the development team should have a working prototype, and the customer should be able to decide whether the project should continue, or stop at this point. For our project, the customer does not have the opportunity to stop development, but has the power to change the priorities of the development team.
+In the scrum methodology, a demo for the customer is called for at the end of each sprint. At this point, the development team should have a working \gls{prototype}, and the customer should be able to decide whether the project should continue, or stop at this point. For our project, the customer does not have the opportunity to stop development, but has the power to change the priorities of the development team.
 
 After deciding on 1 week sprints, the group felt that a demo every week would serve little purpose. One week of development will usually not yield significant changes to the product, and weekly demos would then be a waste of the customers time. This turned out to be a good decision. The group has trough the project had progress that has corresponded well to a biweekly demo schedule. Since the customer fell ill before the first demo however, this could not be accomplished the way the group wanted, and the total number of demos was thus cut short by one. This would have happened regardless of the decision to have a demo every second week.
 
@@ -2298,7 +2307,7 @@ The icon font (Octicons) used in the \gls{GUI} are created by Github. The font i
 \printglossary[type=\acronymtype]
 \printglossary
 \chapter{API Documentation}
-This project uses Representational state transfer (REST) \cite{REST:elkstein}, which is an architecture style for designing network applications that uses almost exclusively \gls{HTTP} protocol. As so this application has client-server architecture with stateless cacheable requests.
+This project uses Representational state transfer (REST) \cite{REST:elkstein}, which is an architecture style for designing network applications that uses almost exclusively \gls{HTTP} \gls{protocol}. As so this application has client-server architecture with stateless cacheable requests.
 
 Despite REST supports all CRUD (\textbf{C}reate, \textbf{R}ead, \textbf{U}pdate, \textbf{D}elete) operations, this project makes use only of read operation, because the type of application does not support any modification of remote data. REST request consists of a simple \gls{HTTP} GET request, where URI specifies the service and GET parameters are passed to the specific service handler. \\
 
@@ -2453,7 +2462,7 @@ This script calls another script which lies on the server, the service wrapper s
 The service wrapper script simply makes sure that the program keeps running after the user has logged off the server. It can be used to start and stop the server manually if required.
 
 \chapter{Templates}
-In the course compendium, the team is asked to create templates for internal documents. The team identified 3 types of documents they would need templates for:
+In the \gls{course compendium}, the team is asked to create templates for internal documents. The team identified 3 types of documents they would need templates for:
 
 \begin{itemize}
 \item Weekly status report

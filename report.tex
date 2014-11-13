@@ -1905,7 +1905,7 @@ The major challenge we had when implementing \gls{WMTS} was calculating the coor
 There is a fundamental problem with representing a curved surface such as the surface of the Earth, on a flat cartesian grid.
 Since the Earth is a sphere, any map application will have to take this into consideration.  
 
-In order to transform a curved surface into a flat surfhace, you need to do a mathematical projection of the curved surface onto a cartesian grid.
+In order to transform a curved surface into a flat surface, you need to do a mathematical projection of the curved surface onto a cartesian grid.
 This process unavoidably results in a distorted result. Several different projections exsist, and some are more common or popular than others.
 Some projections preserve the relative area of landmasses, while distorting shapes. Other projections preserves shapes, but distorts the relative size of areas. The distortion is more prominent at the extremes of the projected map.
 
@@ -1913,8 +1913,9 @@ Some projections preserve the relative area of landmasses, while distorting shap
 
 \subsection{Different projections}
 OpenLayers include two projection definitions, \textit{World Geodetic System} (EPSG:4326) and \textit{Web Mercator} (EPSG:3857). World Geodetic System is a standard used for cartography and navigation and Web Mercator has been popularized by web apps such as Google Maps. The problem with these projections is that landmasses near the poles appear much bigger than they in fact are.
-This is the reason Sintef chose to use the \gls{PSP} which preserves angles, resulting in more scurate sizes of the landmasses and thus is more suited for navigation.
-Because we had to display data from a source using \gls{PSP} on top of a background map using Web Mercator we had to reproject the data in order to make it fit on the map. This proved to be a non-trivial task.
+This is the reason Sintef chose to use the \gls{PSP} which preserves angles, resulting in more acurate sizes of the landmasses and thus is more suited for navigation.
+Because we had to display data from a source using \gls{PSP} on top of a background map using Web Mercator we had to reproject the data in order to make it fit on the map. This proved to be a non-trivial task. 
+
 
 \begin{figure}[h]
 \framebox[\textwidth]{
@@ -2058,7 +2059,7 @@ The main part of the \gls{GUI} is the map. The map is provided by the OpenLayers
 \end{figure}
 
 \paragraph{Querying}
-Querying the back-end is done by means of it's REST \gls{API}. This is done by taking the validated user input and building a query \gls{URL} from it. When the back-end receives the input it'f procceses it and responds with the relavant data, usually an image. The data respons is then displayed in the \gls{GUI}, usually on the map at the user-defined coordinates. 
+Querying the back-end is done by means of it's REST \gls{API}. This is done by taking the validated user input and building a query \gls{URL} from it. When the back-end receives the input it procceses it and responds with the relavant data, usually an image. The data respons is then displayed in the \gls{GUI}, usually on the map at the user-defined coordinates. 
 
 \section{Goal completion}
 \section{Further work}

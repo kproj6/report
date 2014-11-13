@@ -2029,7 +2029,7 @@ Otherwise, it then calls on the relevant resource with the computed coordinates 
 
 Thus, the \gls{WMTS} module relies on the indexer, cache, and resource module. By proxy, it also relies on the data reader and image renderer as well.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
 \begin{center}
 \fbox{\includegraphics[width=400px]{img/back_end_arch.png}}
 \caption{Back-end Architecture overview}
@@ -2058,7 +2058,7 @@ The \gls{front-end} consists of a single \gls{HTML} file, the OpenLayers javascr
 \paragraph{Graphical User Interface}
 The main part of the \gls{GUI} is the map. The map is provided by the OpenLayers javascript library which gives the possibility to display maps and data from different source. Since we want to display data that is closely related to geographical position, displaying it on a map is the most intuitive solution. In order to make it as easy as possible to query the \gls{back-end} for data we have added a input box. The user can toggle this input box to be hidden or not.
 
-\begin{figure}[H]
+\begin{figure}[!htb]
 \begin{center}
 \fbox{\includegraphics[width=400px]{img/gui.png}}
 \caption{The graphical user interface}

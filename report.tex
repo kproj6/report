@@ -2031,16 +2031,33 @@ The indexer scans the data folder for new \gls{netcdf} files, and keeps track of
 The data is originally stored as an array of scalar values. The program has to render this array as an image in order to be useful to the user. This consists of taking a two-dimensional array, and turning it into an image.
 The different resources rely on this module when the requested output representation is an image.
 
-\subsection{Rest endpoints}
-The rest endpoints is what the user sees. It is a collection of \gls{URL}s that the user can point their \gls{HTTP} client (browser) to, to get a representation of the resource that endpoint represent. The user can specify additional constraints on what she wants in the form of query parameters. 
+\subsection{REST endpoints}
+The REST endpoints are gateway to the application as all communication flows through them and API is defined by those endpoints. It is a collection of classes representing specific service that the application provides. When user enters his request in form of \gls{URL} into his \gls{HTTP} client (browser), server parses this request and calls apropriate resource class to handle this request. The user can specify additional constraints in the form of query parameters.
 
-We have a separate endpoint for each type of feature in the simulated dataset, such as salinity, temperature, depth, current, et cetera.  
+In the application there are currently resource classes for checking status of the application and for representing scalar information from simulated dataset (current magnitude, depth, salinity and temperature). By specifying query parameters user can tell the endpoint which section of the data he is interested in. Most resources accept area, depth and time parameters.
 
-Query parameters are used to tell the endpoint which section of the data space the user is interested in, such as area, depth and time.
+Due to time constraints, we have restricted the output to require a 2D slice of area at a single time and a single depth. However, it should ideally be possible to query for any subspace of the dataset.
 
-Due to time constraints, we have restricted the output to require a 2d slice of area at a single time and a single depth. However, it should ideally be possible to query for any subspace of the dataset.
+Every resource class has to be in the \texttt{com.sintef.featureserver.rs} class and is annotated by \texttt{@Path} annotation specifying the root \gls{URL} of that resource. Because most resources need to access information from \gls{netcdf}, it is common to store reference to \texttt{NetCdfManager} in a private variable in class constructor. Resource classes then contain methods for handling user requests. Such methods are annotated with \texttt{@Path}, which specifies path from the resource root and have to return \texttt{Response} object. Method parameters which are annotated by \texttt{@QueryParam} with parameter name are autofilled with query parameters.
 
-The rest endpoints parse the query parameters to figure out which dataset the user is interested in, and rely on the \textit{\gls{netcdf} reader} module to fetch data, and the \textit{Image renderer} to turn the data into an image.
+Typical workflow of the class method for handling user request is to first validate the user input, then use \texttt{NetCdfManager} to get the data user requested, convert the raw data to some interchangeable format (usually to \gls{PNG} image with the use of \texttt{Image renderer}) and finally pack the result in the \texttt{Response} object and return it.
+
+To minimalize boilerplate code, the \texttt{RsUtil} class containing common methods was created. This class contains methods for user input validation and for converting array of vectors to array of it's magnitudes.
+
+\begin{lstlisting}[language=Java, caption=Example of a simple REST resource class, label=lst:resourceClass, frame=single]
+@Path("root-of-my-resource")
+public class MyResource {
+    
+    @Path("my-method")
+    public Response myMethod(
+        @QueryParam("myParam") final String param) {
+        
+        return Response.ok(param).type("text/plain").build();
+    }
+}
+\end{lstlisting}
+
+In the listing \ref{lst:resourceClass} is an example of a very simple resource class. This resource resides at \gls{URL} \path{/root-of-my-resource} and has only one method \texttt{my-method}, which accepts one parameter. After invoking this class by pointing your browser to \gls{URL} \path{/root-of-my-resource/my-method?myParam=test}, application should respond with "test" (which was our parameter) in body and the type set to text/plain.
 
 \subsection{WMTS}
 

@@ -1557,30 +1557,44 @@ After handing in the \gls{pre-delivery}, the group is now free to focus their ef
 As implementation is the main activity of this sprint, the group has assigned all but one group member to work on implementation. The group at large will focus on improving the system, and making sure that the front end is adapted to fit the customers need. The last team member will work on the report, and make sure that the sections on the sprints are done, as well as producing internal documents. As the final report is to be handed in just days after the last sprint, it is important not to forget or neglect these tasks. 
 
 \section{Sprint backlog}
-This sprint is focused mostly on the back end work. As we will have feedback from the customer in the middle of the sprint, there might be some new tasks added to the front end part of the backlog. The customer has in meetings with the group said that they will probably have input on the front end, especially the user interface. 
+This sprint is focused mostly on the back end work. As we will have feedback from the customer in the middle of the sprint, there might be some new tasks added to the front end part of the backlog. The customer has in meetings with the group said that they will probably have input on the front end, especially the user interface. The sprint backlog is given in table \ref{tab:Sprint3Backlog}. It can be seen that not all tasks have been estimated. Some of these tasks where deemed too difficult to estimate, while some was not estimated when they where picked by a team member in the middle of the sprint. 
 
-\begin{description}
-	\item[Front end] \hfill \\
-	Enable user to display data from chosen time \hfill \\
-	Enable user to display data from chosen depth \hfill \\
-	Enable user to pan and zoom in the displayed map \hfill \\
-	Existing data most zoom and pan with the map
-	\item[Back end] \hfill \\
-	Handle projections \hfill \\
-	Implement feature endpoints \hfill \\
-	Implement vector feature endpoints \hfill \\
-	Implement \gls{WMTS} \hfill \\
-	Choose correct file based on selected region and time \hfill \\
-	Handle overlapping areas \hfill \\
-	Design \gls{WMTS} architecture \hfill \\
-	Deploy script for server
-	\item[Reporting] \hfill \\
-	Tidy up \gls{pre-delivery} parts of report \hfill \\
-	Make sprint template \hfill \\
-	Write sprint 1 \hfill \\
-	Write sprint 2 \hfill \\
-	Write weekly documents for advisor meeting
-\end{description}
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llll}
+\hline
+Task                                                                                            & \begin{tabular}[c]{@{}l@{}}Estimated\\ remaining hours\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual\\ hours\end{tabular} & Assigned to   \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front end}}                                                                                                                                                                                 \\
+Enable user to display data from chosen time                                                    & -                                                                   &                                                        & Anders        \\
+Enable user to display data from chosen depth                                                   & 15                                                                  & 6                                                      & Anders        \\
+Enable user to pan and zoom in the displayed map                                                & 15                                                                  & 3                                                      & Marco         \\
+Existing data must zoom and pan with the map                                                    & 5                                                                   & 1                                                      & Ruben         \\
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Back end}                                                                               &                                                                     &                                                        &               \\
+Handle projections                                                                              & -                                                                   & -                                                      & Arve          \\
+Implement feature endpoints                                                                     & -                                                                   & 7                                                      & Arve, Ondrej  \\
+Implement vector feature endpoint                                                               & 5                                                                   &                                                        & Ondrej        \\
+Implement WMTS                                                                                  & -                                                                   & 2,5                                                    & Arve          \\
+\begin{tabular}[c]{@{}l@{}}Choose correct file based on selected\\ region and time\end{tabular} & -                                                                   & 17                                                     & Emil          \\
+Handle overlapping areas                                                                        & 30                                                                  & 3                                                      & Arve, Ondrej  \\
+Design WMTS architecture                                                                        & 16                                                                  & 2                                                      & Arve, Ruben   \\
+Deploy script for server                                                                        & 4                                                                   & 4                                                      & Arve          \\
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}{\color[HTML]{333333} \textbf{Reporting}}}                                                                                                                                                          \\
+Tidy up pre-delivery parts of report                                                            & 4                                                                   & 12                                                     & Hans Kristian \\
+Make sprint template                                                                            & 3                                                                   & 3                                                      & Hans Kristian \\
+Write sprint 1                                                                                  & 3                                                                   &                                                        & Hans Kristian \\
+Wirte sprint 2                                                                                  & 3                                                                   &                                                        & Hans Kristian \\
+Write weekly documents for advisor meeting                                                      & 3                                                                   & 2                                                      & Hans Kristian \\
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Total}                                                                                  & 106                                                                 & 62,5                                                   &              
+\end{tabular}
+}
+\caption{Sprint 3 Backlog}
+\label{tab:Sprint3Backlog}
+\end{table}
 
 \section{Sprint overview}
 This sprint is more focused on the back end than the front end. In the back end, there are more tasks that has to be completed, and these do not require direct feedback from the customer. For the front end, tasks that involve sending correct requests to the back end, and functionality that has to be implemented regardless of the customers feedback has been chosen. 
@@ -1599,6 +1613,11 @@ During the work on the back end, the group has encountered quite a major problem
 \item[Conversion of \gls{netcdf}] If the entire \gls{netcdf} file is converted into the projection of the map, the problem will be solved. This will require either a program that is capable of doing the conversion, or writing such a tool from scratch. The latter seems unrealistic at this stage in the project.
 \item[Replace map] The easiest solution to the problem is probably to replace the map used on the web page with a map in the correct projection. The group has already made attempts at finding a map with the correct projection, but so far this has not been successful.
 \end{description}
+
+For a full discussion on projections, and the challenges faced by the team in this area, see section \ref{sec:ProjectionChallenges}. 
+
+\paragraph{Time usage}
+As can be seen in table \ref{tab:Sprint3Backlog}, the team did not spend the required amount of time for this sprint. The backlog table does not fully reflect the time used, as most team members have not been logging their hours as thoroughly as they should have. A further discussion of this can be found in section \ref{subsec:TimeUsed}.
 
 \paragraph{Remaining backlog items}
 After the conclusion of the sprint, the following items remains in the backlog:
@@ -1888,6 +1907,7 @@ Total                                                  & 174                    
 \section{Evaluation}
 
 \chapter{Challenges}
+\label{chap:Challenges}
 \section{WMTS}
 \gls{WMTS} \gls{protocol} defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
 A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
@@ -1911,6 +1931,7 @@ The major challenge we had when implementing \gls{WMTS} was calculating the coor
 
 \section{Indexing}
 \section{Projections}
+\label{sec:ProjectionChallenges}
 There is a fundamental problem with representing a curved surface such as the surface of the Earth, on a flat cartesian grid.
 Since the Earth is a sphere, any map application will have to take this into consideration.  
 
@@ -2081,9 +2102,28 @@ In this chapter, the group will give a thorough evaluation of the project, in re
 
 This chapter will give a sense of what the group has learned through the project, what they want to repeat in future projects, and what could be improved. As well as determining these factors, we want to investigate what the causes of problems the group has experienced might have been, and attempt to suggest what could have been done to mitigate this. 
 
+This chapter also serves as the groups reflection note, as the groups have been asked to include them in their report. 
+
 \section{Product evaluation}
+At the end of the project, the team has produced a \gls{prototype} \gls{front-end} and \gls{back-end} that demonstrates that it is feasible to replace the current system used by SINTEF to serve current data, with a new and customary built system. Finding out whether or not this is feasible has been the main task of the team, and we feel that has been completed successfully. 
 
+\paragraph{Front-end}
+The front end of the system shows a map of the world, and the user can either enter coordinates manually or by using a tool to graphically select the area they want. When the data is returned, a legend is displayed to explain the color gradients in the returned image. It is also possible to click a certain point of the returned data to get detailed information for this point.
 
+The team is happy with the developed features for the \gls{front-end}. They have been well discussed with the customer, and developed in accordance to the customers wishes. To be able to implement more \gls{front-end} features, the team would have needed more time developing the \gls{back-end} to serve the correct data. 
+
+\paragraph{Back-end}
+The \gls{back-end} of the system is able to read from a \gls{netcdf}-file, and serve an image illustrating the data to the \gls{front-end}. The major challenges, as described in chapter \ref{chap:Challenges}, has been to index the files correctly, and to transform the data into the correct projections. 
+
+The work on indexing came a long way, and was stopped just shy of actual testing, as the projections needed to be correct to be able to determine if the system worked correctly. The team is however confident that the work done on indexing is close to solving the problem.
+
+Projections have been the major showstopper for the project. All parts of the solution relies on the projections being correct, and so, there was no real value in starting making functionality for graphs and other data, before this problem was solved. 
+
+\paragraph{Summary} While the team was able to demonstrate to the customer that such a system can be implemented, and has implemented both a front- and back-end \gls{prototype}, the group had hoped to be able to finish more features. The fact that this has not been done is in large down to the challenges faced by the team, and described in chapter \ref{chap:Challenges}. Had the team been able to solve these challenges earlier, or had more time, several more features could have been implemented.
+
+Though the team would have liked to have gotten further on the implementation, the customer has expressed that the work done on solving the different challenges faced by the team, is valuable to them. It will make future work easier, and a lot of the ground work has already been done. As such, the project has provided value to the customer, which is the most important part of the project.
+
+\newpage
 \section{Work evaluation}
 In this section, we will look at the work the group has done, and how the different parts of the work turned out to be positive or negative for the project as a whole. In section \ref{subsec:Teamwork} we will discuss the work and relationship in the team. In section \ref{subsec:ToolsEvaluation} we will look into the different tools the group decided on using at the beginning of the project. We will then have a look at the time use in section \ref{subsec:TimeUsed}, before looking at the adaptations done to the scrum methodology in section \ref{subsec:ScrumAdaptationsEval}. We will then look at the customer relations in section \ref{subsec:CustomerRelations}.
 
@@ -2121,8 +2161,6 @@ With this in mind, the advisor meetings has in many ways served as the retrospec
 When working in a team, knowing each other on a more personal level can help teamwork. Meetings are smoother when team members know more about each other, members are more likely to honor their work quota if they face disappointing their friends, rather than strangers. It is easier to ask someone you know to do their share of the work. Knowing the other team members better will also give an incentive to spend more time with the team, and thus doing more work, and getting to know each other even better.
 
 As most team members did not know each other very well at the beginning of the project, the possibility of setting aside some time to get to know each other was discussed. The team agreed that this was something they wanted to do, but failed to find time for this. In retrospect, the team should have prioritized this. The teamwork has, as described earlier, not been as good as it could have been. Some of this can be tracked back to the fact that the team members do not know each other very well.
-
-
 
 \subsection{Tools evaluation}
 \label{subsec:ToolsEvaluation}
@@ -2187,7 +2225,7 @@ As detailed in section \ref{sec:GroupResources}, the group is expected to put ar
 It is important that everyone is honest and registers all effort (as person-hours) spent on the project. This means that the project documents must show the real work load. Effort overruns will result in less sparetime for you personally and less time for other courses. Inflated work effort does not affect the grades given in this course! \cite{TDT4290:Intro}
 \end{quote}
 
-With this in mind, the group discussed time logging at an early team meeting. Several tools for logging time was looked into, including Jira (discussed in section \ref{subsec:Trello}), and Punchtime \footnote{http://www.punchti.me/}. The team decided that these tools were too complicated for keeping track of time spent, and opted instead for individual time sheets in Google Docs. Every team member was responsible for tracking all time, and making note of which task the time spent pertained to. 
+With this in mind, the group discussed time logging at an early team meeting. Several tools for logging time was looked into, including Jira (discussed in section \ref{subsec:Trello}), and Punchtime\footnote{http://www.punchti.me/}. The team decided that these tools were too complicated for keeping track of time spent, and opted instead for individual time sheets in Google Docs. Every team member was responsible for tracking all time, and making note of which task the time spent pertained to. 
 
 In retrospect, this was a bad decision. Only a minority of the team members were able to keep active track of the time they used for the project, and of these, most did not start to do this in detail until quite late in the project. This has led to the time logs being quite lacking for the first 30-45 days of the project. Some of this effort could be reconstructed with the use of minutes from meetings, but inevitably, less hours than actual usage has been registered. This must be taken into consideration when reading the numbers for time usage.  
 
@@ -2308,6 +2346,7 @@ The team has not gotten to know the customer on a more personal level, and all c
 \paragraph{Summary}
 The relations with the customer have been good. The group has had the opportunity to meet the customer at a regular interval, only interrupted by a period of the customer being ill. This has enabled to group to fulfill the customers goals in a good and fast manner. Not knowing the customer at a more personal level has not hindered the group, but it is possible that it would have made the interactions with the customer easier. Setting aside the time to get to know the customer should have been a priority early in the project. 
 
+\newpage
 \section{Subject evaluation}
 \label{sec:SubjectEvaluation}
 Developing a solution to the customers problem has only been part of the overall goal of the team. As the development is carried out in conjunction with a subject at \gls{NTNU}, there are other tasks that have to be carried out in parallel, and the group is evaluated not only by the customer, but also at an academic level by an examiner. This double role is a challenge, and the organization and execution of the subject is critical for the success of the team. In this section, we will evaluate how the course is carried out, and give suggestions for improvements. 

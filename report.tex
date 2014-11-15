@@ -42,7 +42,7 @@
 
 \makeglossaries
 
-\newacronym{netcdf}{netCDF}{NETwork Common Data Form}
+\newacronym{netcdf}{NetCDF}{NETwork Common Data Form}
 \newacronym{NTNU}{NTNU}{the Norwegian University of Science and Technology}
 \newacronym{QA}{QA}{Quality Assurance}
 \newacronym{L}{L}{Low}
@@ -1989,7 +1989,7 @@ The \gls{back-end} is built as a single binary to ease deployment. The program c
 \begin{itemize}
 	\item Web server
 	\item Rest endpoints
-	\item \gls{netcdf} reader
+	\item \gls{netcdf} Manager
 	\item Indexer
 	\item Image renderer
 	\item \gls{WMTS} module
@@ -2002,15 +2002,15 @@ Using these modules, we have built two services: A \textit{REST \gls{API}} to qu
 The REST \gls{API} consists of a series of \gls{URL}s that can be queried to obtain slices of the dataset. The \gls{API} takes a set of data space constraints and returns an image representing the requested area at a given time and depth.
 
 The control flow of the REST \gls{API} is as flollows:  
-When a request comes in, it's automatically routed by the webserver module to the correct Resource class. The Resource class parses the parameters supplied by the user, and talks to the \textit{\gls{netcdf} reader} module in order to obtain the relevant data.
-The reader module, in turn, can talk to the \textit{Indexer} to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
+When a request comes in, it's automatically routed by the webserver module to the correct Resource class. The Resource class parses the parameters supplied by the user, and talks to the \textit{\gls{netcdf} manager} module in order to obtain the relevant data.
+The manager module, in turn, can talk to the \textit{Indexer} to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
 The data array is then passed back to the Resource class, which formats it according using the \textit{Image module}, and returns that as a response.
 
 \paragraph{WMTS service:}
 The \gls{WMTS} service follows the \gls{WMTS} \gls{protocol}\cite{WMTS:spec}.
 This allows mapping application libraries to automatically lay out the data correctly on its map grid.  
 Our \gls{WMTS} implementation reuses a lot of the capabilities and infrastructure built for the REST \gls{API}:  
-For the capabilities document, we query the same Index used by \gls{netcdf}-Manager to get info about the extent (bounding box) of the dataset.
+For the capabilities document, we query the same Index used by \gls{netcdf} manager to get info about the extent (bounding box) of the dataset.
 To get a specific tile, we compute the coordinates of the corners of the tile, and call the resource described above to retrieve an image.
 We then put this image in a cache so that subsequent queries for this tile takes less time.
 
@@ -2022,11 +2022,11 @@ We use an embeddable web server library called Jetty\footnote{http://www.eclipse
 Jetty is being used in embedded mode, which means that the program contains a web server, instead of the other way around. This makes the code more portable, as it possible to change the web server implementation used without having to rewrite a lot of webserver-specific code.
 Jersey is a REST framework for java. It adds a series of annotations and classes to simplify writing REST services.
 
-\subsection{NetCDF reader}
+\subsection{NetCDF Manager}
 We have a module responsible for reading and parsing the data contained the dataset. When the other modules need to fetch any data from the dataset, they can call this module. This keeps \gls{netcdf} specific code in a single place and provides a single interface to query data.
 This module uses a third-party library called NetCDF-Java\footnote{http://www.unidata.ucar.edu/software/thredds/current/netcdf-java/}
 \subsection{Indexer}
-The indexer scans the data folder for new \gls{netcdf} files, and keeps track of what kind of data is contained in each file. The \textit{\gls{netcdf} reader} module relies on this to select the correct file to open when asked to provide data.
+The indexer scans the data folder for new \gls{netcdf} files, and keeps track of what kind of data is contained in each file. The \textit{\gls{netcdf} manager} module relies on this to select the correct file to open when asked to provide data.
 \subsection{Image renderer}
 The data is originally stored as an array of scalar values. The program has to render this array as an image in order to be useful to the user. This consists of taking a two-dimensional array, and turning it into an image.
 The different resources rely on this module when the requested output representation is an image.
@@ -2066,7 +2066,7 @@ The \textit{\gls{WMTS}} module is tasked with generating a \textit{capbabilities
 The \gls{WMTS} module also has to be able to take the tile index requested by the user and computing the coordinates of the corners of the given tile. If the image for this tile is already in cache, it can just return that to the user.
 Otherwise, it then calls on the relevant resource with the computed coordinates to obtain the image for that tile. Finally, it calls the cache to store the image for later use.
 
-Thus, the \gls{WMTS} module relies on the indexer, cache, and resource module. By proxy, it also relies on the data reader and image renderer as well.
+Thus, the \gls{WMTS} module relies on the indexer, cache, and resource module. By proxy, it also relies on the data manager and image renderer as well.
 
 \begin{figure}[!htb]
 \begin{center}

@@ -2026,6 +2026,27 @@ Jersey is a REST framework for java. It adds a series of annotations and classes
 \subsection{NetCDF Manager}
 We have a module responsible for reading and parsing the data contained the dataset. When the other modules need to fetch any data from the dataset, they can call this module. This keeps \gls{netcdf} specific code in a single place and provides a single interface to query data.
 This module uses a third-party library called NetCDF-Java\footnote{http://www.unidata.ucar.edu/software/thredds/current/netcdf-java/}
+
+This module contains three main methods - \texttt{getScalarArea}, \texttt{getVectorArea} and \texttt{readDepthProfile}. Those methods are used for extracting different information from \gls{netcdf} files. Each of those methods accepts parameters to specify area, time and variable that should be returned. To abstract access to \gls{netcdf} variables, static enumeration with all features, that can appear in application, was created in \texttt{com.sintef.featureserver.netcdf.Feature}.
+
+The workflow of every data providing method in \texttt{NetCdfManager} follows this scheme:
+\begin{enumerate}
+    \item Get all files that contain data that were requested
+    \item Filter only relevant files (most recent and closest resolution)
+    \item Read relevant data from files:
+    \begin{enumerate}
+        \item Open the file (\texttt{ucar.nc2.dt.grid.GridDataset.open(\textit{filename})})
+        \item Get grid datatype (\texttt{findGridDatatype(\textit{netcdfVariable})})
+        \item Get coordinate system (\texttt{getCoordinateSystem()})
+        \item Get relevant subset of data (\texttt{makeSubset(...)})
+        \item Count time and depth indexes
+        \item Load data that were requested (\texttt{readDataSlice(\textit{time}, \textit{depth}, \textit{x}, \textit{y})})
+    \end{enumerate}
+    \item Copy data to output array and return
+\end{enumerate}
+
+Because of the time constraint, current implementation can read data only from one file, but the architecture is prepared for reading data from multiple files and joining it into one resulting array.
+
 \subsection{Indexer}
 The indexer scans the data folder for new \gls{netcdf} files, and keeps track of what kind of data is contained in each file. The \textit{\gls{netcdf} manager} module relies on this to select the correct file to open when asked to provide data.
 \subsection{Image renderer}

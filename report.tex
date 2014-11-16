@@ -2094,11 +2094,8 @@ The image will be set to be 256 pixels along the shortest dimension of the raw d
 \section{Front-end}
 The \gls{front-end} consists of a single \gls{HTML} file, the OpenLayers javascript library, custom javascript and \gls{CSS}. These components combined make up the \gls{GUI}. Its role in the product is to help the user querying the \gls{back-end} and then displaying the received data in a meaningful way. 
 
-\subsection{High-level architecture}
-
-\subsection{Detailed view}
 \paragraph{Graphical User Interface}
-The main part of the \gls{GUI} is the map. The map is provided by the OpenLayers javascript library which gives the possibility to display maps and data from different source. Since we want to display data that is closely related to geographical position, displaying it on a map is the most intuitive solution. In order to make it as easy as possible to query the \gls{back-end} for data we have added a input box. The user can toggle this input box to be hidden or not.
+The main job of a \gls{GUI} is to make the user able to interact with the application. In the case of our product the main features are querying and displaying the received data, primarily on a map. Because the map has such an important function in the application we chose to make it as big as possible. This emphasizes the importance of the functions related to the map and makes it easier to veiw the data displayed on the map. The map is provided by the OpenLayers javascript library which gives the possibility to display maps and data from different source. Since we want to display data that is closely related to geographical position, displaying it on a map is the most intuitive solution. In order to make it as easy as possible to query the \gls{back-end} for data we have added a input box. The user can toggle this input box to be hidden or not. Being able to hide the input box helps to keep the screen uncluttered and makes it easier for the user to focus on the displayed data.
 
 \begin{figure}[!htb]
 \begin{center}
@@ -2115,7 +2112,18 @@ Querying the \gls{back-end} is done by means of it's REST \gls{API}. This is don
 \section{Goal completion}
 \section{Further work}
 \subsection{Front-end}
-\paragraph{GUI}
+\paragraph{Responsive design}
+Website are increasingly beeing accessed from smart phones and tablets. But websites that are designed to beeing displayed on a desktop or laptop screen are often not well suited for mobiles and tablets. One solution to this is to have a dedicated mobile website. This solution comes with the drawback of having to maintain two sites. A solution that has gained traction and is the most common way by now is using so called responsive design. This means that the website changes layout depending on the resolution of the device the website is accessed from. This is achieved with \gls{CSS} media queries.
+We knew from the begining of the project that accessing the application from smart phones was desireable. Therefor it should include responsive design. The layout as of today is quite simple and it would be relativly easy to write the needed media queries to make it responsive. In the form the application has at the time of writing it would not make sense to use a framework like Bootstrap \footnote{\url{http://getbootstrap.com/}} to gain responsiveness as it would introduce a lot of code to the project that would not be used. 
+
+\paragraph{Icons}
+The icons used in the GUI are called Octicons\footnote{\url{octicons.github.com/}} and are created by Github\footnote{\url{www.github.com}}. The font itself is licensed under the SIL OFL and the acompanying code is licensed under the MIT license \footnote{\url{www.github.com/github/octicons/blob/master/LICENSE.txt}}. This allows the icons to be used in commercial use. That said the icon font is not the most extensive one. If the applications grows and evolves it might be benificial to use a custom icon set or aquire one that has more relevant icons.
+
+\paragraph{Minification}
+When deploying a javascript application it is common to minify the code. This means that you use a tool to remove all white space, new line characters and comments from the code. The tool may also rename variables in the code. The purpose on this is to make the file as small as possible. Having a small script file matters because the file is downloaded to the client and thus has an impact on response time of the application. We have not used an minifier. As the \gls{front-end} code base is relativly small little is gained from minifying but as the code base grows in the future this is strongly recomended.
+
+\paragraph{Tool tips}
+A tool to select the area you want to query was added. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and draging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI} and the user will propably not find this feature on his own. We therefor recomend that tool tips and hint are added to the \gls{GUI} so the user knows about all og it's features.
 
 \chapter{Evaluation}
 In this chapter, the group will give a thorough evaluation of the project, in respect to the groups own work and teamwork, the decisions made early in the project, time used, the subject and its organization, relations with the customer, and reflect on the team. 

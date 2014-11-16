@@ -2132,7 +2132,60 @@ Querying the \gls{back-end} is done by means of it's REST \gls{API}. This is don
 
 \section{Goal completion}
 \section{Further work}
+Given the size and complexity of the project, the functionality of the implementation had to be limited to the bare minimum. That means that further work should be done to meet the functional requirements for a commercial product. Many of these functionalities have however been considered during the project and therefor we have made some evalutations on how this can be done. In this section we present our suggestions for what can be done to improve the implementation.
+
 \subsection{Front-end}
+For the front-end there are new kinds of data that should be displayed in the GUI, some of which lack implemented back-end support. First off the basic map overlay requires some improvements. This includes extending the functionality it provides and improving efficiency and scalability. Secondarily there are new functions to be added, ranging from new controls to displaying other types of data.
+\paragraph{WMTS todo}
+%WMTS? \ get map fully up and running
+
+\paragraph{Point values}
+%TODO
+%describe pop-ups here
+%follows up in Charts
+
+\paragraph{Charts}
+In addition to the point values the front-end should be able to display current roses, depth-cuts(?) and other calculated charts for a selected point. These charts would be served from the back-end, and will require a new brand new set of implementations. The back-end will then provide images to represent the charts. The task of the front-end is to find out how to display these images in a useful and intuitive way. 
+\begin{figure}[!htb]
+  \begin{center}
+    \fbox{\includegraphics[width=\textwidth]{img/gui_charts_basic.png}}
+    \caption{Example of how the basic charts can be displayed in the GUI}
+    \label{fig:gui_chart}
+  \end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+  \begin{center}
+    \fbox{\includegraphics[width=\textwidth]{img/gui_charts_enlarged.png}}
+    \caption{Example of how the charts can be enlarged}
+    \label{fig:gui_chart}
+  \end{center}
+\end{figure}
+
+% \begin{figure}[h]
+% \framebox[\textwidth]{
+%   \begin{subfigure}[b]{0.48\textwidth}
+%     \includegraphics[width=\textwidth]{img/gui_charts_basic.png}
+%   \caption{Charts}
+%     \label{fig:PSP}
+%   \end{subfigure}
+%   \begin{subfigure}[b]{0.48\textwidth}
+%     \includegraphics[width=\textwidth]{img/gui_charts_enlarged.png}
+%     \caption{Charts enlarged}
+%     \label{fig:mercator}
+%   \end{subfigure}
+% }
+% \caption{Different projections}
+% \end{figure}
+
+\paragraph{Vector data}
+
+\paragraph{Legend}
+
+\paragraph{Seasonal averages} %Also point for back-end further?
+
+\paragraph{Authentication}
+
 \paragraph{Responsive design}
 Website are increasingly beeing accessed from smart phones and tablets. But websites that are designed to beeing displayed on a desktop or laptop screen are often not well suited for mobiles and tablets. One solution to this is to have a dedicated mobile website. This solution comes with the drawback of having to maintain two sites. A solution that has gained traction and is the most common way by now is using so called responsive design. This means that the website changes layout depending on the resolution of the device the website is accessed from. This is achieved with \gls{CSS} media queries.
 We knew from the begining of the project that accessing the application from smart phones was desireable. Therefor it should include responsive design. The layout as of today is quite simple and it would be relativly easy to write the needed media queries to make it responsive. In the form the application has at the time of writing it would not make sense to use a framework like Bootstrap \footnote{\url{http://getbootstrap.com/}} to gain responsiveness as it would introduce a lot of code to the project that would not be used. 
@@ -2145,6 +2198,10 @@ When deploying a javascript application it is common to minify the code. This me
 
 \paragraph{Tool tips}
 A tool to select the area you want to query was added. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and draging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI} and the user will propably not find this feature on his own. We therefor recomend that tool tips and hint are added to the \gls{GUI} so the user knows about all og it's features.
+
+%OTHER?
+
+\subsection{Back-end}
 
 \chapter{Evaluation}
 In this chapter, the group will give a thorough evaluation of the project, in respect to the groups own work and teamwork, the decisions made early in the project, time used, the subject and its organization, relations with the customer, and reflect on the team. 

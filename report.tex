@@ -83,12 +83,12 @@
 \newglossaryentry{pre-study}{name=pre-study, description={is a document produced before the implementation phase, which informs the customer of possible solutions to their problem}}
 \newglossaryentry{pre-delivery}{name=pre-delivery, description={is a preliminary delivery of the main report, that is meant to give the external examiner an introduction to the groups work}}
 \newglossaryentry{front-end}{name=front-end, description={is the name given to the part of software that the user interacts with}}
-\newglossaryentry{back-end}{name=back-end, description={is the name given to the part of software the user does not interact with, and that performs a specialized task.}}
+\newglossaryentry{back-end}{name=back-end, description={is the name given to the part of software the user does not interact with, and that performs a specialized task}}
 \newglossaryentry{course compendium}{name=course compendium, description={is a document given to the students, which outlines the course, describes the rules and expectations for the groups work, and gives the structure and content of the final report}}
 \newglossaryentry{protocol}{name=protocol, description={is a set of predefined rules of conduct and procedures. In computer science, it often describes the rules for communication between two parts}}
 \newglossaryentry{open source}{name=open source, description={is software where the source code is available to everyone, and anyone can alter and share the code}}
 \newglossaryentry{prototype}{name=prototype, description={is an early version of something, meant to test specific features}}
-\newglossaryentry{proof of concept}{name=proof of concept, description={is a system that proves the feasibility of an idea. It is usually not usable as part of a final system, but rather built as proof of an idea.}}
+\newglossaryentry{proof of concept}{name=proof of concept, description={is a system that proves the feasibility of an idea. It is usually not usable as part of a final system, but rather built as proof of an idea}}
 
 \begin{document}
 
@@ -144,15 +144,15 @@ Ruben Håskjold Fagerli & \\
 
 % Abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-In the choice of location, as well as in the daily operations of fish farms, both historical data and up to date projections on sea currents are vital. SINTEF has given the task of visualizing data on ocean currents, temperature, salinity and other variables in areas around fish farms, to be used by stakeholders in the sea farming industry. 
+In the choice of location, as well as in the daily operations of fish farms, both historical data and up to date projections on sea currents are vital. SINTEF has given the task of visualizing data on ocean currents, temperature, salinity and other variables in areas around fish farms, to be used by stakeholders in the sea farming industry. SINTEF currently has a solution for this, but they wish to improve this substantially. 
 
 Our group of seven students have used the fall semester at the Norwegian University of Science and Technology to do a full scale software development process in order to solve this task.
 
-The group has written a pre study, were systems that are currently in use have been investigated, and technologies that could be used for custom built solutions have been evaluated. Using the Scrum methodology, the group has worked to develop both a front and back end \gls{prototype} of such a system.
+The group has written a pre-study, were systems that are currently in use have been investigated, and technologies that could be used for custom built solutions have been evaluated. Using the Scrum methodology, the group has worked to develop both a front and back end \gls{prototype} of such a system.
 
-The \gls{prototype} developed is able to read NetCDF files from SINTEFs simulations, and visualize this dynamically at the users discretion. This includes handling files that overlap both in area and resolution. 
+The \gls{prototype} developed is able to read NetCDF files from SINTEFs simulations, and visualize this dynamically at the users discretion. Although the solution is a \gls{prototype}, and not ready for full scale deployment, it proves that developing a custom system is within reach, and should be considered.
 
-Although the solution is a \gls{prototype}, and not ready for full scale deployment, it proves that developing a custom system is within reach, and should be considered.
+In addition to the prototype, the group provides SINTEF with advice on how to continue development, and what challenges need to be addressed to be able to commercialize the solution.
 
 \end{abstract}
 
@@ -514,7 +514,6 @@ An overview of risks and strategies is given in the following table:
   \endfoot
 
   \hline \hline
-  \caption[Risk assessment]{Here "Prob." stands for "Probability" and "Sev." stands for "Severity"}
   \endlastfoot
 
   \hline
@@ -1904,7 +1903,21 @@ Total                                                  & 174                    
 \end{table}
 
 \section{Sprint overview}
+As this is the last sprint, the main focus is finishing the report. This is clearly reflected in the amount of tasks set in the reporting section of the backlog. These tasks have been given priority, but if team members are able to finish their reporting tasks and have time to spare, the assigned tasks in \gls{front-end} and \gls{back-end} can be done. The team must finish the reporting tasks before the project ends. This should not be a problem, as the estimated time for the reporting is within the capability of the team.
+
+Any task that is left after this sprint will probably not be done, as the project ends 3 days after the sprint ends. After the sprint, the presentation and demonstration for the examiner still has to be planed. 
+
 \section{Evaluation}
+\paragraph{Customer meeting}
+On the friday of this sprint, the team had their final meeting with the customer at SINTEF. We had the opportunity to informally discuss with the customer over lunch before giving a more formal rundown of the final product. 
+
+The customer was informed of the content of the report, and that the team will strive to include as much information as possible about the different challenges faced. The \gls{front-end} was demonstrated, especially the legend and the possibility to click a certain point on the map to get further information. As for the \gls{back-end}, the team explained the latest findings of the investigation into \gls{Fimex}. Due to some missing headers in the converted netCDF files, they had not been working. In theory, the conversion is functional, but some work remains to be able to read the files correctly.
+
+\paragraph{Time logging and estimations}
+In this sprint, the team has done a full estimation of all tasks. All team members have logged their time usage, making it possible to get a full picture of how the time has been used. This is reflected in table \ref{tab:Sprint6Backlog}.
+
+\paragraph{Report writing}
+This sprint has been focused on writing the final report. All team members have been given tasks for the report writing. The task of documenting technical features have been given to the people who made the specific features, as they have the deepest understanding of the code, but also of the challenges met during implementation. 
 
 \chapter{Challenges}
 \label{chap:Challenges}
@@ -2200,15 +2213,45 @@ A tool to select the area you want to query was added. It's toggled on and off b
 
 \subsection{Back-end}
 
+\subsubsection{Returning data in different formats}
+Currently the application sends data back mostly in \gls{PNG}'s, but one of the suggestions was to return raw data as well, so that user can request raw data for his needs. This was assigned a lower priority and was not managed to implement in given time.
+
+To add this functionality it is needed to modify resource classes and the goal may be achieved by multiple ways. Easiest and probably the most ugly one would be to add a new method to the resource, which will return raw data when requested. Other way is to modify current method for getting the wanted data to distinguish between multiple output formats. Then it have to be decided what is the right way of specifying the output format. It can be passed to the method as another argument, or can be decided from the ACCEPT field in HTTP request.
+
+It is also important to decide a format in which will be the raw data coded. This format should be as compact as possible, but definitely lossless. Because of the current architecture of the application, it would be preferable, if this data was trasmitted as JSON (or at least packed in JSON).
+
+\subsubsection{Fully automatic new files detection}
+Currently the application scans the file system for files only on application start. To trigger rescan manually, there can be added a new REST endpoint (as a Resource class), which will ensure rescan when called. By adding this request to a system's crontab it is possible to achieve somehow semi-automatic detecting of new files.
+
+For real automatic detection of new files it has to be included in application code and work without any need of external tools. There are two ways how to ensure this.
+
+First one is normal polling, which means that application uses some timer function (in Java \texttt{java.util.Timer}) to trigger rescan every now and then. This is the most basic implementation, which will work in all environments, but is very inefficient.
+
+Much better option is to register some kind of event listener that is triggered by system whenever the event (here folder modification) occures. This implementation is very efficient, because the function is called only when needed, but requires file system that have native support for those notifications. In Java there is a Watch Service API in \texttt{java.nio.file} package. This package contains functions for registering event handlers and in case of file system without support for such notifications falls back to polling. More information about this API and usage can be found at \url{https://blogs.oracle.com/thejavatutorials/entry/watching_a_directory_for_changes}.
+
+\subsubsection{Allow user to specify resolution of output}
+Currently is the output resolution hardcoded in \texttt{ImageRenderer} to 256x256 pixels. All data is read and computed through whole application up to image creation, where it's scaled to final resolution. There should be possibility for user to specify target resolution for the data he requests.
+
+To implement this, it is needed to add parameters for requests for specifying output resolution. It would be preferable, if those parameters were optional and if not set, system would fallback to some reasonable (ideally full) resolution. This can cause problems, if the user requests too high resolution, then the system would need much longer to calculate result and it can cause application to be unresponsive. There have to be some limits on what is the user allowed to request.
+
+Those parameters should be passed to \texttt{NetCdfManager} for data reading, so the whole system works only with necessary amount of data. \texttt{ImageRenderer} or any other output modifier then should not need to change resolution and should modify only representation of information.
+
+\texttt{NetCdfManager} then have to be modified to create array of the right size corresponding to the resolution and fill it with the correct data. For reading data from dataset with higher resolution, \texttt{makeSubset} function allows to specify stride that shall be used when getting data. For calculating the right stride for the given resolution was created a dummy function \texttt{calculateStride} in \texttt{NetCdfManager}.
+
+\subsubsection{Dynamic ranges for image renderer}
+Currently all images uses global minimum and maximum of values suggested by customer. The resulting color of every pixel is then decided from distance from those two extremes. This can cause, that if the user requests data from a place with minimal differences, resulting image would have almost the same color and will have little use for the user. It would be better to create scale for every request, so the user would get much better visualisation of differences in the given sample. On the other hand, when requesting multiple images and joining them together, it is undesirable to have different scales for every picture, so the user should be able to control, if the result is scaled dynamicaly, or staticaly.
+
+To add this functionality, \texttt{ImageRenderer} have to be modified to firstly compute extremes for requested image and then use them instead of static ones. Moreover, because the scale wont be static, it is necessary to provide scale together with the image. That can be done either by having a separate request for scale, which could be problematic, because of stateless HTTP protocol. Separate requests would mean, that the data have to be processed twice. Alternatively it could be changed, so that returned data does not contain pure \gls{PNG} image, but JSON object with two \gls{PNG}s encoded with base64\footnote{\url{https://tools.ietf.org/html/rfc4648}}. This solves the problem with separate requests, but base64 encoding adds about 33\% to the size of images. The last option is to simply overlay the legend over the image. This would cause loss of some information (as a part of image is covered by legend), but would be easiest and fastest solution.
+
 \chapter{Evaluation}
 In this chapter, the group will give a thorough evaluation of the project, in respect to the groups own work and teamwork, the decisions made early in the project, time used, the subject and its organization, relations with the customer, and reflect on the team. 
 
 This chapter will give a sense of what the group has learned through the project, what they want to repeat in future projects, and what could be improved. As well as determining these factors, we want to investigate what the causes of problems the group has experienced might have been, and attempt to suggest what could have been done to mitigate this. 
 
-This chapter also serves as the groups reflection note, as the groups have been asked to include them in their report. 
+This chapter also serves as the groups reflection note, as the groups have been asked to include this in their reports. 
 
 \section{Product evaluation}
-At the end of the project, the team has produced a \gls{prototype} \gls{front-end} and \gls{back-end} that demonstrates that it is feasible to replace the current system used by SINTEF to serve current data, with a new and customary built system. Finding out whether or not this is feasible has been the main task of the team, and we feel that has been completed successfully. 
+At the end of the project, the team has produced a \gls{prototype} \gls{front-end} and \gls{back-end} that demonstrates that it is feasible to replace the current system used by SINTEF to serve current data, with a new and custom built system. Finding out whether or not this is feasible has been one of the main tasks of the team, and we feel that this has been completed successfully. In addition to this, the team was tasked to build a front-end and back-end prototype of a custom system.
 
 \paragraph{Front-end}
 The front end of the system shows a map of the world, and the user can either enter coordinates manually or by using a tool to graphically select the area they want. When the data is returned, a legend is displayed to explain the color gradients in the returned image. It is also possible to click a certain point of the returned data to get detailed information for this point.
@@ -2220,11 +2263,11 @@ The \gls{back-end} of the system is able to read from a \gls{netcdf}-file, and s
 
 The work on indexing came a long way, and was stopped just shy of actual testing, as the projections needed to be correct to be able to determine if the system worked correctly. The team is however confident that the work done on indexing is close to solving the problem.
 
-Projections have been the major showstopper for the project. All parts of the solution relies on the projections being correct, and so, there was no real value in starting making functionality for graphs and other data, before this problem was solved. 
+Projections has been the major challenge for the project. All parts of the solution relies on the projections being correct, and so, there was no real value in starting making functionality for graphs and other data, before this problem was solved. 
 
 \paragraph{Summary} While the team was able to demonstrate to the customer that such a system can be implemented, and has implemented both a front- and back-end \gls{prototype}, the group had hoped to be able to finish more features. The fact that this has not been done is in large down to the challenges faced by the team, and described in chapter \ref{chap:Challenges}. Had the team been able to solve these challenges earlier, or had more time, several more features could have been implemented.
 
-Though the team would have liked to have gotten further on the implementation, the customer has expressed that the work done on solving the different challenges faced by the team, is valuable to them. It will make future work easier, and a lot of the ground work has already been done. As such, the project has provided value to the customer, which is the most important part of the project.
+Though the team would have liked to have gotten further on the implementation, the customer has expressed that the work done on solving the different challenges faced by the team is valuable to them. It will make future work easier, and a lot of the ground work has already been done. As such, the project has provided value to the customer, which is the most important part of the project.
 
 \newpage
 \section{Work evaluation}
@@ -2235,18 +2278,18 @@ In this section, we will look at the work the group has done, and how the differ
 In this section we will evaluate the work of the team. We will look at the cooperation, communication, punctuality, advisor contact and social interactions of the team. These are all important factors, that together form the foundation of the work the team will do.
 
 \paragraph{Cooperation}
-The group has had a good cooperation throughout the project. There have been no personal conflicts, while there has been room to disagree on an academical level. In the start of the project, the team agreed that disagreement is a good thing, as they are purely professional. Sticking to this principal has been key to maintaining a team environment where ideas can be discussed freely. 
+The group has had a good cooperation throughout the project. There have been no personal conflicts, while there has been room to disagree on an academical level. In the start of the project, the team agreed that disagreement is a good thing, as long as they are purely professional. Sticking to this principal has been key to maintaining a team environment where ideas can be discussed freely. 
 
 The team has met 2-3 times a week, depending on whether a customer meeting was scheduled or not. During these meetings there as been room for group members to bring up issues they have, and it has been an arena where the group has been able to talk about their work and progress in general. 
 
-During the implementation phase of the project, the team has divided into to sections. One section has been working on the \gls{front-end} of the project, and one on the \gls{back-end}. This has been a good way to divide work and responsibility. The cooperation between these to sections has been good, and changes that have affected the other sections work has been communicated. 
+During the implementation phase of the project, the team has divided into to sections. One section has been working on the \gls{front-end} of the project, and one on the \gls{back-end}. This has been a good way to divide work and responsibility. The cooperation between these two sections has been good, and changes that have affected the other sections work has been communicated. 
 
 \paragraph{Communication}
 The group has had two main communication channels: team meetings and Slack. Team meetings have been used to catch up on the status of everyones work, discuss what direction to move in, and distribute tasks between members. As far as possible, the team has attempted to have all conversations that needed some form of plenary discussion in meetings where everyone could be present.
 
 All other communication has mainly been done using Slack (see section \ref{subsec:Slack}). This way, all communication has been available to every team member. It has been possible to ask a question to everyone, and start a discussion, without having to gather the entire team in one physical location.
 
-The communication in the team has worked well in this project. Team members have known what is to be done, where to meet for meetings, and how the project has been progressing. Through several meetings every week, and the use of Slack, information has flown to all members of the group.
+The communication in the team has worked quite well in this project. Team members have known what is to be done, where to meet for meetings, and to some degree how the project has been progressing. Team members have not been active enough in updating the others on their own progress. This has lead to a situation where team members have not known the current status of the project. This is partly due to the lack of a daily scrum meeting (see section \ref{subsec:ScrumAdaptationsEval}) and the fact that the systems put in place to replace this meeting did not work as intended.
 
 \paragraph{Punctuality}
 At the beginning of the course, the team agreed that it would be important for everyone to be on time for all meetings. Meetings that start late are an annoyance to everyone who was there on time, and they also waste time that could have been better spent. It was decided that no sanctions should be necessary.
@@ -2263,7 +2306,7 @@ With this in mind, the advisor meetings has in many ways served as the retrospec
 \paragraph{Social interaction}
 When working in a team, knowing each other on a more personal level can help teamwork. Meetings are smoother when team members know more about each other, members are more likely to honor their work quota if they face disappointing their friends, rather than strangers. It is easier to ask someone you know to do their share of the work. Knowing the other team members better will also give an incentive to spend more time with the team, and thus doing more work, and getting to know each other even better.
 
-As most team members did not know each other very well at the beginning of the project, the possibility of setting aside some time to get to know each other was discussed. The team agreed that this was something they wanted to do, but failed to find time for this. In retrospect, the team should have prioritized this. The teamwork has, as described earlier, not been as good as it could have been. Some of this can be tracked back to the fact that the team members do not know each other very well.
+As most team members did not know each other very well at the beginning of the project, the possibility of setting aside some time to get to know each other was discussed. The team agreed that this was something they wanted to do, but failed to find time for this. In retrospect, the team should have prioritized this. The teamwork has, as described earlier, been quite good, though there has been room for improvement. Some of this can be tracked back to the fact that the team members do not know each other very well.
 
 \subsection{Tools evaluation}
 \label{subsec:ToolsEvaluation}
@@ -2283,7 +2326,7 @@ Some challenges the team has run into have been:
 Most of these challenges have been overcome with the help of information found online. The group has used a webpage \footnote{http://www.tablesgenerator.com/} in the creation of tables. The non-English characters was a more difficult problem to solve, as it turned out that not all \LaTeX-programs used by the team opened files in UTF-8 as standard. After fixing this, there where far fewer problems with special characters.
 
 \paragraph{Google Docs}
-While \LaTeX{} is an excellent tool for writing, and the team has learned to love it through the project, it is a total overkill to use this for smaller documents. Therefore, the team decided to use Google Docs for minutes from meetings, agendas, status reports and other smaller documents that had to be produced quickly, and was not a part of the final report. As Google Docs has very good collaborative support, the team was able to work in parallel on documents, quickly making changes and updates. One of the new functions of Google Docs, the possibility to add suggestions to files (much like Microsoft Words "track changes" feature) has enabled to team to collaborate on emails to the customer, and to make non-destructive suggestions in documents.
+While \LaTeX{} is an excellent tool for writing, and the team has learned to love it through the project, it is a total overkill to use this for smaller documents. Therefore, the team decided to use Google Docs for minutes from meetings, agendas, status reports and other smaller documents that had to be produced quickly, and was not a part of the final report. As Google Docs has very good collaborative support, the team was able to work in parallel on documents, quickly making changes and updates. One of the new functions of Google Docs, the possibility to add suggestions to files (much like Microsoft Words "track changes" feature) has enabled the team to collaborate on emails to the customer, and to make non-destructive suggestions in documents.
 
 Google Docs has worked very well, and enabled the team to use as little time as possible for writing weekly documents for advisor meetings. As an added bonus, the documents are stored in the cloud, and backups are thus not necessary. 
 
@@ -2356,7 +2399,20 @@ Total                           & 823,5                                         
 \end{center}
 \end{table}
 
-The total time usage of each team member is given in table \ref{tab:TotalTimeUsage}. From this, it is clear that the team has been unable to use the amount of time that has been expected. The team estimates that somewhere between 200 and 300 hours have been lost due to the lack of logging. This is based on the number of tasks that have been completed, and the average hours used by those members who have logged their hours. Even when accounting for missing time logging, several hundred hours of work seems to be missing. There are several possible explanations for this:
+\begin{figure}[ht!]
+\begin{center}
+\fbox{\includegraphics[width=400px]{img/Weekly_effort.png}}
+\caption{The weekly logged effort of team members}
+\label{fig:WeeklyEffort}
+\fbox{\includegraphics[width=400px]{img/Individual_effort.png}}
+\caption{The individual logged effort of team members}
+\label{fig:IndividualEffort}
+\end{center}
+\end{figure}
+
+
+
+The total time usage of each team member is given in table \ref{tab:TotalTimeUsage}, and further illustrated in figure \ref{fig:WeeklyEffort} and fig \ref{fig:IndividualEffort}. From this, it is clear that the team has been unable to use the amount of time that has been expected. The team estimates that somewhere between 200 and 300 hours have been lost due to the lack of logging. This is based on the number of tasks that have been completed, and the average hours used by those members who have logged their hours. Even when accounting for missing time logging, several hundred hours of work seems to be missing. There are several possible explanations for this:
 
 \begin{itemize}
 \item \textbf{To many colliding subjects} All team members are involved in at least 2 other subjects this semester. Several team members have more than 30 credits this semester, which is difficult to combine with a subject as demanding as this.
@@ -2381,7 +2437,7 @@ In the standard scrum methodology, a short daily meeting is called for, so that 
 
 The group decided not to conduct these meetings, as it was impossible for all members to find the time for this every day. Instead, the use of Slack was supposed to replace the standup. As discussed in section \ref{subsec:ToolsEvaluation} this did not work as intended. As a result, the group was at times not up to date with what other members where doing, and this meant that meeting time had to be used to present updates. There does not seem to have been any significant loss of productivity, or double work conducted, as a result of this, but time could nonetheless have been saved. 
 
-A better solution might have been to have all group members that where available meet on a daily basis. This would have given regular updates for most members of the group, and possibly also encouraged members who could not be present to give updates through Slack. 
+A better solution might have been to have all group members who were available, meet on a daily basis. This would have given regular updates for most members of the group, and possibly also encouraged members who could not be present to give updates through Slack. 
 
 \paragraph{Sprint length}
 The choice of sprint length was a hot topic of many team meetings before the first sprint was started. The team was divided in the choice between 1 and 2 week sprints. In the end, the fact that there was no more than 6 weeks left in the project, became the decisive factor in the choice of 1 week sprints. 
@@ -2479,9 +2535,13 @@ The current random assignment also produces other challenges. Students from a mu
 \paragraph{Octicons}
 The icon font (Octicons) used in the \gls{GUI} are created by Github. The font itself is licensed under the SIL OFL license, and all other code is licensed under the MIT license. \footnote{https://github.com/github/octicons/blob/master/LICENSE.txt}
 
+\paragraph{Fimex} The conversion library \gls{Fimex} is licensed under the GNU Lesser General Public License v2.1 (LGPL-2.1). This allows for commercial use, modification and redistribution. If \gls{Fimex} is complied into a system, then the entire system must be released under LGPL 2.1. and be open sourced. As we only use \gls{Fimex} as a tool, this is not a requirement that applies to this project.
+
+\paragraph{Proj.4} The projection library Proj.4 is released under an MIT license. This allows for commercial use, and does not require the source code to be open sourced. It does, however, require a copyright notice to be included in derived works.
+
 % Sources cited in the document
 % uncomment when there are some citations, uncomment bibtex in Makefile
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \begin{flushleft}
 	\bibliography{report}
 \end{flushleft}

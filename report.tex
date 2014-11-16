@@ -148,7 +148,7 @@ In the choice of location, as well as in the daily operations of fish farms, bot
 
 Our group of seven students have used the fall semester at the Norwegian University of Science and Technology to do a full scale software development process in order to solve this task.
 
-The group has written a pre study, were systems that are currently in use have been investigated, and technologies that could be used for custom built solutions have been evaluated. Using the Scrum methodology, the group has worked to develop both a front and back end \gls{prototype} of such a system.
+The group has written a pre-study, were systems that are currently in use have been investigated, and technologies that could be used for custom built solutions have been evaluated. Using the Scrum methodology, the group has worked to develop both a front and back end \gls{prototype} of such a system.
 
 The \gls{prototype} developed is able to read NetCDF files from SINTEFs simulations, and visualize this dynamically at the users discretion. This includes handling files that overlap both in area and resolution. 
 
@@ -514,7 +514,6 @@ An overview of risks and strategies is given in the following table:
   \endfoot
 
   \hline \hline
-  \caption[Risk assessment]{Here "Prob." stands for "Probability" and "Sev." stands for "Severity"}
   \endlastfoot
 
   \hline
@@ -1904,7 +1903,21 @@ Total                                                  & 174                    
 \end{table}
 
 \section{Sprint overview}
+As this is the last sprint, the main focus is finishing the report. This is clearly reflected in the amount of tasks set in the reporting section of the backlog. These tasks have been given priority, but if team members are able to finish their reporting tasks and have time to spare, the assigned tasks in \gls{front-end} and \gls{back-end} can be done. The team must finish the reporting tasks before the project ends. This should not be a problem, as the estimated time for the reporting is within the capability of the team.
+
+Any task that is left after this sprint will probably not be done, as the project ends 3 days after the sprint ends. After the sprint, the presentation and demonstration for the examiner still has to be planed. 
+
 \section{Evaluation}
+\paragraph{Customer meeting}
+On the friday of this sprint, the team had their final meeting with the customer at SINTEF. We had the opportunity to informally discuss with the customer over lunch before giving a more formal rundown of the final product. 
+
+The customer was informed of the content of the report, and that the team will strive to include as much information as possible about the different challenges faced. The \gls{front-end} was demonstrated, especially the legend and the possibility to click a certain point on the map to get further information. As for the \gls{back-end}, the team explained the latest findings of the investigation into \gls{Fimex}. Due to some missing headers in the converted netCDF files, they had not been working. In theory, the conversion is functional, but some work remains to be able to read the files correctly.
+
+\paragraph{Time logging and estimations}
+In this sprint, the team has done a full estimation of all tasks. All team members have logged their time usage, making it possible to get a full picture of how the time has been used. This is reflected in table \ref{tab:Sprint6Backlog}.
+
+\paragraph{Report writing}
+This sprint has been focused on writing the final report. All team members have been given tasks for the report writing. The task of documenting technical features have been given to the people who made the specific features, as they have the deepest understanding of the code, but also of the challenges met during implementation. 
 
 \chapter{Challenges}
 \label{chap:Challenges}
@@ -2208,10 +2221,10 @@ In this chapter, the group will give a thorough evaluation of the project, in re
 
 This chapter will give a sense of what the group has learned through the project, what they want to repeat in future projects, and what could be improved. As well as determining these factors, we want to investigate what the causes of problems the group has experienced might have been, and attempt to suggest what could have been done to mitigate this. 
 
-This chapter also serves as the groups reflection note, as the groups have been asked to include them in their report. 
+This chapter also serves as the groups reflection note, as the groups have been asked to include this in their reports. 
 
 \section{Product evaluation}
-At the end of the project, the team has produced a \gls{prototype} \gls{front-end} and \gls{back-end} that demonstrates that it is feasible to replace the current system used by SINTEF to serve current data, with a new and customary built system. Finding out whether or not this is feasible has been the main task of the team, and we feel that has been completed successfully. 
+At the end of the project, the team has produced a \gls{prototype} \gls{front-end} and \gls{back-end} that demonstrates that it is feasible to replace the current system used by SINTEF to serve current data, with a new and custom built system. Finding out whether or not this is feasible has been one of the main tasks of the team, and we feel that this has been completed successfully. In addition to this, the team was tasked to build a front-end and back-end prototype of a custom system.
 
 \paragraph{Front-end}
 The front end of the system shows a map of the world, and the user can either enter coordinates manually or by using a tool to graphically select the area they want. When the data is returned, a legend is displayed to explain the color gradients in the returned image. It is also possible to click a certain point of the returned data to get detailed information for this point.
@@ -2223,11 +2236,11 @@ The \gls{back-end} of the system is able to read from a \gls{netcdf}-file, and s
 
 The work on indexing came a long way, and was stopped just shy of actual testing, as the projections needed to be correct to be able to determine if the system worked correctly. The team is however confident that the work done on indexing is close to solving the problem.
 
-Projections have been the major showstopper for the project. All parts of the solution relies on the projections being correct, and so, there was no real value in starting making functionality for graphs and other data, before this problem was solved. 
+Projections has been the major challenge for the project. All parts of the solution relies on the projections being correct, and so, there was no real value in starting making functionality for graphs and other data, before this problem was solved. 
 
 \paragraph{Summary} While the team was able to demonstrate to the customer that such a system can be implemented, and has implemented both a front- and back-end \gls{prototype}, the group had hoped to be able to finish more features. The fact that this has not been done is in large down to the challenges faced by the team, and described in chapter \ref{chap:Challenges}. Had the team been able to solve these challenges earlier, or had more time, several more features could have been implemented.
 
-Though the team would have liked to have gotten further on the implementation, the customer has expressed that the work done on solving the different challenges faced by the team, is valuable to them. It will make future work easier, and a lot of the ground work has already been done. As such, the project has provided value to the customer, which is the most important part of the project.
+Though the team would have liked to have gotten further on the implementation, the customer has expressed that the work done on solving the different challenges faced by the team is valuable to them. It will make future work easier, and a lot of the ground work has already been done. As such, the project has provided value to the customer, which is the most important part of the project.
 
 \newpage
 \section{Work evaluation}
@@ -2481,6 +2494,10 @@ The current random assignment also produces other challenges. Students from a mu
 \chapter{Licences} %% don't know if this is needed - Anders
 \paragraph{Octicons}
 The icon font (Octicons) used in the \gls{GUI} are created by Github. The font itself is licensed under the SIL OFL license, and all other code is licensed under the MIT license. \footnote{https://github.com/github/octicons/blob/master/LICENSE.txt}
+
+\paragraph{Fimex} The conversion library \gls{Fimex} is licensed under the GNU Lesser General Public License v2.1 (LGPL-2.1). This allows for commercial use, modification and redistribution. If \gls{Fimex} is complied into a system, then the entire system must be released under LGPL 2.1. and be open sourced. As we only use \gls{Fimex} as a tool, this is not a requirement that applies to this project.
+
+\paragraph{Proj.4} The projection library Proj.4 is released under an MIT license. This allows for commercial use, and does not require the source code to be open sourced. It does, however, require a copyright notice to be included in derived works.
 
 % Sources cited in the document
 % uncomment when there are some citations, uncomment bibtex in Makefile

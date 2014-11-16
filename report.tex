@@ -2135,7 +2135,7 @@ Querying the \gls{back-end} is done by means of it's REST \gls{API}. This is don
 Given the size and complexity of the project, the functionality of the implementation had to be limited to the bare minimum. That means that further work should be done to meet the functional requirements for a commercial product. Many of these functionalities have however been considered during the project and therefor we have made some evalutations on how this can be done. In this section we present our suggestions for what can be done to improve the implementation.
 
 \subsection{Front-end}
-For the front-end there are new kinds of data that should be displayed in the GUI, some of which lack implemented back-end support. First off the basic map overlay requires some improvements. This includes extending the functionality it provides and improving efficiency and scalability. Secondarily there are new functions to be added, ranging from new controls to displaying other types of data.
+For the front-end there are new kinds of data that should be displayed in the \gls{GUI}, some of which lack implemented \gls{back-end} support. First off the basic map overlay requires some improvements. This includes extending the functionality it provides and improving efficiency and scalability. Secondarily there are new functions to be added, ranging from new controls to displaying other types of data.
 \paragraph{WMTS todo}
 %WMTS? \ get map fully up and running
 
@@ -2145,38 +2145,35 @@ For the front-end there are new kinds of data that should be displayed in the GU
 %follows up in Charts
 
 \paragraph{Charts}
-In addition to the point values the front-end should be able to display current roses, depth-cuts(?) and other calculated charts for a selected point. These charts would be served from the back-end, and will require a new brand new set of implementations. The back-end will then provide images to represent the charts. The task of the front-end is to find out how to display these images in a useful and intuitive way. 
 \begin{figure}[!htb]
   \begin{center}
     \fbox{\includegraphics[width=\textwidth]{img/gui_charts_basic.png}}
     \caption{Example of how the basic charts can be displayed in the GUI}
-    \label{fig:gui_chart}
+    \label{fig:gui_basicChart}
   \end{center}
 \end{figure}
-
+In addition to the point values the \gls{front-end} should be able to display current roses, vertical profiles and other calculated charts for a selected point. These charts would be served from the \gls{back-end}, and will require a new brand new set of implementations. The \gls{back-end} will then provide images to represent the charts. The task of the \gls{front-end} is to find out how to display these images in a useful and intuitive way. In this paragraph we present some examples of how this can be added to the \gls{GUI}. It must be noted that these are mock-ups used to show the general layout that will have to be refined if implemented.
+Figure \ref{fig:gui_basicChart} shows how the gui can be extended to display charts. In the top left corner we have a new box that is supposed to appear upon clicking a point on the map. It contains temperature, salinity and current speed of the point as described in the paragraph on point values(???REF to paragraph???) above. Under these values it has room to display a chart, giving a simple overview of the situation. In the bottom of the box there are buttons to change which chart is to be displayed. In figure \ref{fig:gui_basicChart} the chart is the current rose, but for other charts the box can adapt its size to better represent other charts.
 \begin{figure}[!htb]
   \begin{center}
     \fbox{\includegraphics[width=\textwidth]{img/gui_charts_enlarged.png}}
     \caption{Example of how the charts can be enlarged}
-    \label{fig:gui_chart}
+    \label{fig:gui_enlargedChart}
   \end{center}
 \end{figure}
 
-% \begin{figure}[h]
-% \framebox[\textwidth]{
-%   \begin{subfigure}[b]{0.48\textwidth}
-%     \includegraphics[width=\textwidth]{img/gui_charts_basic.png}
-%   \caption{Charts}
-%     \label{fig:PSP}
-%   \end{subfigure}
-%   \begin{subfigure}[b]{0.48\textwidth}
-%     \includegraphics[width=\textwidth]{img/gui_charts_enlarged.png}
-%     \caption{Charts enlarged}
-%     \label{fig:mercator}
-%   \end{subfigure}
-% }
-% \caption{Different projections}
-% \end{figure}
+The biggest concern about this approach is that the charts have to be quite small to fit a box that should be limited in width to visually fit together with the control panel. To handle this problem we think it would be a good idea to allow the user to enlargen the chart upon request. In the approach mentioned above and shown in figure \ref{fig:gui_basicChart} we can let the user click the small chart or click a specific enlargement button, to bring up the more detailed view. One example of such a detailed view is shown in figure \ref{fig:gui_enlargedChart} where we simply bring up another box displaying the chart at higher resolution, at the cost of covering a far bigger area of the map. This box could be removed simply by clicking outside of the box, or it is possible to let the box stay open and allow changing the chart type or other parameters.
+\begin{figure}[!htb]
+  \begin{center}
+    \fbox{\includegraphics[width=\textwidth]{img/gui_charts_fullpanel_squared.png}}
+    \caption{Example of how a fullwindow display of charts can be done}
+    \label{fig:gui_panelChart}
+  \end{center}
+\end{figure}
+
+The oppertunity to display all charts at the same time has also been discussed. This should let the user see the relations between the charts in detail. Even with 3 charts this requires a lot of space on the screen, so extending it to use the whole browser window might be better than trying to minimize the size of it. Such a fullscreen \gls{GUI} is shown in figure \ref{fig:gui_panelChart}. The idea here is to change the whole view to a plain panel containing the coordinates of the selected point, feature values like temperature of this point and multiple charts. In addition a minimap can be displayed to show the location of the point on the map to better understand why the charts behave the way they do in this point. To get back to normal map view the arrow on the top can be clicked. With more than 3 charts a list for selecting which charts to display, or a side-ways scrolling can be utilized.
+
+These solutions can all be used together. The panel in figure \ref{fig:gui_panelChart} can be reachable from a click action directly from the basic map view, for instance from a right-click menu. But it can also be reachable from the boxes in figure \ref{fig:gui_basicChart} and figure \ref{fig:gui_enlargedChart}. Preferable would be to use the box in figure \ref{fig:gui_basicChart} together with the detailed view of either figure \ref{fig:gui_enlargedChart} or figure \ref{fig:gui_panelChart}. Alternatively just using one of these three.
 
 \paragraph{Vector data}
 

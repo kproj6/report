@@ -2216,6 +2216,15 @@ A tool to select the area you want to query was added. It's toggled on and off b
 
 \subsection{Back-end}
 
+\subsubsection{Fully automatic new files detection}
+Currently the application scans the file system for files only on application start. To trigger rescan manually, there can be added a new REST endpoint (as a Resource class), which will ensure rescan when called. By adding this request to a system's crontab it is possible to achieve somehow semi-automatic detecting of new files.
+
+For real automatic detection of new files it has to be included in application code and work without any need of external tools. There are two ways how to ensure this.
+
+First one is normal polling, which means that application uses some timer function (in Java \texttt{java.util.Timer}) to trigger rescan every now and then. This is the most basic implementation, which will work in all environments, but is very inefficient.
+
+Much better option is to register some kind of event listener that is triggered by system whenever the event (here folder modification) occures. This implementation is very efficient, because the function is called only when needed, but requires file system that have native support for those notifications. In Java there is a Watch Service API in \texttt{java.nio.file} package. This package contains functions for registering event handlers and in case of file system without support for such notifications falls back to polling. More information about this API and usage can be found at \url{https://blogs.oracle.com/thejavatutorials/entry/watching_a_directory_for_changes}.
+
 \chapter{Evaluation}
 In this chapter, the group will give a thorough evaluation of the project, in respect to the groups own work and teamwork, the decisions made early in the project, time used, the subject and its organization, relations with the customer, and reflect on the team. 
 

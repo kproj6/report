@@ -78,7 +78,7 @@
 \newacronym{JSON}{JSON}{JavaScript Object Notation}
 \newacronym{Fimex}{Fimex}{File Interpolation, Manipulation and EXtraction}
 \newacronym{PSP}{PSP}{Polar Stereographic Projection}
-
+\newacronym{SASS}{SASS}{Syntactically Awesome Style Sheets}
 
 \newglossaryentry{pre-study}{name=pre-study, description={is a document produced before the implementation phase, which informs the customer of possible solutions to their problem}}
 \newglossaryentry{pre-delivery}{name=pre-delivery, description={is a preliminary delivery of the main report, that is meant to give the external examiner an introduction to the groups work}}
@@ -571,7 +571,7 @@ Slack is a web based team communication tool founded by Stewart Butterfield. It 
   
   We have created an organization on GitHub\footnote{\url{https://github.com}} with multiple repositories for different separate parts of our work - reports, server sources, client sources. We have chosen GitHub because it is well known, and because of the git hosting server that offers advanced features and stability. Moreover, some members already had accounts on GitHub and were familiar with the interface, which shortened time needed to setup a working environment.
 
-\section{Programming languages}
+\section{Programming and markup languages}
 The choice of implementation language, platform and tools to use is left up to the group. The customers only requirement is that the solution should be able to run in their environment.
   \subsection{Java}
   Java is a popular programming language developed by a team led by James Gosling at Sun Microsystems in 1991. It's full-featured, general purpose, language capable of developing robust mission-critical applications \cite{liang}. This and the fact that everybody in the group had at least basic knowledge of Java led to the decision that we would use Java for our \gls{back-end} application.  
@@ -581,6 +581,10 @@ The choice of implementation language, platform and tools to use is left up to t
   "Javascript is part of the triad of technologies that all Web developers must learn".
   \end{quote} 
   He continues to note that JavaScript specifies the behavior of the web page \cite{fd11}. Along with specification of \gls{HTML5} and ECMAscript 6 (the standard name of JavaScript) the possibilities of what you can achieve with JavaScript has greatly improved. Since our assignment is to create a web based solution, it seams natural to use JavaScript as part of the solution. This is further supported by the existence of \gls{open source} libraries designed to make interactive maps, which is relevant for our assignment.
+  \subsection{HTML}
+  \gls{HTML} is a markup language used to create web sites. It was created at CERN to share documents and was later popularized for creating documents for the World Wide Web. As we are making a web based solution we will need \gls{HTML}, either compiled from another language or written directly.
+  \subsection{SASS}
+  \gls{SASS} is a \gls{CSS} extention language that makes it's easier to modualize style sheets and thus keep the styling more maintainable. It also introduces variables, nesting, mixins and inheritance to style sheets. These features also improve the maintainability of the style sheets. The syntax of \gls{SASS} is very similar to \gls{CSS} which makes it easy to learn if you know \gls{CSS}. \gls{SASS} is a so-called preprocesser which compiles the \gls{SASS} code into regular \gls{CSS}. This means that the web-server or client does not need to have extra software installed to handel it.
 
 \chapter{Pre study}
 In this chapter, we present the findings of the pre study. The pre study document was made as a separate document that was meant to be delivered to the customer independently of this report. Therefore, there are overlapping sections with the full report. These sections will not be given in this chapter, but are instead presented in their respective chapters of the full report. 
@@ -2136,8 +2140,8 @@ Given the size and complexity of the project, the functionality of the implement
 
 \subsection{Front-end}
 For the front-end there are new kinds of data that should be displayed in the GUI, some of which lack implemented back-end support. First off the basic map overlay requires some improvements. This includes extending the functionality it provides and improving efficiency and scalability. Secondarily there are new functions to be added, ranging from new controls to displaying other types of data.
-\paragraph{WMTS todo}
-%WMTS? \ get map fully up and running
+\paragraph{WMTS}
+As described earlier in the report \gls{WMTS} is a protocol for serving pre-rendered georeferenced map tiles. We would have liked to use this protocol because of the advantages it gives when you want to overlay visualized data on a map. Unfortunatly we were not able to implement WMTS in our back-end solution because of time constraints. This said we were able to display data from another \gls{WMTS} source using OpenLayers. It should be trivial to use OpenLayers to display data from  
 
 \paragraph{Point values}
 %TODO
@@ -2197,7 +2201,7 @@ The icons used in the GUI are called Octicons\footnote{\url{octicons.github.com/
 When deploying a javascript application it is common to minify the code. This means that you use a tool to remove all white space, new line characters and comments from the code. The tool may also rename variables in the code. The purpose on this is to make the file as small as possible. Having a small script file matters because the file is downloaded to the client and thus has an impact on response time of the application. We have not used an minifier. As the \gls{front-end} code base is relativly small little is gained from minifying but as the code base grows in the future this is strongly recomended.
 
 \paragraph{Tool tips}
-A tool to select the area you want to query was added. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and draging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI} and the user will propably not find this feature on his own. We therefor recomend that tool tips and hint are added to the \gls{GUI} so the user knows about all og it's features.
+A tool to select the area you want to query was implemented in the \gls{GUI}. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and draging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI} and the user will propably not find this feature on his own. We therefor recomend that tool tips and hint are added to the \gls{GUI} so the user knows about all og it's features.
 
 %OTHER?
 
@@ -2206,12 +2210,12 @@ A tool to select the area you want to query was added. It's toggled on and off b
 \chapter{Evaluation}
 In this chapter, the group will give a thorough evaluation of the project, in respect to the groups own work and teamwork, the decisions made early in the project, time used, the subject and its organization, relations with the customer, and reflect on the team. 
 
-This chapter will give a sense of what the group has learned through the project, what they want to repeat in future projects, and what could be improved. As well as determining these factors, we want to investigate what the causes of problems the group has experienced might have been, and attempt to suggest what could have been done to mitigate this. 
+This chapter will give a sense of what the group has learned through the project, what they want to repeat in future projects, and what could be improved. As well as determining these factors, we want to investigate what the causes of problems the group has experienced might have been, and attempt to suggest what could have been done to mitigate these. 
 
-This chapter also serves as the groups reflection note, as the groups have been asked to include them in their report. 
+This chapter also serves as the groups reflection note, as the groups have been asked to include this in the report. 
 
 \section{Product evaluation}
-At the end of the project, the team has produced a \gls{prototype} \gls{front-end} and \gls{back-end} that demonstrates that it is feasible to replace the current system used by SINTEF to serve current data, with a new and customary built system. Finding out whether or not this is feasible has been the main task of the team, and we feel that has been completed successfully. 
+At the end of the project, the team has produced a \gls{prototype} \gls{front-end} and \gls{back-end} that demonstrates that it is feasible to replace the current system used by SINTEF to serve data, with a new and custom built system. Finding out whether or not this is feasible has been the main task of the team, and we feel that has been completed successfully. 
 
 \paragraph{Front-end}
 The front end of the system shows a map of the world, and the user can either enter coordinates manually or by using a tool to graphically select the area they want. When the data is returned, a legend is displayed to explain the color gradients in the returned image. It is also possible to click a certain point of the returned data to get detailed information for this point.
@@ -2286,7 +2290,7 @@ Some challenges the team has run into have been:
 Most of these challenges have been overcome with the help of information found online. The group has used a webpage \footnote{http://www.tablesgenerator.com/} in the creation of tables. The non-English characters was a more difficult problem to solve, as it turned out that not all \LaTeX-programs used by the team opened files in UTF-8 as standard. After fixing this, there where far fewer problems with special characters.
 
 \paragraph{Google Docs}
-While \LaTeX{} is an excellent tool for writing, and the team has learned to love it through the project, it is a total overkill to use this for smaller documents. Therefore, the team decided to use Google Docs for minutes from meetings, agendas, status reports and other smaller documents that had to be produced quickly, and was not a part of the final report. As Google Docs has very good collaborative support, the team was able to work in parallel on documents, quickly making changes and updates. One of the new functions of Google Docs, the possibility to add suggestions to files (much like Microsoft Words "track changes" feature) has enabled to team to collaborate on emails to the customer, and to make non-destructive suggestions in documents.
+While \LaTeX{} is an excellent tool for writing, and the team has learned to love it through the project, it is not a good tool for smaller documents that needs to be shared and where the content is more dynamic. Therefore, the team decided to use Google Docs for minutes from meetings, agendas, status reports and other smaller documents that had to be produced quickly, and was not a part of the final report. As Google Docs has very good collaborative support, the team was able to work in parallel on documents, quickly making changes and updates. One of the new functions of Google Docs, the possibility to add suggestions to files (much like Microsoft Words "track changes" feature) has enabled to team to collaborate on emails to the customer, and to make non-destructive suggestions in documents.
 
 Google Docs has worked very well, and enabled the team to use as little time as possible for writing weekly documents for advisor meetings. As an added bonus, the documents are stored in the cloud, and backups are thus not necessary. 
 
@@ -2298,7 +2302,7 @@ The team is devided on whether the use of Trello was a success or not. On the on
 \paragraph{Slack}
 Slack has been the main communication tool of the group. It has enabled to group to have plenary discussions when a meeting could not be scheduled, or would have been impractical. Since Slack can also divide communication into sub-channels, parts of the group working on a specific feature can communicate without cluttering the conversation for others.
 
-Slack has been a good tool in the project, and has enabled the team to communicate. As it also has a mobile client, team members have been able to use it to give messages on the go. It also integrates with Trello (see section \ref{subsec:Trello}), and gives alerts when there are Trello updates. This makes it easier to follow progress, but as discussed earlier, the use of Trello was not optimal in this project. Thus, this functionality has been of limited use. 
+Slack has been a good tool in the project, and has enabled the team to communicate. As it also has a mobile client, team members have been able to use it to communicate on the go. It also integrates with Trello (see section \ref{subsec:Trello}) and Github \ref{subsec:Github} and alerts members when there are updates from these services. This makes it easier to follow progress, but as discussed earlier, the use of Trello was not optimal in this project. Thus, this functionality has been of limited use. 
 
 As the group discussed the adaptations done to Scrum, one of the main issues was the daily stand-up. This is a critical part of the scrum methodology, but it could not be done in the situation the team was in. Conflicting schedules of 7 people, representing several different directions in the study, meant that finding time for two meetings a week would be a challenge. The group hoped that the use of Slack would mitigate the lack of a daily scrum meeting. This was unfortunately not the case. The team members never established a routine of updating each other on Slack. This lead group members to seek out this information on Trello, but as previously mentioned, this was not updated continuously. 
 
@@ -2323,6 +2327,9 @@ Javascript has been the main technology for the front end development, besides \
 
 Javascript has proved to be a good choice of technology. To allow for the selection of areas, and sending correct requests to the server, Javascript is used to complete logic calculations on the client side. The map solution is also Javascript based. In short, the front end is dependent on the use of Javascript. There has not been any negative experiences using Javascript. 
 
+\paragraph{SASS}
+Even tough the style sheets of this project are relativly small it does not take many lines of code before a standard \gls{CSS} style sheet get hard to read and understand. That's why we chose to use \gls{SASS}. This makes it easy to modulize the style which makes it a lot easier to maintain. The benefits of \gls{SASS} only grows as a project grows which will benefit Sintef if they decide to continue the project based on our code. For these reasons we are satisfied with our choosing to use \gls{SASS}.
+
 \subsection{Time used}
 \label{subsec:TimeUsed}
 As detailed in section \ref{sec:GroupResources}, the group is expected to put around 2100 hours into the project in total. To be able to measure this, the \gls{course compendium} asks all students to log their work effort:
@@ -2333,7 +2340,7 @@ It is important that everyone is honest and registers all effort (as person-hour
 
 With this in mind, the group discussed time logging at an early team meeting. Several tools for logging time was looked into, including Jira (discussed in section \ref{subsec:Trello}), and Punchtime\footnote{http://www.punchti.me/}. The team decided that these tools were too complicated for keeping track of time spent, and opted instead for individual time sheets in Google Docs. Every team member was responsible for tracking all time, and making note of which task the time spent pertained to. 
 
-In retrospect, this was a bad decision. Only a minority of the team members were able to keep active track of the time they used for the project, and of these, most did not start to do this in detail until quite late in the project. This has led to the time logs being quite lacking for the first 30-45 days of the project. Some of this effort could be reconstructed with the use of minutes from meetings, but inevitably, less hours than actual usage has been registered. This must be taken into consideration when reading the numbers for time usage.  
+In retrospect, this was a bad decision. Only a minority of the team members were able to keep active track of the time they used for the project, and of these, most did not start to do this in detail until quite late in the project. This has led to the time logs being quite lacking for the first 30-45 days of the project. One can spetulate if a common system for logging hours to tasks might have improved this issue. Some of effort that was not tracked could be reconstructed with the use of minutes from meetings, but inevitably, less hours than actual usage has been registered. This must be taken into consideration when reading the numbers for time usage.  
 
 \paragraph{Missing estimates and time logs}
 Due to the lack in time logging, it has been difficult to give a full picture of the time used for the project. As the group did not have high enough focus on logging hours, estimating tasks also fell behind. Some tasks were estimated, but in the early sprints, most were not. As the sprints progressed, the team members got better at logging and estimation, and the last two sprints were both estimated and logged fully, see section \ref{sec:Sprint5Backlog} and \ref{sec:Sprint6Backlog}.
@@ -2368,7 +2375,6 @@ The total time usage of each team member is given in table \ref{tab:TotalTimeUsa
 \end{itemize}
 
 The group is not satisfied with the fact that they are several hundred hours away from the goal of the subject. Had more time been spent, it is possible that one or more of the challenges the team were unable to find a solution for, could have been solved. 
-
 
 \subsection{Scrum adaptions}
 \label{subsec:ScrumAdaptationsEval}
@@ -2478,7 +2484,7 @@ As there are no one on staff at \gls{NTNU} who knows the students this well, all
 
 The current random assignment also produces other challenges. Students from a multitude of directions in the study are put together in one group. This means that their schedules are vastly different, and finding time slots for group meetings becomes difficult. This is further complicated by exchange students, who often do not follow any of the standardized subject combinations. 
 
-\chapter{Licences} %% don't know if this is needed - Anders
+\chapter{Licences} 
 \paragraph{Octicons}
 The icon font (Octicons) used in the \gls{GUI} are created by Github. The font itself is licensed under the SIL OFL license, and all other code is licensed under the MIT license. \footnote{https://github.com/github/octicons/blob/master/LICENSE.txt}
 

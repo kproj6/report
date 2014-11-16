@@ -2232,6 +2232,15 @@ First one is normal polling, which means that application uses some timer functi
 
 Much better option is to register some kind of event listener that is triggered by system whenever the event (here folder modification) occures. This implementation is very efficient, because the function is called only when needed, but requires file system that have native support for those notifications. In Java there is a Watch Service API in \texttt{java.nio.file} package. This package contains functions for registering event handlers and in case of file system without support for such notifications falls back to polling. More information about this API and usage can be found at \url{https://blogs.oracle.com/thejavatutorials/entry/watching_a_directory_for_changes}.
 
+\subsubsection{Allow user to specify resolution of output}
+Currently is the output resolution hardcoded in \texttt{ImageRenderer} to 256x256 pixels. All data is read and computed through whole application up to image creation, where it's scaled to final resolution. There should be possibility for user to specify target resolution for the data he requests.
+
+To implement this, it is needed to add parameters for requests for specifying output resolution. It would be preferable, if those parameters were optional and if not set, system would fallback to some reasonable (ideally full) resolution. This can cause problems, if the user requests too high resolution, then the system would need much longer to calculate result and it can cause application to be unresponsive. There have to be some limits on what is the user allowed to request.
+
+Those parameters should be passed to \texttt{NetCdfManager} for data reading, so the whole system works only with necessary amount of data. \texttt{ImageRenderer} or any other output modifier then should not need to change resolution and should modify only representation of information.
+
+\texttt{NetCdfManager} then have to be modified to create array of the right size corresponding to the resolution and fill it with the correct data. For reading data from dataset with higher resolution, \texttt{makeSubset} function allows to specify stride that shall be used when getting data. For calculating the right stride for the given resolution was created a dummy function \texttt{calculateStride} in \texttt{NetCdfManager}.
+
 \chapter{Evaluation}
 In this chapter, the group will give a thorough evaluation of the project, in respect to the groups own work and teamwork, the decisions made early in the project, time used, the subject and its organization, relations with the customer, and reflect on the team. 
 

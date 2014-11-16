@@ -2216,6 +2216,13 @@ A tool to select the area you want to query was added. It's toggled on and off b
 
 \subsection{Back-end}
 
+\subsubsection{Returning data in different formats}
+Currently the application sends data back mostly in \gls{PNG}'s, but one of the suggestions was to return raw data as well, so that user can request raw data for his needs. This was assigned a lower priority and was not managed to implement in given time.
+
+To add this functionality it is needed to modify resource classes and the goal may be achieved by multiple ways. Easiest and probably the most ugly one would be to add a new method to the resource, which will return raw data when requested. Other way is to modify current method for getting the wanted data to distinguish between multiple output formats. Then it have to be decided what is the right way of specifying the output format. It can be passed to the method as another argument, or can be decided from the ACCEPT field in HTTP request.
+
+It is also important to decide a format in which will be the raw data coded. This format should be as compact as possible, but definitely lossless. Because of the current architecture of the application, it would be preferable, if this data was trasmitted as JSON (or at least packed in JSON).
+
 \subsubsection{Fully automatic new files detection}
 Currently the application scans the file system for files only on application start. To trigger rescan manually, there can be added a new REST endpoint (as a Resource class), which will ensure rescan when called. By adding this request to a system's crontab it is possible to achieve somehow semi-automatic detecting of new files.
 

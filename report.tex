@@ -2044,6 +2044,7 @@ Typical workflow of the class method for handling user request is to first valid
 
 To minimalize boilerplate code, the \texttt{RsUtil} class containing common methods was created. This class contains methods for user input validation and for converting array of vectors to array of it's magnitudes.
 
+\begin{minipage}{\linewidth}
 \begin{lstlisting}[language=Java, caption=Example of a simple REST resource class, label=lst:resourceClass, frame=single]
 @Path("root-of-my-resource")
 public class MyResource {
@@ -2056,6 +2057,7 @@ public class MyResource {
     }
 }
 \end{lstlisting}
+\end{minipage}
 
 In the listing \ref{lst:resourceClass} is an example of a very simple resource class. This resource resides at \gls{URL} \path{/root-of-my-resource} and has only one method \texttt{my-method}, which accepts one parameter. After invoking this class by pointing your browser to \gls{URL} \path{/root-of-my-resource/my-method?myParam=test}, application should respond with "test" (which was our parameter) in body and the type set to text/plain.
 

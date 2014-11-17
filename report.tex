@@ -79,6 +79,10 @@
 \newacronym{Fimex}{Fimex}{File Interpolation, Manipulation and EXtraction}
 \newacronym{PSP}{PSP}{Polar Stereographic Projection}
 \newacronym{SASS}{SASS}{Syntactically Awesome Style Sheets}
+\newacronym{WFS}{WFS}{Web Feature Service}
+\newacronym{GCS}{GCS}{Geographical Coordinate System}
+\newacronym{GIS}{GIS}{Geographical Information System}
+\newacronym{PPA}{PPA}{Personal Package Archive}
 
 \newglossaryentry{pre-study}{name=pre-study, description={is a document produced before the implementation phase, which informs the customer of possible solutions to their problem}}
 \newglossaryentry{pre-delivery}{name=pre-delivery, description={is a preliminary delivery of the main report, that is meant to give the external examiner an introduction to the groups work}}
@@ -2000,7 +2004,95 @@ Because we had to display data from a source using \gls{PSP} on top of a backgro
 
 \subsection{Attempted solutions}
 \subsubsection{Dynamically projecting on the back end}
-One solution we attempted was to dynamically project the dataset requested by the user. It was decided that this solution is too slow to be practical, as you have to pay the price of reprojecting the data every time it's requested. It also would have severely complicated the code: When reading a \gls{netcdf}, you can only read out a spatial rectangle that is aligned with the dataset.
+One solution we attempted was to dynamically project the dataset requested by the user. 
+
+This can be done with a library called Proj.4, which has also been suggested by the customer, who had some experience in the field.
+
+\paragraph{Proj.4}
+\begin{quote}
+PROJ.4\footnote{http://trac.osgeo.org/proj/} is a library for performing conversions between cartographic projections. The library is based on the work of Gerald Evenden at the USGS, but is now an OSGeo project maintained by Frank Warmerdam. The library also ships with executables for performing these transformations from the command line.
+\end{quote}
+PROJ.4 has been placed under an MIT license. 
+
+We have been interested in GeoTools\footnote{http://geotools.org/}, a Java \gls{GIS} library that includes sophisticated projections support.
+
+The coordinates parameters for the REST \gls{API} exposed by the server side application are in the form of Latitude and Logitude, i.e. in the Geographical Coordinate System (\gls{GCS}, with the EPSG code "EPSG:4326"), whereas the data stored in the NetCDF file is in a parameterized Polar Stereographic Projection (basically it has EPSG code "EPSG:9810", with parameters specified by each NetCDF file).
+Therefore, a conversion from the Polar Stereographic Projection to EPSG:4326 is what needed.
+
+GeoTools makes this conversion possible, but the standard code EPSG:9810 is not recognized correctly. 
+The customer provided us the Proj.4 String Notation for the projection, with parameters, that is as follows:
+\begin{lstlisting}
++proj=stere +lat_ts=60 +lat_0=90 +lon_0=58 +k_0=1.0 +x_0=2412853.25 +y_0=1840933.25 +a=6370000 +b=6370000
+\end{lstlisting}
+This is a standard format, defined by Proj.4, to represent potentially any kind of projection. The parameters' documentation is available online\footnote{https://trac.osgeo.org/proj/wiki/GenParms}. In our case, the Proj.4 string means respectively that:
+\begin{description}
+\item[proj=stere] The Projection type is Stereographic
+\item[lat_ts=60] Latitude of true scale is 60
+\item[lat_0=90] Latitude of origin is 90 degress
+\item[lon_0=58] Longitude of origin is 58 degrees
+\item[k_0=1.0] Scaling factor is 1.0 (no scaling)
+\item[x_0=2412853.25] False easting is the number provided. False easting is a value relating to distance east of a standard meridian but with a constant added to make the numbers never being mapped as negative. For instance, in UTM the value 500,000 is added to the easting from the center of each zone to return a false easting that is never negative (the smallest true easting is approximately -340,000 which set to false easting of 160,000).
+\item[y_0=1840933.25] False northing: a value relating to distance north of a standard latitude but with a constant added to make the numbers never being mapped as negative. For instance, in UTM, the Southern Hemisphere is assigned negative degrees of latitude, but to avoid negative numbers in northings, a constant value of 10,000,000 is added so that negative numbers for northings do not occur.
+\item[a=6370000] Semimajor radius of the ellipsoid axis
+\item[b=6370000] Semiminor radius of the ellipsoid axis
+\end{description}
+
+Unfortunately GeoTools doesn't support the Proj.4 String description. Instead, we realized that it works only with the Well-known text (\gls{WKT}) format.
+Therefore, we had to convert from the Proj.4 String description to the WKT format.
+This can be done manually in theory, but we realized that it was hard (a relatively wide knowledge was needed to make sure that all parameters have been set correctly). Moreover, since projection parameters in NetCDF files may vary, an automated conversion is preferrable.
+The easiest technique that we have found is to use a python script that relies on the python package "osgeo.osr". A tutorial on how to do it is provided has been found online\footnote{http://spatialnotes.blogspot.no/2010/11/converting-wkt-projection-info-to-proj4.html}.
+
+The content of the script is merely the following:
+
+\begin{lstlisting}
+#!/usr/bin/env python
+
+import os
+import sys
+import string
+import osgeo.osr
+
+if (len(sys.argv) <> 2):
+        print 'Usage: proj2wkt.py [Proj4 Projection Text]'
+else:
+        srs = osgeo.osr.SpatialReference()
+        srs.ImportFromProj4(sys.argv[1])
+        print srs.ExportToWkt()
+}
+\end{lstlisting}
+
+And the program can be called by python command line in the following way:
+\textit{proj2wkt.py '<Proj.4 string>'}. In our case, the script has been executed with the Proj.4 string provided:
+\textit{proj2wkt.py '+proj=stere +lat_ts=60 +lat_0=90 +lon_0=58 +k_0=1.0 +x_0=2412853.25 +y_0=1840933.25 +a=6370000 +b=6370000'}
+and the obtained output has been the following:
+\begin{lstlisting}
+PROJCS[\"unnamed\","
+            + "GEOGCS[\"unnamed ellipse\","
+            + "  DATUM[\"unknown\","
+            + "  SPHEROID[\"unnamed\",6370000,0]],"
+            + "PRIMEM[\"Greenwich\",0],"
+            + "UNIT[\"degree\",0.0174532925199433]], "
+              + " PROJECTION[\"Polar_Stereographic\"],"
+            + " PARAMETER[\"latitude_of_origin\",60],"
+            + " PARAMETER[\"central_meridian\",58],"
+            + " PARAMETER[\"scale_factor\",1],"
+            + " PARAMETER[\"false_easting\",2412853.25],"
+            + " PARAMETER[\"false_northing\",1840933.25],"
+            + " UNIT[\"m\", 1.0]]}
+\end{lstlisting}
+
+With this string as a parameter, GeoTools didn't give any errors, and the conversion from PSP to LatLong has been performed correctly (a backworks conversion has been performed to check the result, as well as comparison with values provided by online conversion tools).
+
+Anyway, the conversion is only point by point, and we performed a performance test with 1 million points, on a MacBook Air Mid '13 machine, with Mac OS X, obtaining the following result:
+\begin{itemize}
+\item From PSP to LatLong: 2.2 seconds on average
+\item From LatLong to PSP: 1 second on average
+\end{itemize}
+
+The difference is probably due to computational difference between the two conversion algorithms used.
+
+\paragraph{Feasibility decision}
+It was decided that this solution is too slow to be practical, as you have to pay the price of reprojecting the data every time it's requested. It also would have severely complicated the code: When reading a \gls{netcdf}, you can only read out a spatial rectangle that is aligned with the dataset.
 
 When the user application requests a rectangle in a foreign projection (relative to the dataset), he is requesting what is effectively a trapezoid region of the data (in the native projection).
 This means that we have to read out a rectangle that contains the requested trapezoid, do a costly reprojection computation, discard the superflous data points, resample the result and then return an image of it.
@@ -2013,8 +2105,50 @@ This is both impractical and expensive (slow), so we decided not to go down this
     \label{fig:tileMatrixSet}
 \end{figure}
 
+\subsection{Use a bas layer map in the same projection as in the NetCDF files}
+In the scenario in which a base map provided in the Polar Stereographic Projection (and potentially in any projection) is provided, then the tiles requeested by the user from NetCDF files can be directly displayed without the need of any projection transformation. This would be a straightforward solution to the projection problem.
+However, our research discovered that base map tiles sources - such as Google Maps or OpenStreetMaps - are only available in the 
 
-\subsection{Chosen solution}
+\subsection{Dynamically projecting on the front end}
+Another path for a possible solution we investigated was dynamically project the dataset requested by the user client-side, with Javascript. 
+Default SRS codes known to OpenLayers currently are the following:
+EPSG:4326, CRS:84, urn:ogc:def:crs:EPSG:6.6:4326, EPSG:900913, EPSG:3857, EPSG:102113, EPSG:102100 and OSGEO:41001)
+
+OpenLayers can handle the transformation among these formats itself, otherwise it needs Proj4js included.
+There are examples in the internet of how to use OpenLayers with Proj4js, but configure Proj4js to handle the Polar Stereographic Projection has been a challenge itself.
+
+At the end we realized that OpenLayers can only transform single coordinates or vector layers (like \gls{WFS}). Raster Layers (i.e. images) cannot be transformed by OpenLayers. Therefore this cannot be a solution for our case, since we decided to provide data in a raster way, for efficiency reasons above all.
+
+\subsection{Chosen solution: Statically projecting on the back end}
+Another way of solving the projection problem is to entirely convert NetCDF files, thus uploading to the server already in the correct projection.
+The customer has suggested us a library called \gls{Fimex}\footnote{https://wiki.met.no/fimex/start}.
+From the Fimex main page:
+\begin{quote}
+Fimex is a the File Interpolation, Manipulation and EXtraction library for gridded geospatial data, written in C/C++. It converts between different, extensible dataformats (currently \gls{netcdf}, \gls{NCML}, grib1/2 and felt). It enables you to change the projection and interpolation of scalar and vector grids. It makes it possible to subset the gridded data and to extract only parts of the files.
+\end{quote}
+Fimex is developed by the Norwegian Meteorological Institute and also provided as a command line tool. 
+We investigated using the command line tool, for two reasons:
+\begin{itemize}
+\item it should be easier to configure and use, focusing on the produced output other than the process of conversion itself. Thus potentially resulting in less time needed for us to make it working.
+\item on the second hand, the server is written in Java whereas the library is not ported to Java, so an external wrapper would have been needed to execute C++ language.
+\end{itemize}
+
+\paragraph{\gls{Fimex} Installation}
+A challange has been making FiMex command line tool available in the command line. It required in total 22 working hours, as we first attemped to installing it on Windows and Mac, but we finally failed, due to a lot of hard-to-configure dependencies to build and install. Actually, binary versions where not available for most of the dependancy packages, nor a binary version of FiMex is available for those Operating Systems.
+Specifically, FiMex requires at least the following libraries to be installed in the system before compilation:
+\begin{itemize}
+\item c99/c++ compiler
+\item libxml2 >= 2.5.0
+\item boost library >= 1.32
+\item proj-4 >= 4.4.9
+\item udunits >= 2.1.x
+\end{itemize}
+
+To be able to work with NetCDF files it also requires that NetCDF is installed in the system (netcdf-3 > 3.6).
+
+We finally succeded in installing FiMex on an Linux Ubuntu Operating System, because it was the only operating system for which a binary version of \gls{Fimex} is available, via \gls{PPA}\footnote{Using a Personal Package Archive (\gls{PPA}), it is possible to distribute software and updates directly to Ubuntu users}
+
+\paragraph{\gls{Fimex} Command Line Tool}
 
 \chapter{Final product}
 \section{Description}
@@ -2221,6 +2355,40 @@ The main job of a \gls{GUI} is to make the user able to interact with the applic
 \paragraph{Querying}
 Querying the \gls{back-end} is done by means of it's REST \gls{API}. This is done by taking the validated user input and building a query \gls{URL} from it. When the \gls{back-end} receives the input it processes it and responds with the relevant data, usually an image. The data response is then displayed in the \gls{GUI}, usually on the map at the user-defined coordinates. 
 
+\subsection{User Interface Design}
+A specific work has been done on designing the user interface of the front-end for this application.
+At the beginning of the project, the customer let us choose the graphical layout, and as a first step, we conveyed on the components to be placed in the screen, available to the user, that are:
+\begin{description}
+\item[Map] The map, with tiles from a map source like OpenStreetMaps, or Google Maps.
+\item[Data type selector] A selector that allows to choose among Salinity, Temperature, Currents or Depth. Since we conveyed with the customer that overlays can be shown one at a time on the map for understability purposes, we conveyed that this selector can be a combo-box (HTML option element) or a single-option checkbox group, with one option at a time that can be selected.
+\item[Depth selector] A numeric selector to choose the depth (in meters under sea level) at which watch the velues of the selected variables.
+\item[Date picker] A component to pick the date in which to watch the data.
+\item[Time picker] A component to select the time - in the day selected - in which the data refers to. The data is stored and available in intervals of one hour, therefore the boundaries of the time selector should be 00.00, 01.00, 02.00, ...., 23.00.
+\item[Area selector] There should be the possibility for the user to select an area. This can be done directly clicking and dragging on the map, with a drag box, or by directly pasting coordinates in two text-boxes (one for the 
+\item[Submit button] A button in order to actually perform the request to the back-end, with all the parameters set by the user, and display the data.
+\item[A container for all the options above]
+\item[Zoom picker] A component that allows to zoom the map in and out by clicking on the plus sign or the minus sign, providing the user an alternative way to the scroll wheel of the mouse, or the pinching action on a mobile touch-screen device.
+\end{description}
+
+During the design of the front end interface, some inspiration has been taken from existing solutions like Google Maps and Bing maps. 
+The main proposals have been the following:
+\begin{description}
+  \item[Reserve the map the full screen] This way the map component should take all the area of the screen, and the controls for the users are place on one side of the screen
+  \item[Reserve the map a full-width, but limited in high, area of the screen] This way, user controls and charts can be put at the bottom of the web-page, outside the map.
+  \item[Reserve the map a bounded screen-area, both limited in height and width] This way, the charts can be placed on the bottom, and the controls on the right side of the screen, or vice-versa
+\end{description}
+
+Among the team has been taken the decision to use a map with OpenStreetMap background tile covering all the screen size. This is mainly because of usability reasons, and also has a more user friendly interface.
+
+In particular, we ended up with the following representation:
+
+\begin{figure}[h]
+\begin{center}
+\fbox{\includegraphics[width=400px]{img/frontend-mockup.jpg}}
+\caption{Prepared Front-end Desktop Mockup}
+\label{fig:FrontendMockup}
+\end{center}
+\end{figure}
 
 \section{Goal completion}
 \section{Further work}

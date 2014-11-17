@@ -2149,13 +2149,29 @@ Given the size and complexity of the project, the functionality of the implement
 
 \subsection{Front-end}
 For the front-end there are new kinds of data that should be displayed in the \gls{GUI}, some of which lack implemented \gls{back-end} support. First off the basic map overlay requires some improvements. This includes extending the functionality it provides and improving efficiency and scalability. Secondarily there are new functions to be added, ranging from new controls to displaying other types of data.
+
 \paragraph{WMTS todo}
-%WMTS? \ get map fully up and running
+%WMTS? \ get map fully up and running %TODO
 
 \paragraph{Point values}
-%TODO
-%describe pop-ups here
-%follows up in Charts
+For giving more information for a given point we want to be able to click on the map and show extra data. The most basic of these is to display the accurate feature value of the selected point. So if salinity is the selected feature the \gls{GUI} should at least display the salinity value for the this exact point. The \gls{front-end} will request the point data from the \gls{back-end} and during these steps the values should be transformed to an easially human readable format, like degrees celsius or percent.
+These values can be displayed with a popup over the selected point as shown in figure \ref{fig:popup_pointvalue}.
+\begin{figure}[h]
+\framebox[\textwidth]{
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{img/gui_just_point_value.png}
+  \caption{Point value}
+    \label{fig:popup_pointvalue}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{img/gui_just_chart_popup.png}
+    \caption{Point value and chart}
+    \label{fig:popup_chart}
+  \end{subfigure}
+}
+\caption{Different popups}
+\end{figure}
+To extend further on this we can add other types of point data like charts. Because of these extensions it seems more reasonable to display point values and charts together and examples of how this can be done will be described below.
 
 \paragraph{Charts}
 \begin{figure}[!htb]
@@ -2165,7 +2181,8 @@ For the front-end there are new kinds of data that should be displayed in the \g
     \label{fig:gui_basicChart}
   \end{center}
 \end{figure}
-In addition to the point values the \gls{front-end} should be able to display current roses, vertical profiles and other calculated charts for a selected point. These charts would be served from the \gls{back-end}, and will require a new brand new set of implementations. The \gls{back-end} will then provide images to represent the charts. The task of the \gls{front-end} is to find out how to display these images in a useful and intuitive way. In this paragraph we present some examples of how this can be added to the \gls{GUI}. It must be noted that these are mock-ups used to show the general layout that will have to be refined if implemented.
+In addition to the point values the \gls{front-end} should be able to display current roses, vertical profiles and other calculated charts for a selected point. These charts would be served from the \gls{back-end}, and will require a new brand new set of implementations. The \gls{back-end} will then provide images to represent the charts. The task of the \gls{front-end} is to find out how to display these images in a useful and intuitive way. The most basic version of this would be to use the popup in figure \ref{fig:popup_pointvalue} and extend it to include a chart, like we have done in \ref{fig:popup_chart}. Such a popup got some limitations and it does not look too good when it is filled up too much, therefor we have also looked at other solutions. 
+In this paragraph we present some examples of how charts can be added to the \gls{GUI}. It must be noted that these are mock-ups used to show the general layout that will have to be refined if implemented.
 Figure \ref{fig:gui_basicChart} shows how the gui can be extended to display charts. In the top left corner we have a new box that is supposed to appear upon clicking a point on the map. It contains temperature, salinity and current speed of the point as described in the paragraph on point values(???REF to paragraph???) above. Under these values it has room to display a chart, giving a simple overview of the situation. In the bottom of the box there are buttons to change which chart is to be displayed. In figure \ref{fig:gui_basicChart} the chart is the current rose, but for other charts the box can adapt its size to better represent other charts.
 \begin{figure}[!htb]
   \begin{center}
@@ -2189,12 +2206,17 @@ The oppertunity to display all charts at the same time has also been discussed. 
 These solutions can all be used together. The panel in figure \ref{fig:gui_panelChart} can be reachable from a click action directly from the basic map view, for instance from a right-click menu. But it can also be reachable from the boxes in figure \ref{fig:gui_basicChart} and figure \ref{fig:gui_enlargedChart}. Preferable would be to use the box in figure \ref{fig:gui_basicChart} together with the detailed view of either figure \ref{fig:gui_enlargedChart} or figure \ref{fig:gui_panelChart}. Alternatively just using one of these three.
 
 \paragraph{Vector data}
+After implementing temperature, salinity and current speed, there is one important feature left for displaying directly over the map. This is current direction, representing in which direction the current flows at any given point. Current direction can not be displayed the same way as these other features. One solution to this is to send the current directions as vector data, and display this ontop of the other layers. This would mean that the \gls{back-end} would calculate the strength and direction of the current. Because these vectors will be displayed over multiple pixels we can send a sparser set of vectors, which would allow us to draw it even on less powerful devices.
+There are also other uses for displaying vector data like displaying depth contour lines and other neutical information.
 
 \paragraph{Legend}
 
+
 \paragraph{Seasonal averages} %Also point for back-end further?
+As the day to day data have significant variations it is sometimes better to do seasonal averages of the data, to get a smoother and more robust representation of the data for a certain period of the year. In the existing solution these seasons are months and the whole year. For our \gls{front-end} solution we need to allow the user to select these seasons instead of the normal date and time. This can be done by allowing the user to change the mode of the time-parameter from detailed date picker to season picker, which will change the request parameters to fit the API of seasonal requests. Other than switching mode and request, the existing solution should work as previously just with new data.
 
 \paragraph{Authentication}
+For using the existing solution of the system authentication is required. This was left outside of the scope of our project, but should be implemented for a commercial version. How this is to be done is more up to the customer as they already have a working solution for this task, and they might want to reuse it.
 
 \paragraph{Responsive design}
 Website are increasingly beeing accessed from smart phones and tablets. But websites that are designed to beeing displayed on a desktop or laptop screen are often not well suited for mobiles and tablets. One solution to this is to have a dedicated mobile website. This solution comes with the drawback of having to maintain two sites. A solution that has gained traction and is the most common way by now is using so called responsive design. This means that the website changes layout depending on the resolution of the device the website is accessed from. This is achieved with \gls{CSS} media queries.

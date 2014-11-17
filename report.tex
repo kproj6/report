@@ -2102,7 +2102,7 @@ id         & int        & Autoincrementing primary key          \\
 filepath   & text       & Absolute filepath of the \gls{netcdf} file \\
 coverage   & POLYGON    & With four corners defining the area covered \\
 time       & LINESTRING & With two points defining the time spanned \\
-gridsize   & int        & approximate distance between datapoints in meters \\ 
+gridsize   & int        & Approximate distance between datapoints in meters \\ 
 \end{tabular}
 \caption{The columns of the dataset\_XY\_time table}
 \label{tab:DatabaseColumns}
@@ -2139,10 +2139,6 @@ we get a list of files that match the query() parameters. Where [a] and [c] are 
 \label{fig:IndexerRequest}
 \end{center}
 \end{figure}
-
-\subsection{Image renderer}
-The data is originally stored as an array of scalar values. The program has to render this array as an image in order to be useful to the user. This consists of taking a two-dimensional array, and turning it into an image.
-The different resources rely on this module when the requested output representation is an image.
 
 \subsection{REST endpoints}
 The REST endpoints are gateway to the application as all communication flows through them and API is defined by those endpoints. It is a collection of classes representing specific service that the application provides. When user enters his request in form of \gls{URL} into his \gls{HTTP} client (browser), server parses this request and calls apropriate resource class to handle this request. The user can specify additional constraints in the form of query parameters.
@@ -2192,8 +2188,8 @@ Thus, the \gls{WMTS} module relies on the indexer, cache, and resource module. B
 \end{figure}
 
 
-\subsection{Rendering data}
-The ImageRenderer class is responsible for turning the raw data into \gls{PNG} images. An empty image is created and filled pixel by pixel from sampling the data. It can be used to create tiles for \gls{WMTS} or images that can be used outside a map service.
+\subsection{Image Renderer}
+The ImageRenderer class is responsible for turning the raw data into \gls{PNG} images. An empty image is created and filled pixel by pixel from sampling the data. It can be used to create tiles for \gls{WMTS} or images that can be used outside a map service. The different resources rely on this module when the requested output representation is an image.
 \paragraph{Inputs and Outputs}
 The data it takes as input is in a 2 dimensional array of numeric values. In addition to the data, it takes parameters to tell it if the resulting image should be square, even if the input data is not. The last parameter contains what feature (e.g. salinity) is to be rendered. The finished image in the form of a BufferedImage Java object, ready to be transmitted as a response to an end users request.
 \paragraph{Sampling}

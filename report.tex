@@ -2504,6 +2504,9 @@ The icons used in the GUI are called Octicons\footnote{\url{octicons.github.com/
 \paragraph{Minification}
 When deploying a javascript application it is common to minify the code. This means that you use a tool to remove all white space, new line characters and comments from the code. The tool may also rename variables in the code. The purpose on this is to make the file as small as possible. Having a small script file matters because the file is downloaded to the client and thus has an impact on response time of the application. We have not used an minifier. As the \gls{front-end} code base is relatively small little is gained from minifying but as the code base grows in the future this is strongly recommended.
 
+\paragraph{Animation}
+We would like to add some functionality where the use can see a timelapse animation of (say) the temperature in an area. The simplest way to implement this might be in front end. By requesting several images for the same area, but at different point in time, we have the basis for a timelapse. This approach would not require any changes to the back-end. It would most likely not be the best in performance, especially on low bandwidth connections or low end devices. Creating the animation in a more appropriate format in the back-end would save bandwidth and processing power for the end user, but this may be more difficult to implement.
+
 \paragraph{Tool tips}
 A tool to select the area you want to query was implemented in the \gls{GUI}. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and dragging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI} and the user will probably not find this feature on his own. We therefore recommend that tool tips and hint are added to the \gls{GUI} so the user knows about all og its features.
 

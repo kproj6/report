@@ -83,6 +83,7 @@
 \newacronym{GCS}{GCS}{Geographical Coordinate System}
 \newacronym{GIS}{GIS}{Geographical Information System}
 \newacronym{PPA}{PPA}{Personal Package Archive}
+\newacronym{WKT}{WKT}{Well-known text}
 
 \newglossaryentry{pre-study}{name=pre-study, description={is a document produced before the implementation phase, which informs the customer of possible solutions to their problem}}
 \newglossaryentry{pre-delivery}{name=pre-delivery, description={is a preliminary delivery of the main report, that is meant to give the external examiner an introduction to the groups work}}
@@ -2027,12 +2028,12 @@ The customer provided us the Proj.4 String Notation for the projection, with par
 This is a standard format, defined by Proj.4, to represent potentially any kind of projection. The parameters' documentation is available online\footnote{https://trac.osgeo.org/proj/wiki/GenParms}. In our case, the Proj.4 string means respectively that:
 \begin{description}
 \item[proj=stere] The Projection type is Stereographic
-\item[lat_ts=60] Latitude of true scale is 60
-\item[lat_0=90] Latitude of origin is 90 degress
-\item[lon_0=58] Longitude of origin is 58 degrees
-\item[k_0=1.0] Scaling factor is 1.0 (no scaling)
-\item[x_0=2412853.25] False easting is the number provided. False easting is a value relating to distance east of a standard meridian but with a constant added to make the numbers never being mapped as negative. For instance, in UTM the value 500,000 is added to the easting from the center of each zone to return a false easting that is never negative (the smallest true easting is approximately -340,000 which set to false easting of 160,000).
-\item[y_0=1840933.25] False northing: a value relating to distance north of a standard latitude but with a constant added to make the numbers never being mapped as negative. For instance, in UTM, the Southern Hemisphere is assigned negative degrees of latitude, but to avoid negative numbers in northings, a constant value of 10,000,000 is added so that negative numbers for northings do not occur.
+\item[lat\_ts=60] Latitude of true scale is 60
+\item[lat\_0=90] Latitude of origin is 90 degress
+\item[lon\_0=58] Longitude of origin is 58 degrees
+\item[k\_0=1.0] Scaling factor is 1.0 (no scaling)
+\item[x\_0=2412853.25] False easting is the number provided. False easting is a value relating to distance east of a standard meridian but with a constant added to make the numbers never being mapped as negative. For instance, in UTM the value 500,000 is added to the easting from the center of each zone to return a false easting that is never negative (the smallest true easting is approximately -340,000 which set to false easting of 160,000).
+\item[y\_0=1840933.25] False northing: a value relating to distance north of a standard latitude but with a constant added to make the numbers never being mapped as negative. For instance, in UTM, the Southern Hemisphere is assigned negative degrees of latitude, but to avoid negative numbers in northings, a constant value of 10,000,000 is added so that negative numbers for northings do not occur.
 \item[a=6370000] Semimajor radius of the ellipsoid axis
 \item[b=6370000] Semiminor radius of the ellipsoid axis
 \end{description}
@@ -2063,7 +2064,10 @@ else:
 
 And the program can be called by python command line in the following way:
 \textit{proj2wkt.py '<Proj.4 string>'}. In our case, the script has been executed with the Proj.4 string provided:
-\textit{proj2wkt.py '+proj=stere +lat_ts=60 +lat_0=90 +lon_0=58 +k_0=1.0 +x_0=2412853.25 +y_0=1840933.25 +a=6370000 +b=6370000'}
+\begin{lstlisting}
+proj2wkt.py '+proj=stere +lat_ts=60 +lat_0=90 +lon_0=58 +k_0=1.0 +x_0=2412853.25 +y_0=1840933.25 +a=6370000 +b=6370000'
+\end{lstlisting}
+
 and the obtained output has been the following:
 \begin{lstlisting}
 PROJCS[\"unnamed\","
@@ -2149,6 +2153,31 @@ To be able to work with NetCDF files it also requires that NetCDF is installed i
 We finally succeded in installing FiMex on an Linux Ubuntu Operating System, because it was the only operating system for which a binary version of \gls{Fimex} is available, via \gls{PPA}\footnote{Using a Personal Package Archive (\gls{PPA}), it is possible to distribute software and updates directly to Ubuntu users}
 
 \paragraph{\gls{Fimex} Command Line Tool}
+Fimex as a command line tool accepts the parameter listed in its main website for the documentation\footnote{http://fimex.met.no/doc/programDoc.html}.
+In particular, we ran this command:
+\begin{lstlisting}
+fimex --input.file <name_of_input_file.nc> -c <config_file.cfg>
+\end{lstlisting}
+
+And a config file is the following:
+\begin{lstlisting}
+[input]
+file=ORIGPATH
+
+[output]
+file=out8.nc
+type=netcdf
+
+[interpolate]
+method = bilinear
+projString= +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs
+xAxisValues = -4000000,-3990000,...,16000000
+yAxisValues = 7000000,7010000,...,16000000
+xAxisUnit = m
+yAxisUnit = m
+\end{lstlisting}
+
+Notice that the "projString" parameter allows to specify the destination projection.
 
 \chapter{Final product}
 \section{Description}

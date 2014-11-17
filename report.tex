@@ -83,12 +83,12 @@
 \newglossaryentry{pre-study}{name=pre-study, description={is a document produced before the implementation phase, which informs the customer of possible solutions to their problem}}
 \newglossaryentry{pre-delivery}{name=pre-delivery, description={is a preliminary delivery of the main report, that is meant to give the external examiner an introduction to the groups work}}
 \newglossaryentry{front-end}{name=front-end, description={is the name given to the part of software that the user interacts with}}
-\newglossaryentry{back-end}{name=back-end, description={is the name given to the part of software the user does not interact with, and that performs a specialized task.}}
+\newglossaryentry{back-end}{name=back-end, description={is the name given to the part of software the user does not interact with, and that performs a specialized task}}
 \newglossaryentry{course compendium}{name=course compendium, description={is a document given to the students, which outlines the course, describes the rules and expectations for the groups work, and gives the structure and content of the final report}}
 \newglossaryentry{protocol}{name=protocol, description={is a set of predefined rules of conduct and procedures. In computer science, it often describes the rules for communication between two parts}}
 \newglossaryentry{open source}{name=open source, description={is software where the source code is available to everyone, and anyone can alter and share the code}}
 \newglossaryentry{prototype}{name=prototype, description={is an early version of something, meant to test specific features}}
-\newglossaryentry{proof of concept}{name=proof of concept, description={is a system that proves the feasibility of an idea. It is usually not usable as part of a final system, but rather built as proof of an idea.}}
+\newglossaryentry{proof of concept}{name=proof of concept, description={is a system that proves the feasibility of an idea. It is usually not usable as part of a final system, but rather built as proof of an idea}}
 
 \begin{document}
 
@@ -144,15 +144,15 @@ Ruben Håskjold Fagerli & \\
 
 % Abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-In the choice of location, as well as in the daily operations of fish farms, both historical data and up to date projections on sea currents are vital. SINTEF has given the task of visualizing data on ocean currents, temperature, salinity and other variables in areas around fish farms, to be used by stakeholders in the sea farming industry. 
+In the choice of location, as well as in the daily operations of fish farms, both historical data and up to date projections on sea currents are vital. SINTEF has given the task of visualizing data on ocean currents, temperature, salinity and other variables in areas around fish farms, to be used by stakeholders in the sea farming industry. SINTEF currently has a solution for this, but they wish to improve this substantially. 
 
 Our group of seven students have used the fall semester at the Norwegian University of Science and Technology to do a full scale software development process in order to solve this task.
 
-The group has written a pre study, were systems that are currently in use have been investigated, and technologies that could be used for custom built solutions have been evaluated. Using the Scrum methodology, the group has worked to develop both a front and back end \gls{prototype} of such a system.
+The group has written a pre-study, were systems that are currently in use have been investigated, and technologies that could be used for custom built solutions have been evaluated. Using the Scrum methodology, the group has worked to develop both a front and back end \gls{prototype} of such a system.
 
-The \gls{prototype} developed is able to read NetCDF files from SINTEFs simulations, and visualize this dynamically at the users discretion. This includes handling files that overlap both in area and resolution. 
+The \gls{prototype} developed is able to read \gls{netcdf} files from SINTEF's simulations, and visualize this dynamically at the users discretion. Although the solution is a \gls{prototype}, and not ready for full scale deployment, it proves that developing a custom system is within reach, and should be considered.
 
-Although the solution is a \gls{prototype}, and not ready for full scale deployment, it proves that developing a custom system is within reach, and should be considered.
+In addition to the prototype, the group provides SINTEF with advice on how to continue development, and what challenges need to be addressed to be able to commercialize the solution.
 
 \end{abstract}
 
@@ -211,12 +211,12 @@ The study of ocean currents allows for predicting what conditions can be expecte
 This makes the most relevant users of the system fish farmers, either in the planning or operation phase of the farm. The system is also relevant to anyone conducting ocean research in the given areas, and other stakeholders that can use information on the condition of the sea in their work.
 
 \section{Assignment and scope}
-The client, SINTEF Fisheries and Aquaculture, has given us the project labeled "Ocean Forecast". The task is to improve SINTEFs existing system of storing and retrieving data, as well as the way the data is presented to the end user. 
+The client, SINTEF Fisheries and Aquaculture, has given us the project labeled "Ocean Forecast". The task is to improve SINTEF's existing system of storing and retrieving data, as well as the way the data is presented to the end user. 
 
 In agreement with the customer, the group has defined the following scope of the assignment:
 
 \begin{quote}
-Make a \gls{pre-study} that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualizations on a web page. Follow the study with an implementation of a \gls{proof of concept} system that is able to read from a collection of \gls{netcdf}-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEFs systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
+Make a \gls{pre-study} that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualizations on a web page. Follow the study with an implementation of a \gls{proof of concept} system that is able to read from a collection of \gls{netcdf}-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEF's systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
 \end{quote}
 
 \section{Group resources}
@@ -330,7 +330,7 @@ As our development project is part of a university course that runs in parallel 
 \item The scrum master is usually responsible for shielding the development team from the outside world. In this subject, it will not be possible to do this, as group members are required to attend advisor meetings and customer meetings. Thus, the scrum master will be more of a project manager, responsible for the teams progress and efforts. 
 \end {itemize}
 
-These changes make the Scrum method well suited for use in the project. Although it is important to try to follow well tested methodologies to the letter, one can not allow them to block progress, or disturb the workflow of the team. When in a special work situation, as the group is in, this type of adaptions are necessary for the efficient use of any development methodology. 
+These changes make the Scrum method well suited for use in the project. Although it is important to try to follow well tested methodologies to the letter, one can not allow them to block progress, or disturb the workflow of the team. When in a special work situation, as the group is in, this type of adaptations are necessary for the efficient use of any development methodology. 
 
 \subsection{Other alternatives}
 While it was early clear that the team wanted to work in a scrum-like manner, other methodologies of development could also have been used, and was discussed. In particular, Kanban and waterfall with feedback.
@@ -479,8 +479,8 @@ The scrum master is in standard scrum methodology tasked with being a barrier be
 We decided to adopt a scrum-like model of software development, with internal group meetings twice a week, weekly meetings with the advisor and meeting with the customer when needed (typically every other week). The schedule is defined as follows:
 \begin{itemize}
 \item Mondays 2-3 pm - Advisor meeting
-\item Mondays 3-4pm - Team meeting
-\item Thursdays 12-2pm - Team meeting
+\item Mondays 3-4 pm - Team meeting
+\item Thursdays 12-2 pm - Team meeting
 \end{itemize}
 For weeks 37 and 38 the advisor meeting will be Thursday 4pm.
 
@@ -514,7 +514,6 @@ An overview of risks and strategies is given in the following table:
   \endfoot
 
   \hline \hline
-  \caption[Risk assessment]{Here "Prob." stands for "Probability" and "Sev." stands for "Severity"}
   \endlastfoot
 
   \hline
@@ -548,7 +547,7 @@ R14 & Malfunction of personal computer equipment & \gls{L} & \gls{M} & Probabili
   We have created a template in our shared space together with a bibliography file. All team members are then able to write his sections in an environment that suits him the best, while the current state of the report is always available to all members.
 
   \subsection{Google Docs}
-  Google Docs \footnote{\url{https://docs.google.com}} is a web based office suite including a text editor, a spreadsheet program and a presentation program. All files created in these programs can easily be shared with colaborators. By sharing files, the colaborators get access to view and edit the files. It is also possible to edit and comment on other's work. We decided to use Google Docs for all documents that did not require the advanced typesetting of \LaTeX~so we had a common platform for such documents. This saves time, while still keeping documents backed up and accessible. 
+  Google Docs \footnote{\url{https://docs.google.com}} is a web based office suite including a text editor, a spreadsheet program and a presentation program. All files created in these programs can easily be shared with collaborators. By sharing files, the collaborators get access to view and edit the files. It is also possible to edit and comment on other's work. We decided to use Google Docs for all documents that did not require the advanced typesetting of \LaTeX~so we had a common platform for such documents. This saves time, while still keeping documents backed up and accessible. 
 
 \section{Project management}
   \subsection{Trello}
@@ -581,10 +580,28 @@ The choice of implementation language, platform and tools to use is left up to t
   "Javascript is part of the triad of technologies that all Web developers must learn".
   \end{quote} 
   He continues to note that JavaScript specifies the behavior of the web page \cite{fd11}. Along with specification of \gls{HTML5} and ECMAscript 6 (the standard name of JavaScript) the possibilities of what you can achieve with JavaScript has greatly improved. Since our assignment is to create a web based solution, it seams natural to use JavaScript as part of the solution. This is further supported by the existence of \gls{open source} libraries designed to make interactive maps, which is relevant for our assignment.
-  \subsection{HTML}
+
+\subsection{HTML}
   \gls{HTML} is a markup language used to create web sites. It was created at CERN to share documents and was later popularized for creating documents for the World Wide Web. As we are making a web based solution we will need \gls{HTML}, either compiled from another language or written directly.
   \subsection{SASS}
   \gls{SASS} is a \gls{CSS} extention language that makes it's easier to modualize style sheets and thus keep the styling more maintainable. It also introduces variables, nesting, mixins and inheritance to style sheets. These features also improve the maintainability of the style sheets. The syntax of \gls{SASS} is very similar to \gls{CSS} which makes it easy to learn if you know \gls{CSS}. \gls{SASS} is a so-called preprocesser which compiles the \gls{SASS} code into regular \gls{CSS}. This means that the web-server or client does not need to have extra software installed to handel it.
+  
+\section{Index Database}
+  \subsection{Spatialite}
+  Spatialite is an extension for SQLite databases, turning them into spatial databases. Spatial database is a term for a database optimized for storing and querying geometric data. The \textit{\gls{netcdf} indexer} makes use of a spatialite database for both of these purposes. It is published under a free license, lightweight and has the functionality required by our \textit{\gls{netcdf} indexer}.
+  
+  Spatialite supports several types of geometries, we will be using three:
+  \begin{itemize}
+\item A POLYGON is a two dimensional figure defined by its corner points. The areas covered by \gls{netcdf} files and the areas of requests the back-end receive will be POLYGONs.
+\item A LINESTRING is a sequence of points in two dimensions, defining a line. The span of time covered by each \gls{netcdf} file will be represented by a LINESTRING with two points.
+\item A POINT is a single point in two dimensional space. A request will be for a single point in time.
+\end{itemize}
+
+  Spatialite supports set operators for all the types of geometry, we will be using intersects(). This function, used in SQL statements, takes two geometries of any kind as arguments. It returns "1" if any point exists that is part of both geometries.
+
+  Spatialite can build and maintain R-tree indexes for geometry columns, allowing it to faster resolve calls to functions like intersects(a,b). It does this by first checking if the minimum bounding rectangle of the geometries intersect, discarding any that do not before a more advanced check is performed.
+  
+  Short for rectangle tree, an R-tree is a data structure to hierarchically organize spatial data. The idea is to organize the spatial information into rectangles, which are contained in larger rectangles and so on. In this way only a small part of the tree will be traversed when it is searched.  It has several variants with slightly different performances for construction and other operations.
 
 \chapter{Pre study}
 In this chapter, we present the findings of the pre study. The pre study document was made as a separate document that was meant to be delivered to the customer independently of this report. Therefore, there are overlapping sections with the full report. These sections will not be given in this chapter, but are instead presented in their respective chapters of the full report. 
@@ -1426,7 +1443,7 @@ To gain a better perspective on what the customer wanted, we documented what SIN
 In order to better understand what a modern system similar to what SINTEF wants might look like we investigated online solutions in production around the world. This also gave some insight into what technologies are most commonly used. Prompting us to look into whether these technologies could be used in our project as well.
 
 \paragraph{Back end technologies}
-The back end part of the group looked into and tested several technologies that might be useful. One of the largest problems was finding some technology to handle the aggregation of the different gridsizes in SINTEFs datasets. Our investigations revealed that no existing technology would cover our needs, at least without extensive modification. Other problems included limited support for \gls{netcdf} and difficulty configuring the programs. We created some \glspl{prototype} to learn more about how difficult a custom solution from scratch might be, and its performance.
+The back end part of the group looked into and tested several technologies that might be useful. One of the largest problems was finding some technology to handle the aggregation of the different gridsizes in SINTEF's datasets. Our investigations revealed that no existing technology would cover our needs, at least without extensive modification. Other problems included limited support for \gls{netcdf} and difficulty configuring the programs. We created some \glspl{prototype} to learn more about how difficult a custom solution from scratch might be, and its performance.
 
 \paragraph{Front end technologies}
 Several technologies were available for presenting map data to the user. We looked into rendering the data client-side. This proved inefficient, and together with observations of other production solutions using \gls{PNG}-tiles we decided to look more into that instead. Some testing revealed OpenLayers to be the best candidate for handling the dynamic map presentation of data.
@@ -1908,7 +1925,21 @@ Total                                                  & 174                    
 \end{table}
 
 \section{Sprint overview}
+As this is the last sprint, the main focus is finishing the report. This is clearly reflected in the amount of tasks set in the reporting section of the backlog. These tasks have been given priority, but if team members are able to finish their reporting tasks and have time to spare, the assigned tasks in \gls{front-end} and \gls{back-end} can be done. The team must finish the reporting tasks before the project ends. This should not be a problem, as the estimated time for the reporting is within the capability of the team.
+
+Any task that is left after this sprint will probably not be done, as the project ends 3 days after the sprint ends. After the sprint, the presentation and demonstration for the examiner still has to be planed. 
+
 \section{Evaluation}
+\paragraph{Customer meeting}
+On the friday of this sprint, the team had their final meeting with the customer at SINTEF. We had the opportunity to informally discuss with the customer over lunch before giving a more formal rundown of the final product. 
+
+The customer was informed of the content of the report, and that the team will strive to include as much information as possible about the different challenges faced. The \gls{front-end} was demonstrated, especially the legend and the possibility to click a certain point on the map to get further information. As for the \gls{back-end}, the team explained the latest findings of the investigation into \gls{Fimex}. Due to some missing headers in the converted netCDF files, they had not been working. In theory, the conversion is functional, but some work remains to be able to read the files correctly.
+
+\paragraph{Time logging and estimations}
+In this sprint, the team has done a full estimation of all tasks. All team members have logged their time usage, making it possible to get a full picture of how the time has been used. This is reflected in table \ref{tab:Sprint6Backlog}.
+
+\paragraph{Report writing}
+This sprint has been focused on writing the final report. All team members have been given tasks for the report writing. The task of documenting technical features have been given to the people who made the specific features, as they have the deepest understanding of the code, but also of the challenges met during implementation. 
 
 \chapter{Challenges}
 \label{chap:Challenges}
@@ -1934,7 +1965,6 @@ The major challenge we had when implementing \gls{WMTS} was calculating the coor
 \caption{Tile matrixes}
 \end{figure}
 
-\section{Indexing}
 \section{Projections}
 \label{sec:ProjectionChallenges}
 There is a fundamental problem with representing a curved surface such as the surface of the Earth, on a flat cartesian grid.
@@ -1995,7 +2025,7 @@ The \gls{back-end} is built as a single binary to ease deployment. The program c
 	\item Web server
 	\item Rest endpoints
 	\item \gls{netcdf} Manager
-	\item Indexer
+	\item \gls{netcdf} Indexer
 	\item Image renderer
 	\item \gls{WMTS} module
 \end{itemize}  
@@ -2006,9 +2036,9 @@ Using these modules, we have built two services: A \textit{REST \gls{API}} to qu
 \paragraph{REST API:}
 The REST \gls{API} consists of a series of \gls{URL}s that can be queried to obtain slices of the dataset. The \gls{API} takes a set of data space constraints and returns an image representing the requested area at a given time and depth.
 
-The control flow of the REST \gls{API} is as flollows:  
+The control flow of the REST \gls{API} is as follows:  
 When a request comes in, it's automatically routed by the webserver module to the correct Resource class. The Resource class parses the parameters supplied by the user, and talks to the \textit{\gls{netcdf} manager} module in order to obtain the relevant data.
-The manager module, in turn, can talk to the \textit{Indexer} to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
+The manager module, in turn, can talk to the \textit{\gls{netcdf} indexer} to figure out which specific file contains the relevant data, before opening the given file and reading out the data. 
 The data array is then passed back to the Resource class, which formats it according using the \textit{Image module}, and returns that as a response.
 
 \paragraph{WMTS service:}
@@ -2051,14 +2081,72 @@ The workflow of every data providing method in \texttt{NetCdfManager} follows th
 
 Because of the time constraint, current implementation can read data only from one file, but the architecture is prepared for reading data from multiple files and joining it into one resulting array.
 
-\subsection{Indexer}
-The indexer scans the data folder for new \gls{netcdf} files, and keeps track of what kind of data is contained in each file. The \textit{\gls{netcdf} manager} module relies on this to select the correct file to open when asked to provide data.
-\subsection{Image renderer}
-The data is originally stored as an array of scalar values. The program has to render this array as an image in order to be useful to the user. This consists of taking a two-dimensional array, and turning it into an image.
-The different resources rely on this module when the requested output representation is an image.
+\subsection{NetCDF Indexer}
+The \textit{\gls{netcdf} indexer} keeps a database entry for each \gls{netcdf} file, containing information on what area is covered, at what times and at what level of detail. The \textit{\gls{netcdf} manager} module can use this to select the correct files to open in order to fulfill a request.
+
+  \paragraph{Database}
+  The indexer relies on a SQLite database for persistence. The SQLite database uses the spatialite extension in order to easily store and query geometric/geospatial information.
+    
+  Aside from various housekeeping and indexing tables required by spatialite, the database contains one table for our \gls{netcdf} information, dataset\_XY\_time. This table contains the columns detailed in table \ref{tab:DatabaseColumns}. To set up this table, the following SQL statements are executed on a database set up for spatialite:
+\begin{lstlisting}
+CREATE TABLE dataset\_XY\_time (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    filepath TEXT NOT NULL,
+    gridsize INTEGER NOT NULL);
+
+SELECT AddGeometryColumn('dataset\_XY\_time', 'coverage', 33333, 'POLYGON', 'XY', 1);
+
+SELECT AddGeometryColumn('dataset\_XY\_time', 'time', 33333, 'LINESTRING', 'XY', 1);
+\end{lstlisting}
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{lll}
+\multicolumn{1}{c}{Column name} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Type\end{tabular}} & Description \\ \hline
+id         & int        & Auto incrementing primary key          \\
+filepath   & text       & Absolute filepath of the \gls{netcdf} file \\
+coverage   & POLYGON    & With four corners defining the area covered \\
+time       & LINESTRING & With two points defining the time spanned \\
+gridsize   & int        & Approximate distance between datapoints in meters \\ 
+\end{tabular}
+\caption{The columns of the dataset\_XY\_time table}
+\label{tab:DatabaseColumns}
+\end{center}
+\end{table}
+
+\paragraph{Scanning}
+When the program starts up, the indexer starts to scan a specified folder for \gls{netcdf} files that should be added to the database. This process begins by traversing the specified folder and its subfolders recursively, adding the path of any file ending in ".nc" to a list. Every file found like this is either added to the database or skipped if it is already in the database. 
+
+If a \gls{netcdf} file should be added it is opened to retrieve key information for the database entry. To create the coverage polygon we read just the corner points of gridLats and gridLons, using a stride of one less than the corresponding dimension. Two examples of the polygons created this way are show in figure \ref{fig:IndexerDatasets}. In order to make the time line we determine the start point by looking at the "units"-attribute of the \gls{netcdf}s time variable. This is a string like "days since 2013-08-06 00:00:00" which we turn into a DateTime-object using the formatter pattern "yyyy-MM-dd HH:mm:ss". Converting this to a UNIX timestamp we have the timeline starting point. The length of the time variable in the \gls{netcdf} file is the number of hours the data of the \gls{netcdf} file covers. By adding this number of hours to the starting point we have the end point of our time line. The value for the gridsize column is taken from the grid\_mapping variable’s attribute "horizontal\_resolution". With all of this an INSERT INTO statement is constructed and executed on the database.
+
+\begin{figure}[!htb]
+\begin{center}
+\fbox{\includegraphics[width=350px]{img/indexer_datasets.png}}
+\caption{Example of two coverage POLYGONs (light blue)}
+\label{fig:IndexerDatasets}
+\end{center}
+\end{figure}
+
+\paragraph{Querying}
+The indexer allows for rapid queries of which files in a given areas have data for a given point in time. A call to the query() function takes start and end latitude and longitude to specify the area you want to query. From this the function will create a POLYGON with four corners. An example of a polygon for a query is shown in figure \ref{fig:IndexerRequest}. The point in time is taken as a DateTime argument and converted to UNIX timestamp, making a POINT geometry. Using a SQL query like 
+\begin{lstlisting}
+    SELECT filepath
+    FROM dataset\_XY\_time
+    WHERE intersects([a], [b])
+    AND intersects([c], [d]);
+\end{lstlisting}
+we get a list of files that match the query() parameters. Where [a] and [c] are from the "coverage" and "time" columns of dataset\_XY\_time. [b] and [d] are the POLYGON and POINT we created earlier in the query() function. The WHERE condition thus limits the result set to files that intersect in both time and space with the specified area and point in time. This list is the result of a call to query().
+
+\begin{figure}[!htb]
+\begin{center}
+\fbox{\includegraphics[width=350px]{img/indexer_request.png}}
+\caption{Example of a query POLYGON (red) atop two dataset coverage POLYGONs (light blue). The query intersects with both datasets spatially.}
+\label{fig:IndexerRequest}
+\end{center}
+\end{figure}
 
 \subsection{REST endpoints}
-The REST endpoints are gateway to the application as all communication flows through them and API is defined by those endpoints. It is a collection of classes representing specific service that the application provides. When user enters his request in form of \gls{URL} into his \gls{HTTP} client (browser), server parses this request and calls apropriate resource class to handle this request. The user can specify additional constraints in the form of query parameters.
+The REST endpoints are gateway to the application as all communication flows through them and \gls{API} is defined by those endpoints. It is a collection of classes representing specific service that the application provides. When user enters his request in form of \gls{URL} into his \gls{HTTP} client (browser), server parses this request and calls appropriate resource class to handle this request. The user can specify additional constraints in the form of query parameters.
 
 In the application there are currently resource classes for checking status of the application and for representing scalar information from simulated dataset (current magnitude, depth, salinity and temperature). By specifying query parameters user can tell the endpoint which section of the data he is interested in. Most resources accept area, depth and time parameters.
 
@@ -2066,7 +2154,7 @@ Due to time constraints, we have restricted the output to require a 2D slice of 
 
 Every resource class has to be in the \texttt{com.sintef.featureserver.rs} class and is annotated by \texttt{@Path} annotation specifying the root \gls{URL} of that resource. Because most resources need to access information from \gls{netcdf}, it is common to store reference to \texttt{NetCdfManager} in a private variable in class constructor. Resource classes then contain methods for handling user requests. Such methods are annotated with \texttt{@Path}, which specifies path from the resource root and have to return \texttt{Response} object. Method parameters which are annotated by \texttt{@QueryParam} with parameter name are autofilled with query parameters.
 
-Typical workflow of the class method for handling user request is to first validate the user input, then use \texttt{NetCdfManager} to get the data user requested, convert the raw data to some interchangeable format (usually to \gls{PNG} image with the use of \texttt{Image renderer}) and finally pack the result in the \texttt{Response} object and return it.
+Typical workflow of the class method for handling user request is to first validate the user input, then use \texttt{NetCdfManager} to get the data user requested, convert the raw data to some interchangeable format (usually to \gls{PNG} image with the use of \texttt{ImageRenderer}) and finally pack the result in the \texttt{Response} object and return it.
 
 To minimalize boilerplate code, the \texttt{RsUtil} class containing common methods was created. This class contains methods for user input validation and for converting array of vectors to array of it's magnitudes.
 
@@ -2089,7 +2177,7 @@ In the listing \ref{lst:resourceClass} is an example of a very simple resource c
 
 \subsection{WMTS}
 
-The \textit{\gls{WMTS}} module is tasked with generating a \textit{capbabilities document}, and serving \textit{tiles}. When generating the capabilities document, the \gls{WMTS} module calls the indexer in order to obtain the bounds of the entire dataset.
+The \textit{\gls{WMTS}} module is tasked with generating a \textit{capabilities document}, and serving \textit{tiles}. When generating the capabilities document, the \gls{WMTS} module calls the indexer in order to obtain the bounds of the entire dataset.
 
 The \gls{WMTS} module also has to be able to take the tile index requested by the user and computing the coordinates of the corners of the given tile. If the image for this tile is already in cache, it can just return that to the user.
 Otherwise, it then calls on the relevant resource with the computed coordinates to obtain the image for that tile. Finally, it calls the cache to store the image for later use.
@@ -2105,8 +2193,8 @@ Thus, the \gls{WMTS} module relies on the indexer, cache, and resource module. B
 \end{figure}
 
 
-\subsection{Rendering data}
-The ImageRenderer class is responsible for turning the raw data into \gls{PNG} images. An empty image is created and filled pixel by pixel from sampling the data. It can be used to create tiles for \gls{WMTS} or images that can be used outside a map service.
+\subsection{Image Renderer}
+The ImageRenderer class is responsible for turning the raw data into \gls{PNG} images. An empty image is created and filled pixel by pixel from sampling the data. It can be used to create tiles for \gls{WMTS} or images that can be used outside a map service. The different resources rely on this module when the requested output representation is an image.
 \paragraph{Inputs and Outputs}
 The data it takes as input is in a 2 dimensional array of numeric values. In addition to the data, it takes parameters to tell it if the resulting image should be square, even if the input data is not. The last parameter contains what feature (e.g. salinity) is to be rendered. The finished image in the form of a BufferedImage Java object, ready to be transmitted as a response to an end users request.
 \paragraph{Sampling}
@@ -2120,7 +2208,7 @@ The image will be set to be 256 pixels along the shortest dimension of the raw d
 The \gls{front-end} consists of a single \gls{HTML} file, the OpenLayers javascript library, custom javascript and \gls{CSS}. These components combined make up the \gls{GUI}. Its role in the product is to help the user querying the \gls{back-end} and then displaying the received data in a meaningful way. 
 
 \paragraph{Graphical User Interface}
-The main job of a \gls{GUI} is to make the user able to interact with the application. In the case of our product the main features are querying and displaying the received data, primarily on a map. Because the map has such an important function in the application we chose to make it as big as possible. This emphasizes the importance of the functions related to the map and makes it easier to veiw the data displayed on the map. The map is provided by the OpenLayers javascript library which gives the possibility to display maps and data from different source. Since we want to display data that is closely related to geographical position, displaying it on a map is the most intuitive solution. In order to make it as easy as possible to query the \gls{back-end} for data we have added a input box. The user can toggle this input box to be hidden or not. Being able to hide the input box helps to keep the screen uncluttered and makes it easier for the user to focus on the displayed data.
+The main job of a \gls{GUI} is to make the user able to interact with the application. In the case of our product the main features are querying and displaying the received data, primarily on a map. Because the map has such an important function in the application we chose to make it as big as possible. This emphasizes the importance of the functions related to the map and makes it easier to view the data displayed on the map. The map is provided by the OpenLayers javascript library which gives the possibility to display maps and data from different source. Since we want to display data that is closely related to geographical position, displaying it on a map is the most intuitive solution. In order to make it as easy as possible to query the \gls{back-end} for data we have added a input box. The user can toggle this input box to be hidden or not. Being able to hide the input box helps to keep the screen uncluttered and makes it easier for the user to focus on the displayed data.
 
 \begin{figure}[!htb]
 \begin{center}
@@ -2136,86 +2224,135 @@ Querying the \gls{back-end} is done by means of it's REST \gls{API}. This is don
 
 \section{Goal completion}
 \section{Further work}
-Given the size and complexity of the project, the functionality of the implementation had to be limited to the bare minimum. That means that further work should be done to meet the functional requirements for a commercial product. Many of these functionalities have however been considered during the project and therefor we have made some evalutations on how this can be done. In this section we present our suggestions for what can be done to improve the implementation.
+Given the size and complexity of the project, the functionality of the implementation had to be limited to the bare minimum. That means that further work should be done to meet the functional requirements for a commercial product. Many of these functionalities have however been considered during the project and therefore we have made some evaluations on how this can be done. In this section we present our suggestions for what can be done to improve the implementation.
 
 \subsection{Front-end}
-For the front-end there are new kinds of data that should be displayed in the GUI, some of which lack implemented back-end support. First off the basic map overlay requires some improvements. This includes extending the functionality it provides and improving efficiency and scalability. Secondarily there are new functions to be added, ranging from new controls to displaying other types of data.
+For the front-end there are new kinds of data that should be displayed in the \gls{GUI}, some of which lack implemented \gls{back-end} support. First off the basic map overlay requires some improvements. This includes extending the functionality it provides and improving efficiency and scalability. Secondarily there are new functions to be added, ranging from new controls to displaying other types of data.
 \paragraph{WMTS}
 As described earlier in the report \gls{WMTS} is a protocol for serving pre-rendered georeferenced map tiles. We would have liked to use this protocol because of the advantages it gives when you want to overlay visualized data on a map. Unfortunatly we were not able to implement WMTS in our back-end solution because of time constraints. This said we were able to display data from another \gls{WMTS} source using OpenLayers. It should be trivial to use OpenLayers to display data from  
 
+
 \paragraph{Point values}
-%TODO
-%describe pop-ups here
-%follows up in Charts
+For giving more information for a given point we want to be able to click on the map and show extra data. The most basic of these is to display the accurate feature value of the selected point. So if salinity is the selected feature the \gls{GUI} should at least display the salinity value for the this exact point. The \gls{front-end} will request the point data from the \gls{back-end} and during these steps the values should be transformed to an easily human readable format, like degrees Celsius or percent.
+These values can be displayed with a popup over the selected point as shown in figure \ref{fig:popup_pointvalue}.
+\begin{figure}[h]
+\framebox[\textwidth]{
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{img/gui_just_point_value.png}
+  \caption{Point value}
+    \label{fig:popup_pointvalue}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[width=\textwidth]{img/gui_just_chart_popup.png}
+    \caption{Point value and chart}
+    \label{fig:popup_chart}
+  \end{subfigure}
+}
+\caption{Different popups}
+\end{figure}
+To extend further on this we can add other types of point data like charts. Because of these extensions it seems more reasonable to display point values and charts together and examples of how this can be done will be described below.
 
 \paragraph{Charts}
-In addition to the point values the front-end should be able to display current roses, depth-cuts(?) and other calculated charts for a selected point. These charts would be served from the back-end, and will require a new brand new set of implementations. The back-end will then provide images to represent the charts. The task of the front-end is to find out how to display these images in a useful and intuitive way. 
 \begin{figure}[!htb]
   \begin{center}
     \fbox{\includegraphics[width=\textwidth]{img/gui_charts_basic.png}}
     \caption{Example of how the basic charts can be displayed in the GUI}
-    \label{fig:gui_chart}
+    \label{fig:gui_basicChart}
   \end{center}
 \end{figure}
-
+In addition to the point values the \gls{front-end} should be able to display current roses, vertical profiles and other calculated charts for a selected point. These charts would be served from the \gls{back-end}, and will require a new brand new set of implementations. The \gls{back-end} will then provide images to represent the charts. The task of the \gls{front-end} is to find out how to display these images in a useful and intuitive way. The most basic version of this would be to use the popup in figure \ref{fig:popup_pointvalue} and extend it to include a chart, like we have done in \ref{fig:popup_chart}. Such a popup got some limitations and it does not look too good when it is filled up too much, therefore we have also looked at other solutions. 
+In this paragraph we present some examples of how charts can be added to the \gls{GUI}. It must be noted that these are mock-ups used to show the general layout that will have to be refined if implemented.
+Figure \ref{fig:gui_basicChart} shows how the gui can be extended to display charts. In the top left corner we have a new box that is supposed to appear upon clicking a point on the map. It contains temperature, salinity and current speed of the point as described in the paragraph on point values(???REF to paragraph???) above. Under these values it has room to display a chart, giving a simple overview of the situation. In the bottom of the box there are buttons to change which chart is to be displayed. In figure \ref{fig:gui_basicChart} the chart is the current rose, but for other charts the box can adapt its size to better represent other charts.
 \begin{figure}[!htb]
   \begin{center}
     \fbox{\includegraphics[width=\textwidth]{img/gui_charts_enlarged.png}}
     \caption{Example of how the charts can be enlarged}
-    \label{fig:gui_chart}
+    \label{fig:gui_enlargedChart}
   \end{center}
 \end{figure}
 
-% \begin{figure}[h]
-% \framebox[\textwidth]{
-%   \begin{subfigure}[b]{0.48\textwidth}
-%     \includegraphics[width=\textwidth]{img/gui_charts_basic.png}
-%   \caption{Charts}
-%     \label{fig:PSP}
-%   \end{subfigure}
-%   \begin{subfigure}[b]{0.48\textwidth}
-%     \includegraphics[width=\textwidth]{img/gui_charts_enlarged.png}
-%     \caption{Charts enlarged}
-%     \label{fig:mercator}
-%   \end{subfigure}
-% }
-% \caption{Different projections}
-% \end{figure}
+The biggest concern about this approach is that the charts have to be quite small to fit a box that should be limited in width to visually fit together with the control panel. To handle this problem we think it would be a good idea to allow the user to enlarge the chart upon request. In the approach mentioned above and shown in figure \ref{fig:gui_basicChart} we can let the user click the small chart or click a specific enlargement button, to bring up the more detailed view. One example of such a detailed view is shown in figure \ref{fig:gui_enlargedChart} where we simply bring up another box displaying the chart at higher resolution, at the cost of covering a far bigger area of the map. This box could be removed simply by clicking outside of the box, or it is possible to let the box stay open and allow changing the chart type or other parameters.
+\begin{figure}[!htb]
+  \begin{center}
+    \fbox{\includegraphics[width=\textwidth]{img/gui_charts_fullpanel_squared.png}}
+    \caption{Example of how a fullwindow display of charts can be done}
+    \label{fig:gui_panelChart}
+  \end{center}
+\end{figure}
+
+The opportunity to display all charts at the same time has also been discussed. This should let the user see the relations between the charts in detail. Even with 3 charts this requires a lot of space on the screen, so extending it to use the whole browser window might be better than trying to minimize the size of it. Such a fullscreen \gls{GUI} is shown in figure \ref{fig:gui_panelChart}. The idea here is to change the whole view to a plain panel containing the coordinates of the selected point, feature values like temperature of this point and multiple charts. In addition a minimap can be displayed to show the location of the point on the map to better understand why the charts behave the way they do in this point. To get back to normal map view the arrow on the top can be clicked. With more than 3 charts a list for selecting which charts to display, or a side-ways scrolling can be utilized.
+
+These solutions can all be used together. The panel in figure \ref{fig:gui_panelChart} can be reachable from a click action directly from the basic map view, for instance from a right-click menu. But it can also be reachable from the boxes in figure \ref{fig:gui_basicChart} and figure \ref{fig:gui_enlargedChart}. Preferable would be to use the box in figure \ref{fig:gui_basicChart} together with the detailed view of either figure \ref{fig:gui_enlargedChart} or figure \ref{fig:gui_panelChart}. Alternatively just using one of these three.
 
 \paragraph{Vector data}
+After implementing temperature, salinity and current speed, there is one important feature left for displaying directly over the map. This is current direction, representing in which direction the current flows at any given point. Current direction can not be displayed the same way as these other features. One solution to this is to send the current directions as vector data, and display this on top of the other layers. This would mean that the \gls{back-end} would calculate the strength and direction of the current. Because these vectors will be displayed over multiple pixels we can send a sparser set of vectors, which would allow us to draw it even on less powerful devices.
+There are also other uses for displaying vector data like displaying depth contour lines and other neutical information.
 
 \paragraph{Legend}
 
+
 \paragraph{Seasonal averages} %Also point for back-end further?
+As the day to day data have significant variations it is sometimes better to do seasonal averages of the data, to get a smoother and more robust representation of the data for a certain period of the year. In the existing solution these seasons are months and the whole year. For our \gls{front-end} solution we need to allow the user to select these seasons instead of the normal date and time. This can be done by allowing the user to change the mode of the time-parameter from detailed date picker to season picker, which will change the request parameters to fit the API of seasonal requests. Other than switching mode and request, the existing solution should work as previously just with new data.
 
 \paragraph{Authentication}
+For using the existing solution of the system authentication is required. This was left outside of the scope of our project, but should be implemented for a commercial version. How this is to be done is more up to the customer as they already have a working solution for this task, and they might want to reuse it.
 
 \paragraph{Responsive design}
-Website are increasingly beeing accessed from smart phones and tablets. But websites that are designed to beeing displayed on a desktop or laptop screen are often not well suited for mobiles and tablets. One solution to this is to have a dedicated mobile website. This solution comes with the drawback of having to maintain two sites. A solution that has gained traction and is the most common way by now is using so called responsive design. This means that the website changes layout depending on the resolution of the device the website is accessed from. This is achieved with \gls{CSS} media queries.
-We knew from the begining of the project that accessing the application from smart phones was desireable. Therefor it should include responsive design. The layout as of today is quite simple and it would be relativly easy to write the needed media queries to make it responsive. In the form the application has at the time of writing it would not make sense to use a framework like Bootstrap \footnote{\url{http://getbootstrap.com/}} to gain responsiveness as it would introduce a lot of code to the project that would not be used. 
+Website are increasingly being accessed from smart phones and tablets. But websites that are designed to being displayed on a desktop or laptop screen are often not well suited for mobiles and tablets. One solution to this is to have a dedicated mobile website. This solution comes with the drawback of having to maintain two sites. A solution that has gained traction and is the most common way by now is using so called responsive design. This means that the website changes layout depending on the resolution of the device the website is accessed from. This is achieved with \gls{CSS} media queries.
+We knew from the beginning of the project that accessing the application from smart phones was desirable. Therefore it should include responsive design. The layout as of today is quite simple and it would be relatively easy to write the needed media queries to make it responsive. In the form the application has at the time of writing it would not make sense to use a framework like Bootstrap \footnote{\url{http://getbootstrap.com/}} to gain responsiveness as it would introduce a lot of code to the project that would not be used. 
 
 \paragraph{Icons}
-The icons used in the GUI are called Octicons\footnote{\url{octicons.github.com/}} and are created by Github\footnote{\url{www.github.com}}. The font itself is licensed under the SIL OFL and the acompanying code is licensed under the MIT license \footnote{\url{www.github.com/github/octicons/blob/master/LICENSE.txt}}. This allows the icons to be used in commercial use. That said the icon font is not the most extensive one. If the applications grows and evolves it might be benificial to use a custom icon set or aquire one that has more relevant icons.
+The icons used in the GUI are called Octicons\footnote{\url{octicons.github.com/}} and are created by Github\footnote{\url{www.github.com}}. The font itself is licensed under the SIL OFL and the acompanying code is licensed under the MIT license \footnote{\url{www.github.com/github/octicons/blob/master/LICENSE.txt}}. This allows the icons to be used in commercial use. That said the icon font is not the most extensive one. If the applications grows and evolves it might be beneficial to use a custom icon set or aquire one that has more relevant icons.
 
 \paragraph{Minification}
-When deploying a javascript application it is common to minify the code. This means that you use a tool to remove all white space, new line characters and comments from the code. The tool may also rename variables in the code. The purpose on this is to make the file as small as possible. Having a small script file matters because the file is downloaded to the client and thus has an impact on response time of the application. We have not used an minifier. As the \gls{front-end} code base is relativly small little is gained from minifying but as the code base grows in the future this is strongly recomended.
+When deploying a javascript application it is common to minify the code. This means that you use a tool to remove all white space, new line characters and comments from the code. The tool may also rename variables in the code. The purpose on this is to make the file as small as possible. Having a small script file matters because the file is downloaded to the client and thus has an impact on response time of the application. We have not used an minifier. As the \gls{front-end} code base is relatively small little is gained from minifying but as the code base grows in the future this is strongly recommended.
 
 \paragraph{Tool tips}
-A tool to select the area you want to query was implemented in the \gls{GUI}. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and draging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI} and the user will propably not find this feature on his own. We therefor recomend that tool tips and hint are added to the \gls{GUI} so the user knows about all og it's features.
+A tool to select the area you want to query was implemented in the \gls{GUI}. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and dragging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI} and the user will probably not find this feature on his own. We therefore recommend that tool tips and hint are added to the \gls{GUI} so the user knows about all og its features.
 
 %OTHER?
 
 \subsection{Back-end}
+
+\subsubsection{Returning data in different formats}
+Currently the application sends data back mostly in \gls{PNG}'s, but one of the suggestions was to return raw data as well, so that user can request raw data for his needs. This was assigned a lower priority and was not managed to implement in given time.
+
+To add this functionality it is needed to modify resource classes and the goal may be achieved by multiple ways. Easiest and probably the most ugly one would be to add a new method to the resource, which will return raw data when requested. Other way is to modify current method for getting the wanted data to distinguish between multiple output formats. Then it have to be decided what is the right way of specifying the output format. It can be passed to the method as another argument, or can be decided from the ACCEPT field in HTTP request.
+
+It is also important to decide a format in which will be the raw data coded. This format should be as compact as possible, but definitely lossless. Because of the current architecture of the application, it would be preferable, if this data was transmitted as JSON (or at least packed in JSON).
+
+\subsubsection{Fully automatic new files detection}
+Currently the application scans the file system for files only on application start. To trigger rescan manually, there can be added a new REST endpoint (as a Resource class), which will ensure rescan when called. By adding this request to a system's crontab it is possible to achieve somehow semi-automatic detecting of new files.
+
+For real automatic detection of new files it has to be included in application code and work without any need of external tools. There are two ways how to ensure this.
+
+First one is normal polling, which means that application uses some timer function (in Java \texttt{java.util.Timer}) to trigger rescan every now and then. This is the most basic implementation, which will work in all environments, but is very inefficient.
+
+Much better option is to register some kind of event listener that is triggered by system whenever the event (here folder modification) occurs. This implementation is very efficient, because the function is called only when needed, but requires file system that have native support for those notifications. In Java there is a Watch Service API in \texttt{java.nio.file} package. This package contains functions for registering event handlers and in case of file system without support for such notifications falls back to polling. More information about this API and usage can be found at \url{https://blogs.oracle.com/thejavatutorials/entry/watching_a_directory_for_changes}.
+
+\subsubsection{Allow user to specify resolution of output}
+Currently is the output resolution hardcoded in \texttt{ImageRenderer} to 256x256 pixels. All data is read and computed through whole application up to image creation, where it's scaled to final resolution. There should be possibility for user to specify target resolution for the data he requests.
+
+To implement this, it is needed to add parameters for requests for specifying output resolution. It would be preferable, if those parameters were optional and if not set, system would fallback to some reasonable (ideally full) resolution. This can cause problems, if the user requests too high resolution, then the system would need much longer to calculate result and it can cause application to be unresponsive. There have to be some limits on what is the user allowed to request.
+
+Those parameters should be passed to \texttt{NetCdfManager} for data reading, so the whole system works only with necessary amount of data. \texttt{ImageRenderer} or any other output modifier then should not need to change resolution and should modify only representation of information.
+
+\texttt{NetCdfManager} then have to be modified to create array of the right size corresponding to the resolution and fill it with the correct data. For reading data from dataset with higher resolution, \texttt{makeSubset} function allows to specify stride that shall be used when getting data. For calculating the right stride for the given resolution was created a dummy function \texttt{calculateStride} in \texttt{NetCdfManager}.
+
+\subsubsection{Dynamic ranges for image renderer}
+Currently all images uses global minimum and maximum of values suggested by customer. The resulting color of every pixel is then decided from distance from those two extremes. This can cause, that if the user requests data from a place with minimal differences, resulting image would have almost the same color and will have little use for the user. It would be better to create scale for every request, so the user would get much better visualisation of differences in the given sample. On the other hand, when requesting multiple images and joining them together, it is undesirable to have different scales for every picture, so the user should be able to control, if the result is scaled dynamically, or statically.
+
+To add this functionality, \texttt{ImageRenderer} have to be modified to firstly compute extremes for requested image and then use them instead of static ones. Moreover, because the scale wont be static, it is necessary to provide scale together with the image. That can be done either by having a separate request for scale, which could be problematic, because of stateless HTTP protocol. Separate requests would mean, that the data have to be processed twice. Alternatively it could be changed, so that returned data does not contain pure \gls{PNG} image, but JSON object with two \gls{PNG}s encoded with base64\footnote{\url{https://tools.ietf.org/html/rfc4648}}. This solves the problem with separate requests, but base64 encoding adds about 33\% to the size of images. The last option is to simply overlay the legend over the image. This would cause loss of some information (as a part of image is covered by legend), but would be easiest and fastest solution.
 
 \chapter{Evaluation}
 In this chapter, the group will give a thorough evaluation of the project, in respect to the groups own work and teamwork, the decisions made early in the project, time used, the subject and its organization, relations with the customer, and reflect on the team. 
 
 This chapter will give a sense of what the group has learned through the project, what they want to repeat in future projects, and what could be improved. As well as determining these factors, we want to investigate what the causes of problems the group has experienced might have been, and attempt to suggest what could have been done to mitigate these. 
 
-This chapter also serves as the groups reflection note, as the groups have been asked to include this in the report. 
+This chapter also serves as the groups reflection note, as the groups have been asked to include this in their reports. 
 
 \section{Product evaluation}
-At the end of the project, the team has produced a \gls{prototype} \gls{front-end} and \gls{back-end} that demonstrates that it is feasible to replace the current system used by SINTEF to serve data, with a new and custom built system. Finding out whether or not this is feasible has been the main task of the team, and we feel that has been completed successfully. 
+At the end of the project, the team has produced a \gls{prototype} \gls{front-end} and \gls{back-end} that demonstrates that it is feasible to replace the current system used by SINTEF to serve data, with a new and custom built system. Finding out whether or not this is feasible has been the main task of the team, and we feel that has been completed successfully. In addition to this, the team was tasked to build a front-end and back-end prototype of a custom system.
 
 \paragraph{Front-end}
 The front end of the system shows a map of the world, and the user can either enter coordinates manually or by using a tool to graphically select the area they want. When the data is returned, a legend is displayed to explain the color gradients in the returned image. It is also possible to click a certain point of the returned data to get detailed information for this point.
@@ -2223,15 +2360,15 @@ The front end of the system shows a map of the world, and the user can either en
 The team is happy with the developed features for the \gls{front-end}. They have been well discussed with the customer, and developed in accordance to the customers wishes. To be able to implement more \gls{front-end} features, the team would have needed more time developing the \gls{back-end} to serve the correct data. 
 
 \paragraph{Back-end}
-The \gls{back-end} of the system is able to read from a \gls{netcdf}-file, and serve an image illustrating the data to the \gls{front-end}. The major challenges, as described in chapter \ref{chap:Challenges}, has been to index the files correctly, and to transform the data into the correct projections. 
+The \gls{back-end} of the system is able to read from a \gls{netcdf} file, and serve an image illustrating the data to the \gls{front-end}. The major challenges, as described in chapter \ref{chap:Challenges}, has been to index the files correctly, and to transform the data into the correct projections. 
 
 The work on indexing came a long way, and was stopped just shy of actual testing, as the projections needed to be correct to be able to determine if the system worked correctly. The team is however confident that the work done on indexing is close to solving the problem.
 
-Projections have been the major showstopper for the project. All parts of the solution relies on the projections being correct, and so, there was no real value in starting making functionality for graphs and other data, before this problem was solved. 
+Projections has been the major challenge for the project. All parts of the solution relies on the projections being correct, and so, there was no real value in starting making functionality for graphs and other data, before this problem was solved. 
 
 \paragraph{Summary} While the team was able to demonstrate to the customer that such a system can be implemented, and has implemented both a front- and back-end \gls{prototype}, the group had hoped to be able to finish more features. The fact that this has not been done is in large down to the challenges faced by the team, and described in chapter \ref{chap:Challenges}. Had the team been able to solve these challenges earlier, or had more time, several more features could have been implemented.
 
-Though the team would have liked to have gotten further on the implementation, the customer has expressed that the work done on solving the different challenges faced by the team, is valuable to them. It will make future work easier, and a lot of the ground work has already been done. As such, the project has provided value to the customer, which is the most important part of the project.
+Though the team would have liked to have gotten further on the implementation, the customer has expressed that the work done on solving the different challenges faced by the team is valuable to them. It will make future work easier, and a lot of the ground work has already been done. As such, the project has provided value to the customer, which is the most important part of the project.
 
 \newpage
 \section{Work evaluation}
@@ -2242,18 +2379,18 @@ In this section, we will look at the work the group has done, and how the differ
 In this section we will evaluate the work of the team. We will look at the cooperation, communication, punctuality, advisor contact and social interactions of the team. These are all important factors, that together form the foundation of the work the team will do.
 
 \paragraph{Cooperation}
-The group has had a good cooperation throughout the project. There have been no personal conflicts, while there has been room to disagree on an academical level. In the start of the project, the team agreed that disagreement is a good thing, as they are purely professional. Sticking to this principal has been key to maintaining a team environment where ideas can be discussed freely. 
+The group has had a good cooperation throughout the project. There have been no personal conflicts, while there has been room to disagree on an academical level. In the start of the project, the team agreed that disagreement is a good thing, as long as they are purely professional. Sticking to this principal has been key to maintaining a team environment where ideas can be discussed freely. 
 
-The team has met 2-3 times a week, depending on whether a customer meeting was scheduled or not. During these meetings there as been room for group members to bring up issues they have, and it has been an arena where the group has been able to talk about their work and progress in general. 
+The team has met 2-3 times a week, depending on whether a customer meeting was scheduled or not. During these meetings there has been room for group members to bring up issues they have, and it has been an arena where the group has been able to talk about their work and progress in general. 
 
-During the implementation phase of the project, the team has divided into to sections. One section has been working on the \gls{front-end} of the project, and one on the \gls{back-end}. This has been a good way to divide work and responsibility. The cooperation between these to sections has been good, and changes that have affected the other sections work has been communicated. 
+During the implementation phase of the project, the team has divided into two sections. One section has been working on the \gls{front-end} of the project, and one on the \gls{back-end}. This has been a good way to divide work and responsibility. The cooperation between these two sections has been good, and changes that have affected the other sections work has been communicated. 
 
 \paragraph{Communication}
-The group has had two main communication channels: team meetings and Slack. Team meetings have been used to catch up on the status of everyones work, discuss what direction to move in, and distribute tasks between members. As far as possible, the team has attempted to have all conversations that needed some form of plenary discussion in meetings where everyone could be present.
+The group has had two main communication channels: team meetings and Slack. Team meetings have been used to catch up on the status of everyone's work, discuss what direction to move in, and distribute tasks between members. As far as possible, the team has attempted to have all conversations that needed some form of plenary discussion in meetings where everyone could be present.
 
 All other communication has mainly been done using Slack (see section \ref{subsec:Slack}). This way, all communication has been available to every team member. It has been possible to ask a question to everyone, and start a discussion, without having to gather the entire team in one physical location.
 
-The communication in the team has worked well in this project. Team members have known what is to be done, where to meet for meetings, and how the project has been progressing. Through several meetings every week, and the use of Slack, information has flown to all members of the group.
+The communication in the team has worked quite well in this project. Team members have known what is to be done, where to meet for meetings, and to some degree how the project has been progressing. Team members have not been active enough in updating the others on their own progress. This has lead to a situation where team members have not known the current status of the project. This is partly due to the lack of a daily scrum meeting (see section \ref{subsec:ScrumAdaptationsEval}) and the fact that the systems put in place to replace this meeting did not work as intended.
 
 \paragraph{Punctuality}
 At the beginning of the course, the team agreed that it would be important for everyone to be on time for all meetings. Meetings that start late are an annoyance to everyone who was there on time, and they also waste time that could have been better spent. It was decided that no sanctions should be necessary.
@@ -2261,20 +2398,20 @@ At the beginning of the course, the team agreed that it would be important for e
 Throughout the project it has been an issue that team members have been late for meetings. This is most critical when meeting the customer and advisor. Unfortunately, these meetings have on average been 5 minutes delayed due to late team members. To compensate for this, meetings have been started even though not all team members have been present. This seems to have been an incentive for team members to be on time, as this has been a smaller problem towards the end of the project. 
 
 \paragraph{Advisor contact}
-Throughout the project, the group has had meetings with their advisor every week. The exception has been one week in september and the last week of the project, as the advisor was away. The goal has been that all team members should be present at this meeting every week. On average, 6 of 7 members have been present at the meetings.
+Throughout the project, the group has had meetings with their advisor every week. The exception has been one week in September and the last week of the project, as the advisor was away. The goal has been that all team members should be present at this meeting every week. On average, 6 of 7 members have been present at the meetings.
 
 The advisor meetings have been very valuable to the team. They have created an arena for the team to talk about the progress of the group as a whole, the different challenges faced by the team, and to get an external perspective on the work that has been done. 
 
 With this in mind, the advisor meetings has in many ways served as the retrospect in scrum (see section \ref{subsec:scrumadaptations}). They have not been structured as such, but they have enabled the team to identify work techniques that have been successful, and not successful. 
 
 \paragraph{Social interaction}
-When working in a team, knowing each other on a more personal level can help teamwork. Meetings are smoother when team members know more about each other, members are more likely to honor their work quota if they face disappointing their friends, rather than strangers. It is easier to ask someone you know to do their share of the work. Knowing the other team members better will also give an incentive to spend more time with the team, and thus doing more work, and getting to know each other even better.
+When working in a team, knowing each other on a more personal level can help teamwork. Meetings are smoother when team members know more about each other, members are more likely to honor their work quota if they face disappointing their friends, rather than strangers. It is easier to ask someone you know to do their share of the work. Knowing the other team members better will also give an incentive to spend more time with the team, and thus doing more work, and getting to know each other even better. \cite{Effective:Teamwork}
 
-As most team members did not know each other very well at the beginning of the project, the possibility of setting aside some time to get to know each other was discussed. The team agreed that this was something they wanted to do, but failed to find time for this. In retrospect, the team should have prioritized this. The teamwork has, as described earlier, not been as good as it could have been. Some of this can be tracked back to the fact that the team members do not know each other very well.
+As most team members did not know each other very well at the beginning of the project, the possibility of setting aside some time to get to know each other was discussed. The team agreed that this was something they wanted to do, but failed to find time for this. In retrospect, the team should have prioritized this. The teamwork has, as described earlier, been quite good, though there has been room for improvement. Some of this might be traced back to the fact that the team members do not know each other very well.
 
 \subsection{Tools evaluation}
 \label{subsec:ToolsEvaluation}
-In chapter \ref{chap:ToolsAndTech} we looked at the different tools and technologies the group has decided to to use for the project. Here, we will evaluate the use of the tools, and attempt to conclude on whether the decision to use the tool was productive for the project.
+In chapter \ref{chap:ToolsAndTech} we looked at the different tools and technologies the group has decided to use for the project. Here we will evaluate the use of the tools and attempt to conclude on whether the decision to use the tool was productive for the project.
 
 \paragraph{\LaTeX}
 Using \LaTeX{} has posed some challenges for the team, but all in all, it has proven to be a great tool. \LaTeX{} allows for the writing of large and complex documents, but makes the writer focus on content, not presentation. This has been great for us, as the report is a massive document with images, tables, graphs and cross referencing. While using these advanced features of \LaTeX{} was difficult in the beginning, the team has saved a lot of time that would have been used going trough the document, checking to see if the formatting done had been broken. 
@@ -2292,12 +2429,13 @@ Most of these challenges have been overcome with the help of information found o
 \paragraph{Google Docs}
 While \LaTeX{} is an excellent tool for writing, and the team has learned to love it through the project, it is not a good tool for smaller documents that needs to be shared and where the content is more dynamic. Therefore, the team decided to use Google Docs for minutes from meetings, agendas, status reports and other smaller documents that had to be produced quickly, and was not a part of the final report. As Google Docs has very good collaborative support, the team was able to work in parallel on documents, quickly making changes and updates. One of the new functions of Google Docs, the possibility to add suggestions to files (much like Microsoft Words "track changes" feature) has enabled to team to collaborate on emails to the customer, and to make non-destructive suggestions in documents.
 
+
 Google Docs has worked very well, and enabled the team to use as little time as possible for writing weekly documents for advisor meetings. As an added bonus, the documents are stored in the cloud, and backups are thus not necessary. 
 
 \paragraph{Trello}
 For keeping track of tasks, what needs to be done, what is being done, and what is done, the team decided on Trello. In accordance to the Scrum methodology (see section \ref{sec:Scrum}), a backlog with all tasks in the project has to be maintained. Trello is one of the popular tools for doing this. 
 
-The team is devided on whether the use of Trello was a success or not. On the one hand, it has been a useful tool to keep track of tasks, but team members have not been consistently updating it. This has resulted in the team not being up to date on progress at all times. It does not appear to be the fault of the tool, but rather on the group members part. Thus, the use of another tool would probably not have helped. As mentioned in section \ref{subsec:Trello}, the team also looked into the use of Jira. This tool is far more complex than Trello, and with the experience that the use of Trello was not a complete success, the team is happy with their decision not to use a more complex tool. 
+The team is divided on whether the use of Trello was a success or not. On the one hand, it has been a useful tool to keep track of tasks, but team members have not been consistently updating it. This has resulted in the team not being up to date on progress at all times. It does not appear to be the fault of the tool, but rather on the group members part. Thus, the use of another tool would probably not have helped. As mentioned in section \ref{subsec:Trello}, the team also looked into the use of Jira. This tool is far more complex than Trello, and with the experience that the use of Trello was not a complete success, the team is happy with their decision not to use a more complex tool. 
 
 \paragraph{Slack}
 Slack has been the main communication tool of the group. It has enabled to group to have plenary discussions when a meeting could not be scheduled, or would have been impractical. Since Slack can also divide communication into sub-channels, parts of the group working on a specific feature can communicate without cluttering the conversation for others.
@@ -2311,7 +2449,7 @@ In total, Slack performed its task well. It enabled the team to communicate and 
 \paragraph{Git}
 Using Git, the team has submitted all code and text for the final report to version control. Through this, the group has had the safety of knowing that all code is backed up, and that the code base can be reverted if needed. For the report, using Git means that no text will be lost, and that it will be easy to find the author of a specific section, should the need for clarifications arrive. 
 
-The use of Git has been a good experience for the group. In the beginning, not all team members were familiar or comfortable using Git. Especially merge conflicts was a concern of several group members. As the group had one person who is a proficient Git user, he took it upon himself to teach the other members what they needed to know. With the exemption of one incident where the entire report was replaced with two pages of text, the use of Git has been relatively unproblematic. In the mentioned incident, the report was recovered thanks to Gits version control. 
+The use of Git has been a good experience for the group. In the beginning, not all team members were familiar or comfortable using Git. Especially merge conflicts was a concern of several group members. As the group had one person who is a proficient Git user, he took it upon himself to teach the other members what they needed to know. With the exemption of one incident where the entire report was replaced with two pages of text, the use of Git has been relatively unproblematic. In the mentioned incident, the report was recovered thanks to Git's version control. 
 
 Having a stable backup of all code and text has been a great comfort to the group, and Git has provided all the needed tools for collaboration. The more advanced functionality of Git has not come in the way of the team when it was not needed, but has been present for those members of the group who wished to use it.
 
@@ -2366,7 +2504,20 @@ Total                           & 823,5                                         
 \end{center}
 \end{table}
 
-The total time usage of each team member is given in table \ref{tab:TotalTimeUsage}. From this, it is clear that the team has been unable to use the amount of time that has been expected. The team estimates that somewhere between 200 and 300 hours have been lost due to the lack of logging. This is based on the number of tasks that have been completed, and the average hours used by those members who have logged their hours. Even when accounting for missing time logging, several hundred hours of work seems to be missing. There are several possible explanations for this:
+\begin{figure}[ht!]
+\begin{center}
+\fbox{\includegraphics[width=400px]{img/Weekly_effort.png}}
+\caption{The weekly logged effort of team members}
+\label{fig:WeeklyEffort}
+\fbox{\includegraphics[width=400px]{img/Individual_effort.png}}
+\caption{The individual logged effort of team members}
+\label{fig:IndividualEffort}
+\end{center}
+\end{figure}
+
+
+
+The total time usage of each team member is given in table \ref{tab:TotalTimeUsage}, and further illustrated in figure \ref{fig:WeeklyEffort} and fig \ref{fig:IndividualEffort}. From this, it is clear that the team has been unable to use the amount of time that has been expected. The team estimates that somewhere between 200 and 300 hours have been lost due to the lack of logging. This is based on the number of tasks that have been completed, and the average hours used by those members who have logged their hours. Even when accounting for missing time logging, several hundred hours of work seems to be missing. There are several possible explanations for this:
 
 \begin{itemize}
 \item \textbf{To many colliding subjects} All team members are involved in at least 2 other subjects this semester. Several team members have more than 30 credits this semester, which is difficult to combine with a subject as demanding as this.
@@ -2376,7 +2527,9 @@ The total time usage of each team member is given in table \ref{tab:TotalTimeUsa
 
 The group is not satisfied with the fact that they are several hundred hours away from the goal of the subject. Had more time been spent, it is possible that one or more of the challenges the team were unable to find a solution for, could have been solved. 
 
-\subsection{Scrum adaptions}
+
+\subsection{Scrum adaptations}
+
 \label{subsec:ScrumAdaptationsEval}
 In section \ref{subsec:scrumadaptations} we highlighted the adaptations the group made to the standard scrum methodology, and the reasons for these adaptations. In this section, we will evaluate these choices, and their effect on the project, and the work done by the team. 
 \paragraph{Daily meetings}
@@ -2390,7 +2543,7 @@ In the standard scrum methodology, a short daily meeting is called for, so that 
 
 The group decided not to conduct these meetings, as it was impossible for all members to find the time for this every day. Instead, the use of Slack was supposed to replace the standup. As discussed in section \ref{subsec:ToolsEvaluation} this did not work as intended. As a result, the group was at times not up to date with what other members where doing, and this meant that meeting time had to be used to present updates. There does not seem to have been any significant loss of productivity, or double work conducted, as a result of this, but time could nonetheless have been saved. 
 
-A better solution might have been to have all group members that where available meet on a daily basis. This would have given regular updates for most members of the group, and possibly also encouraged members who could not be present to give updates through Slack. 
+A better solution might have been to have all group members who were available, meet on a daily basis. This would have given regular updates for most members of the group, and possibly also encouraged members who could not be present to give updates through Slack. 
 
 \paragraph{Sprint length}
 The choice of sprint length was a hot topic of many team meetings before the first sprint was started. The team was divided in the choice between 1 and 2 week sprints. In the end, the fact that there was no more than 6 weeks left in the project, became the decisive factor in the choice of 1 week sprints. 
@@ -2400,10 +2553,10 @@ The team hoped that having 1 week sprints would contribute to motivation, a posi
 \paragraph{Product demo and customer involvement}
 In the scrum methodology, a demo for the customer is called for at the end of each sprint. At this point, the development team should have a working \gls{prototype}, and the customer should be able to decide whether the project should continue, or stop at this point. For our project, the customer does not have the opportunity to stop development, but has the power to change the priorities of the development team.
 
-After deciding on 1 week sprints, the group felt that a demo every week would serve little purpose. One week of development will usually not yield significant changes to the product, and weekly demos would then be a waste of the customers time. This turned out to be a good decision. The group has trough the project had progress that has corresponded well to a biweekly demo schedule. Since the customer fell ill before the first demo however, this could not be accomplished the way the group wanted, and the total number of demos was thus cut short by one. This would have happened regardless of the decision to have a demo every second week.
+After deciding on 1 week sprints, the group felt that a demo every week would serve little purpose. One week of development will usually not yield significant changes to the product, and weekly demos would then be a waste of the customers time. This turned out to be a good decision. The group has had through the project progress that has corresponded well to a biweekly demo schedule. Since the customer fell ill before the first demo however, this could not be accomplished the way the group wanted, and the total number of demos was thus cut short by one. This would have happened regardless of the decision to have a demo every second week.
 
 \paragraph{Retrospective}
-The retrospective is meant to make the team aware of how they are working, and which parts of their routines are beneficial, and which is not. Trough this, the team should be able to, step by step, remove habits, situations, and circumstances that are in the way of efficient development.
+The retrospective is meant to make the team aware of how they are working, and which parts of their routines are beneficial, and which is not. Through this, the team should be able to, step by step, remove habits, situations, and circumstances that are in the way of efficient development.
 
 In this project, the team has opted not to do the retrospective, as it would have consumed a lot of valuable time when the entire team is able to meet. Instead, the group meetings and advisor meetings are an arena where this should be naturally brought up. This has been a partial success. Our advisor has pushed for reflections in the advisor meetings, and we have also brought some issues up at group meetings. The time saved has been used for important work, and the team stands behind their decision. 
 
@@ -2423,10 +2576,10 @@ The requirements of the course makes this difficult. We are required to produce 
 
 \subsection{Customer relations}
 \label{subsec:CustomerRelations}
-A key part of making a product for an external customer is understanding the customers needs and situation. Without this knowledge, it is near to impossible to create a solution that is useful for the customer, and the developers risk making a product the customer neither wants, nor needs. Communication is key, and in this section, we will evaluate the relations we have had with our customer. 
+A key part of making a product for an external customer is understanding the customers needs and situation. Without this knowledge, it is near to impossible to create a solution that is useful for the customer, and the developers risk making a product the customer neither wants, nor needs. Communication is key, and in this section we will evaluate the relations we have had with our customer. 
 
 \paragraph{Customer meetings}
-In total, the group has had 9 meetings with the customer. Most of the meetings have been at SINTEFs offices at Brattørkaia in Trondheim. A list of meetings can be found in table \ref{tab:CustomerMeetings}. At these meetings, the customer has been updated on the development progress, and been asked for advice and decisions. It has been important for the group to keep in mind that the product is the property of the customer, and that the customer has to be happy with all aspects of the final product. This means that whenever the customer has wanted something done in a different way than the team had envisioned, the customers way has been chosen, as the customer is the one who will be using the product once the project is over.
+In total, the group has had 9 meetings with the customer. Most of the meetings have been at SINTEF's offices at Brattørkaia in Trondheim. A list of meetings can be found in table \ref{tab:CustomerMeetings}. At these meetings, the customer has been updated on the development progress, and been asked for advice and decisions. It has been important for the group to keep in mind that the product is the property of the customer, and that the customer has to be happy with all aspects of the final product. This means that whenever the customer has wanted something done in a different way than the team had envisioned, the customers way has been chosen, as the customer is the one who will be using the product once the project is over.
 
 The group has attempted to have a clear agenda before every meeting, as to set the tone for the meeting, but also to be able to mange the time of each meeting. With the exception of one meeting, all meetings have ended on, or before, the planned time. 
 
@@ -2453,10 +2606,10 @@ Meeting the customer has been very useful for the group. We have been able to as
 \paragraph{Social interactions}
 Having a good working relationship with someone is not something that is achieved purely through professional relations. Knowing someone on a more personal level is often key to a better cooperation. 
 
-The team has not gotten to know the customer on a more personal level, and all contact has been strictly professional. Although this might be a good thing in the consultant kind of relationship the group is expected to have with their customer, a more personal relationship could have helped the group have better communications with the customer. At the beginning of the project, the customer offered to take the group on a field trip to SINTEFs full scale fish farm at Frøya. This would have been a good opportunity to get to know the customer better, but in the situation the team was in at the time, spending a whole day for this seemed unproductive. In retrospect, this might have been valuable both in terms of domain knowledge, team spirit and customer relations. 
+The team has not gotten to know the customer on a more personal level, and all contact has been strictly professional. Although this might be a good thing in the consultant kind of relationship the group is expected to have with their customer, a more personal relationship could have helped the group have better communications with the customer. At the beginning of the project, the customer offered to take the group on a field trip to SINTEF's full scale fish farm at Frøya. This would have been a good opportunity to get to know the customer better, but in the situation the team was in at the time, spending a whole day for this seemed unproductive. In retrospect, this might have been valuable both in terms of domain knowledge, team spirit and customer relations. 
 
 \paragraph{Summary}
-The relations with the customer have been good. The group has had the opportunity to meet the customer at a regular interval, only interrupted by a period of the customer being ill. This has enabled to group to fulfill the customers goals in a good and fast manner. Not knowing the customer at a more personal level has not hindered the group, but it is possible that it would have made the interactions with the customer easier. Setting aside the time to get to know the customer should have been a priority early in the project. 
+The relations with the customer have been good. The group has had the opportunity to meet the customer at a regular interval, only interrupted by a period of the customer being ill. This has enabled to group to fulfil the customers goals in a good and fast manner. Not knowing the customer at a more personal level has not hindered the group, but it is possible that it would have made the interactions with the customer easier. Setting aside the time to get to know the customer should have been a priority early in the project. 
 
 \newpage
 \section{Subject evaluation}
@@ -2488,9 +2641,13 @@ The current random assignment also produces other challenges. Students from a mu
 \paragraph{Octicons}
 The icon font (Octicons) used in the \gls{GUI} are created by Github. The font itself is licensed under the SIL OFL license, and all other code is licensed under the MIT license. \footnote{https://github.com/github/octicons/blob/master/LICENSE.txt}
 
+\paragraph{Fimex} The conversion library \gls{Fimex} is licensed under the GNU Lesser General Public License v2.1 (LGPL-2.1). This allows for commercial use, modification and redistribution. If \gls{Fimex} is complied into a system, then the entire system must be released under LGPL 2.1. and be open sourced. As we only use \gls{Fimex} as a tool, this is not a requirement that applies to this project.
+
+\paragraph{Proj.4} The projection library Proj.4 is released under an MIT license. This allows for commercial use, and does not require the source code to be open sourced. It does, however, require a copyright notice to be included in derived works.
+
 % Sources cited in the document
 % uncomment when there are some citations, uncomment bibtex in Makefile
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \begin{flushleft}
 	\bibliography{report}
 \end{flushleft}

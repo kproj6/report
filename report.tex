@@ -3336,15 +3336,73 @@ The service wrapper script simply makes sure that the program keeps running afte
 
 \paragraph{Deploying the front-end}
 To deploy the \gls{front-end} to a web server, you need to first clone the repository to the server by running the following command:
+
 \begin{lstlisting}
 $ git clone git@github.com:kproj6/front-end.git
 \end{lstlisting}
-The front-end has been developed using NodeJS \footnote{\url{www.nodejs.org}} modules install via \gls{NPM}. This allows us to define a number of development and production dependencies in a file called \emph{package.json}. We recommend installing and using NodeJS as it will make development and deployment easier. Assuming NodeJS is installed you can simply run the command \emph{npm install} from the repositoryfolder and all dependencies will be downloaded to a folder called \emph{node_modules}. The icon font used in the \gls{GUI} is managed with the package manager Bower\footnote{\url{www.bower.io}}. After installing the dependencies with \gls{NPM} you can run the following command to download the icon font.
+
+The front-end has been developed using NodeJS \footnote{\url{www.nodejs.org}} modules installed via \gls{NPM}. This allows us to define a number of development and production dependencies in a file called \emph{package.json}. The content of \emph{package.json} is shown in figure~\ref{fig:packagejson}.
+
+\begin{figure}[!htb]
+  \begin{lstlisting}
+  {
+    "name": "Sintef Ocean Forecast",
+    "version": "0.0.0",
+    "description": "web app for accessing Sintef ocean forecast data",
+    "main": "script.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "NTNU, Kundestyrt projekt 2014 Gruppe 6",
+    "license": "BSD-2-Clause",
+    "devDependencies": {
+      "gulp": "^3.8.8",
+      "gulp-connect": "~2.0.6",
+      "gulp-sass": "^1.1.0"
+    }
+  }
+  \end{lstlisting}
+  \caption{The \emph{package.json} file}
+  \label{fig:packagejson}
+\end{figure}
+
+\newpage
+
+We recommend installing and using NodeJS as it will make development and deployment easier. Assuming NodeJS is installed you can use \gls{NPM} by simply running the following command from the repository folder to download all dependencies to a folder called \emph{node\_modules}.
+
+\begin{lstlisting}
+npm install 
+\end{lstlisting}
+
+The icon font used in the \gls{GUI} is managed with the package manager Bower\footnote{\url{www.bower.io}}. After installing the dependencies with \gls{NPM} you can run the following command to download the icon font.
+
 \begin{lstlisting}
 $ bower install
 \end{lstlisting}
 
-based build system Gulp.js \footnote{\url{www.gulpjs.com}}. This is allows automated build scripts and other helpful featuresfor development. 
+\paragraph{Developing in the front-end}
+Now all dependencies are installed we can use the build system Gulp.js \footnote{\url{www.gulpjs.com}}. This allows automated build scripts and other helpful features for development. These scripts are defined in \emph{gulpfils.js}. Gulp can easily be extended with packages which are also defined in \emph{package.json}. We have used \emph{gulp-connect} and \emph{gulp-sass}.
+
+\paragraph{Gulp-connect}
+is used to run a web server locally. This makes it easier to test the web app. It is set up to automatically reload the browser when changes are made in the source files meaning to will not have to update it each time you edit \gls{HTML}, \gls{CSS} or JavaScript in the source.
+
+\paragraph{Gulp-sass}
+compiles the \gls{SASS} files into \gls{CSS}
+
+By running the following command gulp will watch all the source files in the \emph{src} folder. If any changes are made the nessesary compiling will be done automatically and the relevant files will be copied into it's respective folders in the \emph{dist} folder.
+
+\begin{lstlisting}
+$ gulp
+\end{lstlisting}
+
+\paragraph{Building the front-end}
+
+In \emph{gulpfile.js} we have defined a build task which compiles all \gls{SASS} files and copies all \gls{HTML}, \gls{CSS}, javaScript and fonts into a directory called \emph{/dist}. \newline
+Thus the webapp should be served from the \emph{dist} directory and all development must be done in the \emph{src} directory and applied to the \emph{dist} directory by running
+
+\begin{lstlisting}
+$ gulp build
+\end{lstlisting}
 
 \chapter{Templates}
 In the \gls{course compendium}, the team is asked to create templates for internal documents. The team identified 3 types of documents they would need templates for:

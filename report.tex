@@ -2040,7 +2040,7 @@ PROJ.4\footnote{http://trac.osgeo.org/proj/} is a library for performing convers
 \end{quote}
 PROJ.4 has been placed under an MIT license. 
 
-We have been interested in GeoTools\footnote{http://geotools.org/}, a Java \gls{GIS} library that includes sophisticated projections support.
+For the backend part, we have been interested in GeoTools\footnote{http://geotools.org/}, a Java \gls{GIS} library that includes sophisticated projections support.
 
 The coordinates parameters for the REST \gls{API} exposed by the server side application are in the form of Latitude and Logitude, i.e. in the Geographical Coordinate System (\gls{GCS}, with the EPSG code "EPSG:4326"), whereas the data stored in the NetCDF file is in a parameterized Polar Stereographic Projection (basically it has EPSG code "EPSG:9810", with parameters specified by each NetCDF file).
 Therefore, a conversion from the Polar Stereographic Projection to EPSG:4326 is what needed.
@@ -2145,7 +2145,7 @@ This is both impractical and expensive (slow), so we decided not to go down this
     \label{fig:tileMatrixSet}
 \end{figure}
 
-\subsection{Use a bas layer map in the same projection as in the NetCDF files}
+\subsection{Use a base layer map in the same projection as in the NetCDF files}
 In the scenario in which a base map provided in the Polar Stereographic Projection (and potentially in any projection) is provided, then the tiles requeested by the user from NetCDF files can be directly displayed without the need of any projection transformation. This would be a straightforward solution to the projection problem.
 However, our research discovered that base map tiles sources - such as Google Maps or OpenStreetMaps - are only available in the 
 
@@ -2157,7 +2157,40 @@ EPSG:4326, CRS:84, urn:ogc:def:crs:EPSG:6.6:4326, EPSG:900913, EPSG:3857, EPSG:1
 OpenLayers can handle the transformation among these formats itself, otherwise it needs Proj4js included.
 There are examples in the internet of how to use OpenLayers with Proj4js, but configure Proj4js to handle the Polar Stereographic Projection has been a challenge itself.
 
-At the end we realized that OpenLayers can only transform single coordinates or vector layers (like \gls{WFS}). Raster Layers (i.e. images) cannot be transformed by OpenLayers. Therefore this cannot be a solution for our case, since we decided to provide data in a raster way, for efficiency reasons above all.
+\begin{quote}
+Proj4js is a JavaScript library to transform point coordinates from one coordinate system to another, including datum transformations.
+
+This library is a port of both the  PROJ.4 and  GCTCP C libraries to JavaScript. Enabling these transformations in the browser allows geographic data stored in different projections to be combined in browser-based web mapping applications.
+
+Proj4js is a part of the  MetaCRS group of projects and uses the same MIT style license as PROJ.4.
+\end{quote}
+
+We tried to convert from the Mercator projection (EPSG:3785), in which OpenLayers displays data, to the Polar Stereographic Projection, in which data is natively stored in \gls{netcdf} files we have to deal with. This way, we can hypothetically provide the parameter as input to the back-end.
+The following is the result of the single coordinate conversion:
+
+\begin{lstlisting}
+proj4.defs("EPSG:9810", "+proj=stere +lat_ts=60 +lat_0=90 +lon_0=58 +k_0=1.0 +x_0=2412853.25 +y_0=1840933.25 +a=6370000 +b=6370000");
+var startPolarCoord = proj4('EPSG:3785', 'EPSG:9810', startCoordValue);
+var endPolarCoord = proj4('EPSG:3785', 'EPSG:9810', evt.coordinate);
+console.log("After projecting from EPSG:3785 to PS-A: "+startPolarCoord+" - "+endPolarCoord);
+console.log("After projecting back again to EPSG:3785: "+ proj4('EPSG:9810', 'EPSG:3785', startPolarCoord) + " - " + proj4('EPSG:9810', 'EPSG:3785', endPolarCoord) );
+\end{lstlisting}
+
+The first instruction defines the \textit{EPSG:9810} projection, which is not natively defined in Proj4js. This definition is done using the Proj.4 projection notation, which allows to define potentially any kind of custom projection.
+After that, it performs the conversion of the coordinates of starting and ending point of the dragbox drawn by the user; it prints the converted values, and tries to convert them back to compare the results, in order to check if the conversion happened correctly.
+This code produced the following result in the JS browser console:
+\begin{lstlisting}
+Before projecting: 911429.68975043,9364527.30573214 - 977165.5340756816,9333952.49441807 
+After projecting to LatLong: 64.05807610663734,8.187512207031249 - 63.937664908661844,8.778027343749999 
+
+After projecting from EPSG:3785 to PS-A: 321279.34461547807,74197.53173183557 - 329636.45345151634,44142.43253163248
+After projecting back again to EPSG:3785: 911429.6897504296,522551.9481820021 - 977165.5340756808,491977.1368679317 
+\end{lstlisting}
+
+Now let's observe the start coordinate for instance. In the Mercator projection (EPSG:3785) they are: \textit{911429.68975043,9364527.30573214}. The converted values to Polar Stereographic Projection, Variant A (EPSG:9810, defined by the Proj.4 definition string) are: \textit{321279.34461547807,74197.53173183557}.
+After converting back again the coordinate are \textit{911429.6897504296,522551.9481820021}. The first coordinate is correct (it is exactly the same until the 6th decimal), whereas the second one is completely wrong.
+We haven't succeded in finding an explanation to this behaviour, but at the end we decided to spend no more time in this direction since we realized that OpenLayers with Proj4js can only transform single coordinates or vector layers (like \gls{WFS}). Raster Layers (i.e. images) cannot be transformed by OpenLayers. Therefore this cannot be a solution for our case, since we prefer to provide data in a raster way, for efficiency reasons above all.
+In addition, we discovered that proj4 can convert only single points (i.e. coordinates): there is no optimized function to convert a geographical area, i.e. a collection of points defined by their border.
 
 \subsection{Chosen solution: Statically projecting on the back end}
 Another way of solving the projection problem is to entirely convert NetCDF files, thus uploading to the server already in the correct projection.
@@ -2605,13 +2638,49 @@ Among the team has been taken the decision to use a map with OpenStreetMap backg
 
 In particular, we ended up with the following representation:
 
-\begin{figure}[h]
-\begin{center}
-\fbox{\includegraphics[width=400px]{img/frontend-mockup.jpg}}
-\caption{Prepared Front-end Desktop Mockup}
-\label{fig:FrontendMockup}
-\end{center}
+\begin{figure}[!htb]
+  \begin{center}
+    \fbox{\includegraphics[width=\textwidth]{img/frontend-mockup.jpg}}
+    \caption{Prepared Front-end Desktop Mockup}
+    \label{fig:FrontendMockup}
+  \end{center}
 \end{figure}
+
+\subsection{Projection conversion}
+We configured OpenLayers to use OpenStreetMaps as a base tile source. This source, like Google Maps, is in the Mercator projection, with meters as unit of measure.
+The URL request to the back-end, instead, requires coordinates to be expressed in latitude-longitude format, i.e. in the \gls{GCS}. 
+Therefore a conversion between these two projections is required by the front-end.
+This is done using \textit{Proj4js}\footnote{http://trac.osgeo.org/proj4js/} library, which is a part of the Proj.4 project.
+\begin{quote}
+Proj4js is a JavaScript library to transform point coordinates from one coordinate system to another, including datum transformations.
+
+This library is a port of both the  PROJ.4 and  GCTCP C libraries to JavaScript. Enabling these transformations in the browser allows geographic data stored in different projections to be combined in browser-based web mapping applications.
+
+Proj4js is a part of the  MetaCRS group of projects and uses the same MIT style license as PROJ.4.
+\end{quote}
+
+This conversion is done on the box dragged end event, i.e. every time the user select a new area on the screen.
+
+To achieve this, first the definition of the destination projection has to be added:
+\begin{lstlisting}
+proj4.defs("WGS84", "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs");
+\end{lstlisting}
+
+Afterwards, the \textit{proj4} function returns the converted coordinate. This functions accepts the following parameters:
+\begin{itemize}
+\item the projection code which to convert from
+\item the projection code which to convert into
+\item the coordinate values in the original projection to be converted
+\end{itemize}
+
+\begin{lstlisting}
+startCoord.value = proj4('EPSG:3785', 'WGS84', startCoordValue).reverse();
+endCoord.value = proj4('EPSG:3785', 'WGS84', evt.coordinate).reverse();
+\end{lstlisting}
+
+The type \textit{EPSG:3785} is the standard type, defined by default in the proj4js implementation, which corresponds to the Mercator projection.
+As can be noticed, the coordinates values should be swapped places (javascript \textit{.reverse()} function is called) because the conversion puts the longitude before the latitude. Instead, in the URL and in the standard lat-long coordinate representation, latitude comes before the longitude. Hence the coordinate must be switched.
+The new values are stored in the global \textit{startCoord} and \textit{endCoord} variables, which are displayed to the user (in the status bar and in the text boxes) and used for building the request URL string for the back-end.
 
 \section{Goal completion}
 \section{Further work}

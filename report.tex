@@ -2387,7 +2387,7 @@ Since Java \gls{netcdf} library requires that attribute, two different approache
 \item Convert to the Spherical Mercator projection, which is used by maps services (such as Google Maps or OpenStreetMaps) and "compatible" (directly convertible, since the projection is the same, unless for some parameters) to the \gls{GCS}.
 \end{enumerate}
 
-We have chose to follow the second solution, mainly because we estimated less time in achieving the result. So we tried to convert data to the Spherical Mercator projection, used by maps services such as Google Maps. The main difference between the latlong coordinate system is the unit of measure, which is meters instead of degrees.
+We have chosen to follow the second solution, mainly because we estimated less time in achieving a success with this approach. We attempted to convert data to the Spherical Mercator projection, used by maps services such as Google Maps. The main difference between this and the latlong coordinate system is the unit of measure, which is meters instead of degrees.
 We changed the configuration file (in particular the projString and the axisValues) to convert to the Spherical Mercator projection:
 \begin{lstlisting}
 [input]
@@ -2406,7 +2406,7 @@ xAxisUnit = m
 yAxisUnit = m
 \end{lstlisting}
 
-The problem now has been that still the \textit{grid\_mapping} attribute was missing. Instead, we realized that it is only called with a different name: \textit{projection\_merc}.
+The problem now has been that the \textit{grid\_mapping} attribute was still missing. It was found that it is now given a different name: \textit{projection\_merc}, see figure \ref{fig:fimexProjMercAttribute}.
 
 \begin{figure}[!htb]
   \begin{center}
@@ -2416,8 +2416,8 @@ The problem now has been that still the \textit{grid\_mapping} attribute was mis
   \end{center}
 \end{figure}
 
-We tried to provide the generated \gls{netcdf} file to the back-end Java \gls{netcdf} library with any attribute name changes, and it has been able to read that file.
-Therefore, at the end, no attribute changes has been made. Instead, painstakingly attention to axis ranges parameters has been given in order to convert a \gls{netcdf} file with all the possible types of data (Salinity, Temperature, Currents and Depth) but for a relatively small area, to use as a source for the application, in order to be able to visualize all kind of data in the frontend.
+We tried to provide the generated \gls{netcdf}-file to the \gls{back-end} Java \gls{netcdf} library with any attribute name changes, and it has been able to read that file.
+Therefore, in the end, no attribute changes has been made. Instead, painstaking attention to axis ranges parameters has been necessary in order to convert a \gls{netcdf} file with all the possible types of data (Salinity, Temperature, Currents and Depth).
 
 \chapter{Final product}
 \section{Description}

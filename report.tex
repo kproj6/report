@@ -86,6 +86,7 @@
 \newacronym{WKT}{WKT}{Well-known text}
 \newacronym{PCS}{PCS}{Projected Coordinate System}
 \newacronym{NCO}{NCO}{NetCDF operators for file manipulation and simple calculations}
+\newacronym{NPM}{npm}{NodeJS Package Manager}
 
 \newglossaryentry{pre-study}{name=pre-study, description={is a document produced before the implementation phase, which informs the customer of possible solutions to their problem}}
 \newglossaryentry{pre-delivery}{name=pre-delivery, description={is a preliminary delivery of the main report, that is meant to give the external examiner an introduction to the groups work}}
@@ -3294,7 +3295,7 @@ Git \footnote{http://git-scm.com/} (or later).
 With these dependencies installed on the target system, your are ready to build the project.
 This guide assumes you are on a *NIX system. For a windows-based system, the steps are similar but not necessarily the same. It should however be obvious to an experienced Windows user how the steps should be executed on her system.
 
-To clonse and build the program:
+To clone and build the program:
 \begin{lstlisting}
 $ git clone git@github.com:kproj6/featureserver.git && cd featureserver
 $ mvn clean package
@@ -3308,6 +3309,7 @@ $ java -jar target/featureserver-0.1-SNAPSHOT-jar-with-dependencies.jar --netcdf
 This starts up the program on port 10100. The port flag defaults to 10100, so can be omitted unless you want to run on a different port.
 
 \section{Deployment}
+\paragraph{Back-end}
 To deploy the program to a server, you need to first clone the repository to the server, as described above.
 This guide assumes the project is cloned to the user's home directory on the server.
 
@@ -3331,6 +3333,18 @@ Change the USERNAME and SERVER\_IP variables according to your server setup, the
 
 This script calls another script which lies on the server, the service wrapper script (svc.sh).
 The service wrapper script simply makes sure that the program keeps running after the user has logged off the server. It can be used to start and stop the server manually if required.
+
+\paragraph{Deploying the front-end}
+To deploy the \gls{front-end} to a web server, you need to first clone the repository to the server by running the following command:
+\begin{lstlisting}
+$ git clone git@github.com:kproj6/front-end.git
+\end{lstlisting}
+The front-end has been developed using NodeJS \footnote{\url{www.nodejs.org}} modules install via \gls{NPM}. This allows us to define a number of development and production dependencies in a file called \emph{package.json}. We recommend installing and using NodeJS as it will make development and deployment easier. Assuming NodeJS is installed you can simply run the command \emph{npm install} from the repositoryfolder and all dependencies will be downloaded to a folder called \emph{node_modules}. The icon font used in the \gls{GUI} is managed with the package manager Bower\footnote{\url{www.bower.io}}. After installing the dependencies with \gls{NPM} you can run the following command to download the icon font.
+\begin{lstlisting}
+$ bower install
+\end{lstlisting}
+
+based build system Gulp.js \footnote{\url{www.gulpjs.com}}. This is allows automated build scripts and other helpful featuresfor development. 
 
 \chapter{Templates}
 In the \gls{course compendium}, the team is asked to create templates for internal documents. The team identified 3 types of documents they would need templates for:

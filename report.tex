@@ -2545,6 +2545,18 @@ Currently all images uses global minimum and maximum of values suggested by cust
 
 To add this functionality, \texttt{ImageRenderer} have to be modified to firstly compute extremes for requested image and then use them instead of static ones. Moreover, because the scale wont be static, it is necessary to provide scale together with the image. That can be done either by having a separate request for scale, which could be problematic, because of stateless HTTP protocol. Separate requests would mean, that the data have to be processed twice. Alternatively it could be changed, so that returned data does not contain pure \gls{PNG} image, but JSON object with two \gls{PNG}s encoded with base64\footnote{\url{https://tools.ietf.org/html/rfc4648}}. This solves the problem with separate requests, but base64 encoding adds about 33\% to the size of images. The last option is to simply overlay the legend over the image. This would cause loss of some information (as a part of image is covered by legend), but would be easiest and fastest solution.
 
+\subsection{Caching}
+Adding caching only really makes sense for the WMTS service, because the REST API has no real notion of reusability - every request is in practice arbitrary. However, for WMTS requests, every tile coordinate is static and caching should yield a real performance improvement - especially under heavy load.
+
+Implementing caching for the WMTS service should be a relatively easy task. The cache system would consist of two parts:
+
+\paragraph{Storage and retrieval}
+Upon tile request, check if the tile exsist in cache. If it does, just serve it. If it doesn't exsist, serve it and then store it in the cache.
+Lookups should be done via the Indexer in order to avoid expensive disk reads for folder traversal.
+Storage would be trivial as well: Save the new tile to disk, and add it to the cache index.
+\paragraph{Invalidation}
+Invalidation of outdated cache elements should be fairly easy to implement as well: When adding a new (as in, more recently simulated) \gls{netcdf}-file, run through the cache and mark any obsoleted tiles as invalid.
+
 \chapter{Evaluation}
 In this chapter, the group will give a thorough evaluation of the project, in respect to the groups own work and teamwork, the decisions made early in the project, time used, the subject and its organization, relations with the customer, and reflect on the team. 
 

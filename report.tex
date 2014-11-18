@@ -1986,7 +1986,7 @@ After this sprint, the following items remain in the backlog:
 \label{chap:Challenges}
 \section{WMTS}
 \label{sec:WMTS}
-\gls{WMTS} \gls{protocol} defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
+The \gls{WMTS} \gls{protocol} is defined by a capabilities-document, which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
 A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
 A client can then request a specific tile at position (x,y) from a given tile matrix, and then by the definition given in the capabilities document it can place the image at the correct position on its map.  
 The major challenge we had when implementing \gls{WMTS} was calculating the coordinates of each tile. Although all the information is present in the system, it was tricky to get all coordinates right. 
@@ -2020,7 +2020,7 @@ Some projections preserve the relative area of landmasses, while distorting shap
 
 \subsection{Different projections}
 OpenLayers include two projection definitions, \textit{World Geodetic System} (EPSG:4326) and \textit{Web Mercator} (EPSG:3857). World Geodetic System is a standard used for cartography and navigation and Web Mercator has been popularized by web apps such as Google Maps. The problem with these projections is that landmasses near the poles appear much bigger than they in fact are.
-This is the reason Sintef chose to use the \gls{PSP} which preserves angles, resulting in more acurate sizes of the landmasses and thus is more suited for navigation.
+This is the reason SINTEF chose to use the \gls{PSP} which preserves angles, resulting in more acurate sizes of the landmasses and thus is more suited for navigation. The difference in projections is shown in figure \ref{fig:mercator}.
 Because we had to display data from a source using \gls{PSP} on top of a background map using Web Mercator we had to reproject the data in order to make it fit on the map. This proved to be a non-trivial task. 
 
 
@@ -2042,9 +2042,7 @@ Because we had to display data from a source using \gls{PSP} on top of a backgro
 
 \subsection{Attempted solutions}
 \subsubsection{Dynamically projecting on the back end}
-One solution we attempted was to dynamically project the dataset requested by the user. 
-
-This can be done with a library called Proj.4, which has also been suggested by the customer, who had some experience in the field.
+One solution we attempted was to dynamically project the dataset requested by the user. This can be done with a library called Proj.4, which has also been suggested by the customer, who had some experience in the field.
 
 \paragraph{Proj.4}
 \begin{quote}
@@ -2075,7 +2073,7 @@ This is a standard format, defined by Proj.4, to represent potentially any kind 
 \item[b=6370000] Semiminor radius of the ellipsoid axis
 \end{description}
 
-Unfortunately GeoTools doesn't support the Proj.4 String description. Instead, we realized that it works only with the Well-known text (\gls{WKT}) format.
+Unfortunately GeoTools doesn't support the Proj.4 String description. Instead, we realized that it works only with the \gls{WKT} format.
 Therefore, we had to convert from the Proj.4 String description to the WKT format.
 This can be done manually in theory, but we realized that it was hard (a relatively wide knowledge was needed to make sure that all parameters have been set correctly). Moreover, since projection parameters in NetCDF files may vary, an automated conversion is preferrable.
 The easiest technique that we have found is to use a python script that relies on the python package "osgeo.osr". A tutorial on how to do it is provided has been found online\footnote{http://spatialnotes.blogspot.no/2010/11/converting-wkt-projection-info-to-proj4.html and http://johnewart.net/posts/2013/proj4\_to\_wkt\_conversion/}.
@@ -2100,7 +2098,7 @@ else:
 \end{lstlisting}
 
 And the program can be called by python command line in the following way:
-\textit{proj2wkt.py '<Proj.4 string>'}. In our case, the script has been executed with the Proj.4 string provided:
+\textit{proj2wkt.py $<$Proj.4 string$>$}. In our case, the script has been executed with the Proj.4 string provided:
 \begin{lstlisting}
 proj2wkt.py '+proj=stere +lat_ts=60 +lat_0=90 +lon_0=58 +k_0=1.0 +x_0=2412853.25 +y_0=1840933.25 +a=6370000 +b=6370000'
 \end{lstlisting}
@@ -2111,8 +2109,8 @@ PROJCS["unnamed",GEOGCS["unnamed ellipse",DATUM["unknown",SPHEROID["unnamed",637
 \end{lstlisting}
 To put in the Java code, first the quotes had to be escaped to avoid mistakes. 
 Unfortunately, when inserted on Java code, this string didn't work. The message given has been the following: \textit{org.opengis.referencing.FactoryException: Error in "PROJCS": Parameter "UNIT" is missing.}
-A reference about WKT syntax has then been read and understood. It can be found online\footnote{http://www.geoapi.org/3.0/javadoc/org/opengis/referencing/doc-files/WKT.html}.
-To solve the problem, we added the "UNIT" parameter just as last parameter directly as a child of PROJCS main element. The unit specified has been "m", with a conversion scale (it is a required attribute\footnote{http://www.geoapi.org/3.0/javadoc/org/opengis/referencing/doc-files/WKT.html\#UNIT}) of 1.0.
+After researching the issue, the team was able to find a solution online. \footnote{http://www.geoapi.org/3.0/javadoc/org/opengis/referencing/doc-files/WKT.html}.
+To solve the problem, we added the "UNIT" parameter as the last parameter, directly as a child of the PROJCS main element. The unit specified has been "m", with a conversion scale (it is a required attribute\footnote{http://www.geoapi.org/3.0/javadoc/org/opengis/referencing/doc-files/WKT.html\#UNIT}).
 
 Therefore, this is the Java valorization of the WKT variable:
 \begin{lstlisting}
@@ -2131,11 +2129,11 @@ String customWKT = "PROJCS[\"unnamed\","
             + " UNIT[\"m\", 1.0]]";
 \end{lstlisting}
 
-The conversion process is fast (below 500 milliseconds computation time on a PC), but what is important is the result, because this conversion step can also be avoided in an automated generation of conversion string, since the string can be automatically customized in the \gls{WKT} format.
+The conversion process is fast (below 500 milliseconds computation time on a PC). This conversion step can also be avoided in an automated generation of the conversion string, since the string can be automatically customized in the \gls{WKT} format.
 
 With this string as a parameter, GeoTools didn't give any errors, and the conversion from PSP to LatLong has been performed correctly (a backworks conversion has been performed to check the result, as well as comparison with values provided by online conversion tools).
 
-Anyway, the conversion is only point by point, and we performed a performance test with 1 million points, on a MacBook Air Mid '13 machine, with Mac OS X, obtaining the following result:
+The conversion is only point by point, and a performance test with 1 million points, on a MacBook Air Mid '13 machine, with Mac OS X, gave the following result:
 \begin{itemize}
 \item From PSP to LatLong: 2.2 seconds on average
 \item From LatLong to PSP: 1 second on average
@@ -2143,13 +2141,12 @@ Anyway, the conversion is only point by point, and we performed a performance te
 
 The difference is probably due to computational difference between the two conversion algorithms used.
 
-\paragraph{Feasibility decision}
-It was decided that this solution is too slow to be practical, as you have to pay the price of reprojecting the data every time it's requested. It also would have severely complicated the code: When reading a \gls{netcdf}, you can only read out a spatial rectangle that is aligned with the dataset.
+\paragraph{Feasibility}
+It was decided that this solution is too slow to be practical, as you have to pay the price of reprojecting the data every time it's requested. It would also have severely complicated the code: When reading a \gls{netcdf}, you can only read out a spatial rectangle that is aligned with the dataset.
 
-When the user application requests a rectangle in a foreign projection (relative to the dataset), he is requesting what is effectively a trapezoid region of the data (in the native projection).
-This means that we have to read out a rectangle that contains the requested trapezoid, do a costly reprojection computation, discard the superflous data points, resample the result and then return an image of it.
+When the user application requests a rectangle in a foreign projection (relative to the dataset), it is requesting what is effectively a trapezoid region of the data (in the native projection), see figure \ref{fig:tileMatrixSet}. This means that we have to read out a rectangle that contains the requested trapezoid, do a costly reprojection computation, discard the superflous data points, resample the result and then return an image of it.
 
-This is both impractical and expensive (slow), so we decided not to go down this path.
+This is both impractical and expensive, so we decided not to go down this path.
 
 \begin{figure}[h]
 \includegraphics{img/dynamic_projection.png}
@@ -2158,8 +2155,8 @@ This is both impractical and expensive (slow), so we decided not to go down this
 \end{figure}
 
 \subsection{Use a base layer map in the same projection as in the NetCDF files}
-In the scenario in which a base map provided in the Polar Stereographic Projection (and potentially in any projection) is provided, then the tiles requeested by the user from NetCDF files can be directly displayed without the need of any projection transformation. This would be a straightforward solution to the projection problem.
-However, our research discovered that base map tiles sources - such as Google Maps or OpenStreetMaps - are only available in the 
+In the scenario in which a base map provided in the Polar Stereographic Projection (and potentially in any projection) is provided, then the tiles requeested by the user from \gls{netcdf} files can be directly displayed without the need of any projection transformation. This would be a straightforward solution to the projection problem.
+However, our research discovered that base map tiles sources - such as Google Maps or OpenStreetMaps - are only available in more standard projections. The particular polar stereographic projection used by SINTEF could not be found in any available maps.
 
 \subsection{Dynamically projecting on the front end}
 Another path for a possible solution we investigated was dynamically project the dataset requested by the user client-side, with Javascript. 
@@ -2167,17 +2164,17 @@ Default SRS codes known to OpenLayers currently are the following:
 EPSG:4326, CRS:84, urn:ogc:def:crs:EPSG:6.6:4326, EPSG:900913, EPSG:3857, EPSG:102113, EPSG:102100 and OSGEO:41001)
 
 OpenLayers can handle the transformation among these formats itself, otherwise it needs Proj4js included.
-There are examples in the internet of how to use OpenLayers with Proj4js, but configure Proj4js to handle the Polar Stereographic Projection has been a challenge itself.
+There are examples in the internet of how to use OpenLayers with Proj4js, but configuring Proj4js to handle the Polar Stereographic Projection has been a challenge itself.
 
 \begin{quote}
 Proj4js is a JavaScript library to transform point coordinates from one coordinate system to another, including datum transformations.
 
 This library is a port of both the  PROJ.4 and  GCTCP C libraries to JavaScript. Enabling these transformations in the browser allows geographic data stored in different projections to be combined in browser-based web mapping applications.
 
-Proj4js is a part of the  MetaCRS group of projects and uses the same MIT style license as PROJ.4.
+Proj4js is a part of the  MetaCRS group of projects and uses the same MIT style license as PROJ.4. \footnote{https://github.com/proj4js/proj4js}
 \end{quote}
 
-We tried to convert from the Mercator projection (EPSG:3785), in which OpenLayers displays data, to the Polar Stereographic Projection, in which data is natively stored in \gls{netcdf} files we have to deal with. This way, we can hypothetically provide the parameter as input to the back-end.
+We tried to convert from the Mercator projection (EPSG:3785), in which OpenLayers displays data, to the Polar Stereographic Projection, in which data is natively stored in the \gls{netcdf}-files we are using. This way, we can hypothetically provide the parameter as input to the back-end.
 The following is the result of the single coordinate conversion:
 
 \begin{lstlisting}
@@ -2188,7 +2185,7 @@ console.log("After projecting from EPSG:3785 to PS-A: "+startPolarCoord+" - "+en
 console.log("After projecting back again to EPSG:3785: "+ proj4('EPSG:9810', 'EPSG:3785', startPolarCoord) + " - " + proj4('EPSG:9810', 'EPSG:3785', endPolarCoord) );
 \end{lstlisting}
 
-The first instruction defines the \textit{EPSG:9810} projection, which is not natively defined in Proj4js. This definition is done using the Proj.4 projection notation, which allows to define potentially any kind of custom projection.
+The first instruction defines the \textit{EPSG:9810} projection, which is not natively defined in Proj4js. This definition is done using the Proj.4 projection notation, which allows for the definition of potentially any kind of custom projection.
 After that, it performs the conversion of the coordinates of starting and ending point of the dragbox drawn by the user; it prints the converted values, and tries to convert them back to compare the results, in order to check if the conversion happened correctly.
 This code produced the following result in the JS browser console:
 \begin{lstlisting}
@@ -2201,12 +2198,12 @@ After projecting back again to EPSG:3785: 911429.6897504296,522551.9481820021 - 
 
 Now let's observe the start coordinate for instance. In the Mercator projection (EPSG:3785) they are: \textit{911429.68975043,9364527.30573214}. The converted values to Polar Stereographic Projection, Variant A (EPSG:9810, defined by the Proj.4 definition string) are: \textit{321279.34461547807,74197.53173183557}.
 After converting back again the coordinate are \textit{911429.6897504296,522551.9481820021}. The first coordinate is correct (it is exactly the same until the 6th decimal), whereas the second one is completely wrong.
-We haven't succeded in finding an explanation to this behaviour, but at the end we decided to spend no more time in this direction since we realized that OpenLayers with Proj4js can only transform single coordinates or vector layers (like \gls{WFS}). Raster Layers (i.e. images) cannot be transformed by OpenLayers. Therefore this cannot be a solution for our case, since we prefer to provide data in a raster way, for efficiency reasons above all.
-In addition, we discovered that proj4 can convert only single points (i.e. coordinates): there is no optimized function to convert a geographical area, i.e. a collection of points defined by their border.
+We have not succeeded in finding an explanation to this behavior, but in the end we decided to spend no more time in this direction since we realized that OpenLayers with Proj4js can only transform single coordinates or vector layers (like \gls{WFS}). Raster Layers (i.e. images) cannot be transformed by OpenLayers. Therefore this cannot be a solution for our case, since we prefer to provide data in a raster way due to efficiency.
+In addition, we discovered that Proj.4 can convert only single points (i.e. coordinates): there is no optimized function to convert a geographical area, i.e. a collection of points defined by their border.
 
 \subsection{Chosen solution: Statically projecting on the back end}
-Another way of solving the projection problem is to entirely convert NetCDF files, thus uploading to the server already in the correct projection.
-The customer has suggested us a library called \gls{Fimex}\footnote{https://wiki.met.no/fimex/start}.
+Another way of solving the projection problem is to entirely convert the NetCDF files, thus uploading files to the server that are already in the correct projection.
+The customer has suggested a library called \gls{Fimex}\footnote{https://wiki.met.no/fimex/start}.
 From the Fimex main page:
 \begin{quote}
 Fimex is a the File Interpolation, Manipulation and EXtraction library for gridded geospatial data, written in C/C++. It converts between different, extensible dataformats (currently \gls{netcdf}, \gls{NCML}, grib1/2 and felt). It enables you to change the projection and interpolation of scalar and vector grids. It makes it possible to subset the gridded data and to extract only parts of the files.
@@ -2214,12 +2211,12 @@ Fimex is a the File Interpolation, Manipulation and EXtraction library for gridd
 Fimex is developed by the Norwegian Meteorological Institute and also provided as a command line tool. 
 We investigated using the command line tool, for two reasons:
 \begin{itemize}
-\item it should be easier to configure and use, focusing on the produced output other than the process of conversion itself. Thus potentially resulting in less time needed for us to make it working.
-\item on the second hand, the server is written in Java whereas the library is not ported to Java, so an external wrapper would have been needed to execute C++ language.
+\item It should be easier to configure and use, focusing on the produced output other than the process of conversion itself. Thus potentially resulting in less time needed for us to make it working.
+\item The server is written in Java whereas the library is not ported to Java, so an external wrapper would have been needed to execute C++ language.
 \end{itemize}
 
 \subsubsection{\gls{Fimex} Installation}
-A challange has been making FiMex command line tool available in the command line. It required in total 22 working hours, as we first attemped to installing it on Windows and Mac, but we finally failed, due to a lot of hard-to-configure dependencies to build and install. Actually, binary versions where not available for most of the dependancy packages, nor a binary version of FiMex is available for those Operating Systems.
+A challange has been making FiMex command line tool available in the command line. It required in total 22 working hours, as we first attemped to installing it on Windows and Mac, but we finally failed, due to a lot of hard-to-configure dependencies to build and install. Binary versions where not available for most of the dependency packages, nor a binary version of FiMex is available for those Operating Systems.
 Specifically, FiMex requires at least the following libraries to be installed in the system before compilation:
 \begin{itemize}
 \item c99/c++ compiler
@@ -2229,7 +2226,7 @@ Specifically, FiMex requires at least the following libraries to be installed in
 \item udunits $>=$ 2.1.x
 \end{itemize}
 
-To be able to work with NetCDF files it also requires that NetCDF is installed in the system (netcdf-3 > 3.6).
+To be able to work with NetCDF files it also requires that NetCDF is installed in the system (netcdf-3 $>$ 3.6).
 
 We finally succeded in installing FiMex on an Linux Ubuntu Operating System, because it was the only operating system for which a binary version of \gls{Fimex} is available, via \gls{PPA}\footnote{Using a Personal Package Archive (\gls{PPA}), it is possible to distribute software and updates directly to Ubuntu users}
 
@@ -2262,7 +2259,7 @@ fimex --input.file <name_of_input_file.nc> -c <config_file.cfg>
 
 We conducted the major part of the experiments with Fimex using a file provided by the customer which covered and huge area, but only for current data, therefore it was not so big as other files in size (165 MB instead of 1-2 GB or more). This was chosen in order to reduce any possible scalability problem in the conversion process due to handling huge files.
 
-The name of the file provided by the customer was \textit{uvNSEW\_20080630.nc}, whereas the name of the first config file was \textit{prova1.cfg}, therefore out valorized command has been:
+The name of the file provided by the customer was \textit{uvNSEW\_20080630.nc}, whereas the name of the first config file was \textit{prova1.cfg}, therefore our valorized command has been:
 \begin{lstlisting}
 fimex --input.file uvNSEW_20080630.nc -c prova1.cfg
 \end{lstlisting}
@@ -2298,25 +2295,25 @@ Another important field that can be defined in the config file is "[extract]" wh
 As follows the explanation of the meaning of the parameters used in the configuration file:
 \begin{description}
 \item[interpolate.projString] This parameter allows to specify the destination projection by a Proj.4 projection string as described in their site\footnote{http://trac.osgeo.org/proj/wiki/GenParms}.
-\item[interpolate.method] This parameter specifies the interpolation method, one of nearestneighbor, bilinear, bicubic, coord\_nearestneighbor, coord\_kdtree, forward\_max, forward\_mean, forward\_median or forward\_sum. There are performance difference among methods. We have chosen bilinear because it is used in examples online and it is pretty fast in the conversion process. We have not done any detailed benchmark on this method, because the NetCDF conversion function is meant to be called only once for each NetCDF. Currently the NetCDF file generation frequency is one every day, while the conversion process with the bilinear method, depends on the file size, but lasts for seconds, up to 20 seconds on an Ubuntu Virtual machine for a 500 MB file, for instance. So the conversion time mey be considered as negligible.
-\item[interpolate.xAxisValues] The range of the x-axis values (longitude). It is required, and in the format <FirstValue>,<SecondValue>,...,<LastValue>. The step between values is repeated equally in the axis, and is defined by the difference \textit{<SecondValue> - <FirstValue>}.
-\item[interpolate.yAxisValues] The range of the y-axis values (latitude). It is required, and in the format <FirstValue>,<SecondValue>,...,<LastValue>. The step between values is repeated equally in the axis, and is defined by the difference \textit{<SecondValue> - <FirstValue>}.
+\item[interpolate.method] This parameter specifies the interpolation method, one of nearestneighbor, bilinear, bicubic, coord\_nearestneighbor, coord\_kdtree, forward\_max, forward\_mean, forward\_median or forward\_sum. There are performance difference among methods. We have chosen bilinear because it is used in examples online and it is pretty fast in the conversion process. We have not done any detailed benchmark on this method, because the \gls{netcdf} conversion function is meant to be called only once for each \gls{netcdf}. Currently the \gls{netcdf} file generation frequency is one every day, while the conversion process with the bilinear method, depends on the file size, but lasts from a couple of seconds, up to 20 seconds on an Ubuntu Virtual machine for a 500 MB file. The conversion time may be considered negligible.
+\item[interpolate.xAxisValues] The range of the x-axis values (longitude). It is required, and in the format $<$FirstValue$>$,$<$SecondValue$>$,...,$<$LastValue$>$. The step between values is repeated equally in the axis, and is defined by the difference \textit{$<$SecondValue$>$ - $<$FirstValue$>$}.
+\item[interpolate.yAxisValues] The range of the y-axis values (latitude). It is required, and in the format $<$FirstValue$>$,$<$SecondValue$>$,...,$<$LastValue$>$. The step between values is repeated equally in the axis, and is defined by the difference \textit{$<$SecondValue$>$ - $<$FirstValue$>$}.
 \item[xAxisUnit] The unit of measure of the x-axis grid (longitude). Can be 'm' (meters) or 'degrees\_east', or even merely 'degrees'
 \item[yAxisUnit] The unit of measure of the y-axis grid (latitude). Can be 'm' (meters) or 'degrees\_north', or even merely 'degrees'
 \end{description}
 
-In the parameters it is not needed to specify the projection from which to convert from, since Fimex recognizes it automatically. Therefore, no changes of command line string or configuration file are needed to convert from a Fimex file in another format.
+In the parameters it is not needed to specify the projection from which to convert from, since Fimex recognizes it automatically. Therefore, no changes of the command line string or configuration file are needed to convert from a Fimex file in another format.
 
 There have been multiple challenges that blocked or obstructed our work on the configuration of Fimex. Specifically, the following challenges have been faced:
 \begin{itemize}
-\item Figure out how the config parameters work, specifically axis range and the correct projString parameter
+\item Understanding how the config parameters work, specifically axis range and the correct projString parameter
 \item Missing \textit{grid\_mapping} attribute
 \end{itemize}
-\subsubsection{Figure out how the config parameters work, specifically \textit{projString} and axis range}
-Understanding Fimex configuration files has been difficult and required a considerable amount of hours to two of us (Marco and Ruben), because of the poor documentation and the almost total lack of any examples.
-The only source of examples found is the Fimex mailing list (no other mentions found by Google search), but messages are not searchable, and difficult to consult since they are stored and available only one message at a page.
-At the end, an example extracted from the error log of a non-working solution on the Fimex mailing list\footnote{http://lists.met.no/pipermail/fimex/2010-September/000013.html} .
-Thus, we have finally be able to convert into the Geographical Coordinate System (i.e. latlong), with the following configuration file:
+\subsubsection{Config parameters, specifically \textit{projString} and axis range}
+Understanding Fimex configuration files has been difficult, and required a considerable amount of work because of the poor documentation, and the almost total lack of any examples.
+The only source of examples found is the Fimex mailing list, but messages are not searchable, and difficult to consult since they are stored and available only one message at a page.
+In the end, an example was extracted from the error log of a non-working solution on the Fimex mailing list\footnote{http://lists.met.no/pipermail/fimex/2010-September/000013.html} .
+Thus, we have finally been able to convert into the Geographical Coordinate System (i.e. latlong), with the following configuration file:
 \begin{lstlisting}
 [input]
 file=ORIGPATH
@@ -2345,13 +2342,13 @@ yAxisUnit = degree
 
 \end{lstlisting}
 
-The axis range respectively:
+The axis ranges used:
 \begin{itemize}
 \item The x-axis from -90 degrees to 90 degrees (that is from 90 degrees W to 90 degrees E)
 \item The y-axis from 90 degrees N to 50 degrees N
 \end{itemize}
 
-That is, the file covers a relative huge area in the North-Atlantic region, going from Greenland to north Siberia.
+The file covers a relative huge area in the North-Atlantic region, going from Greenland to north Siberia, see figure \ref{fig:fimexPanoplyGraph}.
 
 \begin{figure}[!htb]
   \begin{center}
@@ -2361,33 +2358,33 @@ That is, the file covers a relative huge area in the North-Atlantic region, goin
   \end{center}
 \end{figure}
 
-Although, as previously explained, the NetCDF file from which we converted from covers a huge area, inspecting the generated NetCDF file with a tool like Panoply, a lot of NaN values have been found, due to scale ranges larger than the original area.
+Although, as previously explained, the \gls{netcdf}-file from which we converted from covers a huge area, inspecting the generated \gls{netcdf}-file with a tool like Panoply, a lot of NaN values have been found, due to scale ranges larger than the original area.
 This implies more occupied space for the file, so the ranges should be chosen correctly according to the area of the data.
 
-The ranges are mandatory config parameters for Fimex, and it seems that there is no possibility to make Fimex calculate the ranges and data scale automatically. Therefore, the range should be set manually or an ad-hoc application should be made for the solely purpose of axis range projection conversion. No further attempts have been performed in this direction, since the NetCDF files are generated once a day, and it is not a central requirement the automatic range conversion.
-The two main areas for which now data is collected are the Norwegian Sea region, and Chile. Different projections are used to represent those data (since Polar Stereographic Projection is not suitable to represent the ocean around Chile), but the area are well defined, so it should not be an issue to define ranges manually, at least for the scope of this project.
+The ranges are mandatory config parameters for \gls{Fimex}, and it seems that there is no possibility to make \gls{Fimex} calculate the ranges and data scale automatically. Therefore, the range should be set manually or an ad-hoc application should be made for the solely purpose of axis range projection conversion. No further attempts have been performed in this direction, since the \gls{netcdf}-files are generated once a day, and the automatic range conversion is not a central requirement.
+
+The two main areas for which data is collected are the Norwegian Sea region, and Chile. Different projections are used to represent those data (since Polar Stereographic Projection is not suitable to represent the ocean around Chile). The areas are well defined, so it should not be an issue to define ranges manually, at least for the scope of this project.
 
 \subsubsection{Missing \textit{grid\_mapping} attribute}
-This has been a huge issue for us. All the Fimex generated NetCDF files were lacking of the attribute grid\_mapping, but this attribute is needed by the Java NetCDF library, used by the back-end part of the application. Hours have been spent of figuring out the reaon and how to deal with the problem. 
-First reason has been that, in the config file there was the \textit{[extract]} attribute category, which actually cut out all the non-listed attributes. Removing, all the attribute were kept, except for the \textit{grid\_mapping} one.
-As explained on an online reference\footnote{http://www.nodc.noaa.gov/data/formats/netcdf/v1.1/}, the grid\_mapping attribute :
+This has been a huge issue for the group. All the \gls{Fimex} generated \gls{netcdf}-files were lacking  the attribute grid\_mapping, but this attribute is needed by the Java NetCDF library, used by the \gls{back-end} part of the application. A lot of time has been spent figuring out the reason for this, and how to deal with the problem. 
+It was discovered that in the config file, the \textit{[extract]} attribute category actually cuts out all the non-listed attributes. Removing the  \textit{[extract]} attribute, all the attributes were kept, except for the \textit{grid\_mapping} one.
+As explained on an online reference\footnote{http://www.nodc.noaa.gov/data/formats/netcdf/v1.1/} for the grid\_mapping attribute :
 \begin{quote}
 Describes the horizontal coordinate system used by the data. The \textit{grid\_mapping} attribute should point to a variable which would contain the parameters corresponding to the coordinate system. There are typically several parameters associated with each coordinate system. CF defines a separate attributes for each of the parameters. Some examples are "semi\_major\_axis", "inverse\_flattening", "false\_easting"
 \end{quote}
 
-
-At the end we found in this document\footnote{http://www.qucosa.de/fileadmin/data/qucosa/documents/7149/Diploma\_thesis\_Holzer\_01042011.pdf} at page 79, the reason of the missing \textit{grid\_mapping} attribute:
+In the end we found in the Diploma thesis of Nicolai Holzer\footnote{http://www.qucosa.de/fileadmin/data/qucosa/documents/7149/Diploma\_thesis\_Holzer\_01042011.pdf} at page 79, the reason of the missing \textit{grid\_mapping} attribute:
 
 \begin{quote}
 The determination of the spatial reference of a NetCDF file is based on the \textit{units} attributes of the X and Y coordinate variables as well as of the existence of a \textit{grid\_mapping} attribute. If its \textit{units} attribute values are \textit{latitude} respective \textit{longitude}, data is assumed to be referenced in a geographic coordinate system (\gls{GCS}). If its \textit{standard\_name} attributes contain the values \textit{projection\_y\_coordinate} respectively \textit{projection\_x\_coordinate} and in case that a  \textit{grid\_mapping} attribute containing parameters such a projection name and type is existent, data is assumed to be reference to a projected coordinate systems (\gls{PCS}).
 \end{quote}
 
-Therefore, since data is actually converted to gls{GCS} format (i.e. "latlong"), the \textit{grid\_mapping} attribute should not be defined.
+Therefore, since data is actually converted to the \gls{GCS} format (i.e. "latlong"), the \textit{grid\_mapping} attribute should not be defined.
 
-Since Java \gls{netcdf} library requires that attribute, two different approaches could may be possible to solve the problem:
+Since Java \gls{netcdf} library requires that attribute, two different approaches could be possible to solve the problem:
 \begin{enumerate}
-\item add the attribute manually, with \gls{NCML} configuration or \gls{NCO} tools\footnote{http://jisao.washington.edu/data/nco/, tools suggested by the customer}
-\item convert to the Spherical Mercator projection, which is used by maps services (such as Google Maps or OpenStreetMaps) and "compatible" (directly convertible, since the projection is the same, unless for some parameters) to the \gls{GCS}.
+\item Add the attribute manually, with \gls{NCML} configuration or \gls{NCO} tools\footnote{http://jisao.washington.edu/data/nco/, tools suggested by the customer}
+\item Convert to the Spherical Mercator projection, which is used by maps services (such as Google Maps or OpenStreetMaps) and "compatible" (directly convertible, since the projection is the same, unless for some parameters) to the \gls{GCS}.
 \end{enumerate}
 
 We have chose to follow the second solution, mainly because we estimated less time in achieving the result. So we tried to convert data to the Spherical Mercator projection, used by maps services such as Google Maps. The main difference between the latlong coordinate system is the unit of measure, which is meters instead of degrees.

@@ -349,7 +349,7 @@ As our development project is part of a university course that runs in parallel 
 These changes make the Scrum method well suited for use in the project. Although it is important to try to follow well tested methodologies to the letter, one can not allow them to block progress, or disturb the workflow of the team. When in a special work situation, as the group is in, this type of adaptations are necessary for the efficient use of any development methodology. 
 
 \subsection{Other alternatives}
-While it was early clear that the team wanted to work in a scrum-like manner, other methodologies of development could also have been used, and was discussed. In particular, Kanban and waterfall with feedback.
+While it was early clear that the team wanted to work in an agile manner, other methodologies of development could also have been used, and was discussed. In particular, Kanban and waterfall with feedback.
 
 \paragraph{Kanban}
 While Scrum is driven by estimations, and motivates by limiting the amount of time for each sprint, Kanban attempts to motivate by limiting the amount of concurrent tasks the team is allowed to have. For example, the team can set a limit of 4 tasks in development, 3 in \gls{QA} and 2 in test. This way, the team is motivated to finish tasks, as it will free up space for new tasks. 
@@ -455,16 +455,16 @@ In figure \ref{fig:organizational-structure}, the structure of the group is show
 \label{fig:organizational-structure}
 \medskip
 \small
-The arrows indicate bi-directional communication. The dotted arrows denotes the preferred way of communication between components. Note that the layout is not hierarchical and it is arranged this way only to better fit on the printed page.
+The black lines indicate bi-directional communication. The grey lines denotes the preferred way of communication between components. Note that the layout is not hierarchical and it is arranged this way only to better fit on the printed page.
 \end{center}
 \end{figure}
 
 \subsection{Roles and corresponding responsibilities}
 To have a clear division of responsibilities, the group chose to assign central roles early in the project. This was agreed upon through a combination of the wishes of each group member, and their technical insights and personal qualities. 
 
-The group decided on the following roles,and their definitions:
+The group decided on the following roles, and their definitions:
 \begin{description}
-\item[Scrum master] The scrum masters task is to make sure that the group meets it's goals, he\footnote{"He" should be read as "he or she" throughout this report} is the leader of meetings, makes sure that the groups meetings have a structure, and that they finish on time. It is also the scrum masters task to make sure that the team meets deadlines, and finishes tasks. 
+\item[Scrum master] The scrum masters task is to make sure that the group meets its goals, he\footnote{"He" should be read as "he or she" throughout this report} is the leader of meetings, makes sure that the groups meetings have a structure, and that they finish on time. It is also the scrum masters task to make sure that the team meets deadlines, and finishes tasks. 
 
 The scrum master is in standard scrum methodology tasked with being a barrier between the team and the surrounding environment. He should make sure that any distractions and uncertainties are taken care of, and let the rest of the development team focus purely on their tasks. In our project, this part of the scrum masters role has been difficult to implement, as the course requires all students to take part in activities that usually would be the scrum masters responsibility. 
 \emph{Role assigned to: \textbf{Ondrej Hujnak}}
@@ -484,7 +484,7 @@ The scrum master is in standard scrum methodology tasked with being a barrier be
 \item[\Gls{front-end} leader] The \gls{front-end} leader supervises the \gls{front-end} architecture and implementation, and coordinates the \gls{front-end} developer team. He is expected to have an overview of the process and plan ahead in the case of problems or blocked tasks.
 \emph{Role assigned to: \textbf{Anders Smedegaard Pedersen}}
 
-\item[\Gls{back-end} leader] Has the same role as the \gls{front-end} leader, but focuses on the back end team.
+\item[\Gls{back-end} leader] Has the same role as the \gls{front-end} leader, but focuses on the \gls{back-end} team.
 \emph{Role assigned to: \textbf{Arve Nygård}}
 
 \item[System architect] The system architect makes sure that there is consistency between requirements, design and implementation, and that the design is feasible and reasonable.
@@ -535,11 +535,11 @@ An overview of risks and strategies is given in the following table:
   \hline
 %\begin{tabularx}{\linewidth}{lXllX}
 R1 & Personal Conflicts & \gls{M} & \gls{M} & Might affect the quality of the work, motivation and time required. Probability can be reduced by ensuring communication within the group, and democratic and motivated decisions. \\ \\ \hline
-R2 & Assignments given in other courses & \gls{H} & \gls{M} & Time for some students could be less than planned during a few weeks, due to intensive-demanding assignments of other courses. Mitigated by planning, frequent workload balancing and contributing with extra work in weeks without as intensive demands. \\ \\ \hline
+R2 & Assignments given in other courses & \gls{H} & \gls{M} & Time for some students could be less than planned during a few weeks, due to demanding assignments of other courses. Mitigated by planning, frequent workload balancing and contributing with extra work in weeks without as intensive demands. \\ \\ \hline
 R3 & Conflicting schedules & \gls{H} & \gls{M} & Reduced by planning meeting-times and communication channels for times between group meeting. Also, accepting that we can't meet every day and that all group members do not always need to be present. \\ \\ \hline
-R4 & Solution is overcomplicated & \gls{M} & \gls{M} & Probability reduced by good communication both with the customer and internally in the group. \\ \\ \hline
-R5 & Technical problems and difficulties & \gls{M} & \gls{H} & To reduce the probability: make a detailed study (and \glspl{prototype} where possible) during the \gls{pre-study} phase. To reduce the consequence: find the person/people within the group which are more comfortable with those new technologies and assign them that task if it is a particular task. Knowledge transfer within the team is also a way to reduce the consequences of this risk. Keep the customer informed. \\ \\ \hline
-R6 & Missing room reservations & \gls{H} & \gls{L} & Will delay work. Avoid by making sure we have a regular room (talk to advisor) \\ \\ \hline
+R4 & Overcomplicated solution & \gls{M} & \gls{M} & Probability reduced by good communication both with the customer and internally in the group. \\ \\ \hline
+R5 & Technical problems and difficulties & \gls{M} & \gls{H} & To reduce the probability: make a detailed study (and \glspl{prototype} where possible) during the \gls{pre-study} phase. To reduce the consequence: find the person/people within the group which are more comfortable with those new technologies and assign them the particular tasks. Knowledge transfer within the team is also a way to reduce the consequences of this risk. Keeping the customer informed is vital. \\ \\ \hline
+R6 & Missing room reservations & \gls{H} & \gls{L} & Will delay work. Avoid by making sure we have a regular room. The advisor might be able to book a permanent room. \\ \\ \hline
 R7 & Data loss & \gls{L} & \gls{H} & Limited by introducing a backup strategy, and making sure that all team members follow this strategy. \\ \\ \hline
 R8 & Assigned tasks are not completed & \gls{H} & \gls{M} & Consequence reduced by additional work for other group members in order to try to complete the task within the deadline. Talk within the group to find a compromise. Continuous communication between team members will help identify this risk early.  \\ \\ \hline
 R9 & Illness & \gls{H} & \gls{M} & Probability cannot be reduced, but consequence can be reduced by temporary increase the work for other members of the group. One person should not be assigned tasks in a way that makes other team members unable to cover for them. \\ \\ \hline

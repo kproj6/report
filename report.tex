@@ -227,6 +227,7 @@ The study of ocean currents allows for predicting what conditions can be expecte
 This makes the most relevant users of the system fish farmers, either in the planning or operation phase of the farm. The system is also relevant to anyone conducting ocean research in the given areas, and other stakeholders that can use information on the condition of the sea in their work.
 
 \section{Assignment and scope}
+\label{sec:AssignmentScope}
 The client, SINTEF Fisheries and Aquaculture, has given us the project labeled "Ocean Forecast". The task is to improve SINTEF's existing system of storing and retrieving data, as well as the way the data is presented to the end user. 
 
 In agreement with the customer, the group has defined the following scope of the assignment:
@@ -279,6 +280,7 @@ The customer owns a working solution, running on its own servers, for the delive
 The background for this project is to optimize the current, slow and memory-consuming solution. In the project description, the customer asks the group to either develop a new back end system, or produce a new front end for the current system. 
 
 \section{Measurement of project effects}
+\label{sec:MeasurementProjEff}
 Some predefined criteria must be met in order to consider the project to have been successful. The product must be working according to the requirements, and pass all tests. All requirements prioritized high and medium must be fulfilled. Requirements that have low priority are viewed as nice to have, but should be implemented if there is sufficient time.
 In this project, quite open goals were set by the customer, and no precisely quantifiable measurements were defined. This makes the approval of the project subjective, and the group will have to keep the customer closely involved, to ensure continuous feedback.
 
@@ -2690,6 +2692,16 @@ As can be noticed, the coordinates values should be swapped places (javascript \
 The new values are stored in the global \textit{startCoord} and \textit{endCoord} variables, which are displayed to the user (in the status bar and in the text boxes) and used for building the request URL string for the back-end.
 
 \section{Goal completion}
+The project task was broadly specified and gave us a the opertunity to lead our work in many directions and the possibility to develop a lot of features. So despite that our customer in the end is looking for a commercial solution that includes all of these, it was clear from the start that the scope of our task had to be reduced to a tolerable level. Our scope is defined in section \ref{sec:AssignmentScope} on page \pageref{sec:AssignmentScope}. The reason for limiting the scope is that this should enable making the parts actually developed during the project robust and efficient, being efficient enough to serve its purpose from very large pieces of data. Efficiency has been a problem in previous attempts, which made this prioritization one of extra importance. \\ \\
+As defined by Measurement of project effects in section \ref{sec:MeasurementProjEff} on page \pageref{sec:MeasurementProjEff} a successful product is defined by successfully implementing all high and medium requirements, and passing all tests.
+
+Judging by the successfully implemented requirements, the project is behind schedule and is not successful. Important requirements have not been implemented like handeling overlapping areas(FR 1.5), automatic preparing files added to the system(FR 1.11), providing current direction data in an easily usable format(FR 1.20) and displaying it in \gls{front-end}(FR 2.8), fully implementing \gls{WMTS} in \gls{back-end}(FR 1.22 ) and dynamically load new tiles when view-area is changed in \gls{front-end}(FR 2.7). \\ \\
+%I included a bit many FRs here possibly, but its easy to reduce if we dont wanna be so pessimistic ;)
+The challenges we have faced with getting the projections working has blocked many of these to some degree, and stolen a lot of the time that was designated for these tasks. These challenges are discussed further in section \ref{sec:ProjectionChallenges} on page \pageref{sec:ProjectionChallenges} \\ \\
+In the product requirements the performance of the system was described as general as "The requests must be fast enough to feel responsive for the user". More specific it was not be possible to describe it, given the uncertainty of final solution. The amount of data the system should storage and process is very large even a normal response time can be a challenge. In the final product the response time is low. This is something we are quite satisfied with given that previous attempts have struggled on this point. This has been achieved by thorough consideration of solutions for bottlenecks and efficient use of existing tools and technology. \\ \\
+Overall the project has been robustly implemented despite not reaching all of its important functional requirements. We have also done a lot of work outside of what is included in the final solution as we have faced multiple challenges. The final solution should be easy to utilize with detailed deploy guides and we have explained a lot of things that can be done to further improve it.
+
+%ALT..Even after the prestudy a lot of time has been spent exploring new challenges that we were not able to foresee, given our limit previous experience on this topic and the complexity of the problem. Therefor our findings for further work will be a relatively important part of our 
 
 
 \section{Further work}

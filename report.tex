@@ -2282,15 +2282,19 @@ xAxisUnit = m
 yAxisUnit = m
 \end{lstlisting}
 
-As can be seen, parameters groups (i.e. "input", "output", "interpolate") can be defined between sqare brackets, right before their specific parameters, so that if in the command line the interpolation method would be expressed as \textit{interpolate.method bilinear}, in the config file it is expressed as: 
+As can be seen, parameters groups (i.e. "input", "output", "interpolate") can be defined between square brackets, right before their specific parameters, so that if in the command line the interpolation method would be expressed as \textit{interpolate.method bilinear}, in the config file it is expressed as: 
 \begin{lstlisting}
 [interpolate]
 method = bilinear
 \end{lstlisting}
 
+"[input]" and "[output]" specifies input and output filenames and types, while "[interpolate]" specifies interpolation method, data grid ranges and projection.
+
+Another important field that can be defined in the config file is "[extract]" which can select a set of variables to bring on to the new file or select which variables should be removed. It can also limit the dimensions, for instance in the time-domain. Other options are "[merge]" which can merge files, "[verticalInterpolate]" which is especially made to interpolate in the z-axis and "[timeInterpolate]" which is especially made to interpolate time, which all can be useful for later. These are all further explained in the documentation mentioned earlier\footnote{http://fimex.met.no/doc/programDoc.html}.
+
 As follows the explanation of the meaning of the parameters used in the configuration file:
 \begin{description}
-\item[interpolate.projString] This parameter allows to specify the destination projection
+\item[interpolate.projString] This parameter allows to specify the destination projection by a Proj.4 projection string as described in their site\footnote{http://trac.osgeo.org/proj/wiki/GenParms}.
 \item[interpolate.method] This parameter specifies the interpolation method, one of nearestneighbor, bilinear, bicubic, coord\_nearestneighbor, coord\_kdtree, forward\_max, forward\_mean, forward\_median or forward\_sum. There are performance difference among methods. We have chosen bilinear because it is used in examples online and it is pretty fast in the conversion process. We have not done any detailed benchmark on this method, because the NetCDF conversion function is meant to be called only once for each NetCDF. Currently the NetCDF file generation frequency is one every day, while the conversion process with the bilinear method, depends on the file size, but lasts for seconds, up to 20 seconds on an Ubuntu Virtual machine for a 500 MB file, for instance. So the conversion time mey be considered as negligible.
 \item[interpolate.xAxisValues] The range of the x-axis values (longitude). It is required, and in the format <FirstValue>,<SecondValue>,...,<LastValue>. The step between values is repeated equally in the axis, and is defined by the difference \textit{<SecondValue> - <FirstValue>}.
 \item[interpolate.yAxisValues] The range of the y-axis values (latitude). It is required, and in the format <FirstValue>,<SecondValue>,...,<LastValue>. The step between values is repeated equally in the axis, and is defined by the difference \textit{<SecondValue> - <FirstValue>}.
@@ -2623,6 +2627,7 @@ Querying the \gls{back-end} is done by means of it's REST \gls{API}. This is don
 \subsection{User Interface Design}
 A specific work has been done on designing the user interface of the front-end for this application.
 At the beginning of the project, the customer let us choose the graphical layout, and as a first step, we conveyed on the components to be placed in the screen, available to the user, that are:
+
 \begin{description}
 \item[Map] The map, with tiles from a map source like OpenStreetMaps, or Google Maps.
 \item[Data type selector] A selector that allows to choose among Salinity, Temperature, Currents or Depth. Since we conveyed with the customer that overlays can be shown one at a time on the map for understability purposes, we conveyed that this selector can be a combo-box (HTML option element) or a single-option checkbox group, with one option at a time that can be selected.
@@ -2635,6 +2640,15 @@ At the beginning of the project, the customer let us choose the graphical layout
 \item[Zoom picker] A component that allows to zoom the map in and out by clicking on the plus sign or the minus sign, providing the user an alternative way to the scroll wheel of the mouse, or the pinching action on a mobile touch-screen device.
 \end{description}
 
+\begin{figure}[h]
+\begin{center}
+\fbox{\includegraphics[width=\textwidth]{img/frontend-mockup.jpg}}
+\caption{Prepared Front-end Desktop Mockup}
+\label{fig:FrontendMockup}
+\end{center}
+\end{figure}
+
+
 During the design of the front end interface, some inspiration has been taken from existing solutions like Google Maps and Bing maps. 
 The main proposals have been the following:
 \begin{description}
@@ -2645,15 +2659,7 @@ The main proposals have been the following:
 
 Among the team has been taken the decision to use a map with OpenStreetMap background tile covering all the screen size. This is mainly because of usability reasons, and also has a more user friendly interface.
 
-In particular, we ended up with the following representation:
-
-\begin{figure}[!htb]
-  \begin{center}
-    \fbox{\includegraphics[width=\textwidth]{img/frontend-mockup.jpg}}
-    \caption{Prepared Front-end Desktop Mockup}
-    \label{fig:FrontendMockup}
-  \end{center}
-\end{figure}
+In particular, we ended up with the a mockup as shown in figure \ref{fig:FrontendMockup}
 
 \subsection{Projection conversion}
 We configured OpenLayers to use OpenStreetMaps as a base tile source. This source, like Google Maps, is in the Mercator projection, with meters as unit of measure.
@@ -2692,16 +2698,18 @@ As can be noticed, the coordinates values should be swapped places (javascript \
 The new values are stored in the global \textit{startCoord} and \textit{endCoord} variables, which are displayed to the user (in the status bar and in the text boxes) and used for building the request URL string for the back-end.
 
 \section{Goal completion}
+
+
 \section{Further work}
 Given the size and complexity of the project, the functionality of the implementation had to be limited to the bare minimum. That means that further work should be done to meet the functional requirements for a commercial product. Many of these functionalities have however been considered during the project and therefore we have made some evaluations on how this can be done. In this section we present our suggestions for what can be done to improve the implementation.
 
 \subsection{Front-end}
 For the front-end there are new kinds of data that should be displayed in the \gls{GUI}, some of which lack implemented \gls{back-end} support. First off the basic map overlay requires some improvements. This includes extending the functionality it provides and improving efficiency and scalability. Secondarily there are new functions to be added, ranging from new controls to displaying other types of data.
-\paragraph{WMTS}
+\subsubsection{WMTS}
 As described earlier in the report \gls{WMTS} is a protocol for serving pre-rendered georeferenced map tiles. We would have liked to use this protocol because of the advantages it gives when you want to overlay visualized data on a map. Unfortunatly we were not able to implement WMTS in our back-end solution because of time constraints. This said we were able to display data from another \gls{WMTS} source using OpenLayers. It should be trivial to use OpenLayers to display data from  
 
 
-\paragraph{Point values}
+\subsubsection{Point values}
 For giving more information for a given point we want to be able to click on the map and show extra data. The most basic of these is to display the accurate feature value of the selected point. So if salinity is the selected feature the \gls{GUI} should at least display the salinity value for the this exact point. The \gls{front-end} will request the point data from the \gls{back-end} and during these steps the values should be transformed to an easily human readable format, like degrees Celsius or percent.
 These values can be displayed with a popup over the selected point as shown in figure \ref{fig:popup_pointvalue}.
 \begin{figure}[h]
@@ -2721,7 +2729,7 @@ These values can be displayed with a popup over the selected point as shown in f
 \end{figure}
 To extend further on this we can add other types of point data like charts. Because of these extensions it seems more reasonable to display point values and charts together and examples of how this can be done will be described below.
 
-\paragraph{Charts}
+\subsubsection{Charts}
 \begin{figure}[!htb]
   \begin{center}
     \fbox{\includegraphics[width=\textwidth]{img/gui_charts_basic.png}}
@@ -2753,36 +2761,45 @@ The opportunity to display all charts at the same time has also been discussed. 
 
 These solutions can all be used together. The panel in figure \ref{fig:gui_panelChart} can be reachable from a click action directly from the basic map view, for instance from a right-click menu. But it can also be reachable from the boxes in figure \ref{fig:gui_basicChart} and figure \ref{fig:gui_enlargedChart}. Preferable would be to use the box in figure \ref{fig:gui_basicChart} together with the detailed view of either figure \ref{fig:gui_enlargedChart} or figure \ref{fig:gui_panelChart}. Alternatively there is an option of just using one of these three.
 
-\paragraph{Vector data}
+\subsubsection{Vector data}
 After implementing temperature, salinity and current speed, there is one important feature left for displaying directly over the map. This is current direction, representing in which direction the current flows at any given point. Current direction can not be displayed the same way as these other features. One solution to this is to send the current directions as vector data, and display this on top of the other layers. This would mean that the \gls{back-end} would calculate the strength and direction of the current. Because these vectors will be displayed over multiple pixels we can send a sparser set of vectors, which would allow us to draw it even on less powerful devices.
 There are also other uses for displaying vector data like displaying depth contour lines and other neutical information.
 
-\paragraph{Legend and color-mapping}
+\subsubsection{Legend and color-mapping}
 The images representing temperature and other features are represented by mapping the exact datavalues to a color value. This conversion will be presented to the user through the legend displayed in the \gls{GUI}. At the moment this legend is static client-side images, but for the future this should be fetched from the \gls{back-end}. We can also allow the user to specify the range over which the colours should represent, for instance to distinguish between points with very similar values. So the range of the color-mapping should be changable through the \gls{GUI} and sent with the requests to the \gls{back-end} for retrieve the data overlays in the correct colors.
 
-\paragraph{Seasonal averages}
+\begin{figure}[!htb]
+  \begin{center}
+    \fbox{\includegraphics[width=0.2\textwidth]{img/gui_just_legend_edit.png}}
+    \caption{Example for a legend with editable range}
+    \label{fig:gui_legendEdit}
+  \end{center}
+\end{figure}
+
+Figure \ref{fig:gui_legendEdit} shows how the legend can be represented graphically to include the options to change the range. The important things here are that the two fields containing the numbers should be editable and when editted they should affect later requests for tiles. In figure \ref{fig:gui_legendEdit} we have also included a "Reset" button to allow the user to set the color-range back to standard.
+
+\subsubsection{Seasonal averages}
 As the day to day data have significant variations it is sometimes better to do seasonal averages of the data, to get a smoother and more robust representation of the data for a certain period of the year. In the existing solution these seasons are months and the whole year. For our \gls{front-end} solution we need to allow the user to select these seasons instead of the normal date and time. This can be done by allowing the user to change the mode of the time-parameter from detailed date picker to season picker, which will change the request parameters to fit the API of seasonal requests. Other than switching mode and request, the existing solution should work as previously just with new data.
 
-\paragraph{Authentication}
+\subsubsection{Authentication}
 For using the existing solution of the system authentication is required. This was left outside of the scope of our project, but should be implemented for a commercial version. How this is to be done is more up to the customer as they already have a working solution for this task, and they might want to reuse it.
 
-\paragraph{Responsive design}
+\subsubsection{Responsive design}
 Website are increasingly being accessed from smart phones and tablets. But websites that are designed to being displayed on a desktop or laptop screen are often not well suited for mobiles and tablets. One solution to this is to have a dedicated mobile website. This solution comes with the drawback of having to maintain two sites. A solution that has gained traction and is the most common way by now is using so called responsive design. This means that the website changes layout depending on the resolution of the device the website is accessed from. This is achieved with \gls{CSS} media queries.
 We knew from the beginning of the project that accessing the application from smart phones was desirable. Therefore it should include responsive design. The layout as of today is quite simple and it would be relatively easy to write the needed media queries to make it responsive. In the form the application has at the time of writing it would not make sense to use a framework like Bootstrap \footnote{\url{http://getbootstrap.com/}} to gain responsiveness as it would introduce a lot of code to the project that would not be used. 
 
-\paragraph{Icons}
+\subsubsection{Icons}
 The icons used in the GUI are called Octicons\footnote{\url{octicons.github.com/}} and are created by Github\footnote{\url{www.github.com}}. The font itself is licensed under the SIL OFL and the acompanying code is licensed under the MIT license \footnote{\url{www.github.com/github/octicons/blob/master/LICENSE.txt}}. This allows the icons to be used in commercial use. That said the icon font is not the most extensive one. If the applications grows and evolves it might be beneficial to use a custom icon set or aquire one that has more relevant icons.
 
-\paragraph{Minification}
+\subsubsection{Minification}
 When deploying a javascript application it is common to minify the code. This means that you use a tool to remove all white space, new line characters and comments from the code. The tool may also rename variables in the code. The purpose on this is to make the file as small as possible. Having a small script file matters because the file is downloaded to the client and thus has an impact on response time of the application. We have not used an minifier. As the \gls{front-end} code base is relatively small little is gained from minifying but as the code base grows in the future this is strongly recommended.
 
-\paragraph{Animation}
+\subsubsection{Animation}
 We would like to add some functionality where the use can see a timelapse animation of (say) the temperature in an area. The simplest way to implement this might be in front end. By requesting several images for the same area, but at different point in time, we have the basis for a timelapse. This approach would not require any changes to the back-end. It would most likely not be the best in performance, especially on low bandwidth connections or low end devices. Creating the animation in a more appropriate format in the back-end would save bandwidth and processing power for the end user, but this may be more difficult to implement.
 
-\paragraph{Tool tips}
-A tool to select the area you want to query was implemented in the \gls{GUI}. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and dragging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI} and the user will probably not find this feature on his own. We therefore recommend that tool tips and hint are added to the \gls{GUI} so the user knows about all og its features.
+\subsubsection{Tooltips}
+A tool to select the area you want to query was implemented in the \gls{GUI}. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and dragging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI} and the user will probably not find this feature on his own. We therefore recommend that tool tips and hint are added to the \gls{GUI} so the user knows about all og its features. We can also use tooltips to minimize the \gls{GUI} and just show the explanation when moving the mouse over the field.
 
-%OTHER?
 
 \subsection{Back-end}
 
@@ -2817,20 +2834,18 @@ Currently all images uses global minimum and maximum of values suggested by cust
 To add this functionality, \texttt{ImageRenderer} have to be modified to firstly compute extremes for requested image and then use them instead of static ones. Moreover, because the scale wont be static, it is necessary to provide scale together with the image. That can be done either by having a separate request for scale, which could be problematic, because of stateless HTTP protocol. Separate requests would mean, that the data have to be processed twice. Alternatively it could be changed, so that returned data does not contain pure \gls{PNG} image, but JSON object with two \gls{PNG}s encoded with base64\footnote{\url{https://tools.ietf.org/html/rfc4648}}. This solves the problem with separate requests, but base64 encoding adds about 33\% to the size of images. The last option is to simply overlay the legend over the image. This would cause loss of some information (as a part of image is covered by legend), but would be easiest and fastest solution.
 
 \subsubsection{Further projection functionality}
-%Tobedone with fimex stuff
-%Make proj conversion %THESE top two the same?
-
+Getting the projections done correctly has been a big difficulty in the project development and it will therefor need a lot of further work to serve all the functionality that is wanted, as well as to minimize the workload of the rest of the \gls{back-end} and human personel. \\ \\
 %Fimex automation %REF/GLS fimex?
-Currently all fimex projections are done manually, requiring us to run fimex for each file we want to use as well as deciding on a reasonable boundary box for this new projection. If further use of fimex is wanted, the process of projecting files has to be automated. There are solutions for executing these same configurations from a script or program. Finding the bounding box accurately will help reduce the projection time as well as reducing storage size and redundancy. One solution might be to use the 4 cornerpoints in the original projection, project them into the desired projection and then finding the maximums and minimums among these in x and y directions. The step distance can most likely be a static value for each resolution-level.
+Currently all fimex projections are done manually, requiring us to run fimex for each file we want to use as well as deciding on a reasonable boundary box for its new projection. If further use of fimex is wanted, the process of projecting files has to be automated. There are solutions for executing these same configurations from a script or program. Finding the bounding box accurately will help reduce the projection time as well as reducing storage size and redundancy. One solution might be to use the 4 cornerpoints in the original projection, project them into the desired projection and then finding the maximums and minimums among these in x and y directions. The step distance can most likely be a static value for each resolution-level. \\
 
 %Templates
-As an alternative to deciding the boundary box for each file and adding a big overhead of empty points the use of templates has been considered. The idea here is that the area we want to project to is defined beforehand and we merge the results from all the files that contribute to this area. These areas could then be pre-calculated and be fitted to the \gls{WMTS} tile grid as shown in figure \ref{fig:tileMatrix} and \ref{fig:tileMatrixSet} on page \pageref{fig:tileMatrixSet}. It is still uncertain how many of these needs fimex can handle for us. Potential benefits like fast and easy netCDF to image tile conversion makes this an important point for the future.
+As an alternative to deciding the boundary box for each file and adding a big overhead of empty points the use of templates has been considered. The idea here is that the area we want to project to is defined beforehand and we merge the results from all the files that contribute to this area. These areas could then be pre-calculated and be fitted to the \gls{WMTS} tile grid as shown in figure \ref{fig:tileMatrix} and \ref{fig:tileMatrixSet} on page \pageref{fig:tileMatrixSet}. It is still uncertain how many of these needs fimex can handle for us. Potential benefits like fast and easy netCDF to image tile conversion makes this an important point for the future. \\
 
 %Support more projections
-The customer has also expressed wishes to make the back-end provide multiple projections. As we seem to be leaning towards converting the projections in the netCDF files, in the model layer. This could be less optimal for supporting multiple projections because we would need to store one set of files for each projection. So both the model projection conversion and storage requirement would multiply by the number of projections the \gls{back-end} would support. This would force the product owner to carefully consider the cost versus the gains of adding more projections. 
+The customer has also expressed wishes to make the back-end provide multiple projections. As converting the projections in the netCDF files seems the reasonable thing to do. Pre-processing the model-layer when adding files to the system. This could be less optimal for supporting multiple projections because we would need to store one set of files for each projection. So both the model projection conversion and storage requirement would multiply by the number of projections the \gls{back-end} would support. This would force the product owner to carefully consider the cost versus the gains of adding more projections. 
 If the system will project the data for each request, adding support for multiple projections should be a simple task that does not require any special cost. This kind of approach would also make it possible to choose the projection dynamically, specifying parameters like false easting in the request.
 
-\subsection{Load Balancing}
+\subsubsection{Load Balancing}
 One of the main bottlenecks for this kind of service is disk reads. Since the data sets are so big, you can only have a fraction of the data in memory. This means that every request likely results in a disk read. 
 In order to handle a large traffic volume, one should consider load balancing the service. This means having multiple servers serving the data from a single url.
 
@@ -2838,7 +2853,7 @@ To achieve this, you can put your servers behind a \textit{load balancer}, which
 
 Another, possibly simpler way of mitigating this bottleneck would be to use flash drives (SSDs) instead of magnetic drives, since these have significantly better random access times.
 
-\subsection{Caching}
+\subsubsection{Caching}
 Adding caching only really makes sense for the WMTS service, because the REST API has no real notion of reusability - every request is in practice arbitrary. However, for WMTS requests, every tile coordinate is static and caching should yield a real performance improvement - especially under heavy load.
 
 Implementing caching for the WMTS service should be a relatively easy task. The cache system would consist of two parts:

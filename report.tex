@@ -232,7 +232,7 @@ The client, SINTEF Fisheries and Aquaculture, has given us the project labeled "
 In agreement with the customer, the group has defined the following scope of the assignment:
 
 \begin{quote}
-Make a \gls{pre-study} that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualizations on a web page. Follow the study with an implementation of a \gls{proof of concept} system that is able to read from a collection of \gls{netcdf}-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEF's systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
+Make a \gls{pre-study} that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualizations on a web page. Follow the study with an implementation of a \gls{proof of concept} system that is able to read from a collection of \gls{netcdf}-files, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEF's systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
 \end{quote}
 
 After the \gls{pre-study}, the group presented SINTEF with two choices for how this could be achieved. SINTEF chose a development path that required the custom development of both the \gls{front-end} and \gls{back-end}, see section \ref{subsec:DifferentPaths}.
@@ -1461,19 +1461,19 @@ To gain a better perspective on what the customer wanted, we documented what SIN
 \paragraph{Researching production solutions}
 In order to better understand what a modern system similar to what SINTEF wants might look like we investigated online solutions in production around the world. This also gave some insight into what technologies are most commonly used. Prompting us to look into whether these technologies could be used in our project as well.
 
-\paragraph{Back end technologies}
-The back end part of the group looked into and tested several technologies that might be useful. One of the largest problems was finding some technology to handle the aggregation of the different gridsizes in SINTEF's datasets. Our investigations revealed that no existing technology would cover our needs, at least without extensive modification. Other problems included limited support for \gls{netcdf} and difficulty configuring the programs. We created some \glspl{prototype} to learn more about how difficult a custom solution from scratch might be, and its performance.
+\paragraph{Back-end technologies}
+The \gls{back-end} part of the group looked into and tested several technologies that might be useful. One of the largest problems was finding some technology to handle the aggregation of the different gridsizes in SINTEF's datasets. Our investigations revealed that no existing technology would cover our needs, at least without extensive modification. Other problems included limited support for \gls{netcdf} and difficulty configuring the programs. We created some \glspl{prototype} to learn more about how difficult a custom solution from scratch might be, and its performance.
 
-\paragraph{Front end technologies}
+\paragraph{Front-end technologies}
 Several technologies were available for presenting map data to the user. We looked into rendering the data client-side. This proved inefficient, and together with observations of other production solutions using \gls{PNG}-tiles we decided to look more into that instead. Some testing revealed OpenLayers to be the best candidate for handling the dynamic map presentation of data.
 
 \paragraph{Recommendation and decision}
 In internal discussions the group found it best to present SINTEF not with one recommendation, but a choice between two paths. For the front end, we concluded that a custom solution would be the best, because what little existed would need a lot of modification. The \gls{back-end} would either be a \gls{THREDDS} server configured by SINTEF or a custom solution. The path involving a custom back end came with the caveat that the final product might not be as feature complete, as the group would need to divide its attention.
-\par Our contacts at SINTEF were presented with the findings and our recommendation. After some discussions with the group they chose the custom back end path.
+\par Our contacts at SINTEF were presented with the findings and our recommendation. After some discussions with the group they chose the custom \gls{back-end} path.
 
 \section{Other}
 
-\paragraph{Proof of concept back end}
+\paragraph{Proof of concept back-end}
 Early on we knew we there was a possibility of having to create or modify code accessing and serving the data from \gls{netcdf} files. In order to learn about the performance and effort involved we created some \glspl{prototype} in Java. We were quickly able to extract data from the \gls{netcdf} files, serving them as \gls{JSON} via REST or creating images.
 
 
@@ -1483,7 +1483,7 @@ Early on we knew we there was a possibility of having to create or modify code a
 \noindent
 This sprint marks the formal start of the implementation work. Up to this point, the group has focused mainly on the pre study, which has done an extensive study into the possible choices for the customer. In this process, \glspl{prototype} were implemented, but this was only meant for the group to get an idea of the work involved. Thus, the real work of implementation starts at this point, though the prototyping obviously will be a great help in the work ahead. 
 
-At the same time as sprint 1 started, the final work on the pre delivery for \gls{NTNU} also had to be done. This was a lot of work, and the group decided at the start of sprint 1 to use this sprint almost exclusively for working on the pre delivery, as it is needed to be allowed to continue the course, as well as an important milestone in the project plan. 
+At the same time as sprint 1 started, the final work on the \gls{pre-delivery} for \gls{NTNU} also had to be done. This was a lot of work, and the group decided at the start of sprint 1 to use this sprint almost exclusively for working on the \gls{pre-delivery}, as it is needed to be allowed to continue the course, as well as an important milestone in the project plan. 
 
 \section{Sprint planning}
 From our formalized scope and the choice the customer made based on our pre study, we created a list of requirements. The list of functional requirements will serve as our project backlog. In discussion with the group, the customer gave each requirement a priority to serve as a guideline when creating the sprint backlogs.

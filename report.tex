@@ -1949,6 +1949,7 @@ This sprint has been focused on writing the final report. All team members have 
 \chapter{Challenges}
 \label{chap:Challenges}
 \section{WMTS}
+\label{sec:WMTS}
 \gls{WMTS} \gls{protocol} defines two major parts: A Capabilities-document which contains metadata about the dataset hosted by the server. This metadata includes the projection the data is in, as well as a set of tile matrices.  
 A tile matrix is a flat grid of tiles (square images) with a given top-left coordinate, tile size, and number of tiles. It's normal to have several tile matrices for the same data-set - one tile matrix for each zoom level.  
 A client can then request a specific tile at position (x,y) from a given tile matrix, and then by the definition given in the capabilities document it can place the image at the correct position on its map.  
@@ -2964,6 +2965,27 @@ In this example we will request temperature data from missing file. We will use 
 			\item[\gls{JSON} body] \texttt{\{"errorMessage":} \texttt{"Could not read data file.",} \texttt{"cause":} \texttt{"/home/ondra/School/NTNU/TDT4290/netcdf/samples\_2013.08.05.nc (No such file or directory)"\}}
 		\end{description}
 \end{description}
+\section{WMTS}
+This section describes how the \gls{WMTS} API would behave. We did not manage to implement the WMTS spec in time.
+
+Since WMTS is designed as a Machine to Machine protocol, it's relatively simple in structure. It consists of two resrouces:
+
+\textit{Capabilities} and \textit{Tile}. 
+\subsection{Capabilities resource} 
+The Capabilities resource hosts an XML document that describes the layout of the tile matrix set, as described in \ref{sec:WMTS}. The client uses this to inform itself of the tile layout, in order to lay out the tile images correctly on it's background map.  The parameters of the XML document are computed from the dataset.
+
+The url to this document is \path{/WMTS/1.0.0/WMTSCapabilities.xml}.
+
+\subsection{Tile resource}
+The Tile resource parses the in order to generate the correct section of the map, and serves that as a single image.
+
+The URL to this resource is \path{WMTS/tile/1.0.0/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png}, where the four path parameters (in braces) define which tile the client is interested in. The variables define, in order: 
+\paragraph{TileMatrixSet: }
+Used for different datasets. In our case this can be used to differentiate between features such as salinity, temperature, current-magnitude and so on.
+\paragraph{TileMatrix: }
+This is the z index, or zoom level. See \ref{fig:tileMatrixSet}.
+\paragraph{TileRow and TileCol:}
+Defines the X and Y index for the tile we are interested in.
 
 \chapter{Building and Deploying}
 \section{Building the project}

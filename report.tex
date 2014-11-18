@@ -235,6 +235,8 @@ In agreement with the customer, the group has defined the following scope of the
 Make a \gls{pre-study} that examines what technology can be used to replace the current collection of PDFs, and instead serve the end user with custom visualizations on a web page. Follow the study with an implementation of a \gls{proof of concept} system that is able to read from a collection of \gls{netcdf}-file, and present data to the end user based on custom chosen variables. We will ignore any bottlenecks that may exist in SINTEF's systems, and assume that they are fixable. Our end report will contain suggestions for further development and analysis.
 \end{quote}
 
+After the \gls{pre-study}, the group presented SINTEF with two choices for how this could be achieved. SINTEF chose a development path that required the custom development of both the \gls{front-end} and \gls{back-end}, see section \ref{subsec:DifferentPaths}.
+
 \section{Group resources}
 \label{sec:GroupResources}
 The group consists of seven people with diverse skills. In the starting phase of the project, the group assessed the different skills, and used this to distribute tasks, and areas of responsibilities. 
@@ -667,7 +669,7 @@ The system will also present a set of pre defined graphs, including current rose
 
 
 \subsection{Challenges}
-As the PDFs are pre generated, there is a clear limitation to what information the user may request. If a user wants to know, for example, the connection between salinity and current speed at a given location, the user must download two different PDFs and manually compare these. 
+As the PDFs are pre-generated, there is a clear limitation to what information the user may request. If a user wants to know, for example, the connection between salinity and current speed at a given location, the user must download two different PDFs and manually compare these. 
 
 The graphs given for a specific location are only given for limited values of the critical attributes. If we look at the current rose, it is presented for a depth of 2 meters. If the user is really interested in the current rose for 10 meters, he has to download the PDF containing all possible current roses. 
 
@@ -772,9 +774,9 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
   \emph{Link: \url{http://www.resc.rdg.ac.uk/trac/ncWMS/}} \\%make sure to use //
     ncWMS is an \gls{open source}, free to use, java server application. It was created to support interactive browsing of gridded four-dimensional \gls{netcdf} data over the web. Clients will send request containing the wanted coordinates (latitudes, longitudes, depth and time), what variable is to be displayed, projection, format and size the response should be. ncWMS, which has been configured to read from datasets (for example sets of \gls{netcdf} files or a \gls{THREDDS} server), responds to a request with an image of the desired type. ncWMS adheres to the \gls{WMS} specification (\gls{WMS} 1.3.0 and 1.1.1 are supported).
     \paragraph{Configuration}
-    ncWMS is mainly configured through a web interface, where you can add datasets and change server settings. A dataset can be: a single \gls{netcdf} file, an \gls{OPENDAP} endpoint (a service provided by \gls{THREDDS}), a NcML file or a glob aggregation (using wildcard characters like ). It is possible to configure which variables of a dataset to expose and how. Each dataset can also be set to automatically refresh at certain intervals. The server can be set to cache data, to reduce \gls{CPU} load at the expense of memory and disk space.
+    ncWMS is mainly configured through a web interface, where you can add datasets and change server settings. A dataset can be: a single \gls{netcdf} file, an \gls{OPENDAP} endpoint (a service provided by \gls{THREDDS}), a \gls{NCML} file or a glob aggregation (using wildcard characters like ). It is possible to configure which variables of a dataset to expose and how. Each dataset can also be set to automatically refresh at certain intervals. The server can be set to cache data, to reduce \gls{CPU} load at the expense of memory and disk space.
     \paragraph{Aggregation}
-    The glob aggregation or NcML work well with files that cover the same area, but contain different timesteps. To handle different areas and different resolutions it may be possible to use \gls{THREDDS}/\gls{OPENDAP} or NcML.
+    The glob aggregation or \gls{NCML} work well with files that cover the same area, but contain different timesteps. To handle different areas and different resolutions it may be possible to use \gls{THREDDS}/\gls{OPENDAP} or \gls{NCML}.
     \paragraph{Performance}
     Testing both local and publicly available ncWMS servers the performance seems good. When using the godiva2 browser based client or sending individual requests the server mostly responds quickly, with some idiopathic exceptions. Transmitting the map data to the client as \gls{PNG} images should be a bandwidth-efficient way to do it, as well as moving the computation load away from the client. When starting the server application or adding a dataset, the server needs some time to load some information from the datasets. This only takes a few seconds, even for a few hundred GB of local \gls{netcdf} files.
     \paragraph{Summary}
@@ -956,6 +958,7 @@ The group feels confident that a custom \gls{back-end} \gls{prototype} can be ma
 The group asks SINTEF to make a decision for a \gls{back-end} solution based on the information in this report.
 
 \subsection{Different paths}
+\label{subsec:DifferentPaths}
 As SINTEF is given a choice for how to proceed, the group sees two paths forward in the project:
 \begin{enumerate}
 \item \gls{THREDDS} \gls{back-end}: Given that SINTEF chooses to use a \gls{THREDDS} \gls{back-end}, the group asks SINTEF to provide a configured \gls{THREDDS} server. The group will focus their work on the \gls{front-end}, and attempt to make a \gls{prototype} that replicates most functionality from todays site.
@@ -981,13 +984,13 @@ The desired behavior of the system can be described through use case diagrams. H
   The \textbf{end-user} is a user that uses our \gls{front-end} solution, which again depends on our \gls{back-end} solution. Among such users there is currently not a goal to differentiate users, but at a later point registration and authentication might be required. For these users, a simple and efficient \gls{GUI} is required.  
   The \textbf{3rd-party user} is a user that only uses the \gls{back-end} solution of our project. These services will again be used by end-users. All these 3rd-party users might have to be authenticated to use the \gls{back-end} directly. This to ensure that no requests will be processed if it is not authenticated and within the \gls{API} of allowed requests.
   
-  Together these to types of users requires us to have a clear and usable interface both from the \gls{back-end} and the \gls{front-end}. While the end-users are the main focus, adapting for the 3rd-party users should be easy, as we will focus on the usability of the interface between the \gls{front-end} and \gls{back-end} for our own use.
+  Together, these two types of users requires us to have a clear and usable interface both from the \gls{back-end} and the \gls{front-end}. While the end-users are the main focus, adapting for the 3rd-party users should be easy, as we will focus on the usability of the interface between the \gls{front-end} and \gls{back-end} for our own use.
 
   \subsection{Use Case Diagrams}
   Our two users classes have a limited set of operations that they can perform, but with a wide range of parameters that can be adjusted. For the end-user these are shown in Figure \ref{funcReqsBack} and for the 3rd-party services these are shown in Figure \ref{funcReqsFront}.
   \begin{figure}[h]
 	\begin{center}
-	\includegraphics[height=125px,width=186px]{img/useCase_EndUser.png}
+	\includegraphics[height=150px]{img/useCase_EndUser.png}
 	\caption{End-user Use Case Diagram}
 	\label{fig:endUserUseDiagram}
 	%\medskip
@@ -1011,9 +1014,9 @@ The desired behavior of the system can be described through use case diagrams. H
 	For our \gls{pre-study}, SINTEF put forth a series of situations were their system is used by the fishery industry. 
 	\begin{itemize}
 		\item \textbf{Planning of new fish farm sites} \\
-		When choosing a new site for a fish farm, it is important to be aware of historical information on currents, temperature and salinity. Placing a new site in an area that has high currents might make construction and other operations difficult.
+		When choosing a new site for a fish farm, it is important to be aware of historical information on currents, temperature and salinity. Placing a new site in an area that has high currents might make construction and other operations difficult. If the temperature and salinity conditions are not ideal, the fish might not thrive. 
 		\item \textbf{Planning the removal of lice in a fish farm} \\
-		In the event that lice has to be removed from the fish in the farm, there are two procedures that are used. In the first scenario, a tanker vessel will pump the fish from the farm into a holding room. Here, the fish is treated with chemicals before being pumped back to the farm. The second method brings in crane boats, that hoist the farm, thus shrinking the volume the fish has available. A canvas is then used to surround the fish, and the chemicals are added directly. 
+		In the event that lice has to be removed from the fish in the farm, there are two procedures that are used. In the first scenario, a tanker vessel will pump the fish from the farm into a holding room. Here, the fish is treated with chemicals before being pumped back to the farm. The second method brings in crane boats that hoist the farm, thus shrinking the volume the fish has available. A canvas is then used to surround the fish, and the chemicals are added directly. 
 
 		Both these operations require calm currents, as to ensure that any support vessels are able to stay in position during the operation. Having access to the latest current predictions is vital in the planning of this type of operation.
 		\item \textbf{Planning feeding of fish in fish farms} \\

@@ -2159,6 +2159,7 @@ In the scenario in which a base map provided in the Polar Stereographic Projecti
 However, our research discovered that base map tiles sources - such as Google Maps or OpenStreetMaps - are only available in more standard projections. The particular polar stereographic projection used by SINTEF could not be found in any available maps.
 
 \subsection{Dynamically projecting on the front end}
+\label{subsec:DynamicProj}
 Another path for a possible solution we investigated was dynamically project the dataset requested by the user client-side, with Javascript. 
 Default SRS codes known to OpenLayers currently are the following:
 EPSG:4326, CRS:84, urn:ogc:def:crs:EPSG:6.6:4326, EPSG:900913, EPSG:3857, EPSG:102113, EPSG:102100 and OSGEO:41001)
@@ -2420,7 +2421,6 @@ We tried to provide the generated \gls{netcdf}-file to the \gls{back-end} Java \
 Therefore, in the end, no attribute changes has been made. Instead, painstaking attention to axis ranges parameters has been necessary in order to convert a \gls{netcdf} file with all the possible types of data (Salinity, Temperature, Currents and Depth).
 
 \chapter{Final product}
-\section{Description}
 \section{Back-end}
 \subsection{High level Architecture}
 The \gls{back-end} is built as a single binary to ease deployment. The program consists of 6 major modules, each of which are described in more detail below:
@@ -2518,9 +2518,9 @@ gridsize   & int        & Approximate distance between datapoints in meters \\
 \end{table}
 
 \paragraph{Scanning}
-When the program starts up, the indexer starts to scan a specified folder for \gls{netcdf} files that should be added to the database. This process begins by traversing the specified folder and its subfolders recursively, adding the path of any file ending in ".nc" to a list. Every file found like this is either added to the database or skipped if it is already in the database. 
+When the program starts up, the indexer starts to scan a specified folder for \gls{netcdf} files that should be added to the database. This process begins by traversing the specified folder and its subfolders recursively, adding the path of any file ending in ".nc" to a list. Every file found like this is either added to the database, or skipped if it is already in the database. 
 
-If a \gls{netcdf} file should be added it is opened to retrieve key information for the database entry. To create the coverage polygon we read just the corner points of gridLats and gridLons, using a stride of one less than the corresponding dimension. Two examples of the polygons created this way are show in figure \ref{fig:IndexerDatasets}. In order to make the time line we determine the start point by looking at the "units"-attribute of the \gls{netcdf}s time variable. This is a string like "days since 2013-08-06 00:00:00" which we turn into a DateTime-object using the formatter pattern "yyyy-MM-dd HH:mm:ss". Converting this to a UNIX timestamp we have the timeline starting point. The length of the time variable in the \gls{netcdf} file is the number of hours the data of the \gls{netcdf} file covers. By adding this number of hours to the starting point we have the end point of our time line. The value for the gridsize column is taken from the grid\_mapping variable’s attribute "horizontal\_resolution". With all of this an INSERT INTO statement is constructed and executed on the database.
+If a \gls{netcdf} file should be added, it is opened to retrieve key information for the database entry. To create the coverage polygon we read just the corner points of gridLats and gridLons, using a stride of one less than the corresponding dimension. Two examples of the polygons created this way are show in figure \ref{fig:IndexerDatasets}. In order to make the timeline, we determine the start point by looking at the "units"-attribute of the \gls{netcdf}s time variable. This is a string like "days since 2013-08-06 00:00:00" which we turn into a DateTime-object using the formatter pattern "yyyy-MM-dd HH:mm:ss". Converting this to a UNIX timestamp we have the timeline starting point. The length of the time variable in the \gls{netcdf} file is the number of hours the data of the \gls{netcdf} file covers. By adding this number of hours to the starting point we have the end point of our timeline. The value for the grid size column is taken from the grid\_mapping variable’s attribute "horizontal\_resolution". With all of this an INSERT INTO statement is constructed and executed on the database.
 
 \begin{figure}[!htb]
 \begin{center}
@@ -2531,7 +2531,7 @@ If a \gls{netcdf} file should be added it is opened to retrieve key information 
 \end{figure}
 
 \paragraph{Querying}
-The indexer allows for rapid queries of which files in a given areas have data for a given point in time. A call to the query() function takes start and end latitude and longitude to specify the area you want to query. From this the function will create a POLYGON with four corners. An example of a polygon for a query is shown in figure \ref{fig:IndexerRequest}. The point in time is taken as a DateTime argument and converted to UNIX timestamp, making a POINT geometry. Using a SQL query like 
+The indexer allows for rapid queries of which files in a given areas have data for a given point in time. A call to the query() function takes start and end latitude and longitude to specify the area you want to query. From this, the function will create a POLYGON with four corners. An example of a polygon for a query is shown in figure \ref{fig:IndexerRequest}. The point in time is taken as a DateTime argument and converted to UNIX timestamp, making a POINT geometry. Using a SQL query like 
 \begin{lstlisting}
     SELECT filepath
     FROM dataset\_XY\_time
@@ -2549,7 +2549,7 @@ we get a list of files that match the query() parameters. Where [a] and [c] are 
 \end{figure}
 
 \subsection{REST endpoints}
-The REST endpoints are gateway to the application as all communication flows through them and \gls{API} is defined by those endpoints. It is a collection of classes representing specific service that the application provides. When user enters his request in form of \gls{URL} into his \gls{HTTP} client (browser), server parses this request and calls appropriate resource class to handle this request. The user can specify additional constraints in the form of query parameters.
+The REST endpoints are gateway to the application as all communication flows through them and \gls{API} is defined by those endpoints. It is a collection of classes representing specific service that the application provides. When a user enters his request in form of \gls{URL} into his \gls{HTTP} client (browser), the server parses this request and calls appropriate resource class to handle this request. The user can specify additional constraints in the form of query parameters.
 
 In the application there are currently resource classes for checking status of the application and for representing scalar information from simulated dataset (current magnitude, depth, salinity and temperature). By specifying query parameters user can tell the endpoint which section of the data he is interested in. Most resources accept area, depth and time parameters.
 
@@ -2557,9 +2557,9 @@ Due to time constraints, we have restricted the output to require a 2D slice of 
 
 Every resource class has to be in the \texttt{com.sintef.featureserver.rs} class and is annotated by \texttt{@Path} annotation specifying the root \gls{URL} of that resource. Because most resources need to access information from \gls{netcdf}, it is common to store reference to \texttt{NetCdfManager} in a private variable in class constructor. Resource classes then contain methods for handling user requests. Such methods are annotated with \texttt{@Path}, which specifies path from the resource root and have to return \texttt{Response} object. Method parameters which are annotated by \texttt{@QueryParam} with parameter name are autofilled with query parameters.
 
-Typical workflow of the class method for handling user request is to first validate the user input, then use \texttt{NetCdfManager} to get the data user requested, convert the raw data to some interchangeable format (usually to \gls{PNG} image with the use of \texttt{ImageRenderer}) and finally pack the result in the \texttt{Response} object and return it.
+Typical workflow of the class method for handling user request is to first validate the user input, then use \texttt{NetCdfManager} to get the data the user requested, convert the raw data to some interchangeable format (usually to \gls{PNG} image with the use of \texttt{ImageRenderer}), and finally pack the result in the \texttt{Response} object and return it.
 
-To minimalize boilerplate code, the \texttt{RsUtil} class containing common methods was created. This class contains methods for user input validation and for converting array of vectors to array of it's magnitudes.
+To minimize boilerplate code, the \texttt{RsUtil} class containing common methods was created. This class contains methods for user input validation and for converting array of vectors to array of it's magnitudes.
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[language=Java, caption=Example of a simple REST resource class, label=lst:resourceClass, frame=single]
@@ -2576,7 +2576,7 @@ public class MyResource {
 \end{lstlisting}
 \end{minipage}
 
-In the listing \ref{lst:resourceClass} is an example of a very simple resource class. This resource resides at \gls{URL} \path{/root-of-my-resource} and has only one method \texttt{my-method}, which accepts one parameter. After invoking this class by pointing your browser to \gls{URL} \path{/root-of-my-resource/my-method?myParam=test}, application should respond with "test" (which was our parameter) in body and the type set to text/plain.
+In listing \ref{lst:resourceClass}, there is an example of a very simple resource class. This resource resides at \gls{URL} \path{/root-of-my-resource} and has only one method, \texttt{my-method}, which accepts one parameter. After invoking this class by pointing your browser to \gls{URL} \path{/root-of-my-resource/my-method?myParam=test}, the application should respond with "test" (which was our parameter) in the body, and the type set to text/plain.
 
 \subsection{WMTS}
 
@@ -2625,54 +2625,46 @@ The main job of a \gls{GUI} is to make the user able to interact with the applic
 Querying the \gls{back-end} is done by means of it's REST \gls{API}. This is done by taking the validated user input and building a query \gls{URL} from it. When the \gls{back-end} receives the input it processes it and responds with the relevant data, usually an image. The data response is then displayed in the \gls{GUI}, usually on the map at the user-defined coordinates. 
 
 \subsection{User Interface Design}
-A specific work has been done on designing the user interface of the front-end for this application.
-At the beginning of the project, the customer let us choose the graphical layout, and as a first step, we conveyed on the components to be placed in the screen, available to the user, that are:
+The group has focused a lot on designing the user interface of the front-end for this application.
+At the beginning of the project, the customer let the group choose the graphical layout as a first step. The customer would then give their thoughts and comments. After agreeing with the customer on the components to be placed on screen, we ended up with the following:
 
 \begin{description}
 \item[Map] The map, with tiles from a map source like OpenStreetMaps, or Google Maps.
-\item[Data type selector] A selector that allows to choose among Salinity, Temperature, Currents or Depth. Since we conveyed with the customer that overlays can be shown one at a time on the map for understability purposes, we conveyed that this selector can be a combo-box (HTML option element) or a single-option checkbox group, with one option at a time that can be selected.
-\item[Depth selector] A numeric selector to choose the depth (in meters under sea level) at which watch the velues of the selected variables.
-\item[Date picker] A component to pick the date in which to watch the data.
-\item[Time picker] A component to select the time - in the day selected - in which the data refers to. The data is stored and available in intervals of one hour, therefore the boundaries of the time selector should be 00.00, 01.00, 02.00, ...., 23.00.
-\item[Area selector] There should be the possibility for the user to select an area. This can be done directly clicking and dragging on the map, with a drag box, or by directly pasting coordinates in two text-boxes (one for the 
-\item[Submit button] A button in order to actually perform the request to the back-end, with all the parameters set by the user, and display the data.
+\item[Data type selector] A selector that allows the user to choose Salinity, Temperature, Currents or Depth. Since overlays can be shown one at a time on the map for, this selector can be a combo-box (HTML option element) or a single-option checkbox group, with one option at a time that can be selected.
+\item[Depth selector] A numeric selector to choose the depth (in meters under sea level).
+\item[Date picker] A component to pick the date from which to display the data.
+\item[Time picker] A component to select the time - in the day selected - that data should be displayed for. The data is stored and available in intervals of one hour, therefore the boundaries of the time selector should be 00.00, 01.00, 02.00, ...., 23.00.
+\item[Area selector] There should be the possibility for the user to select an area. This can be done directly by clicking and dragging on the map with a drag box, or by directly pasting coordinates in two text-boxes.
+\item[Submit button] A button in order to actually perform the request to the \gls{back-end}, with all the parameters set by the user, and display the data.
 \item[A container for all the options above]
-\item[Zoom picker] A component that allows to zoom the map in and out by clicking on the plus sign or the minus sign, providing the user an alternative way to the scroll wheel of the mouse, or the pinching action on a mobile touch-screen device.
+\item[Zoom picker] A component that allows the user to zoom the map in and out by clicking on the plus sign or the minus sign, providing the user an alternative to the scroll wheel, or the pinching action on a mobile touch-screen device.
 \end{description}
+
+During the design of the front end interface, some inspiration has been taken from existing solutions like Google Maps and Bing maps. 
+The different proposals have been the following:
+\begin{description}
+  \item[Reserve full screen for the map] This way the map component should take all the area of the screen, and the controls for the users are placed on one side of the screen
+  \item[Reserve full-width for the map, but limited hight] This way, user controls and charts can be put at the bottom of the web-page, outside the map.
+  \item[Reserve the map a bounded screen-area, both limited in height and width] This way, the charts can be placed on the bottom, and the controls on the right side of the screen, or vice-versa
+\end{description}
+
+The team has taken the decision to use a map with OpenStreetMap background tile covering all the screen size. This is mainly because of usability reasons, but also because it gives a more user friendly interface.
+
+In particular, we ended up with the a mockup as shown in figure \ref{fig:FrontendMockup}
 
 \begin{figure}[h]
 \begin{center}
 \fbox{\includegraphics[width=\textwidth]{img/frontend-mockup.jpg}}
-\caption{Prepared Front-end Desktop Mockup}
+\caption{Prepared front-end Desktop Mockup}
 \label{fig:FrontendMockup}
 \end{center}
 \end{figure}
 
-
-During the design of the front end interface, some inspiration has been taken from existing solutions like Google Maps and Bing maps. 
-The main proposals have been the following:
-\begin{description}
-  \item[Reserve the map the full screen] This way the map component should take all the area of the screen, and the controls for the users are place on one side of the screen
-  \item[Reserve the map a full-width, but limited in high, area of the screen] This way, user controls and charts can be put at the bottom of the web-page, outside the map.
-  \item[Reserve the map a bounded screen-area, both limited in height and width] This way, the charts can be placed on the bottom, and the controls on the right side of the screen, or vice-versa
-\end{description}
-
-Among the team has been taken the decision to use a map with OpenStreetMap background tile covering all the screen size. This is mainly because of usability reasons, and also has a more user friendly interface.
-
-In particular, we ended up with the a mockup as shown in figure \ref{fig:FrontendMockup}
-
 \subsection{Projection conversion}
 We configured OpenLayers to use OpenStreetMaps as a base tile source. This source, like Google Maps, is in the Mercator projection, with meters as unit of measure.
-The URL request to the back-end, instead, requires coordinates to be expressed in latitude-longitude format, i.e. in the \gls{GCS}. 
+The \gls{URL} request to the \gls{back-end}, instead, requires coordinates to be expressed in latitude-longitude format, i.e. in the \gls{GCS}. 
 Therefore a conversion between these two projections is required by the front-end.
-This is done using \textit{Proj4js}\footnote{http://trac.osgeo.org/proj4js/} library, which is a part of the Proj.4 project.
-\begin{quote}
-Proj4js is a JavaScript library to transform point coordinates from one coordinate system to another, including datum transformations.
-
-This library is a port of both the  PROJ.4 and  GCTCP C libraries to JavaScript. Enabling these transformations in the browser allows geographic data stored in different projections to be combined in browser-based web mapping applications.
-
-Proj4js is a part of the  MetaCRS group of projects and uses the same MIT style license as PROJ.4.
-\end{quote}
+This is done using \textit{Proj4js}\footnote{http://trac.osgeo.org/proj4js/} library, which is a part of the Proj.4 project. This is further described in section \ref{subsec:DynamicProj}.
 
 This conversion is done on the box dragged end event, i.e. every time the user select a new area on the screen.
 

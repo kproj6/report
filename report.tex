@@ -675,10 +675,10 @@ The same is true for the maps that can be generated for a specific site. The use
 
 For a user who knows what data is interesting, this is a complicated and data heavy way of delivering information. The PDFs seems to range in size from 125kB to around 3MB, depending on what information is requested. The region maps are the absolute largest in file size, ranging from 1 to 3MB, while the files containing the current roses are quite small, in the 100-200kB range. 
 
-On a computer with broadband connection, the size of the files is not very problematic. For these users, the biggest challenge is the fact that the user can not specify what kind of data they want plotted, and have to look through quite a lot of pages to get the information needed. For a user on a low bandwidth connection and/or on a mobile device, the size of the files is a more pressing problem. On an \gls{EDGE} connection the theoretical best download time for a 3MB file is 62,5 seconds at 384kbit/s \cite{3gpp.com}.
+On a computer with broadband connection, the size of the files is not very problematic. For these users, the biggest challenge is the fact that the user cannot specify what kind of data they want plotted, and have to look through quite a lot of pages to get the information needed. For a user on a low bandwidth connection and/or on a mobile device, the size of the files is a more pressing problem. On an \gls{EDGE} connection the theoretical best download time for a 3MB file is 62,5 seconds at 384kbit/s \cite{3gpp.com}.
 
 \subsection{Evaluation criteria}
-SINTEFs main goal with this project is to be able to rid themselves of the PDF store, and generate the information on demand. This will make for a much more flexible system, where it will be possible to add new graphs and functionality quickly. For the customers, it will make it possible to request more customised graphs and plots.
+SINTEFs main goal with this project is to be able to rid themselves of the PDF store, and generate the information on demand. This will make for a much more flexible system, where it will be possible to add new graphs and functionality quickly. For the customers, it will make it possible to request more customized graphs and plots.
 
 SINTEF has presented the group with several goals they wish the new system to fulfill:
 
@@ -715,7 +715,7 @@ The group has used the first part of the project investigating what solutions wo
 
   \subsection{Ocean viewer}
   \emph{Link: \url{http://www.oceanviewer.org}} \\%make sure to use /
-    Ocean Viewer is a pilot project of the \gls{MEOPAR} of Canada. It gathers data from different sources and displays it as PNGs overlayed on a map. You can select different geographical areas on a customized Google Map and different data from a menu (temperature, salinity and others). Like the Danish solution the PNGs can be shown in sequence to show changes over time.
+    Ocean Viewer is a pilot project of the \gls{MEOPAR} of Canada. It gathers data from different sources and displays it as PNGs overlayed on a map. You can select different geographical areas on a customized Google Map and different data from a menu (temperature, salinity and others). Like the Danish solution the PNGs can be shown in sequence to illustrate changes over time.
   \\ \emph{Overall rating: \textbf{Ok}}
 
   \subsection{Sea temperatures and Currents - Bureau of Meteorology}
@@ -725,28 +725,28 @@ The group has used the first part of the project investigating what solutions wo
   
   \subsection{yr.no Map Service}
   \emph{Link: \url{http://yr.no/kart}} \\%make sure to use //
-This solution presents the user with a conventional map interface. On the sides and top there are menus for selecting which variable and timestep should be displayed. The user is only allowed to select a timestep about 8 days from the current time. Interesting variables include sea temperature, salinity and sea currents, each has it's own . There is no way to select depth, and all data seems to be for the surface values. The chosen variable is added as an overlay of \gls{PNG} tiles using OpenLayers. The tiles are fetched using \gls{WMS} from a norwegian meteorological service server. On the map there are several measurement stations displayed, that give information when clicked. In addition, clicking anywhere on the map displays several plots predicting the next two days of weather for that spot.
+This solution presents the user with a conventional map interface. On the sides and top there are menus for selecting which variable and time step should be displayed. The user is only allowed to select a time step about 8 days from the current time. Interesting variables include sea temperature, salinity and sea currents, each has its own. There is no way to select depth, and all data seems to be for the surface values. The chosen variable is added as an overlay of \gls{PNG} tiles using OpenLayers. The tiles are fetched using \gls{WMS} from a norwegian meteorological service server. On the map there are several measurement stations displayed, that give information when clicked. In addition, clicking anywhere on the map displays several plots predicting the next two days of weather for that spot.
   \\ \emph{Overall rating: \textbf{Ok}}
 
 \section{Back-end}
 
 \subsection{GeoServer}
-Does not support \gls{netcdf} natively. There exist a community plugin that enables you to read from \gls{netcdf} files, but the support seems very shifty. GeoServer does not seem to have support for more than one file and metadata appears difficult to extract. Due to this factors, the system was deemed to not to meet the needed criteria.
+Does not support \gls{netcdf} natively. There exist a community plugin that enables you to read from \gls{netcdf} files, but the support seems very shifty. GeoServer does not seem to have support for more than one file and metadata appears difficult to extract. Due to these factors, the system was deemed to not to meet the needed criteria.
 
 \subsection{THREDDS}
 \begin{quote}
 The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and data access for scientific datasets, using \gls{OPENDAP}, \gls{OGC} \gls{WMS} and \gls{WCS}, \gls{HTTP}, and other remote data access \glspl{protocol}. \cite{TDS:Web}
 \end{quote}
 
-  Except supporting multiple data access \glspl{protocol}, \gls{TDS} is able to virtually aggregate multiple \gls{netcdf} files to one dataset that can be used for queries, such as selecting a region and sending it's data in specified format. Dataset configurations are done via \gls{NCML}, which is a dialect of \gls{XML}.
+  Except supporting multiple data access \glspl{protocol}, \gls{TDS} is able to virtually aggregate multiple \gls{netcdf} files to one dataset that can be used for queries, such as selecting a region and sending its data in specified format. Dataset configurations are done via \gls{NCML}, which is a dialect of \gls{XML}.
 
-  Although \gls{TDS} seems to support everything that is needed for this project, it's installation, and especially configuration for agreggation and special needs, is not trivial. Moreover there are doubts about speed and dealing with serving a range containing large quantified points. One advantage is that SINTEF currently have a \gls{TDS} running and configured, so we won't need to configure it from scratch, and SINTEF employees probably have experience and knowledge about setting it up, something which the group lacks.
+  Although \gls{TDS} seems to support everything that is needed for this project, it's installation, and especially configuration for aggregation and special needs, is not trivial. Moreover there are doubts about speed and dealing with serving a range containing large quantified points. One advantage is that SINTEF currently has a \gls{TDS} running and configured, so we won't need to configure it from scratch, and SINTEF employees probably have experience and knowledge about setting it up, something which the group lacks.
 
   \subsection{Custom solution}
   An alternative is to write a custom \gls{back-end} from scratch.
   Advantages of this are:
   \begin{itemize}
-  \item Easy deployment - written as a single service that you just launch.
+  \item Easy deployment - written as a single service that can be launched easily.
   \item Load balancing - Easily scale outwards: The servers can be put behind a load balancer. 
   \item Speed - No overhead for unused features.
   \item Code clarity - No overhead for unused features.
@@ -765,7 +765,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
   
   \subsection{MapTiler}
   \emph{Link: \url{http://www.maptiler.org/}} \\%make sure to use //
-    MapTiler is an application for online map publishing. It makes it possible to create tiles that can be overlayed over other maps like Google Maps, Open Street Map and others. It's written in C/C++ and claims to be a lot faster than other existing solutions. A draw back seems to be that it's made for overlaying a pre generated directory of images rather than dynamic data like the ocean forecast data.
+    MapTiler is an application for online map publishing. It makes it possible to create tiles that can be overlayed over other maps like Google Maps, Open Street Map and others. It is written in C/C++ and claims to be a lot faster than other existing solutions. A draw back seems to be that it is made for overlaying a pre generated directory of images rather than dynamic data like the ocean forecast data.
   \\ \emph{Overall rating: \textbf{Ok}}
   
     \subsection{ncWMS}
@@ -775,7 +775,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
     ncWMS is mainly configured through a web interface, where you can add datasets and change server settings. A dataset can be: a single \gls{netcdf} file, an \gls{OPENDAP} endpoint (a service provided by \gls{THREDDS}), a NcML file or a glob aggregation (using wildcard characters like ). It is possible to configure which variables of a dataset to expose and how. Each dataset can also be set to automatically refresh at certain intervals. The server can be set to cache data, to reduce \gls{CPU} load at the expense of memory and disk space.
     \paragraph{Aggregation}
     The glob aggregation or NcML work well with files that cover the same area, but contain different timesteps. To handle different areas and different resolutions it may be possible to use \gls{THREDDS}/\gls{OPENDAP} or NcML.
-    \paragraph{Perfomance}
+    \paragraph{Performance}
     Testing both local and publicly available ncWMS servers the performance seems good. When using the godiva2 browser based client or sending individual requests the server mostly responds quickly, with some idiopathic exceptions. Transmitting the map data to the client as \gls{PNG} images should be a bandwidth-efficient way to do it, as well as moving the computation load away from the client. When starting the server application or adding a dataset, the server needs some time to load some information from the datasets. This only takes a few seconds, even for a few hundred GB of local \gls{netcdf} files.
     \paragraph{Summary}
     ncWMS does a lot of what we need the \gls{back-end} of our solution to do. It handles the extraction, downsampling and projection of the data, creating an image ready to be used in a map widget or on it's own. It can only handle requests for a few kinds of plots. It is \gls{open source}, and is free to use under a modified \gls{BSD} license. To serve all the plots and data required it would need modification.
@@ -784,14 +784,14 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
 %%%
 \section{Transmission Protocols}
   There are several standardized \glspl{protocol} to present map data from the server to the client in order to dynamically display layers on a map.
-  In particular, two main kind of representations can be distinguished, and sometimes they're both supported by a single standard:
+  In particular, two main kind of representations can be distinguished, and sometimes they are both supported by a single standard:
   \begin{description}
     \item[Vector based layers] Data is sent from the server to the client in a textual format, such as GeoJson
     \item[Image based layers] Data is sent from the server to the client as images, such as \gls{JPEG}, \gls{PNG} and \gls{GIF}
   \end{description}
 
   The \acrfull{OGC} became involved in developing standards for web mapping after a paper was published in 1997 by Allan Doyle, outlining a "WWW Mapping Framework". The oldest and most popular standard for web mapping is \gls{WMS}. However, the properties of this standard proved to be difficult to implement for situations where short response times were important. For most \gls{WMS} services it is not uncommon to require 1 or more \gls{CPU} seconds to produce a response. For massive parallel use cases, such a \gls{CPU}-intensive service is not practical. To overcome the \gls{CPU} intensive on-the-fly rendering problem, application developers started using pre-rendered map tiles. Several open and proprietary schemes were invented to organize and address these map tiles. 
-  In order to reduce the performace problems of \gls{WMS}, new standards have been defined:
+  In order to reduce the performance problems of \gls{WMS}, new standards have been defined:
   \begin{itemize}
     \item TMS
     \item WMS-c
@@ -799,34 +799,34 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
   \end{itemize}
   
   \subsection{WMS}
-    \acrfull{WMS} is a standard \gls{protocol} for serving georeferenced map images over the Internet that are generated by a map server using data from a GIS database. The specification was developed and first published by the Open Geospatial Consortium in 1999.
+    \acrfull{WMS} is a standard \gls{protocol} for serving geo-referenced map images over the Internet that are generated by a map server using data from a GIS database. The specification was developed and first published by the Open Geospatial Consortium in 1999.
     A \gls{WMS} server usually serves the map in a bitmap format, e.g. \gls{PNG}, \gls{GIF} or \gls{JPEG}. In addition, vector graphics can be included: such as points, lines, curves and text, expressed in SVG or WebCGM format.
-    The \gls{WMS} standard allows flexibility in the client request enabling clients to obtain exactly the final image they want. A \gls{WMS} client can request that the server creates a map by overlaying an arbitrary number of the map layers offered by the server, over an arbitrary geographic bound, with an arbitrary background color at an arbitrary scale, in any supported coordinate reference system.
+    The \gls{WMS} standard allows flexibility in the client request enabling clients to obtain exactly the final image they want. A \gls{WMS} client can request that the server creates a map by overlaying an arbitrary number of the map layers offered by the server, over an arbitrary geographic bound, with an arbitrary background color at an arbitrary scale, in any supported coordinate reference system. \cite{WMS:Web}
 
   \subsection{TMS}
 \gls{TMS} is a specification for storing and retrieving cartographic data, developed by the Open Source Geospatial Foundation. The \gls{TMS} \gls{protocol} fills a gap between the very simple standard used by OpenStreetMap and the complexity of the \gls{WMS} standard, providing simple \gls{URL} to tiles while also supporting alternate spatial referencing system.
-    \gls{TMS} is most widely supported by web mapping clients and servers, and it is served as the basis for \gls{WMTS} (the OpenGIS Web Map Tile Service \gls{OGC} standard).
+    \gls{TMS} is most widely supported by web mapping clients and servers, and it is served as the basis for \gls{WMTS} (the OpenGIS Web Map Tile Service \gls{OGC} standard). \cite{TMS:Web}
 
   \subsection{WMS-c}
     The WMS Tiling Client Recommendation, or WMS-C for short, is a recommendation set forth by OSGeo for making tiled requests using \gls{WMS}. It is just a recommendation on using \gls{WMS} properly in order to improve performance by caching data.
-    This recommendation relies on two basic concepts to support this purpose: First, cachability of map imagery can be improved by using image tiles of fixed width and height, referenced to some fixed geographic grid at fixed scales. A valid tile request is one that conforms to the specification of fixed image parameters and geographic grid(s) for a given layer. By analogy, an invalid tile request is one that does not.
-    Second, caching of \gls{HTTP} GET requests is further made possible by constraining the \gls{URL} parameters used in the request. This recommendation identifies the \gls{WMS} GetMap parameters minimally needed for a client to request a valid tile.
+    This recommendation relies on two basic concepts to support this purpose: First, ability to cache map imagery can be improved by using image tiles of fixed width and height, referenced to some fixed geographic grid at fixed scales. A valid tile request is one that conforms to the specification of fixed image parameters and geographic grid(s) for a given layer. By analogy, an invalid tile request is one that does not.
+    Second, caching of \gls{HTTP} GET requests is further made possible by constraining the \gls{URL} parameters used in the request. This recommendation identifies the \gls{WMS} GetMap parameters minimally needed for a client to request a valid tile. \cite{WMSc:Web}
 
   \subsection{WMTS}
-\gls{WMTS} is a standard \gls{protocol} for serving pre-rendered georeferenced map tiles over the Internet. The specification was developed and first published by the Open Geospatial Consortium in 2010
+\gls{WMTS} is a standard \gls{protocol} for serving pre-rendered geo-referenced map tiles over the Internet. The specification was developed and first published by the Open Geospatial Consortium in 2010
     \gls{WMTS} builds on efforts to develop scalable, high performance services for web based distribution of cartographic maps. To define this standard, similar initiatives were also considered, such as Google maps and NASA OnEarth. \gls{WMTS} includes both resource (RESTful approach) and procedure oriented architectural styles (KVP and SOAP encoding) in an effort to harmonize this interface standard with the OSGeo specification.
-    \gls{WMTS} complements earlier efforts to develop services for the web based distribution of cartographic maps. The \gls{OGC} \gls{WMTS} provides a complementary approach to the \gls{OGC} \gls{WMS} for tiling maps. \gls{WMS} focuses on rendering custom maps and is an ideal solution for dynamic data or custom styled maps. \gls{WMTS} trades the flexibility of custom map rendering for the scalability possible by serving of static data (base maps) where the bounding box and scales have been constrained to discrete tiles. The fixed set of tiles allows for the implementation of a \gls{WMTS} service using a web server that simply returns existing files. The fixed set of tiles also enables the use of standard network mechanisms for scalability such as distributed cache systems.
+    \gls{WMTS} complements earlier efforts to develop services for the web based distribution of cartographic maps. The \gls{OGC} \gls{WMTS} provides a complementary approach to the \gls{OGC} \gls{WMS} for tiling maps. \gls{WMS} focuses on rendering custom maps and is an ideal solution for dynamic data or custom styled maps. \gls{WMTS} trades the flexibility of custom map rendering for the scalability possible by serving of static data (base maps) where the bounding box and scales have been constrained to discrete tiles. The fixed set of tiles allows for the implementation of a \gls{WMTS} service using a web server that simply returns existing files. The fixed set of tiles also enables the use of standard network mechanisms for scalability such as distributed cache systems. \cite{WMTS:Web}
 
   \subsection{Summary}
-    WMS-C is the best supported and most mature \gls{protocol}, but it's a bit of a kludge overlayed on top of \gls{WMS} to support tiles and it incurs some extra overhead from having to use world coordinate bounding boxes rather than tile coordinates.
+    WMS-C is the best supported and most mature \gls{protocol}, but it is a bit of a kludge overlayed on top of \gls{WMS} to support tiles and it incurs some extra overhead from having to use world coordinate bounding boxes rather than tile coordinates.
     \gls{TMS} is fairly mature, and is specifically designed for tiles, but is not an official \gls{OGC} spec.
-    \gls{WMTS} is an \gls{OGC} spec that is meant to replace \gls{TMS} and WMS-C. It works purely in tile coordinates like \gls{TMS} (although it computes them differently) but has some additional capabilities that weren't in \gls{TMS}, like GetFeatureInfo. It's comparatively recent, but it is becoming more and more used, even if its implementations are less mature. It is also supported by OpenLayers.
+    \gls{WMTS} is an \gls{OGC} spec that is meant to replace \gls{TMS} and WMS-C. It works purely in tile coordinates like \gls{TMS} (although it computes them differently) but has some additional capabilities that were not in \gls{TMS}, like GetFeatureInfo. It's comparatively recent, but it is becoming more and more used, even if its implementations are less mature. It is also supported by OpenLayers.
 
 %%%
 \section{Front-end solutions}
-  A central part of the product requirement is to display simulated data in a dynamic manner. There exists solutions to do just that, and javascript libraries than makes it relatively easy to create at front end solution of our own. In this section we will discuss and compare the most relevant of these in the context of our assignment and the product requirements. 
+  A central part of the product requirement is to display simulated data in a dynamic manner. There exists solutions to do just that, and javascript libraries that makes it relatively easy to create at front end solution of our own. In this section we will discuss and compare the most relevant of these in the context of our assignment and the product requirements. 
   \subsection{Custom made solution}
-    A custom made solution has the general advantage that we can built it to specification and thus make sure it meets the requirements without having to deal with other peoples code base. Trying to customize an existing solution might be as much work as building something from the bottom. In the following paragraphs we will review and rate technologies we found relevant for building a custom front end.
+    A custom made solution has the general advantage that we can build it to specification and thus make sure it meets the requirements without having to deal with other people's code base. Trying to customize an existing solution might be as much work as building something from the bottom. In the following paragraphs we will review and rate technologies we found relevant for building a custom front end.
     \subsubsection{LeafletJS}
     \begin{tabular}{|p{4cm}|p{8cm}|}
       \hline
@@ -837,11 +837,11 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
     \end{tabular}
     
     \paragraph{Introduction} \indent
-    LeafletJS ("Leaflet" for the rest of the section) is an \gls{open source} javascript library for creating mobile-friendly interactive maps. It's licensed under the \href{'https://github.com/Leaflet/Leaflet/blob/master/LICENSE'}{2-clause \gls{BSD} License}, which makes it free to use in commercial applications as long as a credit is added somewhere in the user interface.
+    LeafletJS ("Leaflet" for the rest of the section) is an \gls{open source} javascript library for creating mobile-friendly interactive maps. It is licensed under the \href{'https://github.com/Leaflet/Leaflet/blob/master/LICENSE'}{2-clause \gls{BSD} License}, which makes it free to use in commercial applications as long as a credit is added somewhere in the user interface.
     Even though Leaflet is free to use it is dependent on a third party to provide the map tiles. These may not be free to use.
 
     \paragraph{Features}
-    Leaflet has the features you'd expect from a modern interactive map. This includes paning with inertia, zooming and the ability to add markers. It also supports double-tap and pinch to zoom for IOS and Android on mobile phones. Furthermore all the five biggest web browsers are supported, including graceful fallback for old versions.
+    Leaflet has the features one would expect from a modern interactive map. This includes panning with inertia, zooming and the ability to add markers. It also supports double-tap and pinch to zoom for IOS and Android on mobile phones. Furthermore all the five biggest web browsers are supported, including graceful fallback for old versions.
     
     The most powerful feature of Leaflet is the ability to add layers. The different supported layers are:
 
@@ -857,11 +857,11 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
     \end{itemize}
 
     For our purposes the ability to get map tiles from different sources may be very interesting. This gives us the ability to for example show both nautical maps and regular land maps at the convenience of the user. At zoom levels covering large geographical areas it will probably be most ideal to show the relevant simulated data as overlayed PNGs. This is easily achieved with image overlays in Leaflet. If we want to show very detailed data when zoomed further in, we might be able to use vector layers to visualize the data. It is also possible to use a GeoJSON layer to convert data formatted as GeoJSON to vectors.
-    It is also possible to use \gls{WMS} to overlay, for example, metrological data on a map. Eventhough this is a format that is used by large organizations like the National Oceanic and Atsmopheric Administration (\url{noaa.gov}) we have been advised against using this format due to it's negative effect on the speed and responsiveness experienced by the end-user. \footnote{IvÃ¡n SÃ¡nchez Ortega, How to Build Slow Maps - Trondheim, September 24, 2014}
+    It is also possible to use \gls{WMS} to overlay, for example, metrological data on a map. Even though this is a format that is used by large organizations like the National Oceanic and Atmospheric Administration (\url{noaa.gov}) we have been advised against using this format due to its negative effect on the speed and responsiveness experienced by the end-user. \footnote{Iván Sánchez Ortega, How to Build Slow Maps - Trondheim, September 24, 2014}
     Furthermore Leaflet can be extended with plugins. These can relatively easily be written in Javascript or an existing plugin can be downloaded and used. A relevant plugin to our needs could for example be heatmap.js (\url{http://www.patrick-wied.at/static/heatmapjs/}).
 
     \paragraph{Summary}
-    Leaflet is very suitable for our needs in respect to creating an interactive map overlayed with visualizations of relevant data created by the SINTEF ocean forecast simulations. It's lightweight(33 kilobytes), made to be compatible with mobile phones and very flexible in possibilities to display data on maps. It's also well documented.
+    Leaflet is very suitable for our needs in respect to creating an interactive map overlayed with visualizations of relevant data created by the SINTEF ocean forecast simulations. It's lightweight(33 kilobytes), made to be compatible with mobile phones and very flexible in possibilities to display data on maps. It is also well documented.
 
   \subsubsection{OpenLayers}
    \begin{tabular}{|p{4cm}|p{8cm}|}
@@ -886,13 +886,13 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
    The initial load time of the map is ok on a PC. The total loading time of the example (\gls{HTML} with map and \gls{WMS} tiles) took around 4 seconds. The size of the Javascript library (ol.js) is 129 KB, and the first time (without any sort of browser caching) it was fetched in 473 ms.
    \\ \emph{Score: \textbf{Med}}
    \paragraph{Responsiveness}
-   It's quite fast when pan, but not so fast when zooming in (438 ms + 2.43 s for DNS lookup of the \gls{WMS} server in the example) or out (around 400 ms was logged, on average, as the time to get tiles from the server, because there is no need of DNS lookup, but the overall perceived time is around 1s).
+   It is quite fast when pan, but not so fast when zooming in (438 ms + 2.43 s for DNS lookup of the \gls{WMS} server in the example) or out (around 400 ms was logged, on average, as the time to get tiles from the server, because there is no need of DNS lookup, but the overall perceived time is around 1s).
    \\ \emph{Score: \textbf{Med}}
    \paragraph{Detail and dynamism}
    The detail of the image is defined by \gls{PNG} provided by the \gls{WMS} server. Vector layers are also well drawn. Tile layers are updated on zooming.
    \\ \emph{Score: \textbf{High}}
    \paragraph{Ease of use}
-   It is quite easy to implement. The code needed is low, and it is easily convertable into Leaflet format. There are a lot of provided working examples, but it is not well documented yet for the version 3.0 (that has been released very recently: at the end of August 2014). Anyway, the detailed \gls{API} documentation is provided.
+   It is quite easy to implement. The code needed is low, and it is easily convertible into the Leaflet format. There are a lot of provided working examples, but it is not well documented yet for the version 3.0 (that has been released very recently: at the end of August 2014). Anyway, the detailed \gls{API} documentation is provided.
    \\ \emph{Score: \textbf{Med}}
    \paragraph{Summary}
    It is a library used in a lot of applications, dynamic, with a lot of features. On the contrary, it is less lightweight than LeafletJS, not so well documented and not always so fast as experienced by the user, especially in zooming.
@@ -900,11 +900,11 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
   
   \subsubsection{Wind map}
   \emph{Link: \url{http://hint.fm/wind/}} \\%make sure to use //
-    Wind map is a personal art project that gets surface wind data from the American government agency National Digital Forecast Database and displays it as moving curved lines on a map. This makes for a very intuivive visualization of the data that give a good general picture of the actual real-world situation. It's zoomable and can pan. By clicking on a specific point on the map you get the wind speed and coordinates of the point. A draw back might be the use on moblie devices which may be suboptimal.
+    Wind map is a personal art project that gets surface wind data from the American government agency National Digital Forecast Database and displays it as moving curved lines on a map. This makes for a very intuitive visualization of the data that gives a good general picture of the actual real-world situation. It's zoomable and can pan. By clicking on a specific point on the map you get the wind speed and coordinates of the point. A draw back might be the use on mobile devices which may be suboptimal.
   \\ \emph{Overall rating: \textbf{Good}}
 
   \subsubsection{Comparison of Leaflet and OpenLayers}
-    For the purpose of creating an interactive map we've boiled it down to either using LeafletJS or OpenLayers. As the description of each of the individual libraries above shows, the two are have many of the same capabilities. Both gives us the posibility to overlay visulizations of data in different ways. An reason for choosing Leaflet is the extensive documentation of the current version, a point where OpenLayers are lacking at the moment. Despite this OpenLayers support of \gls{WMTS} and \gls{WMSC} is such a strong argument in it's favor that we jugde it as the best fit for our purposes.
+    For the purpose of creating an interactive map we've boiled it down to either using LeafletJS or OpenLayers. As the description of each of the individual libraries above shows, the two are have many of the same capabilities. Both gives us the possibility to overlay visualizations of data in different ways. An reason for choosing Leaflet is the extensive documentation of the current version, a point where OpenLayers are lacking at the moment. Despite this OpenLayers support of \gls{WMTS} and \gls{WMSC} is such a strong argument in it's favor that we judge it as the best fit for our purposes.
     
   \subsection{Godiva2}
      \begin{tabular}{|p{4cm}|p{8cm}|}
@@ -917,7 +917,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
    
   \paragraph{Introduction}
   Godiva2 was created as a companion for ncWMS, to display the pngs served by ncWMS as tiles in a map interface. It is a fairly simple \gls{HTML} page using JavaScript. \\
-   It presents the user with a pannable, zoomable map interface of the earth. Variables (for example ocean temperature) can be selected from a menu. An overlay is added to the map, and the map zooms and pans to show the relevant area. The user can select the date, time of day and depth, updating the map immediately. Clicking on the map brings up a context menu, where a vertical profile plot can be created for that spot. Selecting a tool in the map interface, the user can draw a line on the map, and a plot is created showing the value of the selected variable along that line. There is a menu to select a different \gls{WMS}, changing the background map and projection of any overlays. The site allows the user to grab a permalink of the current state of the map.
+   It presents the user with a panable, zoomable map interface of the earth. Variables (for example ocean temperature) can be selected from a menu. An overlay is added to the map, and the map zooms and pans to show the relevant area. The user can select the date, time of day and depth, updating the map immediately. Clicking on the map brings up a context menu, where a vertical profile plot can be created for that spot. Selecting a tool in the map interface, the user can draw a line on the map, and a plot is created showing the value of the selected variable along that line. There is a menu to select a different \gls{WMS}, changing the background map and projection of any overlays. The site allows the user to grab a permalink of the current state of the map.
 
 	\paragraph{Load time}
 	Before selecting a variable, only a list of available variables and the background map are fetched. Testing Godiva2 on a local ncWMS server the initial load time is low. Tests using publicly available datasets vary, but some have low load time, indicating that the slower ones might just have less available resources.
@@ -932,7 +932,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
    \\ \emph{Score: \textbf{High}}
 	
 	\paragraph{Ease of Use}
-	The menus for changing variable, depth and timestep are all intuitive and easy to use. The map interface follows the conventions for zooming and panning with the mouse.
+	The menus for changing variable, depth and time step are all intuitive and easy to use. The map interface follows the conventions for zooming and panning with the mouse.
    \\ \emph{Score: \textbf{High}}
 	
 	\paragraph{Summary}

@@ -1540,9 +1540,9 @@ We have had a meeting discussing the use of time for the project, and it seems a
 The sprint backlog was in this sprint split into three sections. This represents the different work that has to be done, and also the way the group has decided to split the work. The \gls{pre-delivery} is due on the friday of this sprint. The group has assigned two people to work on the remaining tasks for this, and the rest of the group will start on the implementation work. 
 
 \begin{description}
-	\item[Front end] \hfill \\
+	\item[Front-end] \hfill \\
 	Get a map up and running
-	\item[Back end] \hfill \\
+	\item[Back-end] \hfill \\
 	Handle projections \hfill \\
 	Image output module \hfill \\
 	Parse parameters to select region \hfill \\
@@ -1556,13 +1556,13 @@ The sprint backlog was in this sprint split into three sections. This represents
 	Write weekly documents for advisor meeting
 \end{description}
 	
-We have chosen to use the quite vague goal of the customer as the only task for the front end. This has the consequence of setting a task that is a lot larger than one work day. Despite of this, since the task is vague, we found it difficult to split it further. For the back end side of the project, the tasks are much more specific.
+We have chosen to use the quite vague goal of the customer as the only task for the front end. This has the consequence of setting a task that is a lot larger than one work day. Despite of this, since the task is vague, we found it difficult to split it further. For the \gls{back-end} side of the project, the tasks are much more specific.
 
 \section{Sprint overview}
 The sprints focus was split in two, with most of the group working on the implementation, as to be able to demo for the customer next week. The other part of the group focused on the \gls{pre-delivery}. This separation of responsibility was done with the goal of being able to work in parallel with two important tasks that both had to finished this sprint. By dividing the group into smaller sub-groups, the tasks are perceived to be the responsibility of fewer people, and the team members are more likely to step up and go the extra mile when needed. 
 
 \section{Evaluation}
-The most important part of this sprint was to be able to hand of the \gls{pre-delivery} on time. This was done, and the group is happy with the result. All required parts of the \gls{pre-delivery} was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the \gls{WMTS} \gls{protocol}. The back end is able to read a single \gls{netcdf} file, and output an image that is transferred to the front end, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
+The most important part of this sprint was to be able to hand of the \gls{pre-delivery} on time. This was done, and the group is happy with the result. All required parts of the \gls{pre-delivery} was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the \gls{WMTS} \gls{protocol}. The \gls{back-end} is able to read a single \gls{netcdf} file, and output an image that is transferred to the \gls{front-end}, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
 
 \begin{figure}[h]
 \begin{center}
@@ -1577,13 +1577,13 @@ The position of the overlay on the map is not completely correct, but the custom
 As for the sprint backlog, the following items has remaining work after this sprint:
 
 \begin{description}
-	\item[Back end] \hfill \\
+	\item[Back-end] \hfill \\
 	Handle projections \hfill \\
 	Implement feature endpoints \hfill \\
 	Implement vector feature endpoints
 \end{description}
 
-All in all, the group is satisfied with the work done in the sprint. There is remaining work in the back end, but this should be possible to finish during the next sprint. Assigning one person to read trough the \gls{pre-delivery} made the language much more concise than it was initially, as well as adding a layer of quality assurance. 
+All in all, the group is satisfied with the work done in the sprint. There is remaining work in the \gls{back-end}, but this should be possible to finish during the next sprint. Assigning one person to read trough the \gls{pre-delivery} made the language much more concise than it was initially, as well as adding a layer of quality assurance. 
 
 
 
@@ -1594,10 +1594,10 @@ All in all, the group is satisfied with the work done in the sprint. There is re
 After handing in the \gls{pre-delivery}, the group is now free to focus their efforts on the implementation. For this sprint, a demo is planned for the customer. This will hopefully give valuable feedback on both design decisions, as well as what to focus on in the implementation work.
 
 \section{Sprint planning}
-As implementation is the main activity of this sprint, the group has assigned all but one group member to work on implementation. The group at large will focus on improving the system, and making sure that the front end is adapted to fit the customers need. The last team member will work on the report, and make sure that the sections on the sprints are done, as well as producing internal documents. As the final report is to be handed in just days after the last sprint, it is important not to forget or neglect these tasks. 
+As implementation is the main activity of this sprint, the group has assigned all but one group member to work on implementation. The group at large will focus on improving the system, and making sure that the \gls{front-end} is adapted to fit the customers need. The last team member will work on the report, and make sure that the sections on the sprints are done, as well as producing internal documents. As the final report is to be handed in just days after the last sprint, it is important not to forget or neglect these tasks. 
 
 \section{Sprint backlog}
-This sprint is focused mostly on the back end work. As we will have feedback from the customer in the middle of the sprint, there might be some new tasks added to the front end part of the backlog. The customer has in meetings with the group said that they will probably have input on the front end, especially the user interface. The sprint backlog is given in table \ref{tab:Sprint3Backlog}. It can be seen that not all tasks have been estimated. Some of these tasks where deemed too difficult to estimate, while some was not estimated when they where picked by a team member in the middle of the sprint. 
+This sprint is focused mostly on the \gls{back-end} work. As we will have feedback from the customer in the middle of the sprint, there might be some new tasks added to the \gls{front-end} part of the backlog. The customer has in meetings with the group said that they will probably have input on the front end, especially the user interface. The sprint backlog is given in table \ref{tab:Sprint3Backlog}. It can be seen that not all tasks have been estimated. Some of these tasks where deemed too difficult to estimate, while some was not estimated when they where picked by a team member in the middle of the sprint. 
 
 \begin{table}[h]
 \centering
@@ -1606,13 +1606,13 @@ This sprint is focused mostly on the back end work. As we will have feedback fro
 \hline
 Task                                                                                            & \begin{tabular}[c]{@{}l@{}}Estimated\\ remaining hours\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual\\ hours\end{tabular} & Assigned to   \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front end}}                                                                                                                                                                                 \\
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front-end}}                                                                                                                                                                                 \\
 Enable user to display data from chosen time                                                    & -                                                                   &                                                        & Anders        \\
 Enable user to display data from chosen depth                                                   & 15                                                                  & 6                                                      & Anders        \\
 Enable user to pan and zoom in the displayed map                                                & 15                                                                  & 3                                                      & Marco         \\
 Existing data must zoom and pan with the map                                                    & 5                                                                   & 1                                                      & Ruben         \\
 \rowcolor[HTML]{C0C0C0} 
-\textbf{Back end}                                                                               &                                                                     &                                                        &               \\
+\textbf{Back-end}                                                                               &                                                                     &                                                        &               \\
 Handle projections                                                                              & -                                                                   & -                                                      & Arve          \\
 Implement feature endpoints                                                                     & -                                                                   & 7                                                      & Arve, Ondrej  \\
 Implement vector feature endpoint                                                               & 5                                                                   &                                                        & Ondrej        \\
@@ -1637,7 +1637,7 @@ Write weekly documents for advisor meeting                                      
 \end{table}
 
 \section{Sprint overview}
-This sprint is more focused on the back end than the front end. In the back end, there are more tasks that has to be completed, and these do not require direct feedback from the customer. For the front end, tasks that involve sending correct requests to the back end, and functionality that has to be implemented regardless of the customers feedback has been chosen. 
+This sprint is more focused on the \gls{back-end} than the \gls{front-end}. In the \gls{back-end}, there are more tasks that has to be completed, and these do not require direct feedback from the customer. For the \gls{front-end}, tasks that involve sending correct requests to the \gls{back-end}, and functionality that has to be implemented regardless of the customers feedback has been chosen. 
 \section{Evaluation}
 \paragraph{Sick customer}
 During this sprint, the group was supposed to have their first demo for the customer. The group had planned on getting feedback on the user interface, and feedback on the customers view of the progress. Unfortunately, the customer fell ill, and was unable to meet the group. To make matters worse, none of the other employees at SINTEF that are involved with the project was able to meet the group. This meant that the group did not get any feedback on their solution in this sprint. As a consequence of this, the work on the user interface is paused until the customer is able to meet the group. 
@@ -1646,7 +1646,7 @@ During this sprint, the group was supposed to have their first demo for the cust
 Another consequence of the customer being ill and unable to meet the group, is that the backlog can not be reprioritized by the customer. It is normal for the customer to be able to make changes in the priorities in the backlog after each sprint. As the group has chosen to demo for the customer only after every other sprint, the goal was for the customer to do reprioritization after each demo. The group had to make assumptions on the customers wishes and needs to continue their work. This is not ideal, as the group may not have enough information to make these decisions, but it is better than stalling work completely. 
 
 \paragraph{Projections}
-During the work on the back end, the group has encountered quite a major problem. The problem pertains to map projections, and making the data in the \gls{netcdf} files compatible with the map we are using on the web page. Currently, the data in the \gls{netcdf} files are in the polar stereographic projection, while the map used on the page can not be set to this projection. The team is currently looking into several ways of fixing this:
+During the work on the \gls{back-end}, the group has encountered quite a major problem. The problem pertains to map projections, and making the data in the \gls{netcdf} files compatible with the map we are using on the web page. Currently, the data in the \gls{netcdf} files are in the polar stereographic projection, while the map used on the page can not be set to this projection. The team is currently looking into several ways of fixing this:
 
 \begin{description}
 \item[Conversion of coordinates] It is possible to convert coordinates between different projections. This will require both a conversion factor, as well as interpolation of data. It is no trivial task, but there are well known methods for this. The main drawback for this solution is that it will be time consuming. 
@@ -1662,9 +1662,9 @@ As can be seen in table \ref{tab:Sprint3Backlog}, the team did not spend the req
 \paragraph{Remaining backlog items}
 After the conclusion of the sprint, the following items remains in the backlog:
 \begin{description}
-	\item[Front end] \hfill \\
+	\item[Front-end] \hfill \\
 	Enable user to display data from chosen time
-	\item[Back end] \hfill \\
+	\item[Back-end] \hfill \\
 	Implement vector feature endpoints \hfill \\
 	Implement \gls{WMTS} \gls{protocol} \hfill \\
 	Choose correct file based on selected region and time \hfill \\
@@ -1674,7 +1674,7 @@ After the conclusion of the sprint, the following items remains in the backlog:
 	Write sprint 2
 \end{description}
 
-Even though the group has had an increased focus on estimation, this sprint was not completed as planned. This is in large because of the problems faced with projections. Until this is solved, a lot of other tasks also has to be placed on hold. This is true for the front end task remaining, as well as handling overlapping areas and choosing the correct files. For the reporting, tidying up the \gls{pre-delivery} proved to be a bigger task than first thought. This pushed writing about sprint 1 and sprint 2 to the next sprint.  
+Even though the group has had an increased focus on estimation, this sprint was not completed as planned. This is in large because of the problems faced with projections. Until this is solved, a lot of other tasks also has to be placed on hold. This is true for the \gls{front-end} task remaining, as well as handling overlapping areas and choosing the correct files. For the reporting, tidying up the \gls{pre-delivery} proved to be a bigger task than first thought. This pushed writing about sprint 1 and sprint 2 to the next sprint.  
 
 While the group is not satisfied with the fact that all tasks could not be completed, there is a good explanation for this. The group is hopeful that a solution to the projection problem will be found, thus enabling the group to advance with the project. 
 
@@ -1695,10 +1695,10 @@ Based on what was left from the last sprint, and the priorities of this sprint, 
 \hline
 Task                                                                                                 & \begin{tabular}[c]{@{}l@{}}Estimated\\ remaining hours\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual\\ hours\end{tabular} & Assigned to         \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front end}}                                                                                                                                                                                            \\
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front-end}}                                                                                                                                                                                            \\
 Enable user to display data from chosen time                                                         & -                                                                   & 3                                                      & Anders              \\
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back end}}                                                                                                                                                                                             \\
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back-end}}                                                                                                                                                                                             \\
 \begin{tabular}[c]{@{}l@{}}Find background map in \\ polar stereographic projection\end{tabular}     & -                                                                   & -                                                      & Anders              \\
 \begin{tabular}[c]{@{}l@{}}Investigate conversion from\\ polar stereographic projection\end{tabular} & -                                                                   & -                                                      & Emil                \\
 Code refactor                                                                                        & 4                                                                   & -                                                      & Arve                \\
@@ -1731,7 +1731,7 @@ This sprint is focused towards solving the projection challenge. The team can no
 \paragraph{Customer meeting}
 The group was able to set up a meeting with SINTEF representatives at the end of the sprint. Our main contact was unable to meet us, but as both the representatives have been present in most of the meetings, this did not pose any problems. 
 
-In the meeting, the customer gave useful feedback on the design decisions made for the front end. Although it is not very user friendly to enter the coordinates by hand, some users might want to, so this functionality is kept. The customer also gave some general input on the organization of the user interface. The group will use this feedback to improve the user interface in the next sprint. 
+In the meeting, the customer gave useful feedback on the design decisions made for the \gls{front-end}. Although it is not very user friendly to enter the coordinates by hand, some users might want to, so this functionality is kept. The customer also gave some general input on the organization of the user interface. The group will use this feedback to improve the user interface in the next sprint. 
 
 The customer was informed that the group has hit a problem with the different projections. The customer gave some additional insight into the projections used by SINTEF. This is quite a rare projection, as it is not a standard polar stereographic projection, and the customer does not think that finding a corresponding map will be likely. The customer gave three suggestions on how to handle this:
 \begin{itemize}
@@ -1767,9 +1767,9 @@ The team had until this point not focused enough on time estimations and time lo
 The items remaining in the backlog after the completion of sprint 4 are:
 
 \begin{description}
-	\item[Front end] \hfill \\
+	\item[Front-end] \hfill \\
 	Enable user to display data from chosen time (Blocked)
-	\item[Back end] \hfill \\
+	\item[Back-end] \hfill \\
 	Scanning and indexing files \hfill \\
 	Implement \gls{WMTS} \gls{protocol} \hfill \\
 	Choose correct file based on selected region and time \hfill \\
@@ -1796,11 +1796,11 @@ With the tasks carried over from the last sprint, this sprint backlog is as show
 \hline
 Task                                                  & \begin{tabular}[c]{@{}l@{}}Estimated\\ remaining hours\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual\\ hours\end{tabular} & Assigned to   \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front end}}                                                                                                                                       \\
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front-end}}                                                                                                                                       \\
 Add color legend to user interface                    & 5                                                                   &                                                        & Anders        \\
 Enable user to display data from chosen time          & 10                                                                  & 7                                                      & Anders, Marco \\
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back end}}                                                                                                                                        \\
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back-end}}                                                                                                                                        \\
 Investigate \gls{Fimex} and Porj.4                          & 14                                                                  & 27,5                                                   & Marco, Ruben  \\
 Scanning and indexing files                           & 20                                                                  & 1                                                      & Emil          \\
 Implement \gls{WMTS} \gls{protocol}                               & 15                                                                  & 21                                                     & Arve          \\
@@ -1838,14 +1838,14 @@ In this sprint, the group had their penultimate customer meeting. The teams prog
 \item Handling overlapping areas
 \end{itemize}
 
-The customer agreed that this would be a good limitation of the scope. For the functionality that can not be completed, the customer feels that there will be a lot of value in a description of this in the final report. Even though a full implementation would have been nice, the customer can benefit a lot from the groups research, and asks that as much information as possible is added to the final report. 
+The customer agreed that this would be a good limitation of the scope. For the functionality that can not be completed, the customer feels that there will be a lot of value in a description of this in the final report. Even though a full implementation would have been nice, the customer can benefit a lot from the group's research, and asks that as much information as possible is added to the final report. 
 
-The team and the customer had a discussion on different ways of solving the projection issue. At the moment, the group is testing two different solutions. One will mathematically convert the coordinates of the \gls{netcdf} files to the correct projection as they are retrieved. The other will make a new \gls{netcdf} file in the same projection as the map. Then, the system can use standard methods to get the information from the \gls{netcdf} files. 
+The team and the customer had a discussion on different ways of solving the projection issue. At the moment, the group is testing two different solutions. One will mathematically convert the coordinates of the \gls{netcdf}-files to the correct projection as they are retrieved. The other will make a new \gls{netcdf}-file in the same projection as the map. Then, the system can use standard methods to get the information from the \gls{netcdf} files. 
 
-The customer does not have any preferences on how this is solved. While doing a full conversion of the \gls{netcdf} files might take some time, it will be an operation that has to be conducted only once. The customer will not have problems storing the converted files alongside the original files. 
+The customer does not have any preferences on how this is solved. While doing a full conversion of the \gls{netcdf}-files might take some time, it will be an operation that has to be conducted only once. The customer will not have problems storing the converted files alongside the original files. 
 
 \paragraph{Converting netCDF files}
-The team has investigated the possibility of converting the entire \gls{netcdf} file, instead of converting only the coordinates of the data being retrieved, as discussed in the last customer meeting (see section \ref{sec:Sprint4Evaluation}). This solution looks promising, and the team has now been able to use the library to convert a file. At the moment, it seems to convert the data correctly, but the new \gls{netcdf} file is missing some headers. This could be the fault of the configuration file. If this is the case, and this can be easily fixed, then the system should be able to read correct data from a \gls{netcdf} file very soon.
+The team has investigated the possibility of converting the entire \gls{netcdf} file, instead of converting only the coordinates of the data being retrieved, as discussed in the last customer meeting (see section \ref{sec:Sprint4Evaluation}). This solution looks promising, and the team has now been able to use the library to convert a file. At the moment, it seems to convert the data correctly, but the new \gls{netcdf}-file is missing some headers. This could be the fault of the configuration file. If this is the case, and this can be easily fixed, then the system should be able to read correct data from a \gls{netcdf} file very soon.
 
 \paragraph{Time logging}
 To be able to keep track of the time used, the team agreed early that every team member would log their own time usage throughout the project. In this sprint, that material has been collected, so it can be collated and used for the report. 
@@ -1861,10 +1861,10 @@ As this sprint has been mostly focused towards fixing the projection issues, not
 After this sprint, the following items remain in the backlog:
 
 \begin{description}
-	\item[Front end] \hfill \\
+	\item[Front-end] \hfill \\
 	Add color legend to user interface \hfill \\
 	Enable user to display data from chosen time (Blocked)
-	\item[Back end] \hfill \\
+	\item[Back-end] \hfill \\
 	Investigate \gls{Fimex} and Porj.4 \hfill \\
 	Scanning and indexing files \hfill \\
 	Implement \gls{WMTS} \gls{protocol} \hfill \\
@@ -1895,11 +1895,11 @@ The sprint backlog for this sprint contains all remaining items from the last sp
 \hline
 Task                                                   & \begin{tabular}[c]{@{}l@{}}Estimated\\ remaining hours\end{tabular} & \begin{tabular}[c]{@{}l@{}}Actual \\ hours\end{tabular} & Asigned to                 \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front end}}                                                                                                                                                      \\
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Front-end}}                                                                                                                                                      \\
 Add color legend to user interface                     & 5                                                                   & 2                                                       & Anders                     \\
 Enable user to display data from chosen time (Blocked) & 10                                                                  &                                                         & Anders                     \\
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back end}}                                                                                                                                                       \\
+\multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back-end}}                                                                                                                                                       \\
 Investigate FiMex and Porj.4                           & 4                                                                   & 2                                                       & Marco                      \\
 Investigate FiMex headers not working                  & 3                                                                   & 1                                                       & Marco                      \\
 Make file stitching work                               & 20                                                                  &                                                         & Ondrej                     \\
@@ -1911,7 +1911,7 @@ Handle overlapping areas                               & 10                     
 \multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Reporting}}                                                                                                                                                      \\
 Add time usage to report                               & 8                                                                   & 7                                                       & Hans Kristian              \\
 Write about resources                                  & 2                                                                   & 2,5                                                     & Ondrej                     \\
-Write high level architecture - Back end               & 3                                                                   & 5                                                       & Arve                       \\
+Write high level architecture - Back-end               & 3                                                                   & 5                                                       & Arve                       \\
 Write about WMTS (Challenges)                          & 3                                                                   & 3                                                       & Arve                       \\
 Write deploy guide (Appendix)                          & 3                                                                   & 2                                                       & Arve, Marco, Emil          \\
 Write API-documentation - WMTS (Appendix)              & 2                                                                   & 2                                                       & Arve                       \\
@@ -1925,14 +1925,14 @@ Write team work evaluation                             & 3                      
 Write course evaluation                                & 3                                                                   & 3                                                       & Hans Kristian              \\
 Write sprint 6                                         & 3                                                                   & 2                                                       & Hans Kristian              \\
 Write product evaluation                               & 4                                                                   & 4                                                       & Hans Kristian              \\
-Write high level architecture - Front end              & 3                                                                   & 5                                                       & Anders                     \\
+Write high level architecture - Front-end              & 3                                                                   & 5                                                       & Anders                     \\
 Write about user interface design                      & 3                                                                   & 2,5                                                     & Marco                      \\
-Write about use of Proj.4 in front end                 & 2                                                                   & 3                                                       & Marco                      \\
+Write about use of Proj.4 in front-end                 & 2                                                                   & 3                                                       & Marco                      \\
 Write about use of Fimex                               & 4                                                                   & 5                                                       & Marco                      \\
 Write about projections (Challenges)                   & 14                                                                  & 6,5                                                     & Anders, Arve, Marco, Ruben \\
 Add references to technical work in sprints            & 2                                                                   &                                                         & Marco                      \\
-Write further work - Front end                         & 8                                                                   & 17                                                      & Ruben                      \\
-Write further work - Back end                          & 6                                                                   & 7,5                                                     & Emil, Ondrej, Ruben        \\
+Write further work - Front-end                         & 8                                                                   & 17                                                      & Ruben                      \\
+Write further work - Back-end                          & 6                                                                   & 7,5                                                     & Emil, Ondrej, Ruben        \\
 \rowcolor[HTML]{C0C0C0} 
 Total                                                  & 174                                                                 & 155,5                                                   &                           
 \end{tabular}
@@ -1964,7 +1964,7 @@ Almost all report tasks have been finished. The exception is tasks that the team
 At the end of the sprint, it has become clear that the \gls{Fimex}-library has successfully converted a \gls{netcdf}-file to the correct projection. This means that the team has a file that should be readable by the \gls{back-end}. If this is the case, then the demo of the system will hopefully feature a correctly projected file. This will be investigated in the days that remain. 
 
 \paragraph{Remaining backlog items}
-As this is the last sprint, remaining items in the backlog may not be completed. The team still has some days left to work, but moist focus on proof reading the report, and preparing for the presentation. As part of the presentation is a demo, some team members will work on getting the newly converted \gls{netcdf}-files working in the system. 
+As this is the last sprint, remaining items in the backlog may not be completed. The team still has some days left to work, but must focus on proof reading the report, and preparing for the presentation. As part of the presentation is a demo, some team members will work on getting the newly converted \gls{netcdf}-files working in the system. 
 
 After this sprint, the following items remain in the backlog:
 

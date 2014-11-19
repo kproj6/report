@@ -544,7 +544,7 @@ An overview of risks and strategies is given in the following table:
 %\begin{tabularx}{\linewidth}{lXllX}
 R1 & Personal Conflicts & \gls{M} & \gls{M} & Might affect the quality of the work, motivation and time required. Probability can be reduced by ensuring communication within the group, and democratic and motivated decisions. \\ \\ \hline
 R2 & Assignments given in other courses & \gls{H} & \gls{M} & Time for some students could be less than planned during a few weeks, due to demanding assignments of other courses. Mitigated by planning, frequent workload balancing and contributing with extra work in weeks without as intensive demands. \\ \\ \hline
-R3 & Conflicting schedules & \gls{H} & \gls{M} & Reduced by planning meeting-times and communication channels for times between group meeting. Also, accepting that we can't meet every day and that all group members do not always need to be present. \\ \\ \hline
+R3 & Conflicting schedules & \gls{H} & \gls{M} & Reduced by planning meeting-times and communication channels for times between group meeting. Also, accepting that we can not meet every day and that all group members do not always need to be present. \\ \\ \hline
 R4 & Overcomplicated solution & \gls{M} & \gls{M} & Probability reduced by good communication both with the customer and internally in the group. \\ \\ \hline
 R5 & Technical problems and difficulties & \gls{M} & \gls{H} & To reduce the probability: make a detailed study (and \glspl{prototype} where possible) during the \gls{pre-study} phase. To reduce the consequence: find the person/people within the group which are more comfortable with those new technologies and assign them the particular tasks. Knowledge transfer within the team is also a way to reduce the consequences of this risk. Keeping the customer informed is vital. \\ \\ \hline
 R6 & Missing room reservations & \gls{H} & \gls{L} & Will delay work. Avoid by making sure we have a regular room. The advisor might be able to book a permanent room. \\ \\ \hline
@@ -719,7 +719,7 @@ The group has used the first part of the project investigating what solutions wo
 \subsection{Adriatic Forecasting System}
 \emph{Link: \url{http://oceanlab.cmcc.it/afs/}} \\%make sure to use //
   The solution, by the Operational Oceanography Group Italy and cmcc Ocean-Lab, can display temperature, salinity, currents, sea surface height, wind stress and heat flux. It allows the user to choose date, region and depth as search filters, and uses \gls{PNG} overlays on a Google map. The \gls{PNG}s are retrieved from cmcc's own server.
-  Although it graphically looks quite nice, it can be seen that some tiles are not precisely overlapping. In addition, sometimes it is needed to refresh the page because the application doesn't load properly. \gls{PNG} layers are displayed without a specific JavaScript library, and the JavaScript code is quite complex compared to other existing solutions using libraries. Therefore this solution is not well re-usable.
+  Although it graphically looks quite nice, it can be seen that some tiles are not precisely overlapping. In addition, sometimes it is needed to refresh the page because the application does not load properly. \gls{PNG} layers are displayed without a specific JavaScript library, and the JavaScript code is quite complex compared to other existing solutions using libraries. Therefore this solution is not well re-usable.
 \\ \emph{Overall rating: \textbf{Ok}}
 
 \subsection{Danish Centre of Ocean and Ice}
@@ -759,7 +759,7 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
 
   Except supporting multiple data access \glspl{protocol}, \gls{TDS} is able to virtually aggregate multiple \gls{netcdf} files to one dataset that can be used for queries, such as selecting a region and sending its data in specified format. Dataset configurations are done via \gls{NCML}, which is a dialect of \gls{XML}.
 
-  Although \gls{TDS} seems to support everything that is needed for this project, is installation, and especially configuration for aggregation and special needs, is not trivial. Moreover there are doubts about speed and dealing with serving a range containing large quantified points. One advantage is that SINTEF currently has a \gls{TDS} running and configured, so we won't need to configure it from scratch, and SINTEF employees probably have experience and knowledge about setting it up, something which the group lacks.
+  Although \gls{TDS} seems to support everything that is needed for this project, is installation, and especially configuration for aggregation and special needs, is not trivial. Moreover there are doubts about speed and dealing with serving a range containing large quantified points. One advantage is that SINTEF currently has a \gls{TDS} running and configured, so we will not need to configure it from scratch, and SINTEF employees probably have experience and knowledge about setting it up, something which the group lacks.
 
   \subsection{Custom solution}
   An alternative is to write a custom \gls{back-end} from scratch.
@@ -1917,8 +1917,8 @@ Add color legend to user interface                     & 5                      
 Enable user to display data from chosen time (Blocked) & 10                                                                  &                                                         & Anders                     \\
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back-end}}                                                                                                                                                       \\
-Investigate FiMex and Proj.4                           & 4                                                                   & 2                                                       & Marco                      \\
-Investigate FiMex headers not working                  & 3                                                                   & 1                                                       & Marco                      \\
+Investigate \gls{Fimex} and Proj.4                           & 4                                                                   & 2                                                       & Marco                      \\
+Investigate \gls{Fimex} headers not working                  & 3                                                                   & 1                                                       & Marco                      \\
 Make file stitching work                               & 20                                                                  &                                                         & Ondrej                     \\
 Scanning and indexing files                            & 15                                                                  &                                                         & Emil                       \\
 Implement WMTS protocol                                & 8                                                                   &                                                         & Arve                       \\
@@ -1945,7 +1945,7 @@ Write product evaluation                               & 4                      
 Write high level architecture - Front-end              & 3                                                                   & 5                                                       & Anders                     \\
 Write about user interface design                      & 3                                                                   & 2,5                                                     & Marco                      \\
 Write about use of Proj.4 in front-end                 & 2                                                                   & 3                                                       & Marco                      \\
-Write about use of Fimex                               & 4                                                                   & 5                                                       & Marco                      \\
+Write about use of \gls{Fimex}                               & 4                                                                   & 5                                                       & Marco                      \\
 Write about projections (Challenges)                   & 14                                                                  & 6,5                                                     & Anders, Arve, Marco, Ruben \\
 Add references to technical work in sprints            & 2                                                                   &                                                         & Marco                      \\
 Write further work - Front-end                         & 8                                                                   & 17                                                      & Ruben                      \\
@@ -1977,7 +1977,7 @@ This sprint has been focused on writing the final report. All team members have 
 
 Almost all report tasks have been finished. The exception is tasks that the team knew would have to wait until the end of the sprint. These tasks will be done in the days after the sprint.
 
-\paragraph{Fimex}
+\paragraph{\gls{Fimex}}
 At the end of the sprint, it has become clear that the \gls{Fimex}-library has successfully converted a \gls{netcdf}-file to the correct projection. This means that the team has a file that should be readable by the \gls{back-end}. If this is the case, then the demo of the system will hopefully feature a correctly projected file. This will be investigated in the days that remain.
 
 The file \textit{uvNSEW\_20080630.nc}, provided by the customer, was correctly parsed by the back-end. The problem now is that the file contained only Currents data, although on a very wide area (not only Norwegian Sea, but an horizontal extended area from Greenland to Siberia).
@@ -2095,7 +2095,7 @@ This is a standard format, defined by Proj.4, to represent potentially any kind 
 \item[b=6370000] Semiminor radius of the ellipsoid axis
 \end{description}
 
-Unfortunately GeoTools doesn't support the Proj.4 String description. Instead, we realized that it works only with the \gls{WKT} format.
+Unfortunately GeoTools does not support the Proj.4 String description. Instead, we realized that it works only with the \gls{WKT} format.
 Therefore, we had to convert from the Proj.4 String description to the WKT format.
 This can be done manually in theory, but we realized that it was hard (a relatively wide knowledge was needed to make sure that all parameters have been set correctly). Moreover, since projection parameters in NetCDF files may vary, an automated conversion is preferrable.
 The easiest technique that we have found is to use a python script that relies on the python package "osgeo.osr". A tutorial on how to do it is provided has been found online\footnote{http://spatialnotes.blogspot.no/2010/11/converting-wkt-projection-info-to-proj4.html and http://johnewart.net/posts/2013/proj4\_to\_wkt\_conversion/}.
@@ -2149,8 +2149,7 @@ String customWKT = "PROJCS["unnamed","
             + " UNIT["m", 1.0]]";
 \end{lstlisting}
 
-
-With this string as a parameter, GeoTools didn't give any errors, and the conversion from PSP to LatLong has been performed correctly (a backwards conversion has been performed to check the result, as well as comparison with values provided by online conversion tools).
+With this string as a parameter, GeoTools did not give any errors, and the conversion from PSP to LatLong has been performed correctly (a backwards conversion has been performed to check the result, as well as comparison with values provided by online conversion tools).
 
 The conversion is only point by point, and a performance test with 1 million points, on a MacBook Air Mid '13 machine, with Mac OS X, gave the following result:
 \begin{itemize}
@@ -2256,7 +2255,7 @@ We finally succeded in installing \gls{Fimex} on an Linux Ubuntu Operating Syste
 
 \subsubsection{\gls{Fimex} Command Line Tool usage}
 \label{sec:ChallangeFimexCommandLine}
-gls{Fimex} as a command line tool accepts parameters listed in its main website for the documentation\footnote{http://fimex.met.no/doc/programDoc.html}.
+\gls{Fimex} as a command line tool accepts parameters listed in its main website for the documentation\footnote{http://fimex.met.no/doc/programDoc.html}.
 Generally, its usage is as follows:
 \begin{lstlisting}
 usage: fimex --input.file  FILENAME [--input.type  INPUT_TYPE]
@@ -2282,7 +2281,7 @@ In particular, with a configuration file, we ran this type of command:
 fimex --input.file <name_of_input_file.nc> -c <config_file.cfg>
 \end{lstlisting}
 
-We conducted the major part of the experiments with \gls{Fimex} gls using a file provided by the customer which covered and huge area, but at a lower resolution and only for current data, therefore it was not so big as other files in size (165 MB instead of 3-4 GB or more). This was chosen in order to reduce any possible scalability problem in the conversion process due to handling huge files.
+We conducted the major part of the experiments with \gls{Fimex} using a file provided by the customer which covered and huge area, but at a lower resolution and only for current data, therefore it was not so big as other files in size (165 MB instead of 3-4 GB or more). This was chosen in order to reduce any possible scalability problem in the conversion process due to handling huge files.
 
 The name of the file provided by the customer was \textit{uvNSEW\_20080630.nc}, whereas the name of the first config file was \textit{prova1.cfg}, therefore our valorized command has been:
 \begin{lstlisting}
@@ -2798,6 +2797,7 @@ After implementing temperature, salinity and current speed, there is one importa
 There are also other uses for displaying vector data, like displaying depth contour lines and other nautical information.
 
 \subsubsection{Legend and color-mapping}
+\label{sec:LegendColorMap}
 The images representing temperature and other features are represented by mapping the exact data values to a color value. This conversion will be presented to the user through the legend displayed in the \gls{GUI}. At the moment this legend is static client-side images, but for the future this should be fetched from the \gls{back-end}. We can also allow the user to specify the range the colors should represent, for instance to distinguish between points with very similar values. The range of the color-mapping should be changeable through the \gls{GUI} and sent with the requests to the \gls{back-end} to retrieve the data overlays in the correct colors.
 
 \begin{figure}[!htb]
@@ -2861,15 +2861,19 @@ Those parameters should be passed to \texttt{NetCdfManager} for data reading, so
 
 \texttt{NetCdfManager} has to be modified to create an array of the right size corresponding to the resolution, and fill it with the correct data. For reading data from a dataset with higher resolution, the \texttt{makeSubset} function allows to specify a stride to be used when getting data. For calculating the right stride for the given resolution, a dummy function was created \texttt{calculateStride} in \texttt{NetCdfManager}.
 
-\subsubsection{Dynamic ranges for image renderer}
-Currently all images uses global minimum and maximum values suggested by the customer. The resulting color of every pixel is then decided by the distance from those two extremes. If the user requests data from a place with minimal differences, the resulting image would have almost the same color and will have little use for the user. It would be better to create a scale for every request, so the user would get a much better visualization of differences in the given sample. On the other hand, when requesting multiple images and joining them together, it is undesirable to have different scales for every picture, so the user should be able to control whether the result is scaled dynamically, or statically.
+\subsubsection{Non-static ranges for image renderer}
+Currently all images uses static minimum and maximum values suggested by the customer. The resulting color of every pixel is then decided by the distance from those two extremes. \\ \\
+Moving away from these static scales can be useful in a couple of occations. The problem arises when the values in the netcdf-file range over a small portion of the static range these would be represented by simillar colors which could be difficult to distinguish. 
 
-To add this functionality, \texttt{ImageRenderer} has to be modified to first compute extremes for the requested image, and then use them instead of static ones. Moreover, because the GUI scale will not be static, it is necessary to provide a scale together with the image. This can be done either by having a separate request for scale, which could be problematic because of stateless HTTP protocol. Separate requests would mean that the data has to be processed twice. Alternatively it could be changed, so that returned data does not contain pure \gls{PNG} image, but a JSON object with two \gls{PNG}s encoded with base64\footnote{\url{https://tools.ietf.org/html/rfc4648}}. This solves the problem with separate requests, but base64 encoding adds about 33\% to the size of images. The last option is to simply overlay the legend over the image. This would cause loss of some information (as a part of the image is covered by a legend), but would be the easiest and fastest solution.
+To solve this we can use a dynamic range based on the minimum and maximum values found in the selected area. When requesting multiple images and joining them together it is undesirable to have different scales for every picture. Together with the stateless HTTP protocol using this in a map service with multiple tiles and requests will create new challenges. It could however be a very useful for single image calls outside of \gls{WMTS}, when image contrast has to be maximized.
+
+The other option is to let the user define the range as decribed in \ref{sec:LegendColorMap} on page \pageref{sec:LegendColorMap}. This way the \gls{front-end} could request the map tiles scale selected by the user and get a uniform representation across the tiles. \\ \\
+To add these functionalities \texttt{ImageRenderer} has to be modified to allow specifying the minimum and maximum values or request it to dynamically calculate these.
 
 \subsubsection{Further projection functionality}
 Getting the projections done correctly has been a big difficulty in the project development, and it will therefore need a lot of further work to serve all the functionality that is wanted, as well as to minimize the workload of the rest of the \gls{back-end} and human personnel.
 %Fimex automation %REF/GLS fimex?
-\paragraph{Fimex automation}
+\paragraph{\gls{Fimex} automation}
 Currently all \gls{Fimex} projections are done manually, requiring us to run \gls{Fimex} for each file we want to use, as well as deciding on a reasonable boundary box for its new projection. If further use of \gls{Fimex} is wanted, the process of projecting files has to be automated. There are solutions for executing these same configurations from a script or program. Finding the bounding box accurately will help reduce the projection time as well as reducing storage size and redundancy. One solution might be to use the 4 corner points in the original projection, project them into the desired projection and then finding the maximums and minimums among these in x and y directions. The step distance can most likely be a static value for each resolution-level.
 
 \paragraph{Templates}
@@ -2892,7 +2896,7 @@ Adding caching only makes sense for the WMTS service, because the REST \gls{API}
 Implementing caching for the WMTS service should be a relatively easy task. The cache system would consist of two parts:
 
 \paragraph{Storage and retrieval}
-Upon tile request, check if the tile exists in cache. If it does, just serve it. If it doesn't exists, serve it and then store it in the cache.
+Upon tile request, check if the tile exists in cache. If it does, just serve it. If it does not exists, serve it and then store it in the cache.
 Lookups should be done via the Indexer in order to avoid expensive disk reads for folder traversal.
 Storage would be trivial as well: Save the new tile to disk, and add it to the cache index.
 \paragraph{Invalidation}
@@ -3324,7 +3328,7 @@ If everything goes well, we will receieve image describing requested information
 \end{figure}
 
 \subsection{Missing compulsory parameters}
-In this example we will try to retrieve depth information, but won't specify any parameters.
+In this example we will try to retrieve depth information, but will not specify any parameters.
 
 \begin{description}
 	\item[Request] \path{/feature/depth/area}
@@ -3487,8 +3491,8 @@ Thus the webapp should be served from the \emph{dist} directory and all developm
 $ gulp build
 \end{lstlisting}
 
-\paragraph{Installation of Fimex}
-gls{Fimex} library can be installed on an Ubuntu 14.04 LTS Operating System by running the following commands in a terminal window:
+\paragraph{Installation of \gls{Fimex}}
+\gls{Fimex} library can be installed on an Ubuntu 14.04 LTS Operating System by running the following commands in a terminal window:
 \begin{lstlisting}
 sudo  gedit  /etc/apt/sources.list
 \end{lstlisting}

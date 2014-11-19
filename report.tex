@@ -279,7 +279,7 @@ The stakeholders of this project are the following:
 
 \section{Background for the project: software system development}
 The customer owns a working solution, running on its own servers, for the delivery and analysis of  tracked and predicted marine data. The data is stored in a special format, \gls{netcdf}, designed to be self-describing, scalable and appendable \cite{netCDF:factsheet}.
-The background for this project is to optimize the current, slow and memory-consuming solution. In the project description, the customer asks the group to either develop a new back end system, or produce a new front end for the current system. 
+The background for this project is to optimize the current, slow and memory-consuming solution. In the project description, the customer asks the group to either develop a new \gls{back-end} system, or produce a new \gls{front-end} for the current system. 
 
 \section{Measurement of project effects}
 \label{sec:MeasurementProjEff}
@@ -421,7 +421,7 @@ In figure \ref{fig:gantt} the Gantt diagram for our project is presented:
 \item[\Gls{pre-study} and planning] The \gls{pre-study} and planning activity is the stage where the actual work on the project begins. The group explores solutions, determine which technologies will be used, and how the product will be realized.
 \item[Documentation] The documentation activity represents time spent documenting the work effort, including implementation, research etc., and administrative tasks like status reports and documents for the meetings.
 \item[Coordination] The coordination activity is accomplished throughout the project, and consists of activities to coordinate the work, such as meetings, internal emails, calls and messages.
-\item[Implementation] The implementation activity consists of the implementation of the system. This includes the programming of both the back end and the front end part.
+\item[Implementation] The implementation activity consists of the implementation of the system. This includes the programming of both the \gls{back-end} and the \gls{front-end} part.
 \item[Testing] The testing activity represents time spent testing the system. This includes integration testing, unit testing, functional testing and scenario-driven testing.
 \item[Presentation] The presentation activity is the final presentation of the system and the delivery of the report.
 \end{description}
@@ -841,9 +841,9 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
 
 %%%
 \section{Front-end solutions}
-  A central part of the product requirement is to display simulated data in a dynamic manner. There exists solutions to do just that, and javascript libraries that makes it relatively easy to create at front end solution of our own. In this section we will discuss and compare the most relevant of these in the context of our assignment and the product requirements. 
+  A central part of the product requirement is to display simulated data in a dynamic manner. There exists solutions to do just that, and javascript libraries that makes it relatively easy to create at \gls{front-end} solution of our own. In this section we will discuss and compare the most relevant of these in the context of our assignment and the product requirements. 
   \subsection{Custom made solution}
-    A custom made solution has the general advantage that we can build it to specification and thus make sure it meets the requirements without having to deal with other people's code base. Trying to customize an existing solution might be as much work as building something from the bottom. In the following paragraphs we will review and rate technologies we found relevant for building a custom front end.
+    A custom made solution has the general advantage that we can build it to specification and thus make sure it meets the requirements without having to deal with other people's code base. Trying to customize an existing solution might be as much work as building something from the bottom. In the following paragraphs we will review and rate technologies we found relevant for building a custom \gls{front-end}.
     \subsubsection{LeafletJS}
     \begin{tabular}{|p{4cm}|p{8cm}|}
       \hline
@@ -961,9 +961,9 @@ The \gls{THREDDS} Data Server (TDS) is a web server that provides metadata and d
 Based on the study of possible solutions in the previous chapter, the group has made the following recommendation to the customer.
 
 \subsection{Front-end}
-As the group has looked into the situation at SINTEF, as well as other solutions in production, the conclusion is rather clear. SINTEF requires a very specific front end, with custom graphs, and the ability to add more functionality at a later stage. As far as existing solutions go, only the Godiva2 system has been close to performing the necessary tasks to serve SINTEFs needs. This system is however not very easy to adapt, and the group is of the opinion that changing this system to fit custom needs may be too much work to justify.
+As the group has looked into the situation at SINTEF, as well as other solutions in production, the conclusion is rather clear. SINTEF requires a very specific \gls{front-end}, with custom graphs, and the ability to add more functionality at a later stage. As far as existing solutions go, only the Godiva2 system has been close to performing the necessary tasks to serve SINTEFs needs. This system is however not very easy to adapt, and the group is of the opinion that changing this system to fit custom needs may be too much work to justify.
 
-With this in mind, the group feels that the only realistic solution for the \gls{front-end} is to develop a custom system from scratch.
+With this in mind, the group feels that the only realistic solution for the \gls{front-end} is to develop a custom system from scratch. Specifically we think using the OpenLayers JavaScript library will beneficial in this project.
 
 \subsection{Back-end}
 For the \gls{back-end}, the group is divided in its recommendation. From our investigation into different technologies, it seems like \gls{THREDDS} is a solution that is generally implemented for working with \gls{netcdf} files. Advantages of using this is that there exists documentation, maintenance, and updates. The group has had trouble configuring \gls{THREDDS}, and has also gotten the impression that SINTEF is not perfectly satisfied with its performance. 
@@ -1433,7 +1433,7 @@ This chapter will explain how the group worked and what we did in the weeks lead
 \section{Understanding the customers problem and needs}
 
 \paragraph{Learning about their current solution}
-At our first two meetings with SINTEF we were introduced to how they currently presents data to its users and some of the problems with this solution. They also gave some examples of who their users were and why they might access the data. We were offered access to the front end of their current solution to explore on our own.
+At our first two meetings with SINTEF we were introduced to how they currently presents data to its users and some of the problems with this solution. They also gave some examples of who their users were and why they might access the data. We were offered access to the \gls{front-end} of their current solution to explore on our own.
 
 \paragraph{Agreeing on the scope of our work}
 After some discussion in the group and clarifications from SINTEF, we wrote a suggestion for the scope of our task: 
@@ -1446,7 +1446,7 @@ Our contact at SINTEF accepted this with one change, that the system should be a
 After some discussion and investigation the group decided to use scrum for the main part of the project. Before starting the scrum sprints proper we assigned tasks less formally. At each meeting we decided on what tasks should be done by next meeting, and divided them among us.
 
 \paragraph{Roles and teams}
-Each group member was assigned one or more areas of responsibility. The group was split into two teams to research for the pre study, one for front end and one for back end. This split will remain as the customer wants us to create both a custom front and back end.
+Each group member was assigned one or more areas of responsibility. The group was split into two teams to research for the pre study, one for \gls{front-end} and one for \gls{back-end}. This split will remain as the customer wants us to create both a custom front and \gls{back-end}.
 
 \paragraph{Setting up tools}
 The group agreed on and set up several tools to facilitate communication and work:
@@ -1483,7 +1483,7 @@ The \gls{back-end} part of the group looked into and tested several technologies
 Several technologies were available for presenting map data to the user. We looked into rendering the data client-side. This proved inefficient, and together with observations of other production solutions using \gls{PNG}-tiles we decided to look more into that instead. Some testing revealed OpenLayers to be the best candidate for handling the dynamic map presentation of data.
 
 \paragraph{Recommendation and decision}
-In internal discussions the group found it best to present SINTEF not with one recommendation, but a choice between two paths. For the front end, we concluded that a custom solution would be the best, because what little existed would need a lot of modification. The \gls{back-end} would either be a \gls{THREDDS} server configured by SINTEF or a custom solution. The path involving a custom back end came with the caveat that the final product might not be as feature complete, as the group would need to divide its attention.
+In internal discussions the group found it best to present SINTEF not with one recommendation, but a choice between two paths. For the \gls{front-end}, we concluded that a custom solution would be the best, because what little existed would need a lot of modification. The \gls{back-end} would either be a \gls{THREDDS} server configured by SINTEF or a custom solution. The path involving a custom \gls{back-end} came with the caveat that the final product might not be as feature complete, as the group would need to divide its attention.
 \par Our contacts at SINTEF were presented with the findings and our recommendation. After some discussions with the group they chose the custom \gls{back-end} path.
 
 \section{Other}
@@ -1571,13 +1571,13 @@ The sprint backlog was in this sprint split into three sections. This represents
 	Write weekly documents for advisor meeting
 \end{description}
 	
-We have chosen to use the quite vague goal of the customer as the only task for the front end. This has the consequence of setting a task that is a lot larger than one work day. Despite of this, since the task is vague, we found it difficult to split it further. For the \gls{back-end} side of the project, the tasks are much more specific.
+We have chosen to use the quite vague goal of the customer as the only task for the \gls{front-end}. This has the consequence of setting a task that is a lot larger than one work day. Despite of this, since the task is vague, we found it difficult to split it further. For the \gls{back-end} side of the project, the tasks are much more specific.
 
 \section{Sprint overview}
 The sprints focus was split in two, with most of the group working on the implementation, as to be able to demo for the customer next week. The other part of the group focused on the \gls{pre-delivery}. This separation of responsibility was done with the goal of being able to work in parallel with two important tasks that both had to finished this sprint. By dividing the group into smaller sub-groups, the tasks are perceived to be the responsibility of fewer people, and the team members are more likely to step up and go the extra mile when needed. 
 
 \section{Evaluation}
-The most important part of this sprint was to be able to hand of the \gls{pre-delivery} on time. This was done, and the group is happy with the result. All required parts of the \gls{pre-delivery} was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working front end, which makes requests to the back end in accordance to the \gls{WMTS} \gls{protocol}. The \gls{back-end} is able to read a single \gls{netcdf} file, and output an image that is transferred to the \gls{front-end}, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
+The most important part of this sprint was to be able to hand of the \gls{pre-delivery} on time. This was done, and the group is happy with the result. All required parts of the \gls{pre-delivery} was finished, and there was time for most of the group to proof read the delivery. The group is also prepared to give the customer a demo of the system next week. At this point, the system has a working \gls{front-end}, which makes requests to the \gls{back-end} in accordance to the \gls{WMTS} \gls{protocol}. The \gls{back-end} is able to read a single \gls{netcdf} file, and output an image that is transferred to the \gls{front-end}, and displayed on the map. This is shown in figure \ref{fig:UIAfterSprint2}.
 
 \begin{figure}[h]
 \begin{center}
@@ -1612,7 +1612,7 @@ After handing in the \gls{pre-delivery}, the group is now free to focus their ef
 As implementation is the main activity of this sprint, the group has assigned all but one group member to work on implementation. The group at large will focus on improving the system, and making sure that the \gls{front-end} is adapted to fit the customers need. The last team member will work on the report, and make sure that the sections on the sprints are done, as well as producing internal documents. As the final report is to be handed in just days after the last sprint, it is important not to forget or neglect these tasks. 
 
 \section{Sprint backlog}
-This sprint is focused mostly on the \gls{back-end} work. As we will have feedback from the customer in the middle of the sprint, there might be some new tasks added to the \gls{front-end} part of the backlog. The customer has in meetings with the group said that they will probably have input on the front end, especially the user interface. The sprint backlog is given in table \ref{tab:Sprint3Backlog}. It can be seen that not all tasks have been estimated. Some of these tasks where deemed too difficult to estimate, while some was not estimated when they where picked by a team member in the middle of the sprint. 
+This sprint is focused mostly on the \gls{back-end} work. As we will have feedback from the customer in the middle of the sprint, there might be some new tasks added to the \gls{front-end} part of the backlog. The customer has in meetings with the group said that they will probably have input on the \gls{front-end}, especially the user interface. The sprint backlog is given in table \ref{tab:Sprint3Backlog}. It can be seen that not all tasks have been estimated. Some of these tasks where deemed too difficult to estimate, while some was not estimated when they where picked by a team member in the middle of the sprint. 
 
 \begin{table}[h]
 \centering
@@ -2256,7 +2256,7 @@ We finally succeded in installing FiMex on an Linux Ubuntu Operating System, bec
 \subsubsection{\gls{Fimex} Command Line Tool usage}
 \label{sec:ChallangeFimexCommandLine}
 Fimex as a command line tool accepts parameters listed in its main website for the documentation\footnote{http://fimex.met.no/doc/programDoc.html}.
-Generally, it's usage is as follows:
+Generally, its usage is as follows:
 \begin{lstlisting}
 usage: fimex --input.file  FILENAME [--input.type  INPUT_TYPE]
              [--output.file FILENAME | output.fillFile [--output.type OUTPUT_TYPE]]
@@ -2664,7 +2664,7 @@ At the beginning of the project, the customer let the group choose the graphical
 \item[Zoom picker] A component that allows the user to zoom the map in and out by clicking on the plus sign or the minus sign, providing the user an alternative to the scroll wheel, or the pinching action on a mobile touch-screen device.
 \end{description}
 
-During the design of the front end interface, some inspiration has been taken from existing solutions like Google Maps and Bing maps. 
+During the design of the \gls{front-end} interface, some inspiration has been taken from existing solutions like Google Maps and Bing maps. 
 The different proposals have been the following:
 \begin{description}
   \item[Reserve full screen for the map] This way the map component should take all the area of the screen, and the controls for the users are placed on one side of the screen
@@ -2908,7 +2908,7 @@ This chapter also serves as the groups reflection note, as the groups have been 
 At the end of the project, the team has produced a \gls{prototype} \gls{front-end} and \gls{back-end} that demonstrates that it is feasible to replace the current system used by SINTEF to serve data, with a new and custom built system. Finding out whether or not this is feasible has been the main task of the team, and we feel that has been completed successfully. In addition to this, the team was tasked to build a front-end and back-end prototype of a custom system.
 
 \paragraph{Front-end}
-The front end of the system shows a map of the world, and the user can either enter coordinates manually or by using a tool to graphically select the area they want. When the data is returned, a legend is displayed to explain the color gradients in the returned image. It is also possible to click a certain point of the returned data to get detailed information for this point.
+The \gls{front-end} of the system shows a map of the world, and the user can either enter coordinates manually or by using a tool to graphically select the area they want. When the data is returned, a legend is displayed to explain the color gradients in the returned image. It is also possible to click a certain point of the returned data to get detailed information for this point.
 
 The team is happy with the developed features for the \gls{front-end}. They have been well discussed with the customer, and developed in accordance to the customers wishes. To be able to implement more \gls{front-end} features, the team would have needed more time developing the \gls{back-end} to serve the correct data. 
 
@@ -3014,9 +3014,9 @@ The group has not had any problems using Java as their programming language. The
 When deploying the application, there has been no problems using Java. This is again due to the size of the language, and its large base of users. The group has not experienced any significant downsides to using Java. 
 
 \paragraph{Javascript}
-Javascript has been the main technology for the front end development, besides \gls{HTML} and \gls{CSS}. Javascript enables the control of web page behavior, as well as client side logic in a web application. As there needs to be logic on the client side generating request, and possibly also do other operations and alterations on the web page, the group decided to use Javascript. 
+Javascript has been the main technology for the \gls{front-end} development, besides \gls{HTML} and \gls{CSS}. Javascript enables the control of web page behavior, as well as client side logic in a web application. As there needs to be logic on the client side generating request, and possibly also do other operations and alterations on the web page, the group decided to use Javascript. 
 
-Javascript has proved to be a good choice of technology. To allow for the selection of areas, and sending correct requests to the server, Javascript is used to complete logic calculations on the client side. The map solution is also Javascript based. In short, the front end is dependent on the use of Javascript. There has not been any negative experiences using Javascript. 
+Javascript has proved to be a good choice of technology. To allow for the selection of areas, and sending correct requests to the server, Javascript is used to complete logic calculations on the client side. The map solution is also Javascript based. In short, the \gls{front-end} is dependent on the use of Javascript. There has not been any negative experiences using Javascript. 
 
 \paragraph{SASS}
 Even tough the style sheets of this project are relativly small it does not take many lines of code before a standard \gls{CSS} style sheet get hard to read and understand. That's why we chose to use \gls{SASS}. This makes it easy to modulize the style which makes it a lot easier to maintain. The benefits of \gls{SASS} only grows as a project grows which will benefit Sintef if they decide to continue the project based on our code. For these reasons we are satisfied with our choosing to use \gls{SASS}.

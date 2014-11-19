@@ -1974,7 +1974,12 @@ This sprint has been focused on writing the final report. All team members have 
 Almost all report tasks have been finished. The exception is tasks that the team knew would have to wait until the end of the sprint. These tasks will be done in the days after the sprint.
 
 \paragraph{Fimex}
-At the end of the sprint, it has become clear that the \gls{Fimex}-library has successfully converted a \gls{netcdf}-file to the correct projection. This means that the team has a file that should be readable by the \gls{back-end}. If this is the case, then the demo of the system will hopefully feature a correctly projected file. This will be investigated in the days that remain. 
+At the end of the sprint, it has become clear that the \gls{Fimex}-library has successfully converted a \gls{netcdf}-file to the correct projection. This means that the team has a file that should be readable by the \gls{back-end}. If this is the case, then the demo of the system will hopefully feature a correctly projected file. This will be investigated in the days that remain.
+
+The file \textit{uvNSEW\_20080630.nc}, provided by the customer, was correctly parsed by the back-end. The problem now is that the file contained only Currents data, although on a very wide area (not only Norwegian Sea, but an horizontal extended area from Greenland to Siberia).
+We needed to look into a \gls{netcdf} file containing all the different types of data (i.e. temperature, salinity, currents and depth), since the backend now reads from one \gls{netcdf} file and this can allow the frontend to visualize all different types of data.
+A \gls{netcdf} file, sizing approximately 2 GB, meeting this requirement, has been found. An ad-hoc Fimex configuration script has been written and the file converted.
+Technical details for this problem are explaind in \ref{sec:ChallengeFimexMissingAttribute}.
 
 \paragraph{Remaining backlog items}
 As this is the last sprint, remaining items in the backlog may not be completed. The team still has some days left to work, but must focus on proof reading the report, and preparing for the presentation. As part of the presentation is a demo, some team members will work on getting the newly converted \gls{netcdf}-files working in the system. 
@@ -2216,6 +2221,7 @@ We have not succeeded in finding an explanation to this behavior, but in the end
 In addition, we discovered that Proj.4 can convert only single points (i.e. coordinates): there is no optimized function to convert a geographical area, i.e. a collection of points defined by their border.
 
 \subsection{Chosen solution: Statically projecting on the back end}
+\label{sec:ChallengeStaticallyProjectingBackend}
 Another way of solving the projection problem is to entirely convert the NetCDF files, thus uploading files to the server that are already in the correct projection.
 The customer has suggested a library called \gls{Fimex}\footnote{https://wiki.met.no/fimex/start}.
 From the Fimex main page:
@@ -2230,6 +2236,7 @@ We investigated using the command line tool, for two reasons:
 \end{itemize}
 
 \subsubsection{\gls{Fimex} Installation}
+\label{sec:ChallangeFimexInstallation}
 A challange has been making FiMex command line tool available in the command line. It required in total 22 working hours, as we first attemped to installing it on Windows and Mac, but we finally failed, due to a lot of hard-to-configure dependencies to build and install. Binary versions where not available for most of the dependency packages, nor a binary version of FiMex is available for those Operating Systems.
 Specifically, FiMex requires at least the following libraries to be installed in the system before compilation:
 \begin{itemize}
@@ -2245,6 +2252,7 @@ To be able to work with NetCDF files it also requires that NetCDF is installed i
 We finally succeded in installing FiMex on an Linux Ubuntu Operating System, because it was the only operating system for which a binary version of \gls{Fimex} is available, via \gls{PPA}\footnote{Using a Personal Package Archive (\gls{PPA}), it is possible to distribute software and updates directly to Ubuntu users}
 
 \subsubsection{\gls{Fimex} Command Line Tool usage}
+\label{sec:ChallangeFimexCommandLine}
 Fimex as a command line tool accepts the parameter listed in its main website for the documentation\footnote{http://fimex.met.no/doc/programDoc.html}.
 Generally, it has the following parameters:
 \begin{lstlisting}
@@ -2380,6 +2388,7 @@ The ranges are mandatory config parameters for \gls{Fimex}, and it seems that th
 The two main areas for which data is collected are the Norwegian Sea region, and Chile. Different projections are used to represent those data (since Polar Stereographic Projection is not suitable to represent the ocean around Chile). The areas are well defined, so it should not be an issue to define ranges manually, at least for the scope of this project.
 
 \subsubsection{Missing \textit{grid\_mapping} attribute}
+\label{sec:ChallengeFimexMissingAttribute}
 This has been a huge issue for the group. All the \gls{Fimex} generated \gls{netcdf}-files were lacking  the attribute grid\_mapping, but this attribute is needed by the Java NetCDF library, used by the \gls{back-end} part of the application. A lot of time has been spent figuring out the reason for this, and how to deal with the problem. 
 It was discovered that in the config file, the \textit{[extract]} attribute category actually cuts out all the non-listed attributes. Removing the  \textit{[extract]} attribute, all the attributes were kept, except for the \textit{grid\_mapping} one.
 As explained on an online reference\footnote{http://www.nodc.noaa.gov/data/formats/netcdf/v1.1/} for the grid\_mapping attribute :
@@ -2387,7 +2396,7 @@ As explained on an online reference\footnote{http://www.nodc.noaa.gov/data/forma
 Describes the horizontal coordinate system used by the data. The \textit{grid\_mapping} attribute should point to a variable which would contain the parameters corresponding to the coordinate system. There are typically several parameters associated with each coordinate system. CF defines a separate attributes for each of the parameters. Some examples are "semi\_major\_axis", "inverse\_flattening", "false\_easting"
 \end{quote}
 
-In the end we found in the Diploma thesis of Nicolai Holzer\footnote{http://www.qucosa.de/fileadmin/data/qucosa/documents/7149/Diploma\_thesis\_Holzer\_01042011.pdf} at page 79, the reason of the missing \textit{grid\_mapping} attribute:
+In the end we found in the Diploma thesis of Nicolai Holzer\footnote{\url{http://www.qucosa.de/fileadmin/data/qucosa/documents/7149/Diploma\_thesis\_Holzer\_01042011.pdf},  at page 79} the reason of the missing \textit{grid\_mapping} attribute:
 
 \begin{quote}
 The determination of the spatial reference of a NetCDF file is based on the \textit{units} attributes of the X and Y coordinate variables as well as of the existence of a \textit{grid\_mapping} attribute. If its \textit{units} attribute values are \textit{latitude} respective \textit{longitude}, data is assumed to be referenced in a geographic coordinate system (\gls{GCS}). If its \textit{standard\_name} attributes contain the values \textit{projection\_y\_coordinate} respectively \textit{projection\_x\_coordinate} and in case that a  \textit{grid\_mapping} attribute containing parameters such a projection name and type is existent, data is assumed to be reference to a projected coordinate systems (\gls{PCS}).
@@ -3473,7 +3482,11 @@ sudo apt-get install fimex-bin
 sudo apt-get install fimex-share
 \end{lstlisting} 
 
-Afterwards Fimex is ready in the command line.
+Afterwards Fimex is ready in the command line. To check if the installation is correct it is possible to run:
+\begin{lstlisting}
+fimex --version
+\end{lstlisting}
+
 Partial guides to this process can be found online\footnote{\url{https://wiki.met.no/fimex/install}, 
 \url{https://launchpad.net/~heiko-klein/+archive/ubuntu/fimex/+packages}, 
 \url{http://linuxers.org/howto/how-install-software-ubuntu-ppa}}.

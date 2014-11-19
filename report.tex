@@ -87,6 +87,8 @@
 \newacronym{PCS}{PCS}{Projected Coordinate System}
 \newacronym{NCO}{NCO}{NetCDF operators for file manipulation and simple calculations}
 \newacronym{NPM}{npm}{NodeJS Package Manager}
+\newacronym{CRS}{CRS}{Coordinate Reference System}
+\newacronym{EPSG}{EPSG}{European Petroleum Survey Group}
 
 
 \newglossaryentry{pre-study}{name=pre-study, description={is a document produced before the implementation phase, which informs the customer of possible solutions to their problem}}
@@ -2033,7 +2035,7 @@ There is a fundamental problem with representing a curved surface such as the su
 Since the Earth is a sphere, any map application will have to take this into consideration.  
 
 In order to transform a curved surface into a flat surface, you need to do a mathematical projection of the curved surface onto a cartesian grid.
-This process unavoidably results in a distorted result. Several different projections exsist, and some are more common or popular than others.
+This process unavoidably results in a distorted result. Several different projections exist, and some are more common or popular than others.
 Some projections preserve the relative area of landmasses, while distorting shapes. Other projections preserves shapes, but distorts the relative size of areas. The distortion is more prominent at the extremes of the projected map.
 
 \cite{mapProjections}.
@@ -2072,11 +2074,11 @@ PROJ.4 has been placed under an MIT license.
 
 For the backend part, we have been interested in GeoTools\footnote{http://geotools.org/}, a Java \gls{GIS} library that includes sophisticated projections support.
 
-The coordinates parameters for the REST \gls{API} exposed by the server side application are in the form of Latitude and Logitude, i.e. in the Geographical Coordinate System (\gls{GCS}, with the EPSG code "EPSG:4326"), whereas the data stored in the NetCDF file is in a parameterized Polar Stereographic Projection (basically it has EPSG code "EPSG:9810", with parameters specified by each NetCDF file).
+The coordinates parameters for the REST \gls{API} exposed by the server side application are in the form of Latitude and Logitude, i.e. in \gls{GCS}(with \gls{EPSG} code "EPSG:4326"), whereas the data stored in the NetCDF file is in a parameterized Polar Stereographic Projection (\gls{EPSG} code "EPSG:9810", with parameters specified by each NetCDF file).
 Therefore, a conversion from the Polar Stereographic Projection to EPSG:4326 is what needed.
 
 GeoTools makes this conversion possible, but the standard code EPSG:9810 is not recognized correctly. 
-The customer provided us the Proj.4 String Notation for the projection, with parameters, that is as follows:
+The customer provided us the Proj.4 String Notation for the Polar Stereographic Projection, with parameters, that is as follows:
 \begin{lstlisting}
 +proj=stere +lat_ts=60 +lat_0=90 +lon_0=58 +k_0=1.0 +x_0=2412853.25 +y_0=1840933.25 +a=6370000 +b=6370000
 \end{lstlisting}
@@ -2127,10 +2129,8 @@ and the obtained output has been the following:
 \begin{lstlisting}
 PROJCS["unnamed",GEOGCS["unnamed ellipse",DATUM["unknown",SPHEROID["unnamed",6370000,0]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]],PROJECTION["Polar_Stereographic"],PARAMETER["latitude_of_origin",60],PARAMETER["central_meridian",58],PARAMETER["scale_factor",1],PARAMETER["false_easting",2412853.25],PARAMETER["false_northing",1840933.25]]
 \end{lstlisting}
-To put in the Java code, first the quotes had to be escaped to avoid mistakes. 
-Unfortunately, when inserted on Java code, this string didn't work. The message given has been the following: \textit{org.opengis.referencing.FactoryException: Error in "PROJCS": Parameter "UNIT" is missing.}
-After researching the issue, the team was able to find a solution online. \footnote{http://www.geoapi.org/3.0/javadoc/org/opengis/referencing/doc-files/WKT.html}.
-To solve the problem, we added the "UNIT" parameter as the last parameter, directly as a child of the PROJCS main element. The unit specified has been "m", with a conversion scale (it is a required attribute\footnote{http://www.geoapi.org/3.0/javadoc/org/opengis/referencing/doc-files/WKT.html\#UNIT}).
+To use this in Java, first the quotes had to be escaped to avoid mistakes. 
+Additionally we added the "UNIT" parameter as the last parameter, directly as a child of the PROJCS main element. The unit specified has been "m", with a conversion scale (it is a required attribute\footnote{http://www.geoapi.org/3.0/javadoc/org/opengis/referencing/doc-files/WKT.html\#UNIT}).
 
 Therefore, this is the Java valorization of the WKT variable:
 \begin{lstlisting}
@@ -2149,8 +2149,6 @@ String customWKT = "PROJCS["unnamed","
             + " UNIT["m", 1.0]]";
 \end{lstlisting}
 
-The conversion process is fast (below 500 milliseconds computation time on a PC). This conversion step can also be avoided in an automated generation of the conversion string, since the string can be automatically customized in the \gls{WKT} format.
-
 With this string as a parameter, GeoTools didn't give any errors, and the conversion from PSP to LatLong has been performed correctly (a backworks conversion has been performed to check the result, as well as comparison with values provided by online conversion tools).
 
 The conversion is only point by point, and a performance test with 1 million points, on a MacBook Air Mid '13 machine, with Mac OS X, gave the following result:
@@ -2164,7 +2162,7 @@ The difference is probably due to computational difference between the two conve
 \paragraph{Feasibility}
 It was decided that this solution is too slow to be practical, as you have to pay the price of reprojecting the data every time it's requested. It would also have severely complicated the code: When reading a \gls{netcdf}, you can only read out a spatial rectangle that is aligned with the dataset.
 
-When the user application requests a rectangle in a foreign projection (relative to the dataset), it is requesting what is effectively a trapezoid region of the data (in the native projection), see figure \ref{fig:tileMatrixSet}. This means that we have to read out a rectangle that contains the requested trapezoid, do a costly reprojection computation, discard the superflous data points, resample the result and then return an image of it.
+When the user application requests a rectangle in a foreign projection (relative to the dataset), it is requesting what is effectively a trapezoid region of the data (in the native projection), see figure \ref{fig:tileMatrixSet}. This means that we have to read out a rectangle that contains the requested trapezoid, do a costly reprojection computation, discard the excessive data points, resample the result and then return an image of it.
 
 This is both impractical and expensive, so we decided not to go down this path.
 
@@ -2181,8 +2179,8 @@ However, our research discovered that base map tiles sources - such as Google Ma
 \subsection{Dynamically projecting on the front end}
 \label{subsec:DynamicProj}
 Another path for a possible solution we investigated was dynamically project the dataset requested by the user client-side, with Javascript. 
-Default SRS codes known to OpenLayers currently are the following:
-EPSG:4326, CRS:84, urn:ogc:def:crs:EPSG:6.6:4326, EPSG:900913, EPSG:3857, EPSG:102113, EPSG:102100 and OSGEO:41001)
+Default \gls{CRS} codes known to OpenLayers currently are the following:
+EPSG:4326, CRS:84, urn:ogc:def:crs:EPSG:6.6:4326, EPSG:900913, EPSG:3857, EPSG:102113, EPSG:102100 and OSGEO:41001.
 
 OpenLayers can handle the transformation among these formats itself, otherwise it needs Proj4js included.
 There are examples in the internet of how to use OpenLayers with Proj4js, but configuring Proj4js to handle the Polar Stereographic Projection has been a challenge itself.
@@ -2195,7 +2193,7 @@ This library is a port of both the  PROJ.4 and  GCTCP C libraries to JavaScript.
 Proj4js is a part of the  MetaCRS group of projects and uses the same MIT style license as PROJ.4. \footnote{https://github.com/proj4js/proj4js}
 \end{quote}
 
-We tried to convert from the Mercator projection (EPSG:3785), in which OpenLayers displays data, to the Polar Stereographic Projection, in which data is natively stored in the \gls{netcdf}-files we are using. This way, we can hypothetically provide the parameter as input to the back-end.
+We tried to convert from the Mercator projection (EPSG:3785), in which OpenLayers displays data, to the Polar Stereographic Projection, in which data is natively stored in the \gls{netcdf}-files we are using. This way, we can hypothetically provide the parameter as input to the back-end if the API requires coordinates in Polar Stereographic Projection.
 The following is the result of the single coordinate conversion:
 
 \begin{lstlisting}
@@ -2210,7 +2208,7 @@ The first instruction defines the \textit{EPSG:9810} projection, which is not na
 After that, it performs the conversion of the coordinates of starting and ending point of the dragbox drawn by the user; it prints the converted values, and tries to convert them back to compare the results, in order to check if the conversion happened correctly.
 This code produced the following result in the JS browser console:
 \begin{lstlisting}
-Before projecting: 911429.68975043,9364527.30573214 - 977165.5340756816,9333952.49441807 
+Before projecting from EPSG:3785: 911429.68975043,9364527.30573214 - 977165.5340756816,9333952.49441807 
 After projecting to LatLong: 64.05807610663734,8.187512207031249 - 63.937664908661844,8.778027343749999 
 
 After projecting from EPSG:3785 to PS-A: 321279.34461547807,74197.53173183557 - 329636.45345151634,44142.43253163248
@@ -2233,13 +2231,13 @@ Fimex is a the File Interpolation, Manipulation and EXtraction library for gridd
 Fimex is developed by the Norwegian Meteorological Institute and also provided as a command line tool. 
 We investigated using the command line tool, for two reasons:
 \begin{itemize}
-\item It should be easier to configure and use, focusing on the produced output other than the process of conversion itself. Thus potentially resulting in less time needed for us to make it working.
+\item It should be easier to configure and use, focusing on the produced output other than the process of conversion itself. Thus potentially resulting in less time needed to make it work.
 \item The server is written in Java whereas the library is not ported to Java, so an external wrapper would have been needed to execute C++ language.
 \end{itemize}
 
 \subsubsection{\gls{Fimex} Installation}
 \label{sec:ChallangeFimexInstallation}
-A challange has been making FiMex command line tool available in the command line. It required in total 22 working hours, as we first attemped to installing it on Windows and Mac, but we finally failed, due to a lot of hard-to-configure dependencies to build and install. Binary versions where not available for most of the dependency packages, nor a binary version of FiMex is available for those Operating Systems.
+A challange has been making FiMex command line tool available in the command line, due to a lot of hard-to-configure dependencies to build and install. Binary versions where not available for most of the dependency packages, nor is a binary version of FiMex available for those Operating Systems.
 Specifically, FiMex requires at least the following libraries to be installed in the system before compilation:
 \begin{itemize}
 \item c99/c++ compiler
@@ -2281,7 +2279,7 @@ In particular, with a configuration file, we ran this type of command:
 fimex --input.file <name_of_input_file.nc> -c <config_file.cfg>
 \end{lstlisting}
 
-We conducted the major part of the experiments with Fimex using a file provided by the customer which covered and huge area, but only for current data, therefore it was not so big as other files in size (165 MB instead of 1-2 GB or more). This was chosen in order to reduce any possible scalability problem in the conversion process due to handling huge files.
+We conducted the major part of the experiments with Fimex using a file provided by the customer which covered and huge area, but at a lower resolution and only for current data, therefore it was not so big as other files in size (165 MB instead of 3-4 GB or more). This was chosen in order to reduce any possible scalability problem in the conversion process due to handling huge files.
 
 The name of the file provided by the customer was \textit{uvNSEW\_20080630.nc}, whereas the name of the first config file was \textit{prova1.cfg}, therefore our valorized command has been:
 \begin{lstlisting}
@@ -2334,7 +2332,7 @@ There have been multiple challenges that blocked or obstructed our work on the c
 \item Missing \textit{grid\_mapping} attribute
 \end{itemize}
 \subsubsection{Config parameters, specifically \textit{projString} and axis range}
-Understanding Fimex configuration files has been difficult, and required a considerable amount of work because of the poor documentation, and the almost total lack of any examples.
+Understanding Fimex configuration files has been difficult, and required a considerable amount of work because of the poor documentation, and the almost total lack of relevant examples.
 The only source of examples found is the Fimex mailing list, but messages are not searchable, and difficult to consult since they are stored and available only one message at a page.
 In the end, an example was extracted from the error log of a non-working solution on the Fimex mailing list\footnote{http://lists.met.no/pipermail/fimex/2010-September/000013.html} .
 Thus, we have finally been able to convert into the Geographical Coordinate System (i.e. latlong), with the following configuration file:
@@ -2391,7 +2389,7 @@ The two main areas for which data is collected are the Norwegian Sea region, and
 
 \subsubsection{Missing \textit{grid\_mapping} attribute}
 \label{sec:ChallengeFimexMissingAttribute}
-This has been a huge issue for the group. All the \gls{Fimex} generated \gls{netcdf}-files were lacking  the attribute grid\_mapping, but this attribute is needed by the Java NetCDF library, used by the \gls{back-end} part of the application. A lot of time has been spent figuring out the reason for this, and how to deal with the problem. 
+This has been a big issue for the group. All the \gls{Fimex} generated \gls{netcdf}-files were lacking  the attribute grid\_mapping, but this attribute is needed by the Java NetCDF library, used by the \gls{back-end} part of the application. A lot of time has been spent figuring out the reason for this, and how to deal with the problem. 
 It was discovered that in the config file, the \textit{[extract]} attribute category actually cuts out all the non-listed attributes. Removing the  \textit{[extract]} attribute, all the attributes were kept, except for the \textit{grid\_mapping} one.
 As explained on an online reference\footnote{http://www.nodc.noaa.gov/data/formats/netcdf/v1.1/} for the grid\_mapping attribute :
 \begin{quote}
@@ -2523,7 +2521,7 @@ The \textit{\gls{netcdf} indexer} keeps a database entry for each \gls{netcdf} f
   \paragraph{Database}
   The indexer relies on a SQLite database for persistence. The SQLite database uses the spatialite extension in order to easily store and query geometric/geospatial information.
     
-  Aside from various housekeeping and indexing tables required by spatialite, the database contains one table for our \gls{netcdf} information, dataset\_XY\_time. This table contains the columns detailed in table \ref{tab:DatabaseColumns}. To set up this table, the following SQL statements are executed on a database set up for spatialite:
+  Aside from various maintanance and indexing tables required by spatialite, the database contains one table for our \gls{netcdf} information, dataset\_XY\_time. This table contains the columns detailed in table \ref{tab:DatabaseColumns}. To set up this table, the following SQL statements are executed on a database set up for spatialite:
 \begin{lstlisting}
 CREATE TABLE dataset_XY_time (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -2672,7 +2670,7 @@ The different proposals have been the following:
   \item[Reserve the map a bounded screen-area, both limited in height and width] This way, the charts can be placed on the bottom, and the controls on the right side of the screen, or vice-versa
 \end{description}
 
-The team has taken the decision to use a map with OpenStreetMap background tile covering all the screen size. This is mainly because of usability reasons, but also because it gives a more user friendly interface.
+The team has taken the decision to use a map with OpenStreetMap background tile covering all the screen size. This is mainly because it does not require a license and is free to use.
 
 In particular, we ended up with the a mockup as shown in figure \ref{fig:FrontendMockup}
 
@@ -2837,9 +2835,9 @@ A tool to select the area you want to query was implemented in the \gls{GUI}. It
 \subsubsection{Returning data in different formats}
 Currently the application sends data back mostly in \gls{PNG}'s, but one of the suggestions was to return raw data as well, so that user can request raw data for his needs. This was assigned a lower priority and was not possible to implement in given time.
 
-To add this functionality it is necessary to modify resource classes, and the goal may be achieved in multiple ways. Easiest and probably the most ugly solution would be to add a new method to the resource, which will return raw data when requested. Another way is to modify the current method for getting the wanted data to distinguish between multiple output formats. Then it will have to be decided what is the right way of specifying the output format. It can be passed to the method as another argument, or it can be decided from the ACCEPT field in \gls{HTTP} request.
+To add this functionality it is necessary to modify resource classes, and the goal may be achieved in multiple ways. The easiest solution would be to add a new method to the resource, which will return raw data when requested. This would however not be an optimal solution. Another way is to modify the current method for getting the wanted data to distinguish between multiple output formats. Then it will have to be decided what is the right way of specifying the output format. It can be passed to the method as another argument, or it can be decided from the ACCEPT field in \gls{HTTP} request.
 
-It is also important to decide a format in which the the raw data will be coded. This format should be as compact as possible, but definitely lossless. Because of the current architecture of the application, it would be preferable if this data was transmitted as \gls{JSON} (or at least packed in gls{JSON}).
+It is also important to decide a format in which the raw data will be coded. This format should be as compact as possible, but definitely lossless. Because of the current architecture of the application, it would be preferable if this data was transmitted as \gls{JSON} (or at least packed in gls{JSON}).
 
 \subsubsection{Fully automatic new files detection}
 Currently the application scans the file system for files only on application start. To trigger rescan manually, a new REST endpoint (as a Resource class) can be added, which will ensure rescan when called. By adding this request to a system's crontab it is possible to achieve somehow semi-automatic detecting of new files.

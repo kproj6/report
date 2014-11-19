@@ -2691,7 +2691,7 @@ The \gls{URL} request to the \gls{back-end}, instead, requires coordinates to be
 Therefore a conversion between these two projections is required by the front-end.
 This is done using \textit{Proj4js}\footnote{http://trac.osgeo.org/proj4js/} library, which is a part of the Proj.4 project. This is further described in section \ref{subsec:DynamicProj}.
 
-This conversion is done on the box dragged end event, i.e. every time the user select a new area on the screen.
+This conversion is done on the box dragged end event, i.e. every time the user selects a new area on the screen.
 
 To achieve this, first the definition of the destination projection has to be added:
 \begin{lstlisting}
@@ -3488,6 +3488,8 @@ By running the following command gulp will watch all the source files in the \em
 \begin{lstlisting}
 $ gulp
 \end{lstlisting}
+
+Notice: since the URL address of the back-end server may change according to the machine in which it is deployed,  in case of changing it is needed to configure this URL in the front-end as well. This can be done in the file \textit{src/js/script.js} in the first line of the \textit{buildurl()} function.
 
 \paragraph{Building the front-end}
 

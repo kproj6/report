@@ -617,7 +617,7 @@ The choice of implementation language, platform and tools to use is left up to t
 \subsection{HTML}
   \gls{HTML} is a markup language used to create web sites. It was created at CERN to share documents and was later popularized for creating documents for the World Wide Web. As we are making a web based solution we will need \gls{HTML}, either compiled from another language or written directly.
   \subsection{SASS}
-  \gls{SASS} is a \gls{CSS} extention language that makes it's easier to modualize style sheets and thus keep the styling more maintainable. It also introduces variables, nesting, mixins and inheritance to style sheets. These features also improve the maintainability of the style sheets. The syntax of \gls{SASS} is very similar to \gls{CSS} which makes it easy to learn if you know \gls{CSS}. \gls{SASS} is a so-called preprocesser which compiles the \gls{SASS} code into regular \gls{CSS}. This means that the web-server or client does not need to have extra software installed to handel it.
+  \gls{SASS} is a \gls{CSS} extention language that makes it's easier to modualize style sheets and thus keep the styling more maintainable. It also introduces variables, nesting, mixins and inheritance to style sheets. These features also improve the maintainability of the style sheets. The syntax of \gls{SASS} is very similar to \gls{CSS} which makes it easy to learn if you know \gls{CSS}. \gls{SASS} is a so-called preprocesser which compiles the \gls{SASS} code into regular \gls{CSS}. This means that the web-server or client does not need to have extra software installed to handle it.
   
 \section{Index Database}
   \subsection{Spatialite}
@@ -2134,19 +2134,19 @@ To solve the problem, we added the "UNIT" parameter as the last parameter, direc
 
 Therefore, this is the Java valorization of the WKT variable:
 \begin{lstlisting}
-String customWKT = "PROJCS[\"unnamed\","
-            + "GEOGCS[\"unnamed ellipse\","
-            + "  DATUM[\"unknown\","
-            + "  SPHEROID[\"unnamed\",6370000,0]],"
-            + "PRIMEM[\"Greenwich\",0],"
-            + "UNIT[\"degree\",0.0174532925199433]], "
-              + " PROJECTION[\"Polar_Stereographic\"],"
-            + " PARAMETER[\"latitude_of_origin\",60],"
-            + " PARAMETER[\"central_meridian\",58],"
-            + " PARAMETER[\"scale_factor\",1],"
-            + " PARAMETER[\"false_easting\",2412853.25],"
-            + " PARAMETER[\"false_northing\",1840933.25],"
-            + " UNIT[\"m\", 1.0]]";
+String customWKT = "PROJCS["unnamed","
+            + "GEOGCS["unnamed ellipse","
+            + "  DATUM["unknown","
+            + "  SPHEROID["unnamed",6370000,0]],"
+            + "PRIMEM["Greenwich",0],"
+            + "UNIT["degree",0.0174532925199433]], "
+              + " PROJECTION["Polar_Stereographic"],"
+            + " PARAMETER["latitude_of_origin",60],"
+            + " PARAMETER["central_meridian",58],"
+            + " PARAMETER["scale_factor",1],"
+            + " PARAMETER["false_easting",2412853.25],"
+            + " PARAMETER["false_northing",1840933.25],"
+            + " UNIT["m", 1.0]]";
 \end{lstlisting}
 
 The conversion process is fast (below 500 milliseconds computation time on a PC). This conversion step can also be avoided in an automated generation of the conversion string, since the string can be automatically customized in the \gls{WKT} format.
@@ -2175,7 +2175,7 @@ This is both impractical and expensive, so we decided not to go down this path.
 \end{figure}
 
 \subsection{Use a base layer map in the same projection as in the NetCDF files}
-In the scenario in which a base map provided in the Polar Stereographic Projection (and potentially in any projection) is provided, then the tiles requeested by the user from \gls{netcdf} files can be directly displayed without the need of any projection transformation. This would be a straightforward solution to the projection problem.
+In the scenario in which a base map is provided in the Polar Stereographic Projection (and potentially in any projection), the tiles requested by the user from \gls{netcdf} files can be directly displayed without the need of any projection transformation. This would be a straightforward solution to the projection problem.
 However, our research discovered that base map tiles sources - such as Google Maps or OpenStreetMaps - are only available in more standard projections. The particular polar stereographic projection used by SINTEF could not be found in any available maps.
 
 \subsection{Dynamically projecting on the front end}
@@ -2255,8 +2255,8 @@ We finally succeded in installing FiMex on an Linux Ubuntu Operating System, bec
 
 \subsubsection{\gls{Fimex} Command Line Tool usage}
 \label{sec:ChallangeFimexCommandLine}
-Fimex as a command line tool accepts the parameter listed in its main website for the documentation\footnote{http://fimex.met.no/doc/programDoc.html}.
-Generally, it has the following parameters:
+Fimex as a command line tool accepts parameters listed in its main website for the documentation\footnote{http://fimex.met.no/doc/programDoc.html}.
+Generally, it's usage is as follows:
 \begin{lstlisting}
 usage: fimex --input.file  FILENAME [--input.type  INPUT_TYPE]
              [--output.file FILENAME | output.fillFile [--output.type OUTPUT_TYPE]]
@@ -2459,6 +2459,15 @@ The \gls{back-end} is built as a single binary to ease deployment. The program c
 
 Using these modules, we have built two services: A \textit{REST \gls{API}} to query for arbitrary data, and a \textit{\gls{WMTS} service} to allow for easy creation of mapping applications.
 
+\begin{figure}[!htb]
+\begin{center}
+\fbox{\includegraphics[width=400px]{img/back_end_arch.png}}
+\caption{Back-end Architecture overview}
+\label{fig:Back-endArchitecture}
+\end{center}
+\end{figure}
+
+In the figure \ref{fig:Back-endArchitecture} is shown flow of the \gls{back-end}, how the modules are connected and short description what the module does.
 
 \paragraph{REST API:}
 The REST \gls{API} consists of a series of \gls{URL}s that can be queried to obtain slices of the dataset. The \gls{API} takes a set of data space constraints and returns an image representing the requested area at a given time and depth.
@@ -2516,14 +2525,14 @@ The \textit{\gls{netcdf} indexer} keeps a database entry for each \gls{netcdf} f
     
   Aside from various housekeeping and indexing tables required by spatialite, the database contains one table for our \gls{netcdf} information, dataset\_XY\_time. This table contains the columns detailed in table \ref{tab:DatabaseColumns}. To set up this table, the following SQL statements are executed on a database set up for spatialite:
 \begin{lstlisting}
-CREATE TABLE dataset\_XY\_time (
+CREATE TABLE dataset_XY_time (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     filepath TEXT NOT NULL,
     gridsize INTEGER NOT NULL);
 
-SELECT AddGeometryColumn('dataset\_XY\_time', 'coverage', 33333, 'POLYGON', 'XY', 1);
+SELECT AddGeometryColumn('dataset_XY_time', 'coverage', 33333, 'POLYGON', 'XY', 1);
 
-SELECT AddGeometryColumn('dataset\_XY\_time', 'time', 33333, 'LINESTRING', 'XY', 1);
+SELECT AddGeometryColumn('dataset_XY_time', 'time', 33333, 'LINESTRING', 'XY', 1);
 \end{lstlisting}
 
 \begin{table}[h]
@@ -2548,7 +2557,7 @@ If a \gls{netcdf} file should be added, it is opened to retrieve key information
 
 \begin{figure}[!htb]
 \begin{center}
-\fbox{\includegraphics[width=350px]{img/indexer_datasets.png}}
+\fbox{\includegraphics[width=300px]{img/indexer_datasets.png}}
 \caption{Example of two coverage POLYGONs (light blue)}
 \label{fig:IndexerDatasets}
 \end{center}
@@ -2558,7 +2567,7 @@ If a \gls{netcdf} file should be added, it is opened to retrieve key information
 The indexer allows for rapid queries of which files in a given areas have data for a given point in time. A call to the query() function takes start and end latitude and longitude to specify the area you want to query. From this, the function will create a POLYGON with four corners. An example of a polygon for a query is shown in figure \ref{fig:IndexerRequest}. The point in time is taken as a DateTime argument and converted to UNIX timestamp, making a POINT geometry. Using a SQL query like 
 \begin{lstlisting}
     SELECT filepath
-    FROM dataset\_XY\_time
+    FROM dataset_XY_time
     WHERE intersects([a], [b])
     AND intersects([c], [d]);
 \end{lstlisting}
@@ -2566,20 +2575,20 @@ we get a list of files that match the query() parameters. Where [a] and [c] are 
 
 \begin{figure}[!htb]
 \begin{center}
-\fbox{\includegraphics[width=350px]{img/indexer_request.png}}
+\fbox{\includegraphics[width=300px]{img/indexer_request.png}}
 \caption{Example of a query POLYGON (red) atop two dataset coverage POLYGONs (light blue). The query intersects with both datasets spatially.}
 \label{fig:IndexerRequest}
 \end{center}
 \end{figure}
 
 \subsection{REST endpoints}
-The REST endpoints are gateway to the application as all communication flows through them and \gls{API} is defined by those endpoints. It is a collection of classes representing specific service that the application provides. When a user enters his request in form of \gls{URL} into his \gls{HTTP} client (browser), the server parses this request and calls appropriate resource class to handle this request. The user can specify additional constraints in the form of query parameters.
+The REST endpoints are gateway to the application as all communication flows through them and \gls{API} is defined by those endpoints. It is a collection of classes representing specific service that the application provides. When a user enters his request in the form of \gls{URL} into his \gls{HTTP} client (browser), the server parses this request and calls appropriate resource class to handle this request. The user can specify additional constraints in the form of query parameters.
 
 In the application there are currently resource classes for checking status of the application and for representing scalar information from simulated dataset (current magnitude, depth, salinity and temperature). By specifying query parameters user can tell the endpoint which section of the data he is interested in. Most resources accept area, depth and time parameters.
 
 Due to time constraints, we have restricted the output to require a 2D slice of area at a single time and a single depth. However, it should ideally be possible to query for any subspace of the dataset.
 
-Every resource class has to be in the \texttt{com.sintef.featureserver.rs} class and is annotated by \texttt{@Path} annotation specifying the root \gls{URL} of that resource. Because most resources need to access information from \gls{netcdf}, it is common to store reference to \texttt{NetCdfManager} in a private variable in class constructor. Resource classes then contain methods for handling user requests. Such methods are annotated with \texttt{@Path}, which specifies path from the resource root and have to return \texttt{Response} object. Method parameters which are annotated by \texttt{@QueryParam} with parameter name are autofilled with query parameters.
+Every resource class has to be in the \texttt{com.sintef.featureserver.rs} package and is annotated by \texttt{@Path} annotation specifying the root \gls{URL} of that resource. Because most resources need to access information from \gls{netcdf}, it is common to store reference to \texttt{NetCdfManager} in a private variable in class constructor. Resource classes then contain methods for handling user requests. Such methods are annotated with \texttt{@Path}, which specifies path from the resource root and have to return \texttt{Response} object. Method parameters which are annotated by \texttt{@QueryParam} with parameter name are autofilled with query parameters.
 
 Typical workflow of the class method for handling user request is to first validate the user input, then use \texttt{NetCdfManager} to get the data the user requested, convert the raw data to some interchangeable format (usually to \gls{PNG} image with the use of \texttt{ImageRenderer}), and finally pack the result in the \texttt{Response} object and return it.
 
@@ -2607,18 +2616,9 @@ In listing \ref{lst:resourceClass}, there is an example of a very simple resourc
 The \textit{\gls{WMTS}} module is tasked with generating a \textit{capabilities document}, and serving \textit{tiles}. When generating the capabilities document, the \gls{WMTS} module calls the indexer in order to obtain the bounds of the entire dataset.
 
 The \gls{WMTS} module also has to be able to take the tile index requested by the user and computing the coordinates of the corners of the given tile. If the image for this tile is already in cache, it can just return that to the user.
-Otherwise, it then calls on the relevant resource with the computed coordinates to obtain the image for that tile. Finally, it calls the cache to store the image for later use.
+Otherwise, it then calls the relevant resource with the computed coordinates to obtain the image for that tile. Finally, it calls the cache to store the image for later use.
 
 Thus, the \gls{WMTS} module relies on the indexer, cache, and resource module. By proxy, it also relies on the data manager and image renderer as well.
-
-\begin{figure}[!htb]
-\begin{center}
-\fbox{\includegraphics[width=400px]{img/back_end_arch.png}}
-\caption{Back-end Architecture overview}
-\label{fig:Back-endArchitecture}
-\end{center}
-\end{figure}
-
 
 \subsection{Image Renderer}
 The ImageRenderer class is responsible for turning the raw data into \gls{PNG} images. An empty image is created and filled pixel by pixel from sampling the data. It can be used to create tiles for \gls{WMTS} or images that can be used outside a map service. The different resources rely on this module when the requested output representation is an image.
@@ -2730,7 +2730,7 @@ Given the size and complexity of the project, the functionality of the implement
 \subsection{Front-end}
 For the front-end there are new kinds of data that should be displayed in the \gls{GUI}, some of which lack implemented \gls{back-end} support. First off the basic map overlay requires some improvements. This includes extending the functionality it provides and improving efficiency and scalability. Secondarily there are new functions to be added, ranging from new controls to displaying other types of data.
 \subsubsection{WMTS}
-As described earlier in the report \gls{WMTS} is a protocol for serving pre-rendered geo-referenced map tiles. We would have liked to use this protocol because of the advantages it gives when you want to overlay visualized data on a map. Unfortunately we were not able to implement WMTS in our back-end solution because of time constraints. This said we were able to display data from another \gls{WMTS} source using OpenLayers. It should be trivial to use OpenLayers to display data from  
+As described earlier in the report \gls{WMTS} is a protocol for serving pre-rendered geo-referenced map tiles. We would have liked to use this protocol because of the advantages it gives when you want to overlay visualized data on a map. Unfortunately we were not able to implement WMTS in our back-end solution because of time constraints. This said we were able to display data from another \gls{WMTS} source using OpenLayers. It should be trivial to use OpenLayers to display data from our WMTS \gls{back-end} once it is working. 
 
 
 \subsubsection{Point values}
@@ -2830,7 +2830,7 @@ When deploying a javascript application it is common to minify the code. This me
 We would like to add some functionality where the use can see a time-lapse animation of the temperature (or another feature) in an area. The simplest way to implement this might be in the \gls{front-end}. By requesting several images for the same area, but at different points in time, we have the basis for a time-lapse. This approach would not require any changes to the back-end. It would most likely not be the best in performance, especially on low bandwidth connections or low end devices. Creating the animation in a more appropriate format in the back-end would save bandwidth and processing power for the end user, but this may be more difficult to implement.
 
 \subsubsection{Tooltips}
-A tool to select the area you want to query was implemented in the \gls{GUI}. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and dragging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI}, and the user will probably not find this feature on his own. We therefore recommend that tool tips and hint are added to the \gls{GUI} so the user knows about all og its features. We can also use tooltips to minimize the \gls{GUI} and just show the explanation when moving the mouse over the field.
+A tool to select the area you want to query was implemented in the \gls{GUI}. It's toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and dragging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI}, and the user will probably not find this feature on his own. We therefore recommend that tool tips and hint are added to the \gls{GUI} so the user knows about all of its features. We can also use tooltips to minimize the \gls{GUI} and just show the explanation when moving the mouse over the field.
 
 \subsection{Back-end}
 

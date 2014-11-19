@@ -161,7 +161,7 @@ Our group of seven students have used the fall semester at the Norwegian Univers
 
 The group has written a \gls{pre-study}, where systems that are currently in use have been investigated, and technologies that could be used for custom built solutions have been evaluated. Using the Scrum methodology, the group has worked to develop both a front- and back-end \gls{prototype} of such a system.
 
-The \gls{prototype} developed is able to read gls{netcdf}-files from SINTEF's simulations, and visualize this dynamically at the users discretion. To display the data on a map for the user, the Fimex library is used to convert the data to the correct projection. Although the solution is a \gls{prototype}, and not ready for full scale deployment, it proves that developing a custom system is within reach, and should be considered.
+The \gls{prototype} developed is able to read \gls{netcdf}-files from SINTEF's simulations, and visualize this dynamically at the users discretion. To display the data on a map for the user, the \gls{Fimex} library is used to convert the data to the correct projection. Although the solution is a \gls{prototype}, and not ready for full scale deployment, it proves that developing a custom system is within reach, and should be considered.
 
 In addition to the prototype, the group provides SINTEF with advice on how to continue development, and what challenges need to be addressed to be able to commercialize the solution.
 
@@ -1861,7 +1861,7 @@ The team and the customer had a discussion on different ways of solving the proj
 
 The customer does not have any preferences on how this is solved. While doing a full conversion of the \gls{netcdf}-files might take some time, it will be an operation that has to be conducted only once. The customer will not have problems storing the converted files alongside the original files. 
 
-\paragraph{Converting gls{netcdf} files}
+\paragraph{Converting \gls{netcdf} files}
 The team has investigated the possibility of converting the entire \gls{netcdf} file, instead of converting only the coordinates of the data being retrieved, as discussed in the last customer meeting (see section \ref{sec:Sprint4Evaluation}). This solution looks promising, and the team has now been able to use the library to convert a file. At the moment, it seems to convert the data correctly, but the new \gls{netcdf}-file is missing some headers. This could be the fault of the configuration file. If this is the case, and this can be easily fixed, then the system should be able to read correct data from a \gls{netcdf} file very soon.
 
 \paragraph{Time logging}
@@ -1933,7 +1933,7 @@ Write about WMTS (Challenges)                          & 3                      
 Write deploy guide (Appendix)                          & 3                                                                   & 2                                                       & Arve, Marco, Emil          \\
 Write API-documentation - WMTS (Appendix)              & 2                                                                   & 2                                                       & Arve                       \\
 Write API-documentation - Other (Appendix)             & 2                                                                   & 4,5                                                     & Ondrej                     \\
-Write about gls{netcdf} manager                        & 3                                                                   & 2,5                                                     & Ondrej                     \\
+Write about \gls{netcdf} manager                        & 3                                                                   & 2,5                                                     & Ondrej                     \\
 Write about indexing (Challenges)                      & 3                                                                   & 2,5                                                     & Emil                       \\
 Write about indexing (Final product)                   & 8                                                                   & 9,5                                                     & Emil                       \\
 Write glossary appendix                                & 2                                                                   & 3,5                                                     & Hans Kristian              \\
@@ -1967,7 +1967,7 @@ Any task that is left after this sprint will probably not be done, as the projec
 \paragraph{Customer meeting}
 On the Friday of this sprint, the team had their final meeting with the customer at SINTEF. We had the opportunity to informally discuss with the customer over lunch before giving a more formal rundown of the final product. 
 
-The customer was informed of the content of the report, and that the team will strive to include as much information as possible about the different challenges faced. The \gls{front-end} was demonstrated, especially the legend and the possibility to click a certain point on the map to get further information. As for the \gls{back-end}, the team explained the latest findings of the investigation into \gls{Fimex}. Due to some missing headers in the converted gls{netcdf} files, they had not been working. In theory, the conversion is functional, but some work remains to be able to read the files correctly.
+The customer was informed of the content of the report, and that the team will strive to include as much information as possible about the different challenges faced. The \gls{front-end} was demonstrated, especially the legend and the possibility to click a certain point on the map to get further information. As for the \gls{back-end}, the team explained the latest findings of the investigation into \gls{Fimex}. Due to some missing headers in the converted \gls{netcdf} files, they had not been working. In theory, the conversion is functional, but some work remains to be able to read the files correctly.
 
 \paragraph{Time logging and estimations}
 In this sprint, the team has done a full estimation of all tasks. All team members have logged their time usage, making it possible to get a full picture of how the time has been used. This is reflected in table \ref{tab:Sprint6Backlog}. Most tasks for this sprint where quite well estimated, though there were some tasks that went over the estimate.
@@ -1982,7 +1982,7 @@ At the end of the sprint, it has become clear that the \gls{Fimex}-library has s
 
 The file \textit{uvNSEW\_20080630.nc}, provided by the customer, was correctly parsed by the back-end. The problem now is that the file contained only Currents data, although on a very wide area (not only Norwegian Sea, but an horizontal extended area from Greenland to Siberia).
 We needed to look into a \gls{netcdf} file containing all the different types of data (i.e. temperature, salinity, currents and depth), since the \gls{back-end} now reads from one \gls{netcdf} file and this can allow the \gls{front-end} to visualize all different types of data.
-A \gls{netcdf} file, sizing approximately 2 GB, meeting this requirement, has been found in the Hard Drive provided by the customer. An ad-hoc Fimex configuration script has been written and the file converted.
+A \gls{netcdf} file, sizing approximately 2 GB, meeting this requirement, has been found in the Hard Drive provided by the customer. An ad-hoc \gls{Fimex} configuration script has been written and the file converted.
 Technical details for this problem are explaind in \ref{sec:ChallengeFimexMissingAttribute}.
 
 \paragraph{Remaining backlog items}
@@ -2227,11 +2227,11 @@ In addition, we discovered that Proj.4 can convert only single points (i.e. coor
 \label{sec:ChallengeStaticallyProjectingBackend}
 Another way of solving the projection problem is to entirely convert the NetCDF files, thus uploading files to the server that are already in the correct projection.
 The customer has suggested a library called \gls{Fimex}\footnote{https://wiki.met.no/fimex/start}.
-From the Fimex main page:
+From the \gls{Fimex} main page:
 \begin{quote}
-Fimex is a the File Interpolation, Manipulation and EXtraction library for gridded geospatial data, written in C/C++. It converts between different, extensible dataformats (currently \gls{netcdf}, \gls{NCML}, grib1/2 and felt). It enables you to change the projection and interpolation of scalar and vector grids. It makes it possible to subset the gridded data and to extract only parts of the files.
+\gls{Fimex} is a the File Interpolation, Manipulation and EXtraction library for gridded geospatial data, written in C/C++. It converts between different, extensible dataformats (currently \gls{netcdf}, \gls{NCML}, grib1/2 and felt). It enables you to change the projection and interpolation of scalar and vector grids. It makes it possible to subset the gridded data and to extract only parts of the files.
 \end{quote}
-Fimex is developed by the Norwegian Meteorological Institute and also provided as a command line tool. 
+\gls{Fimex} is developed by the Norwegian Meteorological Institute and also provided as a command line tool. 
 We investigated using the command line tool, for two reasons:
 \begin{itemize}
 \item It should be easier to configure and use, focusing on the produced output other than the process of conversion itself. Thus potentially resulting in less time needed to make it work.
@@ -2240,8 +2240,8 @@ We investigated using the command line tool, for two reasons:
 
 \subsubsection{\gls{Fimex} Installation}
 \label{sec:ChallangeFimexInstallation}
-A challange has been making FiMex command line tool available in the command line, due to a lot of hard-to-configure dependencies to build and install. Binary versions where not available for most of the dependency packages, nor is a binary version of FiMex available for those Operating Systems.
-Specifically, FiMex requires at least the following libraries to be installed in the system before compilation:
+A challange has been making \gls{Fimex} command line tool available in the command line, due to a lot of hard-to-configure dependencies to build and install. Binary versions are not available for most of the dependency packages, nor is a binary version of \gls{Fimex} available for other operating systems than Ubuntu.
+Specifically, \gls{Fimex} requires at least the following libraries to be installed in the system before compilation:
 \begin{itemize}
 \item c99/c++ compiler
 \item libxml2 $>=$ 2.5.0
@@ -2252,11 +2252,11 @@ Specifically, FiMex requires at least the following libraries to be installed in
 
 To be able to work with NetCDF files it also requires that NetCDF is installed in the system (netcdf-3 $>$ 3.6).
 
-We finally succeded in installing FiMex on an Linux Ubuntu Operating System, because it was the only operating system for which a binary version of \gls{Fimex} is available, via \gls{PPA}\footnote{Using a Personal Package Archive (\gls{PPA}), it is possible to distribute software and updates directly to Ubuntu users}
+We finally succeded in installing \gls{Fimex} on an Linux Ubuntu Operating System, because it was the only operating system for which a binary version of \gls{Fimex} is available, via \gls{PPA}\footnote{Using a Personal Package Archive (\gls{PPA}), it is possible to distribute software and updates directly to Ubuntu users}
 
 \subsubsection{\gls{Fimex} Command Line Tool usage}
 \label{sec:ChallangeFimexCommandLine}
-Fimex as a command line tool accepts parameters listed in its main website for the documentation\footnote{http://fimex.met.no/doc/programDoc.html}.
+gls{Fimex} as a command line tool accepts parameters listed in its main website for the documentation\footnote{http://fimex.met.no/doc/programDoc.html}.
 Generally, its usage is as follows:
 \begin{lstlisting}
 usage: fimex --input.file  FILENAME [--input.type  INPUT_TYPE]
@@ -2282,7 +2282,7 @@ In particular, with a configuration file, we ran this type of command:
 fimex --input.file <name_of_input_file.nc> -c <config_file.cfg>
 \end{lstlisting}
 
-We conducted the major part of the experiments with Fimex using a file provided by the customer which covered and huge area, but at a lower resolution and only for current data, therefore it was not so big as other files in size (165 MB instead of 3-4 GB or more). This was chosen in order to reduce any possible scalability problem in the conversion process due to handling huge files.
+We conducted the major part of the experiments with \gls{Fimex} gls using a file provided by the customer which covered and huge area, but at a lower resolution and only for current data, therefore it was not so big as other files in size (165 MB instead of 3-4 GB or more). This was chosen in order to reduce any possible scalability problem in the conversion process due to handling huge files.
 
 The name of the file provided by the customer was \textit{uvNSEW\_20080630.nc}, whereas the name of the first config file was \textit{prova1.cfg}, therefore our valorized command has been:
 \begin{lstlisting}
@@ -2327,17 +2327,17 @@ As follows the explanation of the meaning of the parameters used in the configur
 \item[yAxisUnit] The unit of measure of the y-axis grid (latitude). Can be 'm' (meters) or 'degrees\_north', or even merely 'degrees'
 \end{description}
 
-In the parameters it is not needed to specify the projection from which to convert from, since Fimex recognizes it automatically. Therefore, no changes of the command line string or configuration file are needed to convert from a Fimex file in another format.
+In the parameters it is not needed to specify the projection from which to convert from, since \gls{Fimex} recognizes it automatically. Therefore, no changes of the command line string or configuration file are needed to convert from a \gls{Fimex} file in another format.
 
-There have been multiple challenges that blocked or obstructed our work on the configuration of Fimex. Specifically, the following challenges have been faced:
+There have been multiple challenges that blocked or obstructed our work on the configuration of \gls{Fimex}. Specifically, the following challenges have been faced:
 \begin{itemize}
 \item Understanding how the config parameters work, specifically axis range and the correct projString parameter
 \item Missing \textit{grid\_mapping} attribute
 \end{itemize}
 \subsubsection{Config parameters, specifically \textit{projString} and axis range}
-Understanding Fimex configuration files has been difficult, and required a considerable amount of work because of the poor documentation, and the almost total lack of relevant examples.
-The only source of examples found is the Fimex mailing list, but messages are not searchable, and difficult to consult since they are stored and available only one message at a page.
-In the end, an example was extracted from the error log of a non-working solution on the Fimex mailing list\footnote{http://lists.met.no/pipermail/fimex/2010-September/000013.html} .
+Understanding \gls{Fimex} configuration files has been difficult, and required a considerable amount of work because of the poor documentation, and the almost total lack of relevant examples.
+The only source of examples found is the \gls{Fimex} mailing list, but messages are not searchable, and difficult to consult since they are stored and available only one message at a page.
+In the end, an example was extracted from the error log of a non-working solution on the \gls{Fimex} mailing list\footnote{http://lists.met.no/pipermail/fimex/2010-September/000013.html} .
 Thus, we have finally been able to convert into the Geographical Coordinate System (i.e. latlong), with the following configuration file:
 \begin{lstlisting}
 [input]
@@ -2437,7 +2437,7 @@ The problem now has been that the \textit{grid\_mapping} attribute was still mis
 \begin{figure}[!htb]
   \begin{center}
     \fbox{\includegraphics[width=\textwidth]{img/fimexProjMercAttribute.png}}
-    \caption{The Mercator Projection Attribute in the \gls{netcdf} file generate by Fimex, visualized with Panoply}
+    \caption{The Mercator Projection Attribute in the \gls{netcdf} file generate by \gls{Fimex}, visualized with Panoply}
     \label{fig:fimexProjMercAttribute}
   \end{center}
 \end{figure}
@@ -2841,7 +2841,7 @@ Currently the application sends data back mostly in \gls{PNG}'s, but one of the 
 
 To add this functionality it is necessary to modify resource classes, and the goal may be achieved in multiple ways. The easiest solution would be to add a new method to the resource, which will return raw data when requested. This would however not be an optimal solution. Another way is to modify the current method for getting the wanted data to distinguish between multiple output formats. Then it will have to be decided what is the right way of specifying the output format. It can be passed to the method as another argument, or it can be decided from the ACCEPT field in \gls{HTTP} request.
 
-It is also important to decide a format in which the raw data will be coded. This format should be as compact as possible, but definitely lossless. Because of the current architecture of the application, it would be preferable if this data was transmitted as \gls{JSON} (or at least packed in gls{JSON}).
+It is also important to decide a format in which the raw data will be coded. This format should be as compact as possible, but definitely lossless. Because of the current architecture of the application, it would be preferable if this data was transmitted as \gls{JSON} (or at least packed in \gls{JSON}).
 
 \subsubsection{Fully automatic new files detection}
 Currently the application scans the file system for files only on application start. To trigger rescan manually, a new REST endpoint (as a Resource class) can be added, which will ensure rescan when called. By adding this request to a system's crontab it is possible to achieve somehow semi-automatic detecting of new files.
@@ -2873,10 +2873,10 @@ Getting the projections done correctly has been a big difficulty in the project 
 Currently all \gls{Fimex} projections are done manually, requiring us to run \gls{Fimex} for each file we want to use, as well as deciding on a reasonable boundary box for its new projection. If further use of \gls{Fimex} is wanted, the process of projecting files has to be automated. There are solutions for executing these same configurations from a script or program. Finding the bounding box accurately will help reduce the projection time as well as reducing storage size and redundancy. One solution might be to use the 4 corner points in the original projection, project them into the desired projection and then finding the maximums and minimums among these in x and y directions. The step distance can most likely be a static value for each resolution-level.
 
 \paragraph{Templates}
-As an alternative to deciding the boundary box for each file and adding a big overhead of empty points the use of templates has been considered. The idea here is that the area we want to project to is defined beforehand and we merge the results from all the files that contribute to this area. These areas could then be pre-calculated and be fitted to the \gls{WMTS} tile grid as shown in figure \ref{fig:tileMatrix} and \ref{fig:tileMatrixSet} on page \pageref{fig:tileMatrixSet}. It is still uncertain how many of these needs fimex can handle for us. Potential benefits like fast and easy \gls{netcdf} to image tile conversion makes this an important point for the future.
+As an alternative to deciding the boundary box for each file and adding a big overhead of empty points the use of templates has been considered. The idea here is that the area we want to project to is defined beforehand and we merge the results from all the files that contribute to this area. These areas could then be pre-calculated and be fitted to the \gls{WMTS} tile grid as shown in figure \ref{fig:tileMatrix} and \ref{fig:tileMatrixSet} on page \pageref{fig:tileMatrixSet}. It is still uncertain how many of these needs \gls{Fimex} can handle for us. Potential benefits like fast and easy \gls{netcdf} to image tile conversion makes this an important point for the future.
 
 \paragraph{Support more projections}
-The customer has also expressed wishes to make the back-end provide multiple projections. As converting the projections in the gls{netcdf} files seems the reasonable thing to do. Pre-processing the model-layer when adding files to the system. This could be less optimal for supporting multiple projections because we would need to store one set of files for each projection. So both the model projection conversion and storage requirement would multiply by the number of projections the \gls{back-end} would support. This would force the product owner to carefully consider the cost versus the gains of adding more projections. 
+The customer has also expressed wishes to make the back-end provide multiple projections. As converting the projections in the \gls{netcdf} files seems the reasonable thing to do. Pre-processing the model-layer when adding files to the system. This could be less optimal for supporting multiple projections because we would need to store one set of files for each projection. So both the model projection conversion and storage requirement would multiply by the number of projections the \gls{back-end} would support. This would force the product owner to carefully consider the cost versus the gains of adding more projections. 
 If the system will project the data for each request, adding support for multiple projections should be a simple task that does not require any special cost. This kind of approach would also make it possible to choose the projection dynamically, specifying parameters like false easting in the request.
 
 \subsubsection{Load Balancing}
@@ -3488,7 +3488,7 @@ $ gulp build
 \end{lstlisting}
 
 \paragraph{Installation of Fimex}
-Fimex library can be installed on an Ubuntu 14.04 LTS Operating System by running the following commands in a terminal window:
+gls{Fimex} library can be installed on an Ubuntu 14.04 LTS Operating System by running the following commands in a terminal window:
 \begin{lstlisting}
 sudo  gedit  /etc/apt/sources.list
 \end{lstlisting}
@@ -3509,7 +3509,7 @@ sudo apt-get install fimex-bin
 sudo apt-get install fimex-share
 \end{lstlisting} 
 
-Afterwards Fimex is ready in the command line. To check if the installation is correct it is possible to run:
+Afterwards \gls{Fimex} is ready in the command line. To check if the installation is correct it is possible to run:
 \begin{lstlisting}
 fimex --version
 \end{lstlisting}

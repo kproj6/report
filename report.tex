@@ -1758,7 +1758,7 @@ Doing the conversion on the clients machine was discussed, but this is not optim
 \paragraph{Projections}
 The group has not been able to solve the projection problem in this sprint. After the customer meeting, the search for a map in the correct projection was aborted, as the customer does not think it will be possible to find. In addition, polar stereographic maps only cover half the globe, which makes them unattractive for map applications. 
 
-The research into Porj.4 has been more promising. Converting 1 million points is done in about 1 second. This allows for a 1000 by 1000 pixel area to be converted in one second, which would be within the customers demand for a responsive application. Unfortunately, the data still has to be interpolated, and this might be more work than the group has time to do.
+The research into Proj.4 has been more promising. Converting 1 million points is done in about 1 second. This allows for a 1000 by 1000 pixel area to be converted in one second, which would be within the customers demand for a responsive application. Unfortunately, the data still has to be interpolated, and this might be more work than the group has time to do.
 
 \gls{Fimex} also looks promising, but the group has yet to get it up and running. If it is able to convert the files, the group feels that this should be chosen as the solution to the projection problem. This way, efforts can be directed at finishing as much functionality as possible. 
 
@@ -1814,7 +1814,7 @@ Add color legend to user interface                    & 5                       
 Enable user to display data from chosen time          & 10                                                                  & 7                                                      & Anders, Marco \\
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back-end}}                                                                                                                                        \\
-Investigate \gls{Fimex} and Porj.4                          & 14                                                                  & 27,5                                                   & Marco, Ruben  \\
+Investigate \gls{Fimex} and Proj.4                          & 14                                                                  & 27,5                                                   & Marco, Ruben  \\
 Scanning and indexing files                           & 20                                                                  & 1                                                      & Emil          \\
 Implement \gls{WMTS} \gls{protocol}                               & 15                                                                  & 21                                                     & Arve          \\
 Choose correct file based on selected region and time & 10                                                                  & 1                                                      & Emil          \\
@@ -1878,7 +1878,7 @@ After this sprint, the following items remain in the backlog:
 	Add color legend to user interface \hfill \\
 	Enable user to display data from chosen time (Blocked)
 	\item[Back-end] \hfill \\
-	Investigate \gls{Fimex} and Porj.4 \hfill \\
+	Investigate \gls{Fimex} and Proj.4 \hfill \\
 	Scanning and indexing files \hfill \\
 	Implement \gls{WMTS} \gls{protocol} \hfill \\
 	Choose correct file based on selected region and time \hfill \\
@@ -1913,7 +1913,7 @@ Add color legend to user interface                     & 5                      
 Enable user to display data from chosen time (Blocked) & 10                                                                  &                                                         & Anders                     \\
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{l}{\cellcolor[HTML]{C0C0C0}\textbf{Back-end}}                                                                                                                                                       \\
-Investigate FiMex and Porj.4                           & 4                                                                   & 2                                                       & Marco                      \\
+Investigate FiMex and Proj.4                           & 4                                                                   & 2                                                       & Marco                      \\
 Investigate FiMex headers not working                  & 3                                                                   & 1                                                       & Marco                      \\
 Make file stitching work                               & 20                                                                  &                                                         & Ondrej                     \\
 Scanning and indexing files                            & 15                                                                  &                                                         & Emil                       \\
@@ -1978,7 +1978,7 @@ At the end of the sprint, it has become clear that the \gls{Fimex}-library has s
 
 The file \textit{uvNSEW\_20080630.nc}, provided by the customer, was correctly parsed by the back-end. The problem now is that the file contained only Currents data, although on a very wide area (not only Norwegian Sea, but an horizontal extended area from Greenland to Siberia).
 We needed to look into a \gls{netcdf} file containing all the different types of data (i.e. temperature, salinity, currents and depth), since the backend now reads from one \gls{netcdf} file and this can allow the frontend to visualize all different types of data.
-A \gls{netcdf} file, sizing approximately 2 GB, meeting this requirement, has been found. An ad-hoc Fimex configuration script has been written and the file converted.
+A \gls{netcdf} file, sizing approximately 2 GB, meeting this requirement, has been found in the Hard Drive provided by the customer. An ad-hoc Fimex configuration script has been written and the file converted.
 Technical details for this problem are explaind in \ref{sec:ChallengeFimexMissingAttribute}.
 
 \paragraph{Remaining backlog items}

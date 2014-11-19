@@ -3440,6 +3440,33 @@ Thus the webapp should be served from the \emph{dist} directory and all developm
 $ gulp build
 \end{lstlisting}
 
+\paragraph{Installation of Fimex}
+Fimex library can be installed on an Ubuntu 14.04 LTS Operating System by running the following commands in a terminal window:
+\begin{lstlisting}
+sudo  gedit  /etc/apt/sources.list
+\end{lstlisting}
+Then add the following lines at the bottom of the file and save it:
+\begin{lstlisting}
+## Fimex
+deb http://ppa.launchpad.net/heiko-klein/fimex/ubuntu trusty main
+deb-src http://ppa.launchpad.net/heiko-klein/fimex/ubuntu trusty main
+\end{lstlisting}
+Afterwards, run these commands in the terminal:
+\begin{lstlisting}
+sudo apt-get dist upgrade
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 989BA1EB
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install libxml2-dev libproj-dev libudunits2-dev                    libnetcdf-dev libgrib-api-dev libjasper-dev libpng12-dev                    libjpeg-dev libpq-dev liblog4cpp5-dev                   libboost-filesystem-dev libboost-system-dev                   libboost-iostreams-dev libboost-program-options-dev                   libboost-regex-dev libboost-test-dev                    libboost-date-time-dev
+sudo apt-get install fimex-bin
+sudo apt-get install fimex-share
+\end{lstlisting} 
+
+Afterwards Fimex is ready in the command line.
+Partial guides to this process can be found online\footnote{\url{https://wiki.met.no/fimex/install}, 
+\url{https://launchpad.net/~heiko-klein/+archive/ubuntu/fimex/+packages}, 
+\url{http://linuxers.org/howto/how-install-software-ubuntu-ppa}}.
+
 \chapter{Templates}
 In the \gls{course compendium}, the team is asked to create templates for internal documents. The team identified 3 types of documents they would need templates for:
 

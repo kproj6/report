@@ -965,7 +965,7 @@ Based on the study of possible solutions in the previous chapter, the group has 
 \subsection{Front-end}
 As the group has looked into the situation at SINTEF, as well as other solutions in production, the conclusion is rather clear. SINTEF requires a very specific \gls{front-end}, with custom graphs, and the ability to add more functionality at a later stage. As far as existing solutions go, only the Godiva2 system has been close to performing the necessary tasks to serve SINTEF's needs. This system is however not very easy to adapt, and the group is of the opinion that changing this system to fit custom needs may be too much work to justify.
 
-With this in mind, the group feels that the only realistic solution for the \gls{front-end} is to develop a custom system from scratch. Specifically we think using the OpenLayers JavaScript library will beneficial in this project.
+With this in mind, the group feels that the only realistic solution for the \gls{front-end} is to develop a custom system from scratch. Specifically we think using the OpenLayers JavaScript library will be beneficial in this project.
 
 \subsection{Back-end}
 For the \gls{back-end}, the group is divided in its recommendation. From our investigation into different technologies, it seems like \gls{THREDDS} is a solution that is generally implemented for working with \gls{netcdf} files. Advantages of using this is that there exists documentation, maintenance, and updates. The group has had trouble configuring \gls{THREDDS}, and has also gotten the impression that SINTEF is not perfectly satisfied with its performance. 
@@ -3277,7 +3277,7 @@ The figure \ref{fig:rest_api_boundary} visualizes start and end points specifyin
 
 \subsection{Profile}
 
-The salinity and temperature features support also \texttt{profile} subservice, which provides vertical profile at given coordinates. This resource returns requested data as a JSON described below, or, in case of error, resource returns JSON describing situation in the same format as in subsection \ref{subsect:api-area}.
+The salinity and temperature features also support \texttt{profile} subservice, which provides vertical profile at the given coordinates. This resource returns requested data as a JSON described below, or, in case of error, the resource returns JSON describing the situation in the same format as in subsection \ref{subsect:api-area}.
 
 \begin{lstlisting}[caption=JSON object returned by vertical profile resource, label=lst:api-profile-json, frame=single]
 {

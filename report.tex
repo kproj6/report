@@ -587,7 +587,7 @@ As stated in the \gls{course compendium}, we need to adopt Quality Assurance (QA
 \section{Project management}
   \subsection{Trello}
   \label{subsec:Trello}
-  Trello \footnote{\url{http://www.trello.com}}is a web-based collaborative project management tool originally made by Fog Creek Software (New York, USA) \footnote{\url{http://www.fogcreek.com/}}. 
+  Trello\footnote{\url{http://www.trello.com}} is a web-based collaborative project management tool originally made by Fog Creek Software (New York, USA)\footnote{\url{http://www.fogcreek.com/}}. 
 It is based on the Kanban method which has first implemented by Toyota in 1953 to be used in car production. It has since been modified to be used in several different industries. 
 David J. Anderson formulated a model based on Kanban for knowledge based work, specifically software development, where the team incrementally pulls work from a queue \cite{da2004}. 
 We use Trello for organizing our tasks into four states: "To do", "Doing", "Blocked" and "Done". The default state is "To do", and by changing the state of a task everybody in the group knows what needs to be done, what is being worked on, what tasks are dependent on other tasks or factors, and what tasks are done.
@@ -595,7 +595,7 @@ This is a simple yet efficient way of managing tasks. We chose Trello for the ea
 Trello is a freemium web service which means that it is free to use but additional support and features can be accessed if you pay a fee. As we only needed the standard functions we used the free version.
   \subsection{Slack}
   \label{subsec:Slack}
-Slack is a web based team communication tool founded by Stewart Butterfield. It offers text chat in different channels and integration with a number of different popular services used by development teams \footnote{\url{https://slack.com/integrations}}. This has been useful to us since we needed to share information that might be more relevant to specific team members and also to have a single means of communication. Using Slack's integration with Trello and Github the team can be notified when there are changes on these platforms as well. Slack's capability to share files, or link to files on Google Documents, will also be useful. 
+Slack is a web based team communication tool founded by Stewart Butterfield. It offers text chat in different channels and integration with a number of different popular services used by development teams\footnote{\url{https://slack.com/integrations}}. This has been useful to us since we needed to share information that might be more relevant to specific team members and also to have a single means of communication. Using Slack's integration with Trello and Github the team can be notified when there are changes on these platforms as well. Slack's capability to share files, or link to files on Google Documents, will also be useful. 
 
 \section{Version control}
   \subsection{Git}
@@ -1274,7 +1274,6 @@ We have decided to have detailed documentation on our functional requirements, a
   FR 1.23 & The \gls{back-end} should implement a relevant subset of REST & 10 & 12h \\ \hline
   \end{longtable}
   
-  \vspace{2cm}
 
   \begin{longtable}{p{1.4cm} p{7.8cm} p{1cm} p{1cm} }
   \caption[]{Functional Requirements \gls{front-end}} \\
@@ -1983,7 +1982,7 @@ At the end of the sprint, it has become clear that the \gls{Fimex}-library has s
 The file \textit{uvNSEW\_20080630.nc}, provided by the customer, was correctly parsed by the back-end. The problem now is that the file contained only Currents data, although on a very wide area (not only Norwegian Sea, but an horizontal extended area from Greenland to Siberia).
 We needed to look into a \gls{netcdf} file containing all the different types of data (i.e. temperature, salinity, currents and depth), since the \gls{back-end} now reads from one \gls{netcdf} file and this can allow the \gls{front-end} to visualize all different types of data.
 A \gls{netcdf} file, sizing approximately 2 GB, meeting this requirement, has been found in the Hard Drive provided by the customer. An ad-hoc \gls{Fimex} configuration script has been written and the file converted.
-Technical details for this problem are explaind in \ref{sec:ChallengeFimexMissingAttribute}.
+Technical details for this problem are explained in \ref{sec:ChallengeFimexMissingAttribute}.
 
 \paragraph{Remaining backlog items}
 As this is the last sprint, remaining items in the backlog may not be completed. The team still has some days left to work, but must focus on proof reading the report, and preparing for the presentation. As part of the presentation is a demo, some team members will work on getting the newly converted \gls{netcdf}-files working in the system. 
@@ -2127,7 +2126,7 @@ proj2wkt.py '+proj=stere +lat_ts=60 +lat_0=90 +lon_0=58 +k_0=1.0 +x_0=2412853.25
 
 and the obtained output has been the following:
 \begin{lstlisting}
-PROJCS["unnamed",GEOGCS["unnamed ellipse",DATUM["unknown",SPHEROID["unnamed",6370000,0]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]],PROJECTION["Polar_Stereographic"],PARAMETER["latitude_of_origin",60],PARAMETER["central_meridian",58],PARAMETER["scale_factor",1],PARAMETER["false_easting",2412853.25],PARAMETER["false_northing",1840933.25]]
+PROJCS["unnamed",GEOGCS["unnamed ellipse",DATUM["unknown",SPHEROID["unnamed",6370000,0]], PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]], PROJECTION["Polar_Stereographic"],PARAMETER["latitude_of_origin",60], PARAMETER["central_meridian",58],PARAMETER["scale_factor",1], PARAMETER["false_easting",2412853.25], PARAMETER["false_northing",1840933.25]]
 \end{lstlisting}
 To use this in Java, first the quotes had to be escaped to avoid mistakes. 
 Additionally we added the "UNIT" parameter as the last parameter, directly as a child of the PROJCS main element. The unit specified has been "m", with a conversion scale (it is a required attribute\footnote{http://www.geoapi.org/3.0/javadoc/org/opengis/referencing/doc-files/WKT.html\#UNIT}).
@@ -2717,13 +2716,13 @@ The new values are stored in the global \textit{startCoord} and \textit{endCoord
 \section{Goal completion}
 The project task was broadly specified and gave us a the opportunity to take our work in many directions, and the possibility to develop a lot of features. While the customer in the end is looking for a commercial solution that includes all of these, it was clear from the start that the scope of our task could not be to make a full commercial product. The scope that was agreed with the customer is defined in section \ref{sec:AssignmentScope}. The reason for limiting the scope is that this would enable making what was actually developed during the project robust and efficient, being efficient enough to serve its purpose with very large pieces of data. Efficiency has been a problem in previous attempts, which made this prioritization one of extra importance.
 
-As defined by Measurement of project effects in section \ref{sec:MeasurementProjEff} a successful product is defined by successfully implementing all high and medium requirements, and passing all tests. Looking at the successfully implemented requirements, the project is behind this schedule. Several requirements have not been implemented, like handling overlapping areas (FR 1.5), automatically preparing files added to the system (FR 1.11), providing current direction data in an easily usable format (FR 1.20) and displaying it in \gls{front-end} (FR 2.8).
+As defined by Measurement of project effects in section \ref{sec:MeasurementProjEff}, a successful product is defined by successfully implementing all high and medium requirements, and passing all tests. Looking at the successfully implemented requirements, the project is behind this schedule. Several requirements have not been implemented, like handling overlapping areas (FR 1.5), automatically preparing files added to the system (FR 1.11), providing current direction data in an easily usable format (FR 1.20) and displaying it in \gls{front-end} (FR 2.8).
 
 The challenges we have faced with getting the projections working has blocked many of these tasks, and stolen a lot of the time that was designated for these tasks. These challenges are discussed further in section \ref{sec:ProjectionChallenges}.
 
 In the product requirements the performance of the system was described as general as "The requests must be fast enough to feel responsive for the user". It was not be possible to describe it more specifically, given the uncertainty of the final solution. The amount of data the system should store and process is very large, and even a normal response time can be a challenge. In the final product the response time is low. This is something we are quite satisfied with given that previous attempts have struggled on this point. This has been achieved by thorough consideration of solutions for bottlenecks and efficient use of existing tools and technology. \\
 
-Overall the project has been robustly implemented despite not reaching all of its important functional requirements. We have also done a lot of work outside of what is included in the final solution as we have faced multiple challenges. A thorough report of the findings of the team is also part of what is handed to the customer, and this should be of good use to the customer. The final solution should be easy to utilize with detailed deploy guides and we have explained a lot of things that can be done to further improve it.
+Overall the project has been robustly implemented despite not reaching all of its important functional requirements. We have also done a lot of work outside of what is included in the final solution as we have faced multiple challenges. A thorough report of the findings of the team is also part of what is handed to the customer, and this should be of good use to the customer. The final solution should be easy to utilize with detailed deploy guides and we have given much thought to work that can be done to further improve the solution.
 
 \section{Further work}
 Given the size and complexity of the project, the functionality of the implementation had to be limited to the bare minimum. This means that further work should be done to meet the functional requirements for a commercial product. Many of these functionalities have however been considered during the project and therefore we have made some evaluations on how this can be done. In this section we present our suggestions for what can be done to improve the implementation.
@@ -2834,6 +2833,13 @@ We would like to add some functionality where the use can see a time-lapse anima
 \subsubsection{Tooltips}
 A tool to select the area you want to query was implemented in the \gls{GUI}. It is toggled on and off by pressing a button in the \gls{GUI} or you can hold down the shift button on your keyboard while clicking and dragging on the map. The keyboard shortcut is not mentioned anywhere in the \gls{GUI}, and the user will probably not find this feature on his own. We therefore recommend that tool tips and hint are added to the \gls{GUI} so the user knows about all of its features. We can also use tooltips to minimize the \gls{GUI} and just show the explanation when moving the mouse over the field.
 
+\subsubsection{Re-investigating Leaflet}
+In our \gls{pre-study} we investigated Leaflet but choose to go with OpenLayers because of native \gls{WMTS}-support. After getting projections done correctly we were finally able to test the \gls{front-end}, and we found that missing support for image stretching in OpenLayers version 3 causes problems with getting the image overlay to cover the correct portions of the map. Towards the end of the project we found out that Leaflet is able to handle this specific problem and although there is no native \gls{WMTS}-support we have found that this can be added through plug-ins. 
+
+A \gls{prototype} was made that used the existing \gls{front-end} solution with Leaflet replacing just OpenLayers-specific functionality. This prototype managed to achieve the existing \gls{front-end} functionality and to handle the problems that arose with image stretching.
+
+Since this happened so late in the project lifecycle and the prototype is yet to be thoroughly tested, this is a point for re-investigation in the further work. It will have to be investigated if the \gls{WMTS}-support of Leaflet will be good enough, or if it is possible to implement \gls{WMTS} on OpenLayers, and avoid the problems we have faced with stretching the images.
+
 \subsection{Back-end}
 
 \subsubsection{Returning data in different formats}
@@ -2902,13 +2908,6 @@ Storage would be trivial as well: Save the new tile to disk, and add it to the c
 
 \paragraph{Invalidation}
 Invalidation of outdated cache elements should be fairly easy to implement as well: When adding a new (as in, more recently simulated) \gls{netcdf}-file, run through the cache and mark any obsoleted tiles as invalid.
-
-\subsubsection{Re-investigating Leaflet}
-In our \gls{pre-study} we investigated Leaflet but choose to go with OpenLayers because of native \gls{WMTS}-support. After getting projections done correctly we were finally able to test the \gls{front-end}, and we found that missing support for image stretching in OpenLayers version 3 causes problems with getting the image overlay to cover the correct portions of the map. Towards the end of the project we found out that Leaflet is able to handle this specific problem and although there is no native \gls{WMTS}-support we have found that this can be added through plug-ins. 
-
-A \gls{prototype} was made that used the existing \gls{front-end} solution with Leaflet replacing just OpenLayers-specific functionality. This prototype managed to achieve the existing \gls{front-end} functionality and to handle the problems that arose with image stretching.
-
-Since this happened so late in the project lifecycle and the prototype is yet to be thoroughly tested, this is a point for re-investigation in the further work. It will have to be investigated if the \gls{WMTS}-support of Leaflet will be good enough, or if it is possible to implement \gls{WMTS} on OpenLayers, and avoid the problems we have faced with stretching the images.
 
 \chapter{Evaluation}
 In this chapter, the group will give a thorough evaluation of the project, in respect to the groups own work and teamwork, the decisions made early in the project, time used, the subject and its organization, relations with the customer, and reflect on the team. 
@@ -3489,7 +3488,7 @@ By running the following command gulp will watch all the source files in the \em
 $ gulp
 \end{lstlisting}
 
-Notice: since the URL address of the back-end server may change according to the machine in which it is deployed,  in case of changing it is needed to configure this URL in the front-end as well. This can be done in the file \textit{src/js/script.js} in the first line of the \textit{buildurl()} function.
+Note: Since the \gls{URL} address of the \gls{back-end} server may change according to the machine on which it is deployed, changing it may be needed front-end as well. This can be done in the file \textit{src/js/script.js} in the first line of the \textit{buildurl()} function.
 
 \paragraph{Building the front-end}
 

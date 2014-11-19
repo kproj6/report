@@ -3241,8 +3241,9 @@ Feature service contains sub-services for all implemented features. Currently su
 \end{description}
 
 \subsection{Area}
+\label{subsect:api-area}
 
-All features support \texttt{area} subservice, which provides information about given feature in given area, currently in a form of \gls{PNG} image of size 256x256 px. In case of error, \gls{HTTP} status is set accordingly and \gls{JSON} specifying the error is returned. Returned \gls{JSON} then can contain those fields:
+All features support \texttt{area} subservice, which provides information about given feature in given area, currently in a form of \gls{PNG} image with the shorter side set to 256 px and longer side scaled to keep the ratio of the requested data. In case of error, \gls{HTTP} status is set accordingly and \gls{JSON} specifying the error is returned. Returned \gls{JSON} then can contain those fields:
 \begin{description}
 	\item[errorMessage] This field is always present and contains short summary of an error.
 	\item[cause] If this is a simple error, or error happened in some lower level and we get only textual information, this field contains string with explanation.
@@ -3267,6 +3268,30 @@ The figure \ref{fig:rest_api_boundary} visualizes start and end points specifyin
 	\caption{Boundary specification}
 	\label{fig:rest_api_boundary}
 \end{figure}
+
+\subsection{Profile}
+
+The salinity and temperature features support also \texttt{profile} subservice, which provides vertical profile at given coordinates. This resource returns requested data as a JSON described below, or, in case of error, resource returns JSON describing situation in the same format as in subsection \ref{subsect:api-area}.
+
+\begin{lstlisting}[caption=JSON object returned by vertical profile resource, label=lst:api-profile-json, frame=single]
+{
+    "feature": {feature name},
+    "profile": [Array of values in depth],
+    "missingValuePlaceholder": -1,
+    "location": {
+        "latitude": {latitude},
+        "longitude":{longitude},
+        "time":     {time}
+    }
+}
+\end{lstlisting}
+
+To specify data you are interested in, the subservice takes this parameters:
+\begin{description}
+	\item[\underline{lat}] Latitude of the source data point you are interested in. This parameter is compulsory.
+	\item[\underline{lon}] Longitude of the source data point you are interested in. This parameter is compulsory.
+	\item[\underline{time}] Specifies time in ISO-8601. This parameter is compulsory.
+\end{description}
 
 \section{Overview}
 
